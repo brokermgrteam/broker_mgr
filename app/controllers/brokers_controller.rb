@@ -22,6 +22,8 @@ class BrokersController < ApplicationController
   def index
     # @brokers = Broker.all
     @brokers_grid = initialize_grid(Broker, 
+              :order => 'brokers.broker_code',
+              # :order_direction => 'desc',
               :conditions => {:branch_id => Branch.accessible_by(current_ability).map{|br| [br.id]}}, 
               :include => [:branch],
               :name => 'brokers',

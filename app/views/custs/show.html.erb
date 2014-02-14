@@ -2,31 +2,34 @@
 	<div class="span9">
 		<div class="row-fluid">
 			<div class="span12">
-			<div class="well well-small">
-				<legend><p class="lead text-center muted">客户业绩（半年内）</p></legend>
-			</div>
-				<% if @cust.custindices.any? %>
-				<div class="accordion" id="accordion1">
-					<% @cust.custindices.select(:month_id).order(:month_id).reverse_order.uniq.each_with_index do |month,index| %>
-						<% if index >= 0 && index <= 5 %>
-							<div class="accordion-group">
-								<div class="accordion-heading">
-									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%=month.month_id%>">
-										客户业绩 #<%= month.month_id %>
-									</a>
-								</div>
-								<div id="collapse<%=month.month_id%>" <% if index == 0 %>class="collapse in"<% else %>class="collapse"<% end %>>
-									<div class="accordion-inner">
-										<%= render :partial => 'custindices/custindex', :locals => { :object => cust_index(@cust,month.month_id) } %>
+			<!-- <div class="well well-small"> -->
+				<div class="mini-layout"> 
+					<h4><p class="text-center muted">客户业绩（半年内）</p></h4>
+				<!-- </div> -->
+					<% if @cust.custindices.any? %>
+					<div class="accordion" id="accordion1">
+						<% @cust.custindices.select(:month_id).order(:month_id).reverse_order.uniq.each_with_index do |month,index| %>
+							<% if index >= 0 && index <= 5 %>
+								<div class="accordion-group">
+									<div class="accordion-heading">
+										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%=month.month_id%>">
+											客户业绩 #<%= month.month_id %>
+										</a>
+									</div>
+									<div id="collapse<%=month.month_id%>" <% if index == 0 %>class="collapse in"<% else %>class="collapse"<% end %>>
+										<div class="accordion-inner">
+											<%= render :partial => 'custindices/custindex', :locals => { :object => cust_index(@cust,month.month_id) } %>
+										</div>
 									</div>
 								</div>
-							</div>
+							<% end %>
 						<% end %>
+					</div>
+					<% else %>
+					<p class="text-center muted">没有客户业绩记录</p>
 					<% end %>
 				</div>
-				<% else %>
-				<p class="text-center muted">没有客户业绩记录</p>
-				<% end %>
+
 			</div>
 		</div>
 	</div>
