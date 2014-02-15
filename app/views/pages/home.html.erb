@@ -3,5 +3,5 @@
 <% elsif (signed_in?) && (can? :access_user_first_page, :all) %>
 	<%= render 'brokers/brokers' %>
 <% else %>
-	<%= render 'sessions/signin' %>
+	<%= render 'sessions/no_role' %>
 <% end %>
