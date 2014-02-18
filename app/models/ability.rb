@@ -48,6 +48,7 @@ class Ability
       can :read, Workflowhistory
       can :read, Product
       can :read, Cust
+      can :manage, Channel
       
     elsif user.has_role? :营销人员
       can :access_broker_first_page, :all
