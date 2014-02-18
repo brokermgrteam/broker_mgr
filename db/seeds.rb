@@ -2219,3 +2219,22 @@ Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'高',:dict_type=>'Pr
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'发行期',:dict_type=>'Product.status',:code=>1})
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'存续期',:dict_type=>'Product.status',:code=>2})
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'到期结束',:dict_type=>'Product.status',:code=>3})
+
+#institutions
+Institution.find_or_create_by_institution_name({:institution_code => "01", :institution_name => "工商银行"})
+Institution.find_or_create_by_institution_name({:institution_code => "02", :institution_name => "农业银行"})
+Institution.find_or_create_by_institution_name({:institution_code => "03", :institution_name => "中国银行"})
+Institution.find_or_create_by_institution_name({:institution_code => "04", :institution_name => "建设银行"})
+Institution.find_or_create_by_institution_name({:institution_code => "05", :institution_name => "交通银行"})
+
+Institution.find_or_create_by_institution_name({:institution_code => "06", :institution_name => "招商银行"})
+Institution.find_or_create_by_institution_name({:institution_code => "07", :institution_name => "浦发银行"})
+Institution.find_or_create_by_institution_name({:institution_code => "08", :institution_name => "民生银行"})
+Institution.find_or_create_by_institution_name({:institution_code => "09", :institution_name => "兴业银行"})
+Institution.find_or_create_by_institution_name({:institution_code => "10", :institution_name => "深发展银行"})
+Institution.find_or_create_by_institution_name({:institution_code => "11", :institution_name => "广发银行"})
+Institution.find_or_create_by_institution_name({:institution_code => "12", :institution_name => "中信银行"})
+
+Institution.find_or_create_by_institution_name({:institution_code => "13", :institution_name => "北京银行"})
+Institution.find_or_create_by_institution_name({:institution_code => "14", :institution_name => "上海银行"})
+Institution.find_or_create_by_institution_name({:institution_code => "15", :institution_name => "南京银行"})
