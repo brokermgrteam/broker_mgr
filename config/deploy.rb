@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-server "192.168.11.12", :web, :app, :db, primary: true
+server "192.168.11.17", :web, :app, :db, primary: true
 
 # set :rbenv_ruby_version, "1.9.3-p385"
 set :application, "broker_mgr"
@@ -10,7 +10,7 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, "git"
-set :repository, "git@github.com:hielf/#{application}.git"
+set :repository, "git@github.com:brokermgrteam/#{application}.git"
 set :branch, "master"
 
 default_run_options[:pty] = true
