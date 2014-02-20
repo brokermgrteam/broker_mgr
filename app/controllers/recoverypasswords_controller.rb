@@ -16,11 +16,10 @@ class RecoverypasswordsController < ApplicationController
       end
     else
       user = broker.user
-      @recoverypassword = Passwordresetlog.find_or_create_by_user_id_and_status(
-                                          :user_id => user.id,
-                                          :confirm_code => rand(999999), 
-                                          :mobile => broker.mobile, 
-                                          :status => 0)
+      @recoverypassword = Passwordresetlog.create(:user_id => user.id,
+                                                  :confirm_code => rand(999999), 
+                                                  :mobile => broker.mobile, 
+                                                  :status => 0)
       respond_to do |format|
          format.html { redirect_to root_path, :flash => { :success => "请查收短信确认码" } }
          format.js
