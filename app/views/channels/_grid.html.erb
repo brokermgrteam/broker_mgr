@@ -8,7 +8,7 @@
     channel.channel_code if channel.channel_code
   end
 
-  g.column :name => '渠道名称', :attribute => 'channel_name', :detach_with_id => :name_filter do |channel|
+  g.column :name => '渠道名称', :attribute => 'channel_name', :detach_with_id => :channelname_filter do |channel|
     channel.channel_name if channel.channel_name
   end
 
@@ -17,12 +17,12 @@
   end
 
 	g.column :name => '渠道类型', :attribute => 'channel_type', 
-					 :detach_with_id => :type_filter, custom_filter: Dict.where(:dict_type => 'channel.channelType').map{|d| [d.name, d.id]} do |channel|
+					 :detach_with_id => :type_filter, custom_filter: Dict.where(:dict_type => 'Channel.type').map{|d| [d.name, d.id]} do |channel|
 		Dict.find(channel.channel_type).name if channel.channel_type
 	end
 
-	g.column :name => '当前状态', :attribute => 'status', filter: false do |channel|
-		Dict.find(channel.status).name if channel.status
+	g.column :name => '当前状态', :attribute => 'status', :detach_with_id => :status_filter do |channel|
+		channel.status? ? '有效' : '无效' if channel.status
 	end
 
 	g.column :name => '备注', :attribute => 'remark', filter: false do |channel|
@@ -31,7 +31,7 @@
 	
 	if can? :manage, Channel
 	  g.column do |channel|
-	    link_to('详细', channel_path(channel))
+	    link_to('修改', edit_channel_path(channel))
 	  end
   end
 end -%>

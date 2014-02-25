@@ -39,16 +39,16 @@ class Ability
       can :access_user_first_page, :all
       can :read, Department
       can :read, Branch
-      can :manage, User
-      can :manage, Role
-      can :manage, Userposition
-      can :manage, Workflow
-      can :manage, Broker
+      can :crud, User
+      can :crud, Role
+      can :crud, Userposition
+      can :crud, Workflow
+      can :crud, Broker
       can :read, Custservvisit
       can :read, Workflowhistory
       can :read, Product
       can :read, Cust
-      can :manage, Channel
+      can :crud, Channel
       
     elsif user.has_role? :营销人员
       can :access_broker_first_page, :all

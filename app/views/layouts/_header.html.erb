@@ -26,6 +26,9 @@
 									<% if can? :manage, Userposition %>
 										<li><%= link_to "岗位设置", userpositions_path %>
 									<% end %>
+									<% if can? :manage, Channel %>
+										<li><%= link_to "渠道设置",  channels_path %>
+									<% end %>
 									<% if can? :manage, Workflow %>
 										<li><%= link_to "工作流",  workflows_path %>
 									<% end %>

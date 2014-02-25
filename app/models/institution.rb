@@ -2,6 +2,10 @@ class Institution < ActiveRecord::Base
   attr_accessible :institution_code, :institution_name
 
   has_many :channels
+
+  def to_label
+    "#{institution_code} | #{institution_name}"
+  end
 end
 # == Schema Information
 #

@@ -1,0 +1,23 @@
+<div class="row-fluid">
+	<div class="span9">
+		<div class="well">
+			<p class="lead text-center"><legend><strong>渠道设置</strong></legend></p>
+			<%= simple_form_for @channel, :html => { :class => 'form-horizontal' } do |f| %>
+			  <fieldset>
+				<%= render 'fields', :f => f %>
+				</fieldset>
+				<div class="form-actions">
+					<%= f.submit "确认", :class => 'btn btn-primary' %>
+					<%= link_to '取消', channels_path, :class => 'btn' %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="span3">
+		<div class="alert alert-block">
+		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+		  <h4>帮助</h4>
+		  *为必填项
+		</div>
+	</div>
+</div>

@@ -1,9 +1,4 @@
 <div class="row-fluid">
-	<div class="span6">
-		<div class="well">
-			<%= render 'custservvisits/fields_exe' %>
-		</div>
-	</div>
 	<div class="span3">
 		<div class="alert alert-block">
 		  <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -42,8 +37,13 @@
 			</table>
 		</div>
 	</div>
-	<div class="span3">
+	<div class="span6">
 		<div class="well">
+			<%= render 'custservvisits/fields_exe' %>
+		</div>
+	</div>
+	<div class="span3">
+		<div class="mini-layout">
 			<% @workflow.workflowsteps.each do |n| %>
 				<div class="row-fluid">
 					<div class="span12">
