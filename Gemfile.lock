@@ -231,7 +231,6 @@ DEPENDENCIES
   jquery-ui-rails
   less-rails
   meta_request
-  net-ssh (= 2.7.0)
   rabl
   rails (= 3.2.11)
   rspec-rails (= 2.8.1)
