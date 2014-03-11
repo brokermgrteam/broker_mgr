@@ -1,0 +1,2 @@
+module GeneratechannelsHelper
+end

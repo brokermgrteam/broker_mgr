@@ -1,0 +1,26 @@
+<div class="row-fluid">
+	<div class="span9">
+		<div class="well">
+			<%= simple_form_for url.build, :html => { :class => 'form-horizontal' } do |f| %>
+				<fieldset>
+					<%= f.input :channel, :label => '选择渠道', :collection => Channel.valid_channels, 
+											:include_blank => false, :required => true %>
+					<%= f.input :channel_branch, :collection => Branch.all, 
+											:include_blank => false, :required => true %>
+					<%= f.input :cust_branch, :collection => Branch.all, 
+											:include_blank => false, :required => true %>
+					<%= f.input :bank_id, :collection => Institution.all, 
+											:include_blank => false, :required => true %>
+				</fieldset>
+			<% end %>
+		</div>
+	</div>
+	<div class="span3">
+		<div class="alert alert-block">
+		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+		  <h4>帮助</h4>
+		  生成渠道链接。
+		  渠道id, 渠道营业部id, 落地营业部id, 存管银行id, 备注信息
+		</div>
+	</div>
+</div>

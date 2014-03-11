@@ -8,6 +8,8 @@ class Channel < ActiveRecord::Base
   validates :channel_name, :presence   => true
   validates :channel_type, :presence   => true
   validates :status, 			 :presence   => true
+
+  scope :valid_channels, where(:status => true ) 
 end
 # == Schema Information
 #

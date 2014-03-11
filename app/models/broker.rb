@@ -15,6 +15,7 @@ class Broker < ActiveRecord::Base
   
   # default_scope :order => 'brokers.broker_code'
   
+  scope :valid_brokers, where("broker_status <> #{Dict.find_by_dict_type_and_code('BrokerBase.status', 2).id}") 
   scope :typebrokers, lambda { |brokertype| where("broker_type = ?", brokertype) } 
   
   def to_label
