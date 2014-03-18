@@ -10,6 +10,10 @@ class Channel < ActiveRecord::Base
   validates :status, 			 :presence   => true
 
   scope :valid_channels, where(:status => true ) 
+
+  def to_label
+    "#{channel_code} | #{channel_name}"
+  end
 end
 # == Schema Information
 #
