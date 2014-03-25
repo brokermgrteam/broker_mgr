@@ -19,4 +19,5 @@ class ProductsController < ApplicationController
     @product  = Product.find(params[:id])
     @title    = @product.name
   end
+  
 end
