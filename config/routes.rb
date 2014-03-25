@@ -7,7 +7,11 @@ Cmwp::Application.routes.draw do
   resources :workflows
   resources :workflowhistories
   resources :custs
-  resources :products
+  resources :products do
+    member do
+      get :downloadfile
+    end
+  end
   resources :brokerproductrels, :only => [:create, :destroy]
   resources :channels
   resources :channelurls, :only => [:new, :create, :show]

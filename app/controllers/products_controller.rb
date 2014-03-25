@@ -19,5 +19,18 @@ class ProductsController < ApplicationController
     @product  = Product.find(params[:id])
     @title    = @product.name
   end
-  
+
+  def downloadfile
+    @product  = Product.find(params[:id])
+    @seq      = params[:seq]
+    if @product.f1!=nil && @seq=="1"
+      send_data @product.f1, :filename => @product.f1_name
+    end
+    if @product.f2!=nil && @seq=="2"
+      send_data @product.f2, :filename => @product.f2_name
+    end
+    if @product.f3!=nil && @seq=="3"
+      send_data @product.f3, :filename => @product.f3_name
+    end
+  end
 end
