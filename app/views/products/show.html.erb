@@ -59,12 +59,17 @@
 		  点击收藏，可以将营销产品加入个人的产品收藏列表。
 		</div>
 		<div class="well">
-			<% @product.productattachments.each	do |file| %>
-				<p class="text-center">
-				<%= link_to file.file_name, {:controller => 'products', :action => 'downloadfile', :productattachment_id => file.id}, :class => 'btn' %>
-				</p>
-				<ul class="common-divider"></ul>
+			<% if @product.productattachments.any? %>
+				<% @product.productattachments.each	do |file| %>
+					<p class="text-center">
+					<%= link_to file.file_name, {:controller => 'products', :action => 'downloadfile', :productattachment_id => file.id}, :class => 'btn' %>
+					</p>
+					<ul class="common-divider"></ul>
+				<% end %>
+			<% else %>
+				<p class="text-center muted">该营销产品暂无相关说明</p>
 			<% end %>
+
 		</div>
 	</div>
 </div>
