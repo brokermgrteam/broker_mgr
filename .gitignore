@@ -22,3 +22,4 @@ doc/app
 /webrat.log
 
 /config/database.yml
+.powenv
