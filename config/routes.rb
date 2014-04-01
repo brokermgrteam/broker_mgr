@@ -10,7 +10,7 @@ Cmwp::Application.routes.draw do
   resources :products
   resources :brokerproductrels, :only => [:create, :destroy]
   resources :channels
-  resources :channelurls, :only => [:new, :create, :show]
+  resources :channelurls
   resources :workflowunderways do
     resources :workflow_steps, :custservvisits
   end

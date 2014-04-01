@@ -2,19 +2,34 @@
 class ChannelurlsController < ApplicationController
 	require "uri"
   require "net/http"
+  require "json"
 
   def new
     @title = "获取渠道连接"
   end
     
   def create
-  	params = {'box1' => 'Nothing is less important than which fork you use. Etiquette is the science of living. It embraces everything. It is ethics. It is honor. -Emily Post',
-    'button1' => 'Submit'
+  	a = {
+    'channel_id' => params[:channelurl][:channel],
+    'channel_code' => Channel.find(params[:channelurl][:channel]).channel_code,
+    'channel_name' => Channel.find(params[:channelurl][:channel]).channel_code,
+    'institution_id' => Channel.find(params[:channelurl][:channel]).institution_id,
+    'institution_code' => Institution.find(Channel.find(params[:channelurl][:channel]).institution_id).institution_code,
+    'institution_name' => Institution.find(Channel.find(params[:channelurl][:channel]).institution_id).institution_name,
+    'open_branch_id' => params[:channelurl][:cust_branch],
+    'open_branch_code' => Branch.find(params[:channelurl][:cust_branch]).code,
+    'open_branch_name' => Branch.find(params[:channelurl][:cust_branch]).name,
+    'serv_branch_id' => params[:channelurl][:channel_branch],
+    'serv_branch_code' => Branch.find(params[:channelurl][:channel_branch]).code,
+    'serv_branch_name' => Branch.find(params[:channelurl][:channel_branch]).name
     }
-    x = Net::HTTP.post_form(URI.parse('http://www.google.com'), params)
-    @url = x.body
+    x = Net::HTTP.post_form(URI.parse('http://10.10.10.157:29002/CRH-KH8201.action?'), a)
+    @url = JSON.parse(x.body)['short_url']
 
-    render channelurl_path(@url)
+    @channelurl = Channelurl.new(:url => @url)
+    if @channelurl.save
+      redirect_to @channelurl # render channelurl_path(@channelurl)
+    end
     # respond_to do |format|
     #   format.html { redirect_to @url, :flash => { :success => "URL获取成功" } }
     #   # format.js
@@ -22,7 +37,7 @@ class ChannelurlsController < ApplicationController
   end
 
   def show
-  	@title = ''
-
+  	@title = '渠道连接'
+    @channelurl = Channelurl.find(params[:id])
   end
 end
