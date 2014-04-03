@@ -2,7 +2,7 @@
 	<div class="span9">
 		<div class="well">
 			<p class="lead text-center"><legend><strong>渠道连接</strong></legend></p>
-			<%= simple_form_for(:channelurl, :url	=> channelurls_path, :html => { :class => 'form-horizontal' }) do |f| %>
+			<%= simple_form_for(:channelurl, :url	=> channelurls_path, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
 				<fieldset>
 					<%= f.input :channel, :label => '选择渠道', :collection => Channel.valid_channels, 
 											:include_blank => false, :required => true %>
@@ -28,4 +28,7 @@
 		  渠道id, 渠道营业部id, 落地营业部id, 存管银行id, 备注信息
 		</div>
 	</div>
+</div>
+</div>
+	<div id="new_url">
 </div>
