@@ -10,7 +10,11 @@ Cmwp::Application.routes.draw do
   resources :products
   resources :brokerproductrels, :only => [:create, :destroy]
   resources :channels
-  resources :channelurls
+  resources :channelurls do
+    collection do
+      get 'get_brokers', to: "channelurls#get_brokers"
+    end 
+  end
   resources :workflowunderways do
     resources :workflow_steps, :custservvisits
   end

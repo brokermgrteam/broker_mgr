@@ -21,7 +21,10 @@ class ChannelurlsController < ApplicationController
     'open_branch_name' => Branch.find(params[:channelurl][:cust_branch]).name,
     'serv_branch_id' => params[:channelurl][:channel_branch],
     'serv_branch_code' => Branch.find(params[:channelurl][:channel_branch]).code,
-    'serv_branch_name' => Branch.find(params[:channelurl][:channel_branch]).name
+    'serv_branch_name' => Branch.find(params[:channelurl][:channel_branch]).name,
+    'broker_id' => params[:channelurl][:broker],
+    'broker_code' => Broker.find(params[:channelurl][:broker]).broker_code,
+    'broker_name' => Broker.find(params[:channelurl][:broker]).broker_name
     }
     x = Net::HTTP.post_form(URI.parse('http://10.10.10.157:29002/CRH-KH8201.action?'), a)
     @url = JSON.parse(x.body)['short_url']
@@ -40,4 +43,9 @@ class ChannelurlsController < ApplicationController
   	@title = '渠道连接'
     @channelurl = Channelurl.find(params[:id])
   end
+
+  def get_brokers
+    @branch = Branch.find params[:branch_id]
+    @brokers = @branch.brokers.valid_brokers
+  end 
 end

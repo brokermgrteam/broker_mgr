@@ -7,11 +7,11 @@
 					<%= f.input :channel, :label => '选择渠道', :collection => Channel.valid_channels, 
 											:include_blank => false, :required => true %>
 					<%= f.input :cust_branch, :label => '开户营业部', :collection => Branch.all, 
-											:include_blank => false, :required => true %>
+											:include_blank => false, :required => true, input_html: { :class => "branch_selection" } %>
 					<%= f.input :channel_branch, :label => '服务营业部', :collection => Branch.all, 
 											:include_blank => false, :required => true %>
 					<%= f.input :broker, :label => '营销人员', :collection => Broker.valid_brokers, 
-											:include_blank => true, :required => false %>
+											:include_blank => true, :required => false, input_html: { :class => "broker_selection" } %>
 				</fieldset>
 				<div class="form-actions">
 					<%= f.submit "确认", :class => 'btn btn-primary' %>
