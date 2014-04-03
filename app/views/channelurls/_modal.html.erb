@@ -4,11 +4,9 @@
     <h3 id="myModalLabel">渠道URL</h3>
   </div>
   <div class="modal-body">
-    <div>
-      <%= @channelurl.url %>
+    <div class="input-append">
+      <span class="input-xlarge uneditable-input"><%= @channelurl.url %></span>
+      <%= link_to '访问', @channelurl.url, :class => 'btn' %>
     </div>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
   </div>
 </div>
