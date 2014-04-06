@@ -26,9 +26,9 @@ class ChannelurlsController < ApplicationController
     'broker_code' => Broker.find(params[:channelurl][:broker]).broker_code,
     'broker_name' => Broker.find(params[:channelurl][:broker]).broker_name
     }
-    x = Net::HTTP.post_form(URI.parse('http://10.10.10.157:29002/CRH-KH8201.action?'), a)
-    @url = JSON.parse(x.body)['short_url']
-    # @url = "abc"
+    # x = Net::HTTP.post_form(URI.parse('http://10.10.10.157:29002/CRH-KH8201.action?'), a)
+    # @url = JSON.parse(x.body)['short_url']
+    @url = "abc"
     @channelurl = Channelurl.new(:url => @url)
     if @channelurl.save
       # redirect_to @channelurl # render channelurl_path(@channelurl)
