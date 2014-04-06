@@ -21,6 +21,7 @@ class Ability
       can :read, Custservvisit
       can :read, Workflowhistory
       can :read, Product
+      can :downloadfile, Product
       can :read, Cust, :branch_id => user.branch_id
       
     elsif user.has_role? :分公司管理
@@ -33,6 +34,7 @@ class Ability
       can :read, Custservvisit
       can :read, Workflowhistory
       can :read, Product
+      can :downloadfile, Product
       can :read, Cust, :branch_id => user.department.branches.map {|b| b.id}
 
     elsif user.has_role? :销售交易部管理
@@ -47,6 +49,7 @@ class Ability
       can :read, Custservvisit
       can :read, Workflowhistory
       can :read, Product
+      can :downloadfile, Product
       can :read, Cust
       can :manage, Channel
       
@@ -61,6 +64,7 @@ class Ability
       can :read, Workflowhistory
       can :read, Cust, :branch_id => user.branch_id
       can :read, Product
+      can :downloadfile, Product
     else
       # can :read, :all
     end
