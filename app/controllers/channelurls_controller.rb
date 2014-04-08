@@ -9,6 +9,7 @@ class ChannelurlsController < ApplicationController
   end
     
   def create
+    @broker = Broker.find(params[:channelurl][:broker]) unless params[:channelurl][:broker].empty?
   	a = {
     'channel_id' => params[:channelurl][:channel],
     'channel_code' => Channel.find(params[:channelurl][:channel]).channel_code,
@@ -23,12 +24,12 @@ class ChannelurlsController < ApplicationController
     'serv_branch_code' => Branch.find(params[:channelurl][:channel_branch]).code,
     'serv_branch_name' => Branch.find(params[:channelurl][:channel_branch]).name,
     'broker_id' => params[:channelurl][:broker],
-    'broker_code' => Broker.find(params[:channelurl][:broker]).broker_code,
-    'broker_name' => Broker.find(params[:channelurl][:broker]).broker_name
+    'broker_code' => (@broker.broker_code unless @broker.nil?),
+    'broker_name' => (@broker.broker_name unless @broker.nil?) 
     }
-    # x = Net::HTTP.post_form(URI.parse('http://10.10.10.157:29002/CRH-KH8201.action?'), a)
-    # @url = JSON.parse(x.body)['short_url']
-    @url = "abc"
+    x = Net::HTTP.post_form(URI.parse('http://10.10.10.157:29002/CRH-KH8201.action?'), a)
+    @url = JSON.parse(x.body)['short_url']
+    # @url = "http://www.google.com/"
     @channelurl = Channelurl.new(:url => @url)
     if @channelurl.save
       # redirect_to @channelurl # render channelurl_path(@channelurl)
