@@ -10,7 +10,7 @@
 											:include_blank => false, :required => true, input_html: { :class => "branch_selection" } %>
 					<%= f.input :channel_branch, :label => '服务营业部', :collection => Branch.all, 
 											:include_blank => false, :required => true %>
-					<%= f.input :broker, :label => '营销人员', :collection => Broker.valid_brokers, 
+					<%= f.input :broker, :label => '营销人员', :collection => [], as: :select,
 											:include_blank => true, :required => false, input_html: { :class => "broker_selection" } %>
 				</fieldset>
 				<div class="form-actions">
