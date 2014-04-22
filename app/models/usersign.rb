@@ -1,6 +1,8 @@
 # encoding: utf-8
 class Usersign < ActiveRecord::Base
   attr_accessible :sign_date, :sign_type, :user_id
+
+  belongs_to	:user
 end
 # == Schema Information
 #

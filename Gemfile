@@ -35,6 +35,8 @@ gem 'gon'
 gem 'cancan'
 gem 'wicked'
 gem "wice_grid", '3.3.1'
+# gem "simple_calendar", github: "excid3/simple_calendar", branch: "1.0"
+gem "watu_table_builder", :require => "table_builder"
 gem 'datetimepicker-rails', :require => 'datetimepicker-rails', 
                             :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 # gem 'simple-navigation'

@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   
   has_many :sessions
   has_many :assignments
+  has_many :usersigns
   has_many :roles, :through => :assignments
   has_many :userpositionrels, :dependent => :destroy, 
                               :foreign_key => "userid"

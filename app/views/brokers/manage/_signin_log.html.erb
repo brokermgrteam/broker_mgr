@@ -1,0 +1,20 @@
+<div class="row-fluid">
+	<div class="span12">
+		<div id="calendar">
+		<% start_day  = Time.zone.now.to_date %>
+		  <h3 id="month">
+		    <%= I18n.l start_day, :format => "%B" %>
+		  </h3>
+		  <%= calendar_for(@usersigns, :year => start_day.year, :month => start_day.month ) do |calendar| %>
+		    <%= calendar.head('星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六') %>
+		    <%= calendar.day(:day_method => :sign_date) do |date, usersigns| %>
+		      <%= date.day %>
+			    <% usersigns.each do |usersign| %>
+			      <ul><%= h("已签到") %></ul>
+			      <ul><%= h("#{l(usersign.created_at, :format => :short)}") %></ul> 
+			    <% end %>
+		    <% end %>
+		  <% end %>
+		</div>
+	</div>
+</div>

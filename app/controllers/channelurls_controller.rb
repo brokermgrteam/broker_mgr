@@ -10,6 +10,8 @@ class ChannelurlsController < ApplicationController
     
   def create
     @broker = Broker.find(params[:channelurl][:broker]) unless params[:channelurl][:broker].empty?
+    @open_branch = Branch.find(params[:channelurl][:cust_branch]) unless params[:channelurl][:cust_branch].empty?
+    @serv_branch = Branch.find(params[:channelurl][:cust_branch]) unless params[:channelurl][:cust_branch].empty?
   	a = {
     'channel_id' => params[:channelurl][:channel],
     'channel_code' => Channel.find(params[:channelurl][:channel]).channel_code,
@@ -18,16 +20,16 @@ class ChannelurlsController < ApplicationController
     'institution_code' => Institution.find(Channel.find(params[:channelurl][:channel]).institution_id).institution_code,
     'institution_name' => Institution.find(Channel.find(params[:channelurl][:channel]).institution_id).institution_name,
     'open_branch_id' => params[:channelurl][:cust_branch],
-    'open_branch_code' => Branch.find(params[:channelurl][:cust_branch]).code,
-    'open_branch_name' => Branch.find(params[:channelurl][:cust_branch]).name,
+    'open_branch_code' => (@open_branch.code unless @open_branch.nil?),
+    'open_branch_name' => (@open_branch.name unless @open_branch.nil?),
     'serv_branch_id' => params[:channelurl][:channel_branch],
-    'serv_branch_code' => Branch.find(params[:channelurl][:channel_branch]).code,
-    'serv_branch_name' => Branch.find(params[:channelurl][:channel_branch]).name,
+    'serv_branch_code' => (@serv_branch.code unless @serv_branch.nil?),
+    'serv_branch_name' => (@serv_branch.name unless @serv_branch.nil?),
     'broker_id' => params[:channelurl][:broker],
     'broker_code' => (@broker.broker_code unless @broker.nil?),
     'broker_name' => (@broker.broker_name unless @broker.nil?) 
     }
-    x = Net::HTTP.post_form(URI.parse('http://10.10.10.157:29002/CRH-KH8201.action?'), a)
+    x = Net::HTTP.post_form(URI.parse('http://10.10.10.157:28887/CRH-KH8201.action?'), a)
     @url = JSON.parse(x.body)['short_url']
     # @url = "http://www.google.com/"
     @channelurl = Channelurl.new(:url => @url)

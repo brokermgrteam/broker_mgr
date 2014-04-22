@@ -1,5 +1,8 @@
 # encoding: utf-8
 class BrokersController < ApplicationController
+  # include SimpleCalendar
+  
+
   load_and_authorize_resource
   before_filter :authenticate, :only => [:index, :show]
   
@@ -12,6 +15,8 @@ class BrokersController < ApplicationController
     @workflowunderways = Workflowunderway.where(:user_id => @broker.user_id).limit(5).order('created_at desc')
     @brokerproducts = @broker.products
     @newproducts = Product.find(:all, :order => "id desc", :limit => 10)
+
+    @usersigns = @broker.user.usersigns
     
     respond_to do |format|
       format.html # show.html.erb
