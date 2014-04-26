@@ -24,11 +24,19 @@
 <div class="row-fluid">
 	<div class="well">
 		<p class="text-center" id="tab_page">
-			<% if current_user == @broker.user %>
-				<%= link_to '我的客户', custs_path, :class => 'btn btn-primary' %>
-			<% else %>
-				<%= link_to '名下客户', custs_path(:broker_id => @broker),  :class => 'btn btn-primary' %>
-			<% end %>
+			<div class="btn-group dropup">
+			  <button class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+			    我的客户
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu">
+					<% if current_user == @broker.user %>
+						<li><%= link_to '经纪关系客户', custs_path %></li>
+					<% else %>
+						<li><%= link_to '经纪关系客户', custs_path(:broker_id => @broker) %></li>
+					<% end %>
+			  </ul>
+			</div>
 		</p>
 	</div>
 </div>
