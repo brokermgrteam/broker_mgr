@@ -6,6 +6,7 @@ class Cust < ActiveRecord::Base
   
   belongs_to :branch
   has_many   :custbrokerrels
+  has_many   :custbrokerproductrels
   has_many   :custindices
   
   def is_cust?(cust_sym)

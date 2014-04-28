@@ -32,10 +32,12 @@
 			  <ul class="dropdown-menu">
 					<% if current_user == @broker.user %>
 						<li><%= link_to '经纪关系客户', custs_path %></li>
+						<li><%= link_to '营销产品客户', {:controller => 'custs', :action => 'productcusts_index'}  %></li>
 					<% else %>
 						<li><%= link_to '经纪关系客户', custs_path(:broker_id => @broker) %></li>
+						<li><%= link_to '营销产品客户', {:controller => 'custs', :action => 'productcusts_index', :broker_id => @broker} %></li>
 					<% end %>
-			  </ul>
+			  </ul>:broker_id => @broker)
 			</div>
 		</p>
 	</div>

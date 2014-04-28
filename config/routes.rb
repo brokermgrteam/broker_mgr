@@ -6,7 +6,9 @@ Cmwp::Application.routes.draw do
   resources :userpositions
   resources :workflows
   resources :workflowhistories
-  resources :custs
+  resources :custs do
+    get 'productcusts_index', :on => :collection
+  end
   resources :products do
     member do
       get :downloadfile
