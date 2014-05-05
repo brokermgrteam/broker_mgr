@@ -12,6 +12,8 @@ class Broker < ActiveRecord::Base
   has_many :custs, :through => :custbrokerrels
   has_many :custbrokerproductrels
   has_many :productcusts, :through => :custbrokerproductrels, :source => :cust
+  has_many :brokerfavcusts
+  has_many :favcusts, :through => :brokerfavcusts, :source => :cust
   has_many :brokerproductrels
   has_many :products, :through => :brokerproductrels
   
@@ -34,6 +36,18 @@ class Broker < ActiveRecord::Base
   
   def unfavor!(product)
     brokerproductrels.find_by_product_id(product).destroy
+  end
+
+  def favor_cust?(cust)
+    brokerfavcusts.find_by_cust_id(cust)
+  end
+
+  def favor_cust!(cust)
+    brokerfavcusts.create!(:cust_id => cust.id)
+  end
+  
+  def unfavor_cust!(cust)
+    brokerfavcusts.find_by_cust_id(cust).destroy
   end
   
   def self.search(search)

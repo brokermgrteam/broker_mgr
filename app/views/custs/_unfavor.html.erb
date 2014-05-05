@@ -1,0 +1,6 @@
+
+<%= form_for(user_broker(current_user).brokerfavcusts.find_by_cust_id(@cust), 
+						 :html => { :method => :delete },
+						 :remote => true) do |f| %>
+	<%= f.submit "取消关注", :class => 'btn btn-success' %>
+<% end %>

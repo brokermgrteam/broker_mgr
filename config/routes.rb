@@ -15,6 +15,7 @@ Cmwp::Application.routes.draw do
     end
   end
   resources :brokerproductrels, :only => [:create, :destroy]
+  resources :brokerfavcusts, :only => [:create, :destroy]
   resources :channels
   resources :channelurls do
     collection do

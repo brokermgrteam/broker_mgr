@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
                   
   has_many        :brokerproductrels
   has_many 				:productattachments
+  has_many				:custbrokerproductrel
 end
 # == Schema Information
 #
