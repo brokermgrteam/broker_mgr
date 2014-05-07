@@ -1,7 +1,7 @@
 <%= grid(@brokerfavcusts_grid) do |g|
 	
 	g.blank_slate  do
-	  "没有记录"
+	  '<p class="text-center muted">没有记录 (可以在客户明细中添加关注)</p>'.html_safe 
 	end
 	
   g.column :name => '资金账号' do |cust|

@@ -13,7 +13,7 @@ class PagesController < ApplicationController
                 :conditions => { :id => @broker.brokerfavcusts.map{|c| c.cust_id} },
                 :include => [:custindices],
                 # :name => 'brokerfavcusts',
-                :per_page => 5)
+                :per_page => 5) if @broker
 
       # @brokers = Broker.accessible_by(current_ability)
       if (can? :access_user_first_page, :all)
