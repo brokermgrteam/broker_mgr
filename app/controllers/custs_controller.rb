@@ -1,7 +1,7 @@
 # encoding: utf-8
 class CustsController < ApplicationController
   load_and_authorize_resource
-  before_filter :authenticate, :only => [:index, :show, :edit, :update]
+  before_filter :authenticate, :only => [:index, :show, :edit, :update, :productcusts_index]
   
   def index
     @custs = Cust.order("name").paginate(:page => params[:page]).per_page(20)

@@ -18,6 +18,12 @@ class BrokersController < ApplicationController
 
     @usersigns = @broker.user.usersigns
     
+    @brokerfavcusts_grid = initialize_grid(Cust, 
+              :conditions => { :id => @broker.brokerfavcusts.map{|c| c.cust_id} },
+              :include => [:custindices],
+              # :name => 'brokerfavcusts',
+              :per_page => 5)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @broker }
