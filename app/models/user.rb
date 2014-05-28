@@ -16,6 +16,7 @@
 #  department_id      :integer(38)
 #  status             :integer(38)
 #  user_type          :integer(38)
+#  first_login        :boolean(1)      default(TRUE)
 #
 
 class User < ActiveRecord::Base
@@ -58,6 +59,10 @@ class User < ActiveRecord::Base
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
   end
+
+  def has_default_password?(submitted_password)
+    encrypted_password == submitted_password
+  end
   
   def position!(position)
     userpositionrels.create!(:positionid => position.id )
@@ -74,7 +79,11 @@ class User < ActiveRecord::Base
   class << self
     def authenticate(usercode, submmited_password)
       user = User.find_by_usercode_and_status(usercode, Dict.find_by_dict_type_and_code("UserBase.status", 1))
-      (user && user.has_password?(submmited_password)) ? user : nil
+      if user.first_login?
+        (user && user.has_default_password?(submmited_password)) ? user : nil
+      else
+        (user && user.has_password?(submmited_password)) ? user : nil
+      end
       # 与上面相同
       # return nil  if user.nil?
       # return user if user.has_password?(submmited_password)
@@ -90,7 +99,7 @@ class User < ActiveRecord::Base
   #encrypted password method
   private 
     def encrypt_password
-      self.salt = make_salt if new_record?
+      self.salt = make_salt if (new_record? || self.salt.nil?)
       if password != nil
         self.encrypted_password = encrypt(password)
       end
@@ -99,7 +108,7 @@ class User < ActiveRecord::Base
     def encrypt(string)
       secure_hash("#{salt}--#{string}") 
     end
-    
+
     def make_salt
       secure_hash("#{Time.now.utc}--#{password}")
     end

@@ -20,11 +20,15 @@ class SessionsController < ApplicationController
       # elsif (signed_in?) && (can? :access_broker_first_page, :all)
       #   redirect_to root_path
       else
-        if Usersign.find_by_user_id_and_sign_date(user.id, Date.today).nil?
-          Usersign.create(:user_id => user.id, :sign_date => Date.today)
-          redirect_to root_path, :flash => { :success => "您今日已成功签到" }
+        if user.first_login?
+          redirect_to edit_user_path(user), :flash => { :error => "请及时修改您的初始密码" } 
         else
-          redirect_back_or root_path #user #friendly redirect
+          if Usersign.find_by_user_id_and_sign_date(user.id, Date.today).nil?
+            Usersign.create(:user_id => user.id, :sign_date => Date.today)
+              redirect_to root_path, :flash => { :success => "您今日已成功签到" }
+          else
+            redirect_back_or root_path #user #friendly redirect
+          end
         end
       end
     end

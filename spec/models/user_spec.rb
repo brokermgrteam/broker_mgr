@@ -186,5 +186,6 @@ end
 #  department_id      :integer(38)
 #  status             :integer(38)
 #  user_type          :integer(38)
+#  first_login        :boolean(1)      default(TRUE)
 #
 
