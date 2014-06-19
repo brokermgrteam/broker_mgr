@@ -3,7 +3,7 @@ class ChannelurlsController < ApplicationController
 	require "uri"
   require "net/http"
   require "json"
-
+  
   def new
     @title = "获取渠道连接"
   end
@@ -29,7 +29,7 @@ class ChannelurlsController < ApplicationController
     'broker_code' => (@broker.broker_code unless @broker.nil?),
     'broker_name' => (@broker.broker_name unless @broker.nil?) 
     }
-    x = Net::HTTP.post_form(URI.parse('http://10.10.10.157:28887/CRH-KH8201.action?'), a)
+    x = Net::HTTP.post_form(URI.parse('http://58.246.146.133:28887/CRH-KH8201.action?'), a)
     @url = JSON.parse(x.body)['short_url']
     # @url = "http://www.google.com/"
     @channelurl = Channelurl.new(:url => @url)

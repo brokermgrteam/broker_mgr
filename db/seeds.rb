@@ -2219,6 +2219,7 @@ Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'高',:dict_type=>'Pr
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'发行期',:dict_type=>'Product.status',:code=>1})
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'存续期',:dict_type=>'Product.status',:code=>2})
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'到期结束',:dict_type=>'Product.status',:code=>3})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'预售期',:dict_type=>'Product.status',:code=>4})
 
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'银行渠道',:dict_type=>'Channel.type',:code=>1})
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'运营商',:dict_type=>'Channel.type',:code=>2})

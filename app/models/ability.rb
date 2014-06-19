@@ -24,6 +24,8 @@ class Ability
       can :downloadfile, Product
       can :read, Cust, :branch_id => user.branch_id
       can :productcusts_index, Cust, :branch_id => user.branch_id
+      can :read, Channel
+      can :create, Channelurl
       
     elsif user.has_role? :分公司管理
       can :access_user_first_page, :all
@@ -38,6 +40,8 @@ class Ability
       can :downloadfile, Product
       can :read, Cust, :branch_id => user.department.branches.map {|b| b.id}
       can :productcusts_index, Cust, :branch_id => user.department.branches.map {|b| b.id}
+      can :read, Channel
+      can :create, Channelurl
 
     elsif user.has_role? :销售交易部管理
       can :access_user_first_page, :all
@@ -55,6 +59,7 @@ class Ability
       can :read, Cust
       can :productcusts_index, Cust
       can :manage, Channel
+      can :create, Channelurl
       
     elsif user.has_role? :营销人员
       can :access_broker_first_page, :all
