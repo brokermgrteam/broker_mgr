@@ -2226,6 +2226,8 @@ Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'运营商',:dict_typ
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'网络',:dict_type=>'Channel.type',:code=>3})
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'其他',:dict_type=>'Channel.type',:code=>4})
 
+Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7875,:name=>'冻结',:dict_type=>'BrokerProduct.relStaus',:code=>5}, :without_protection => true)
+
 #institutions
 Institution.find_or_create_by_institution_name({:institution_code => "01", :institution_name => "工商银行"})
 Institution.find_or_create_by_institution_name({:institution_code => "02", :institution_name => "农业银行"})

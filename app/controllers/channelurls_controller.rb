@@ -29,8 +29,8 @@ class ChannelurlsController < ApplicationController
     'broker_code' => (@broker.broker_code unless @broker.nil?),
     'broker_name' => (@broker.broker_name unless @broker.nil?) 
     }
-    x = Net::HTTP.post_form(URI.parse('http://58.246.146.133:28887/CRH-KH8201.action?'), a)
-    @url = JSON.parse(x.body)['short_url']
+    x = Net::HTTP.post_form(URI.parse(APP_CONFIG['channel_url_generator']), a)
+    @url = JSON.parse(x.body)[APP_CONFIG['channel_url_function']]
     # @url = "http://www.google.com/"
     @channelurl = Channelurl.new(:url => @url)
     if @channelurl.save
