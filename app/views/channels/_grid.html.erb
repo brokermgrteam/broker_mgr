@@ -22,7 +22,7 @@
 	end
 
 	g.column :name => '当前状态', :attribute => 'status', :detach_with_id => :status_filter do |channel|
-		channel.status? ? '有效' : '无效' if channel.status
+		channel.status? ? '有效' : '无效'
 	end
 
 	g.column :name => '备注', :attribute => 'remark', filter: false do |channel|
@@ -31,7 +31,7 @@
 	
 	if can? :manage, Channel
 	  g.column do |channel|
-	    link_to('修改', edit_channel_path(channel))
+	    link_to('修改/删除', edit_channel_path(channel))
 	  end
   end
 end -%>

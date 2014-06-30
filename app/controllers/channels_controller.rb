@@ -26,6 +26,7 @@ class ChannelsController < ApplicationController
   
   def create
     @channel = Channel.new(params[:channel])
+    @channel.status = true
     if @channel.save
       redirect_to channels_path, :flash => { :success => "渠道新建成功"}
     else  
@@ -42,7 +43,7 @@ class ChannelsController < ApplicationController
   def update
     @channel  = Channel.find(params[:id])
     if @channel.update_attributes(params[:channel])
-      redirect_to channels_path, :flash => { :success => "角色更新成功" }
+      redirect_to channels_path, :flash => { :success => "渠道更新成功" }
     else  
       @title = "渠道设置"
       render 'edit'

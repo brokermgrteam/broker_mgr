@@ -31,8 +31,12 @@ class ChannelurlsController < ApplicationController
     }
     x = Net::HTTP.post_form(URI.parse(APP_CONFIG['channel_url_generator']), a)
     @url = JSON.parse(x.body)[APP_CONFIG['channel_url_function']]
-    # @url = "http://www.google.com/"
-    @channelurl = Channelurl.new(:url => @url)
+    # @url = "http://www.tom.com/"
+    @channelurl = Channelurl.find_or_create_by_url(:channel_id => params[:channelurl][:channel],
+                                                   :branch_id =>  params[:channelurl][:cust_branch],
+                                                   :serv_branch_id => params[:channelurl][:channel_branch],
+                                                   :broker_id => params[:channelurl][:broker],
+                                                   :url => @url)
     if @channelurl.save
       # redirect_to @channelurl # render channelurl_path(@channelurl)
       respond_to do |format|

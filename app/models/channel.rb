@@ -2,12 +2,15 @@ class Channel < ActiveRecord::Base
   attr_accessible :channel_code, :channel_name, :channel_type, :institution_id, :remark, :status
 
   belongs_to :institution
+  has_many   :channelurls
 
   validates :channel_code, :presence   => true,
-                       		 :uniqueness => true
+                       		 :uniqueness => true,
+                           :numericality => {:only_integer => true},
+                           :length     => { :maximum => 4 }
   validates :channel_name, :presence   => true
   validates :channel_type, :presence   => true
-  validates :status, 			 :presence   => true
+  # validates :status, 			 :presence   => true
 
   scope :valid_channels, where(:status => true ) 
 

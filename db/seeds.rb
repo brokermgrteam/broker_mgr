@@ -2246,3 +2246,8 @@ Institution.find_or_create_by_institution_name({:institution_code => "12", :inst
 Institution.find_or_create_by_institution_name({:institution_code => "13", :institution_name => "北京银行"})
 Institution.find_or_create_by_institution_name({:institution_code => "14", :institution_name => "上海银行"})
 Institution.find_or_create_by_institution_name({:institution_code => "15", :institution_name => "南京银行"})
+
+Institution.find_or_create_by_institution_name({:institution_code => "41", :institution_name => "91金融"})
+
+Institution.find_or_create_by_institution_name({:institution_code => "99", :institution_name => "其他"})
+

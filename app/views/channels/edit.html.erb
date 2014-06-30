@@ -4,7 +4,7 @@
 			<p class="lead text-center"><legend><strong>渠道设置</strong></legend></p>
 			<%= simple_form_for @channel, :html => { :class => 'form-horizontal' } do |f| %>
 			  <fieldset>
-				<%= render 'fields', :f => f %>
+					<%= render 'fields', :f => f %>
 				</fieldset>
 				<div class="form-actions">
 					<%= f.submit "确认", :class => 'btn btn-primary' %>
@@ -19,5 +19,13 @@
 		  <h4>帮助</h4>
 		  *为必填项
 		</div>
+		<%= simple_form_for @channel do |d| %>
+		  <fieldset>
+				<%= render 'delete_fields', :d => d %>
+			</fieldset>
+			<div class="form-actions">
+				<%= d.submit "删除渠道", :class => 'btn btn-danger' %>
+			</div>
+		<% end %>
 	</div>
 </div>

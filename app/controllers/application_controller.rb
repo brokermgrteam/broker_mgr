@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
   include WorkflowunderwaysHelper
   # include SalariesHelper
   # include BrokersHelper
+
+  rescue_from(CanCan::AccessDenied) {
+    # raise(CanCan::AccessDenied, 'Invalid access request')
+    deny_access
+  }
 end
