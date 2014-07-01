@@ -17,6 +17,12 @@ class ChannelsController < ApplicationController
   def show
     @channel  = Channel.find(params[:id])
     @title = @channel.channel_name
+
+    @channelurls_grid = initialize_grid(Channelurl, 
+              :conditions => { :id => @channel.channelurls.map{|c| c.id} },
+              # :include => [:custindices],
+              # :name => 'brokerfavcusts',
+              :per_page => 10) if @channel
   end
 
   def new

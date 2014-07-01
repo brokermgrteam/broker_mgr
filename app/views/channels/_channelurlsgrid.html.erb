@@ -1,0 +1,23 @@
+<%= grid(@channelurls_grid) do |g|
+	
+	g.blank_slate  do
+	  '<p class="text-center muted">没有记录</p>'.html_safe 
+	end
+	
+  g.column :name => '开户营业部' do |channelurl|
+    Branch.find(channelurl.branch_id).name if channelurl.branch_id
+  end
+
+  g.column :name => '服务营业部' do |channelurl|
+    Branch.find(channelurl.serv_branch_id).name if channelurl.serv_branch_id
+  end
+
+  g.column :name => '营销人员' do |channelurl|
+    Broker.find(channelurl.broker_id).broker_name if channelurl.broker_id
+  end
+
+  g.column :name => 'URL' do |channelurl|
+    link_to(channelurl.url)
+  end
+
+end -%>

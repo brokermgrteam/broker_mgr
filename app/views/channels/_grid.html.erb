@@ -34,4 +34,10 @@
 	    link_to('修改/删除', edit_channel_path(channel))
 	  end
   end
+
+	if can? :read, Channel
+	  g.column do |channel|
+	    link_to('查看', channel_path(channel))
+	  end
+  end
 end -%>

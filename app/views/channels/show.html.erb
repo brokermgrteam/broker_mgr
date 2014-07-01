@@ -1,0 +1,28 @@
+<div class="row-fluid">
+	<div class="span9">
+		<div class="row-fluid">
+			<div class="well">
+				<p class="lead text-center"><legend><strong>渠道查看</strong></legend></p>
+				<%= simple_form_for @channel, :html => { :class => 'form-horizontal' } do |f| %>
+					<%= render 'fields', :f => f %>
+				<% end %>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<p>
+				<div class="alert alert-success">
+					下级渠道
+				</div>
+				<%= render :partial => 'channels/channelurlsgrid' %>
+			</p>
+		</div>
+	</div>
+	<div class="span3">
+		<div class="alert alert-block">
+		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+		  <h4>帮助</h4>
+		  <p>1. 基础渠道查看。</p>
+		  <p>2. 基础渠道下属的网上开户渠道。</p>
+		</div>
+	</div>
+</div>
