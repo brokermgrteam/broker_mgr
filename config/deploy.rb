@@ -2,6 +2,10 @@ require "bundler/capistrano"
 
 server "10.0.0.27", :web, :app, :db, primary: true
 
+set :ssh_options, {
+   config: false
+}
+
 # set :rbenv_ruby_version, "1.9.3-p385"
 set :application, "broker_mgr"
 set :user, "deployer"
