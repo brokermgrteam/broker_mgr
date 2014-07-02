@@ -15,6 +15,7 @@ function showChartResult4 (v) {
 		_url = '/brokers/' + _broker + '/brokerindices/' + v + '/broker_index.json'
 		// console.log(_url2);
 		_width = document.getElementById("tab_page").offsetWidth;
+		console.log("_width=" _width);
 	  return $.get(_url, function(data) {
 			var chart, _month
 			    _month = [];

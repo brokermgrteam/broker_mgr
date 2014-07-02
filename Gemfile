@@ -21,7 +21,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
   #gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
   gem 'jquery-ui-rails'
-  gem 'highcharts-rails', '~> 3.0.7'
+  gem 'highcharts-rails', '3.0.9'
 end
 
 gem 'will_paginate', '~> 3.0.3'
