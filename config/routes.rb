@@ -65,6 +65,10 @@ Cmwp::Application.routes.draw do
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'  
   # match '/pwd',     :to => 'recoverypassword#new' 
+
+  # scope :protocol => 'https://', :constraints => { :protocol => 'https://' } do
+  #   resources :sessions
+  # end
   
   
   # match 'categories' => 'categories#show', :via => :get
