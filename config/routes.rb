@@ -55,7 +55,7 @@ Cmwp::Application.routes.draw do
   resources :categories do
     get 'search', :on => :collection
   end
-  
+
   root :to => 'pages#home'
 
   match '/contact', :to => 'pages#contact'

@@ -1,0 +1,19 @@
+<%= grid(@brokercompliance_grid) do |g|
+	
+	g.blank_slate  do
+	  '<p class="text-center muted">没有记录</p>'.html_safe 
+	end
+	
+  g.column :name => '考核月份' do |log|
+    log.month_id if log.month_id
+  end
+
+  g.column :name => '扣分原因' do |log|
+    Brokercompliancetype.find(log.compliance_type).compliance_type if log.compliance_type
+  end
+
+  g.column :name => '扣分' do |log|
+    log.occur_sum if log.occur_sum
+  end
+  
+end -%>

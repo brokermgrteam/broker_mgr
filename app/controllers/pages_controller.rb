@@ -15,6 +15,12 @@ class PagesController < ApplicationController
                 # :name => 'brokerfavcusts',
                 :per_page => 5) if @broker
 
+      @brokercompliance_grid = initialize_grid(Brokercompliancelog, 
+              :order => 'brokercompliancelogs.month_id',
+              :order_direction => 'desc',
+              :conditions => {:broker_id => @broker}, 
+              :per_page => 5) if @broker
+
       # @brokers = Broker.accessible_by(current_ability)
       if (can? :access_user_first_page, :all)
         redirect_to brokers_path

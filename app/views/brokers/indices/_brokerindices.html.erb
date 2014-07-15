@@ -38,36 +38,48 @@
 		<% end %>
 		</div>
 	</div>
-		<ul class="thumbnails">
-			<li class="span6">
-				<div class="thumbnail">
-					<div id="chart_2">
-						<%= render 'brokers/indices/indexchart_2' %>
-					</div>
-					<div class="caption" style="background-color:#f5f5f5;">
-						<p>
-							<div id="btn-group-chart2" class="btn-group" data-toggle-name="radius_options" data-toggle="buttons-radio">
-								<button type="button" value="1" data-toggle="button" class="btn">交易量</button>
-								<button type="button" value="2" data-toggle="button" class="btn active">净佣金</button>
-							</div>
-						</p>
-					</div>
+</div>
+<% if get_dict_by_id(@broker.broker_type).code == 1 %>
+<div class="row-fluid">
+	<p>
+		<div class="alert alert-success">
+			合规扣分明细
+		</div>
+		<%= render :partial => 'brokers/indices/brokercompliancelogs_grid' %>
+	</p>
+</div>
+<% end %>
+<div class="row-fluid">
+	<ul class="thumbnails">
+		<li class="span6">
+			<div class="thumbnail">
+				<div id="chart_2">
+					<%= render 'brokers/indices/indexchart_2' %>
 				</div>
-			</li>
-			<li class="span6">
-				<div class="thumbnail">
-					<div id="chart_3">
-						<%= render 'brokers/indices/indexchart_3' %>
-					</div>
-					<div class="caption" style="background-color:#f5f5f5;">
-						<p>
-							<div id="btn-group-chart3" class="btn-group" data-toggle-name="radius_options" data-toggle="buttons-radio">
-								<button type="button" value="1" data-toggle="button" class="btn">存量客户</button>
-								<button type="button" value="2" data-toggle="button" class="btn active">增量客户</button>
-							</div>
-						</p>
-					</div>
+				<div class="caption" style="background-color:#f5f5f5;">
+					<p>
+						<div id="btn-group-chart2" class="btn-group" data-toggle-name="radius_options" data-toggle="buttons-radio">
+							<button type="button" value="1" data-toggle="button" class="btn">交易量</button>
+							<button type="button" value="2" data-toggle="button" class="btn active">净佣金</button>
+						</div>
+					</p>
 				</div>
-			</li>
-		</ul>
+			</div>
+		</li>
+		<li class="span6">
+			<div class="thumbnail">
+				<div id="chart_3">
+					<%= render 'brokers/indices/indexchart_3' %>
+				</div>
+				<div class="caption" style="background-color:#f5f5f5;">
+					<p>
+						<div id="btn-group-chart3" class="btn-group" data-toggle-name="radius_options" data-toggle="buttons-radio">
+							<button type="button" value="1" data-toggle="button" class="btn">存量客户</button>
+							<button type="button" value="2" data-toggle="button" class="btn active">增量客户</button>
+						</div>
+					</p>
+				</div>
+			</div>
+		</li>
+	</ul>
 </div>

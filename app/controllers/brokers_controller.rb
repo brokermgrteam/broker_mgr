@@ -24,6 +24,12 @@ class BrokersController < ApplicationController
               # :name => 'brokerfavcusts',
               :per_page => 5)
 
+    @brokercompliance_grid = initialize_grid(Brokercompliancelog, 
+              :order => 'brokercompliancelogs.month_id',
+              :order_direction => 'desc',
+              :conditions => {:broker_id => @broker}, 
+              :per_page => 5)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @broker }
