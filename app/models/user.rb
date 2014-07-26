@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
   class << self
     def authenticate(usercode, submmited_password)
       user = User.find_by_usercode_and_status(usercode, Dict.find_by_dict_type_and_code("UserBase.status", 1))
-      if user.first_login?
+      if user && user.first_login?
         (user && user.has_default_password?(submmited_password)) ? user : nil
       else
         (user && user.has_password?(submmited_password)) ? user : nil
