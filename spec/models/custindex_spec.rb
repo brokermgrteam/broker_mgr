@@ -26,5 +26,9 @@ end
 #  rzrq_j_commis        :decimal(, )
 #  created_at           :datetime        not null
 #  updated_at           :datetime        not null
+#  pure_total_income    :decimal(, )
+#  pure_interest_psr    :decimal(, )
+#  pure_interest_gh     :decimal(, )
+#  pure_interest_krb    :decimal(, )
 #
 
