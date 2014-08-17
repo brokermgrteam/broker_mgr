@@ -2228,6 +2228,15 @@ Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'其他',:dict_type=>
 
 Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7875,:name=>'冻结',:dict_type=>'BrokerProduct.relStaus',:code=>5}, :without_protection => true)
 
+Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7915,:name=>'产品奖励提成设置审批',:dict_type=>'workflowSetBean.workflowType',:code=>201}, :without_protection => true)
+Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7909,:name=>'一次性发行',:dict_type=>'BrokerProduct.productStaus',:code=>7}, :without_protection => true)
+Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7908,:name=>'交叉销售业务',:dict_type=>'BrokerProduct.productStaus',:code=>6}, :without_protection => true)
+Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7906,:name=>'快融宝计息',:dict_type=>'Empcustrel.Reltype',:code=>89}, :without_protection => true)
+Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7905,:name=>'质押回购息费',:dict_type=>'Empcustrel.Reltype',:code=>88}, :without_protection => true)
+
+Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7904,:name=>'约定购回计息',:dict_type=>'Empcustrel.Reltype',:code=>87}, :without_protection => true)
+Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7903,:name=>'两融息费',:dict_type=>'Empcustrel.Reltype',:code=>86}, :without_protection => true)
+
 #institutions
 Institution.find_or_create_by_institution_name({:institution_code => "01", :institution_name => "工商银行"})
 Institution.find_or_create_by_institution_name({:institution_code => "02", :institution_name => "农业银行"})
