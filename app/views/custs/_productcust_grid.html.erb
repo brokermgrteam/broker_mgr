@@ -4,12 +4,12 @@
 	  "没有记录"
 	end
 	
-	g.column :name => '营业部', :attribute => 'id', :model => Branch, 
+	g.column :name => '营业部', :attribute => 'id', :model => Branch, html: {class: 'hidden-phone'}, 
 					 :detach_with_id => :branch_filter, custom_filter: Branch.accessible_by(current_ability).map{|br| [br.name, br.id]}  do |cust|
 	  cust.branch.name if cust.branch
 	end
 	
-  g.column :name => '资金账号', :attribute => 'capital_account', :detach_with_id => :capital_account_filter do |cust|
+  g.column :name => '资金账号', :attribute => 'capital_account', html: {class: 'hidden-phone'}, :detach_with_id => :capital_account_filter do |cust|
     cust.capital_account
   end
 
@@ -17,11 +17,11 @@
     link_to(cust.cust_name, cust_path(cust))
   end
 
-	g.column :name => '开户日期', :attribute => 'open_date', :detach_with_id => :open_date_filter do |cust|
+	g.column :name => '开户日期', :attribute => 'open_date', html: {class: 'hidden-phone'}, :detach_with_id => :open_date_filter do |cust|
     cust.open_date.to_time.strftime("%F") if cust.open_date
   end
 
-	g.column :name => '挂接日期', :attribute => 'id', :model => Custbrokerrel, 
+	g.column :name => '挂接日期', :attribute => 'id', html: {class: 'hidden-phone'}, :model => Custbrokerrel, 
 					 filter: false  do |cust|
 	  cust.custbrokerproductrels.first.rel_date.to_time.strftime("%F")
 	end

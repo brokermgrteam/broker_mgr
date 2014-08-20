@@ -7,10 +7,10 @@
 	<%= p.input :status, as: :hidden, input_html: { value: get_dict("TaskBase.taskStatus",0).id } %>
 	<%= p.input :capital_account, :label => "资金账号" %>
 	<%= p.input :cust_name, :label => '客户/公司名称' %>
-	<%= p.input :plan_location, :label => '地址', :input_html => { :class => "input-xlarge" } %>
+	<%= p.input :plan_location, :label => '地址' %>
 	<%= p.input :plan_date,  :as => :datetime_picker, :label => '时间' %>
 	<%= p.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
 	<%= p.input :user_name, disabled: true, :input_html => { value: current_user.name }, :label => '负责营销人员' %>
-	<%= p.input :visit_content, as: :text, :input_html => { :class => "input-xlarge", :rows => '4' }, :label => '内容' %>
+	<%= p.input :visit_content, as: :text, :input_html => { :rows => '4' }, :label => '内容' %>
 	</fieldset>
 <% end %>

@@ -7,8 +7,8 @@
 		<tr class="hidden-phone">
 			<td><strong>提成净佣金：</strong></td>
       <td><%= get_num(130125) %></td>
-			<td><strong>融资融券总净佣金：</strong></td>
-      <td><%= get_num(130192) %></td>
+			<td><strong>融资融券信用净佣金：</strong></td>
+      <td><%= get_num(130198) %></td>
 			<td><strong>报价回购业务收入：</strong></td>
       <td><%= get_num(600005) %></td>
 		</tr>
@@ -16,15 +16,21 @@
 			<td><strong>普通净佣金：</strong></td>
       <td colspan="5"><%= get_num(130194) %></td>
 		</tr>
+		<tr class="hidden-phone">
+			<td><strong>融资融券担保净佣金：</strong></td>
+      <td colspan="5"><%= get_num(130192) %></td>
+		</tr>
 		<tr>
 			<td><strong>总成交量：</strong></td>
       <td colspan="5"><%= get_num(130105) %></td>
 		</tr>
 		<tr class="hidden-phone">
 			<td><strong>普通成交量：</strong></td>
-      <td colspan="2"><%= get_num(130195) %></td>
-			<td><strong>融资融券总成交量：</strong></td>
-      <td colspan="2"><%= get_num(130191) %></td>
+      <td><%= get_num(130195) %></td>
+			<td><strong>融资融券担保成交量：</strong></td>
+      <td><%= get_num(130191) %></td>
+			<td><strong>融资融券信用成交量：</strong></td>
+      <td><%= get_num(130197) %></td>
 		</tr>
 		<tr>
 			<td><strong>业绩报酬：</strong></td>
@@ -41,12 +47,20 @@
       <td colspan="2"><%= get_num(500789) %></td>
 		</tr>
 		<tr class="hidden-phone">
+			<td><strong>融资融券信用产品销售报酬：</strong></td>
+      <td colspan="5"><%= get_num(130196) %></td>
+		</tr>
+		<tr class="hidden-phone">
 			<td><strong>报价回购月均保有量：</strong></td>
       <td><%= get_num(600165) %></td>
 			<td><strong>报价回购当月收入：</strong></td>
       <td><%= get_num(600005) %></td>
 			<td><strong>报价回购销售奖励：</strong></td>
       <td><%= get_num(600003) %></td>
+		</tr>
+		<tr>
+			<td><strong>开户奖：</strong></td>
+      <td colspan="5"><%= get_num(14010003) %></td>
 		</tr>
 		<tr class="hidden-phone">
 			<td><strong>扣减：</strong></td>
@@ -65,9 +79,9 @@
       <td colspan="5"><%= get_num(14010013) %></td>
 		</tr>
 		<tr class="hidden-phone">
-			<td><strong>本月合规金返还：</strong></td>
+			<td><strong>本月风险金返还：</strong></td>
       <td colspan="2"><%= get_num(200005) %></td>
-			<td><strong>本月合规金留存：</strong></td>
+			<td><strong>本月风险金留存：</strong></td>
       <td colspan="2"><%= get_num(200002) %></td>
 		</tr>
 		<tr>

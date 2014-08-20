@@ -1,0 +1,7 @@
+<% if get_num(130163) > 0 %>
+	<%= render 'salaries/table_c1_old' %>
+<% elsif get_num(130163) > 0 && get_num(500791) > 0 %>
+	<%= render 'salaries/table_c2_old' %>
+<% else %>
+	<%= render 'salaries/table_a_old' %>
+<% end %>

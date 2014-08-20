@@ -7,12 +7,12 @@
 <%= f.simple_fields_for :custservvisit do |p| %>
 	<fieldset>
 	<%= p.input :status, as: :hidden, input_html: { value: get_dict("TaskBase.taskStatus",0).id } %>
-	<%= p.input :visit_location, :label => '地址', :input_html => { :class => "input-xlarge" } %>
+	<%= p.input :visit_location, :label => '地址' %>
 	<%= p.input :visit_date,  :as => :datetime_picker, :label => '时间' %>
 	<%= p.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
 	<%= p.input :assit_user_id, :collection => User.valid_user.find_all_by_branch_id(current_user.branch_id),
 							:label => '协同人员(如有)' %>
-	<%= p.input :memo, as: :text, :input_html => { :class => "input-xlarge", :rows => '4' }, :label => '内容' %>
+	<%= p.input :memo, as: :text, :input_html => { :rows => '4' }, :label => '内容' %>
 	</fieldset>
 <% end %>
 	<div class="form-actions">

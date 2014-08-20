@@ -4,13 +4,13 @@
       <td><strong>总资产：</strong></td>
       <td colspan="5"><%= @cust_index.select(:total_asset).sum(:total_asset) %></td>
     </tr>
-		<tr>
+		<tr class="hidden-phone">
 			<td><strong>普通资产：</strong></td>
       <td colspan="2"><%= @cust_index.select(:stock_asset).sum(:stock_asset) %></td>
 			<td><strong>融资融券期末资产：</strong></td>
 			<td colspan="2"><%= @cust_index.select(:rzrq_end_asset).sum(:rzrq_end_asset) %></td>
 		</tr>
-		<tr>
+		<tr class="hidden-phone">
 			<td><strong>报价回购期末保有量：</strong></td>
       <td><%= @cust_index.select(:bj_balance).sum(:bj_balance) %></td>
 			<td><strong>浮动收益产品期末保有量：</strong></td>
@@ -22,7 +22,7 @@
       <td><strong>总交易量：</strong></td>
       <td colspan="5"><%= @cust_index.select(:total_match_balance).sum(:total_match_balance) %></td>
     </tr>
-		<tr>
+		<tr class="hidden-phone">
 			<td><strong>普通交易量：</strong></td>
       <td><%= @cust_index.select(:stock_match_balance).sum(:stock_match_balance) %></td>
 			<td><strong>融资融券担保品交易量：</strong></td>
@@ -34,19 +34,19 @@
       <td><strong>总净佣金：</strong></td>
       <td colspan="5"><%= @cust_index.select(:total_commis).sum(:total_commis) %></td>
     </tr>
-		<tr>
+		<tr class="hidden-phone">
 			<td><strong>普通净佣金：</strong></td>
       <td colspan="2"><%= @cust_index.select(:stock_commis).sum(:stock_commis) %></td>
 			<td><strong>两融总净佣金：</strong></td>
 			<td colspan="2"><%= @cust_index.select(:rzrq_g_commis).sum(:rzrq_g_commis) + @cust_index.select(:rzrq_j_commis).sum(:rzrq_j_commis) %></td>
 		</tr>
-		<tr>
+		<tr class="hidden-phone">
 			<td><strong>两融净息费：</strong></td>
       <td colspan="2"><%= @cust_index.select(:pure_total_income).sum(:pure_total_income) %></td>
 			<td><strong>质押回购净息费：</strong></td>
 			<td colspan="2"><%= @cust_index.select(:pure_interest_psr).sum(:pure_interest_psr) %></td>
 		</tr>
-		<tr>
+		<tr class="hidden-phone">
 			<td><strong>约定购回净息费：</strong></td>
       <td colspan="2"><%= @cust_index.select(:pure_interest_gh).sum(:pure_interest_gh) %></td>
 			<td><strong>快融宝净息费：</strong></td>
