@@ -16,4 +16,10 @@ module PagesHelper
   def time
     Time.now.seconds_since_midnight/3600
   end
+
+  def month_range(m1,m2) 
+    date_range = m1..m2
+    date_months = date_range.map {|d| Date.new(d.year, d.month, 1) }.uniq
+    date_months.map {|d| d.strftime "%Y%m" }.reverse
+  end
 end

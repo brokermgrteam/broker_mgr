@@ -3,8 +3,9 @@
 		<div class="row-fluid hidden-tablet hidden-desktop">
 			<div>
 				<select class="span12" id="nav-broker-select-month">
-					<option>201310</option>
-				  <option>201410</option>
+					<% month_range(Date.today<<12, Date.today).each do |i| %>
+							<option><%= i %></option>
+						<% end %>
 				</select>
 			</div>
 		</div>
