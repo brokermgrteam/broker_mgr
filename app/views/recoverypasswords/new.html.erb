@@ -7,7 +7,7 @@
       	<%= p.input :certificate_num, :input_html => { :class => "input-block-level" }, :label => false, placeholder: "证件号码" %>
 				<div class="form-actions">
 					<p class="text-center">
-						<%= p.submit "提交", :class => 'btn btn-primary' %>
+						<%= p.submit "提交", :class => 'btn btn-primary', :id => "btn-submit" %>
 						<%= link_to '返回', root_path, :class => 'btn' %>
 					</p>
 				</div>

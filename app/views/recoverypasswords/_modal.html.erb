@@ -1,16 +1,16 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">输入短信确认码</h3>
+    <h3 id="myModalLabel">输入短信验证码</h3>
   </div>
   <div class="modal-body">
     <%= form_for(@recoverypassword, :url => {:action => "confirm"}) do |f| %>
       <%= f.hidden_field :passwordresetlog_id, :value => @recoverypassword.id %>
-      <%= f.text_field :confirm_code, :label => false, :value => "", placeholder: "请输入6位确认码", :class => "input-block-level" %>
+      <%= f.text_field :confirm_code, :label => false, :value => "", placeholder: "请输入6位验证码", :class => "input-block-level" %>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    <%= f.submit "确认", :class => 'btn btn-primary' %>
+    <%= f.submit "验证", :class => 'btn btn-primary' %>
   </div>
     <% end %>
 </div>
