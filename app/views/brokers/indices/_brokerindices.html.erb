@@ -1,85 +1,97 @@
 <div class="row-fluid">
-	<div class="span3 well well-small">
-		<div class="btn-toolbar pull-right">
-		  <div id="nav-broker-point-year" class="btn-group nav-tabs" data-toggle="buttons-radio">
-				<button class="btn btn-small"><i class="icon-search"></i></button>
-				<% Time.now.prev_year.strftime("%Y").upto(Time.now.end_of_year.strftime("%Y")).each do |i| %>
-					<%= content_tag "button", 
-							:class => "btn btn-small#{if i == Time.now.end_of_year.strftime("%Y") then " active" end}",
-							:value => i do %>
-						<%= i %>
-					<% end %>
-				<% end %>
-		  </div>
+	<div class="row-fluid">
+		<div class="row-fluid hidden-tablet hidden-desktop">
+			<div>
+				<select class="span12" id="nav-broker-select-month">
+					<option>201310</option>
+				  <option>201410</option>
+				</select>
+			</div>
 		</div>
-	</div>
-	<div class="span9 well well-small">
-		<div class="btn-toolbar">
-		  <div id="nav-broker-point-month" class="btn-group nav-tabs" data-toggle="buttons-radio">
-				<button class="btn btn-small">月份</button>
-				<% Time.now.beginning_of_year.strftime("%Y%m").upto(Time.now.end_of_year.strftime("%Y%m")).each do |i| %>
-					<%= content_tag "button", 
-							:class => "btn btn-small#{if i == Time.now.strftime("%Y%m") then " active" end}",
-							:value => i.at(4..5) do %>
-						<%= i.at(4..5) %>
-					<% end %>
-				<% end %>
-		  </div>
-		</div>
-	</div>
-</div>
-<div class="row-fluid">
-	<div class="span12 well">
-		<div id="chart_1">
-		<% if get_dict_by_id(@broker.broker_type).code == 4 %>
-			<%= render 'brokers/indices/indexchart_1' %>
-		<% else %>
-			<%= render 'brokers/indices/indexchart_1_a' %>
-		<% end %>
-		</div>
-	</div>
-</div>
-<% if get_dict_by_id(@broker.broker_type).code == 1 %>
-<div class="row-fluid">
-	<p>
-		<div class="alert alert-success">
-			合规扣分明细
-		</div>
-		<%= render :partial => 'brokers/indices/brokercompliancelogs_grid' %>
-	</p>
-</div>
-<% end %>
-<div class="row-fluid">
-	<ul class="thumbnails">
-		<li class="span6">
-			<div class="thumbnail">
-				<div id="chart_2">
-					<%= render 'brokers/indices/indexchart_2' %>
-				</div>
-				<div class="caption" style="background-color:#f5f5f5;">
-					<p>
-						<div id="btn-group-chart2" class="btn-group" data-toggle-name="radius_options" data-toggle="buttons-radio">
-							<button type="button" value="1" data-toggle="button" class="btn">交易量</button>
-							<button type="button" value="2" data-toggle="button" class="btn active">净佣金</button>
-						</div>
-					</p>
+		<div class="row-fluid hidden-phone">
+			<div class="span3 well well-small">
+				<div class="btn-toolbar pull-right">
+				  <div id="nav-broker-point-year" class="btn-group nav-tabs" data-toggle="buttons-radio">
+						<button class="btn btn-small"><i class="icon-search"></i></button>
+						<% Time.now.prev_year.strftime("%Y").upto(Time.now.end_of_year.strftime("%Y")).each do |i| %>
+							<%= content_tag "button", 
+									:class => "btn btn-small#{if i == Time.now.end_of_year.strftime("%Y") then " active" end}",
+									:value => i do %>
+								<%= i %>
+							<% end %>
+						<% end %>
+				  </div>
 				</div>
 			</div>
-		</li>
-		<li class="span6">
-			<div class="thumbnail">
-				<div id="chart_3">
-					<%= render 'brokers/indices/indexchart_3' %>
-				</div>
-				<div class="caption" style="background-color:#f5f5f5;">
-					<p>
-						<div id="btn-group-chart3" class="btn-group" data-toggle-name="radius_options" data-toggle="buttons-radio">
-							<button type="button" value="1" data-toggle="button" class="btn">存量客户</button>
-							<button type="button" value="2" data-toggle="button" class="btn active">增量客户</button>
-						</div>
-					</p>
+			<div class="span9 well well-small hidden-phone">
+				<div class="btn-toolbar">
+				  <div id="nav-broker-point-month" class="btn-group nav-tabs" data-toggle="buttons-radio">
+						<button class="btn btn-small">月份</button>
+						<% Time.now.beginning_of_year.strftime("%Y%m").upto(Time.now.end_of_year.strftime("%Y%m")).each do |i| %>
+							<%= content_tag "button", 
+									:class => "btn btn-small#{if i == Time.now.strftime("%Y%m") then " active" end}",
+									:value => i.at(4..5) do %>
+								<%= i.at(4..5) %>
+							<% end %>
+						<% end %>
+				  </div>
 				</div>
 			</div>
-		</li>
-	</ul>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12 well">
+			<div id="chart_1">
+			<% if get_dict_by_id(@broker.broker_type).code == 4 %>
+				<%= render 'brokers/indices/indexchart_1' %>
+			<% else %>
+				<%= render 'brokers/indices/indexchart_1_a' %>
+			<% end %>
+			</div>
+		</div>
+	</div>
+	<% if get_dict_by_id(@broker.broker_type).code == 1 %>
+	<div class="row-fluid">
+		<p>
+			<div class="alert alert-success">
+				合规扣分明细
+			</div>
+			<%= render :partial => 'brokers/indices/brokercompliancelogs_grid' %>
+		</p>
+	</div>
+	<% end %>
+	<div class="row-fluid">
+		<ul class="thumbnails">
+			<li class="span6">
+				<div class="thumbnail">
+					<div id="chart_2">
+						<%= render 'brokers/indices/indexchart_2' %>
+					</div>
+					<div class="caption" style="background-color:#f5f5f5;">
+						<p>
+							<div id="btn-group-chart2" class="btn-group" data-toggle-name="radius_options" data-toggle="buttons-radio">
+								<button type="button" value="1" data-toggle="button" class="btn">交易量</button>
+								<button type="button" value="2" data-toggle="button" class="btn active">净佣金</button>
+							</div>
+						</p>
+					</div>
+				</div>
+			</li>
+			<li class="span6">
+				<div class="thumbnail">
+					<div id="chart_3">
+						<%= render 'brokers/indices/indexchart_3' %>
+					</div>
+					<div class="caption" style="background-color:#f5f5f5;">
+						<p>
+							<div id="btn-group-chart3" class="btn-group" data-toggle-name="radius_options" data-toggle="buttons-radio">
+								<button type="button" value="1" data-toggle="button" class="btn">存量客户</button>
+								<button type="button" value="2" data-toggle="button" class="btn active">增量客户</button>
+							</div>
+						</p>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
 </div>

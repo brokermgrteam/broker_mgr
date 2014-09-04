@@ -4,7 +4,12 @@ $(function() {
 	
 	$('#btn-group-chart3 button').click( function() {
 		var radio = $(this).attr('value');
-		var selected = $('#nav-broker-point-year').find('.btn.btn-small.active').attr('value') + $('#nav-broker-point-month').find('.btn.btn-small.active').attr('value');
+		if ($('#nav-broker-select-month').is(":hidden")) {
+			var selected = $('#nav-broker-point-year').find('.btn.btn-small.active').attr('value') + $('#nav-broker-point-month').find('.btn.btn-small.active').attr('value');
+		}
+		else {
+			var selected = $('#nav-broker-select-month').find("option:selected").text();
+		}
 		switch (radio) {
 		    case "1": showChartResult3(70004,70005,70006,70010, selected);
 				break;
@@ -38,6 +43,16 @@ $('#nav-broker-point-month button').click( function(e) {
 	// console.log(selected);
 });
 
+$('#nav-broker-select-month').change( function() {
+	var selected = $(this).find("option:selected").text();
+	var radio = $('#btn-group-chart3').find('.btn.active').attr('value')
+	switch (radio) {
+	    case "1": showChartResult3(70004,70005,70006,70010, selected);
+			break;
+	    case "2": showChartResult3(70011,70002,70001,70010, selected);
+			break;
+	}
+});
 
 function showChartResult3(i1,i2,i3,i4,m) {
 	_broker = <%= @broker.id %>

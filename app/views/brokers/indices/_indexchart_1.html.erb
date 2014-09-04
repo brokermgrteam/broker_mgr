@@ -15,6 +15,11 @@ $('#nav-broker-point-month button').click( function(e) {
 	// console.log(selected);
 });
 
+$('#nav-broker-select-month').change( function() {
+	var selected = $(this).find("option:selected").text();
+	showChartResult4(500788, selected);
+});
+
 function showChartResult4(i,m) {
 	_broker = <%= @broker.id %>
 	_url = '/brokers/' + _broker + '/salaries/' + i + '/broker_salary.json'

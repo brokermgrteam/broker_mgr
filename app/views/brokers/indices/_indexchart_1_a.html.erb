@@ -1,21 +1,26 @@
 <script type="text/javascript" charset="utf-8">
 $(function() {
-	showChartResult4(80001, <%= Time.now.strftime("%Y%m") %>);
+	showChartResult5(80001, <%= Time.now.strftime("%Y%m") %>);
 });
 
 $('#nav-broker-point-year button').click( function(e) {
 	var selected = $(this).attr('value') + $('#nav-broker-point-month').find('.btn.btn-small.active').attr('value');
-	showChartResult4(80001, selected);
+	showChartResult5(80001, selected);
 	// console.log(selected);
 });
 
 $('#nav-broker-point-month button').click( function(e) {
 	var selected = $('#nav-broker-point-year').find('.btn.btn-small.active').attr('value') + $(this).attr('value');
-	showChartResult4(80001, selected);
+	showChartResult5(80001, selected);
 	// console.log(selected);
 });
 
-function showChartResult4(i,m) {
+$('#nav-broker-select-month').change( function() {
+	var selected = $(this).find("option:selected").text();
+	showChartResult5(80001, selected);
+});
+
+function showChartResult5(i,m) {
 	_broker = <%= @broker.id %>
 	_url = '/brokers/' + _broker + '/brokerindices/' + i + '/broker_index.json'
 	_width = document.getElementById("tab_page").offsetWidth;
