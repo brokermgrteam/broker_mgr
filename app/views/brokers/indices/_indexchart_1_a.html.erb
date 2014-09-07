@@ -1,5 +1,6 @@
 <script type="text/javascript" charset="utf-8">
 $(function() {
+	_width = document.getElementById("tab_page").offsetWidth;
 	showChartResult5(80001, <%= Time.now.strftime("%Y%m") %>);
 });
 
@@ -23,8 +24,7 @@ $('#nav-broker-select-month').change( function() {
 function showChartResult5(i,m) {
 	_broker = <%= @broker.id %>
 	_url = '/brokers/' + _broker + '/brokerindices/' + i + '/broker_index.json'
-	_width = document.getElementById("tab_page").offsetWidth;
-	console.log("_width" + _width);
+	// console.log("_width" + _width);
 	$.get(_url, function (data) {
 		// console.log(data);
 		_results = [];

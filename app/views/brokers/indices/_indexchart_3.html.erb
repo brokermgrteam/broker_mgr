@@ -61,8 +61,10 @@ function showChartResult3(i1,i2,i3,i4,m) {
 	_url_2 = '/brokers/' + _broker + '/brokerindices/' + i2 + '/broker_index.json'
 	_url_3 = '/brokers/' + _broker + '/brokerindices/' + i3 + '/broker_index.json'
 	_url_4 = '/brokers/' + _broker + '/brokerindices/' + i4 + '/broker_index.json'
-	_width = document.getElementById("tab_page").offsetWidth;
-	// console.log(_url);
+	_width3 = _width
+	if (_width > 640) {
+		_width3 = _width3 / 2.15
+	}
 	$.get(_url_1, function (data_1) {
 		$.get(_url_2, function (data_2) {
 			$.get(_url_3, function (data_3) {
@@ -118,7 +120,7 @@ function showChartResult3(i1,i2,i3,i4,m) {
 						      },
 									chart: {
 										type: 'spline',
-										width: _width / 2.15
+										width: _width3
 									},
 									tooltip: {
 			                shared: true,

@@ -65,8 +65,11 @@ function showChartResult2(i1,i2,i3,i4,i5,i6,i7,i8,i9,m) {
 	_url7 = '/brokers/' + _broker + '/brokerindices/' + i7 + '/broker_index.json'
 	_url8 = '/brokers/' + _broker + '/brokerindices/' + i8 + '/broker_index.json'
 	_url9 = '/brokers/' + _broker + '/brokerindices/' + i9 + '/broker_index.json'
-	_width = document.getElementById("tab_page").offsetWidth;
-	// console.log(m);
+	_width2 = _width
+	if (_width > 640) {
+		_width2 = _width2 / 2.15
+	}
+	console.log('_width2' + _width2);
 	$.get(_url1, function (data1) {
 		$.get(_url2, function (data2) {
 			$.get(_url3, function (data3) {
@@ -162,7 +165,7 @@ function showChartResult2(i1,i2,i3,i4,i5,i6,i7,i8,i9,m) {
 												// plotBackgroundColor: null,
 												// plotBorderWidth: null,
 												// plotShadow: false,
-												width: _width / 2.15
+												width: _width2
 											},
 											plotOptions: {
 					                pie: {
