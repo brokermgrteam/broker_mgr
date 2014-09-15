@@ -15,9 +15,9 @@ class CustsController < ApplicationController
               :conditions => {:id => @broker.custs.map{|cust| [cust.id]}}, 
               :include => [:branch, :custbrokerrels],
               :name => 'custs',
-              :enable_export_to_csv => true,
-              :csv_field_separator => ';',
-              :csv_file_name => '导出',
+              # :enable_export_to_csv => true,
+              # :csv_field_separator => ';',
+              # :csv_file_name => '导出',
               :per_page => 20)
     @title = "我的客户"
     export_grid_if_requested('custs' => 'grid')
@@ -35,9 +35,9 @@ class CustsController < ApplicationController
               :conditions => {:id => @broker.productcusts.map{|cust| [cust.id]}}, 
               :include => [:branch, :custbrokerrels],
               :name => 'productcusts',
-              :enable_export_to_csv => true,
-              :csv_field_separator => ';',
-              :csv_file_name => '导出',
+              # :enable_export_to_csv => true,
+              # :csv_field_separator => ';',
+              # :csv_file_name => '导出',
               :per_page => 20)
     @title = "营销产品客户"
     export_grid_if_requested('productcusts' => 'grid')

@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
               # :conditions => {:branch_id => Branch.accessible_by(current_ability).map{|br| [br.id]}}, 
               # :include => [:department, :branch],
               :name => 'products',
-              :enable_export_to_csv => true,
+              # :enable_export_to_csv => true if can? :manage, Product,
               :per_page => 20)
     @title = "营销产品"
     export_grid_if_requested('products' => 'grid')
