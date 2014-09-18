@@ -24,11 +24,9 @@
     </tr>
 		<tr class="hidden-phone">
 			<td><strong>普通交易量：</strong></td>
-      <td><%= @cust_index.select(:stock_match_balance).sum(:stock_match_balance) %></td>
-			<td><strong>融资融券担保品交易量：</strong></td>
-			<td><%= @cust_index.select(:rzrq_g_match_balance).sum(:rzrq_g_match_balance) %></td>
-			<td><strong>融资融券信用交易量：</strong></td>
-			<td><%= @cust_index.select(:rzrq_j_match_balance).sum(:rzrq_j_match_balance) %></td>
+      <td colspan="2"><%= @cust_index.select(:stock_match_balance).sum(:stock_match_balance) %></td>
+			<td><strong>融资融券总交易量：</strong></td>
+			<td colspan="2"><%= @cust_index.select(:rzrq_g_match_balance).sum(:rzrq_g_match_balance) + @cust_index.select(:rzrq_j_match_balance).sum(:rzrq_j_match_balance)%></td>
 		</tr>
 		<tr>
       <td><strong>总净佣金：</strong></td>
@@ -37,7 +35,7 @@
 		<tr class="hidden-phone">
 			<td><strong>普通净佣金：</strong></td>
       <td colspan="2"><%= @cust_index.select(:stock_commis).sum(:stock_commis) %></td>
-			<td><strong>两融总净佣金：</strong></td>
+			<td><strong>融资融券总净佣金：</strong></td>
 			<td colspan="2"><%= @cust_index.select(:rzrq_g_commis).sum(:rzrq_g_commis) + @cust_index.select(:rzrq_j_commis).sum(:rzrq_j_commis) %></td>
 		</tr>
 		<tr class="hidden-phone">
