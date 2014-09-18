@@ -22,7 +22,7 @@
 
 	g.column :name => '挂接日期', :attribute => 'id', :model => Custbrokerrel, html: {class: 'hidden-phone'}, 
 					 filter: false  do |cust|
-	  cust.custbrokerrels.first.rel_date.to_time.strftime("%F")
+	  cust.custbrokerrels.first.rel_date.to_time.strftime("%F") if cust.custbrokerrels.first.rel_date
 	end
 	
 	g.column :name => '转有效户日期', :attribute => 'valid_date', html: {class: 'hidden-phone'}, filter: false do |cust|

@@ -12,8 +12,8 @@ class CustsController < ApplicationController
       @broker = Broker.find_by_user_id(current_user.id)
     end
     @custs_grid = initialize_grid(Cust, 
-              :conditions => {:id => @broker.custs.map{|cust| [cust.id]}}, 
               :include => [:branch, :custbrokerrels],
+              :conditions => [ " CUSTBROKERRELS.BROKER_ID = ? ", @broker ], 
               :name => 'custs',
               # :enable_export_to_csv => true,
               # :csv_field_separator => ';',
@@ -32,8 +32,8 @@ class CustsController < ApplicationController
       @broker = Broker.find_by_user_id(current_user.id)
     end
     @productcusts_grid = initialize_grid(Cust, 
-              :conditions => {:id => @broker.productcusts.map{|cust| [cust.id]}}, 
-              :include => [:branch, :custbrokerrels],
+              :include => [:branch, :custbrokerproductrels],
+              :conditions => [ " CUSTBROKERPRODUCTRELS.BROKER_ID = ? ", @broker ], 
               :name => 'productcusts',
               # :enable_export_to_csv => true,
               # :csv_field_separator => ';',

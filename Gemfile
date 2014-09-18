@@ -22,9 +22,9 @@ group :assets do
   #gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
   gem 'jquery-ui-rails'
   gem 'highcharts-rails', '3.0.9'
-  gem 'jquery-placeholder-rails'
 end
 
+# gem 'jquery-placeholder-rails'
 gem 'will_paginate', '~> 3.0.3'
 gem 'bootstrap-will_paginate', '~> 0.0.6'
 gem 'jquery-rails'

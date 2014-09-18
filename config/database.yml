@@ -10,9 +10,9 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
   adapter: oracle_enhanced
-  # host: hielf.no-ip.biz
+  host: hielf.no-ip.info
   # host: 10.188.105.218
-  host: 10.0.0.17
+  # host: 10.0.0.17
   port: 1521
   database: headdb
   username: kingstar
