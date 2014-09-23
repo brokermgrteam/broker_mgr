@@ -29,6 +29,7 @@ class RecoverypasswordsController < ApplicationController
 
   def confirm
     @title = "输入短信确认码"
+    @recoverypassword = Passwordresetlog.find(params[:passwordresetlog][:passwordresetlog_id])
   end
 
   def update
@@ -39,6 +40,7 @@ class RecoverypasswordsController < ApplicationController
                                :usercode => @user.usercode, 
                                :password => "888888", 
                                :password_confirmation => "888888")
+       @user.update_attribute :first_login, false
       @recoverypassword.update_attribute :status, 1
       respond_to do |format|
            format.html { redirect_to root_path, :flash => { :success => "密码初始化成功" } }
