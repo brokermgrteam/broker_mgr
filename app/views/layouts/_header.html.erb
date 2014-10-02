@@ -45,6 +45,13 @@
 					</ul>
 	        <!-- .nav, .navbar-search, .navbar-form, etc -->
 	      </div>
+	      <div class="nav-collapse">
+					<ul class="nav pull-right">
+						<% if signed_in? %>
+							<li><%= link_to '公告 <span class="badge badge-warning">1</span>'.html_safe, notices_path %>
+						<% end %>
+					</ul>
+				</div>
 	      <!-- Be sure to leave the brand out there if you want it shown -->
 		  
 			<% if signed_in? %>

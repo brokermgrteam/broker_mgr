@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   belongs_to :branch
   belongs_to :department
   
+  has_many :notices
   has_many :sessions
   has_many :assignments
   has_many :usersigns
@@ -35,6 +36,8 @@ class User < ActiveRecord::Base
                               :foreign_key => "userid"
   has_many :userpositions, :through => :userpositionrels, 
                            :source => :position
+  has_many :readnotices
+  has_many :notices, :through => :readnotices
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   

@@ -1,0 +1,15 @@
+<div id="myModal<%=notice.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><%= notice.title %></h3>
+  </div>
+  <div class="modal-body">
+    <p><%= notice.content %></p>
+    <p class="muted"><small><%= notice.user.name %></small></p>
+    <p class="muted"><small><%= I18n.localize(notice.created_at, :format => :long) %></small></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    <%= link_to "已读", {:controller => 'notices', :action => 'read', :notice_id => notice.id}, :class => 'btn btn-primary' %>
+  </div>
+</div>
