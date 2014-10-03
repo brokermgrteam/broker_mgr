@@ -5,10 +5,15 @@ class Notice < ActiveRecord::Base
   belongs_to :user
 
   has_many :readnotices
+  has_many :users, :through => :readnotices
 
-  default_scope  order('created_at DESC')
+  scope :recent, unscoped.order('notices.created_at DESC').limit(10)
+  scope :unread, lambda { |user| {:conditions => ['notices.id not in (?)', user.notices.map(&:id)]} unless user.notices.empty?}
 
-  scope :recent, unscoped.order('created_at DESC').limit(10)
+  def belongs_to_user?(user)
+  	self.readnotices.exists?(:user_id => user)
+  end
+
 end
 # == Schema Information
 #

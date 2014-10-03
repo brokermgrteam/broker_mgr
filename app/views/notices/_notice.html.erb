@@ -1,6 +1,6 @@
 <tr>
 	<td><a href="#myModal<%=notice.id%>" data-toggle="modal"><%= notice.title %></a></td>
-	<td class="hidden-phone"><%= notice.content[0..15] %></td>
+	<td class="hidden-phone"><%= notice.content[0..15] unless notice.content.nil? %></td>
 	<td class="hidden-phone"><%= I18n.localize(notice.created_at, :format => :long)  %></td>
 	<% if can? :delete, Notice %>
 	  <td>

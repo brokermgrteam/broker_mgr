@@ -48,7 +48,7 @@
 	      <div class="nav-collapse">
 					<ul class="nav pull-right">
 						<% if signed_in? %>
-							<li><%= link_to '公告 <span class="badge badge-warning">1</span>'.html_safe, notices_path %>
+							<li><%= link_to '公告 '.html_safe + notice_count(current_user), notices_path %>
 						<% end %>
 					</ul>
 				</div>

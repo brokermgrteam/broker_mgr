@@ -10,6 +10,10 @@
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    <%= link_to "已读", {:controller => 'notices', :action => 'read', :notice_id => notice.id}, :class => 'btn btn-primary' %>
+    <% if notice.belongs_to_user?(current_user)%>
+      <%= link_to "未读", {:controller => 'notices', :action => 'unread', :notice_id => notice.id}, :class => 'btn btn-primary' %>
+    <% else %>
+      <%= link_to "已读", {:controller => 'notices', :action => 'read', :notice_id => notice.id}, :class => 'btn btn-primary' %>
+    <% end %>
   </div>
 </div>

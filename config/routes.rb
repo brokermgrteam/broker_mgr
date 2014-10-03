@@ -8,6 +8,7 @@ Cmwp::Application.routes.draw do
   resources :workflowhistories
   resources :notices do
     get 'read', :on => :collection
+    get 'unread', :on => :collection
   end
   resources :custs do
     get 'productcusts_index', :on => :collection

@@ -6,5 +6,6 @@ class CreateReadnotices < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index(:readnotices, [:notice_id, :user_id], :unique => true)
   end
 end

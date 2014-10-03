@@ -5,6 +5,8 @@ class NoticesController < ApplicationController
 	def index
     @notices = Notice.all
     @title = "通知列表"
+    @unreads = Notice.unread(current_user).recent
+    @reads = current_user.notices.recent
   end
 
   def show
@@ -37,10 +39,18 @@ class NoticesController < ApplicationController
   	end
   end
 
+  def unread
+    @notice = Notice.find(params[:notice_id])
+    @title = "通知列表"
+    Readnotice.find_by_notice_id_and_user_id(params[:notice_id], current_user).destroy
+    
+    redirect_to notices_path
+  end
+
   def destroy
     Notice.find(params[:id]).destroy
     # @role.destroy
     # flash[:success] = "用户已删除"
-    redirect_to root_path, :flash => { :success => "通知已删除" }
+    redirect_to notices_path, :flash => { :success => "通知已删除" }
   end
 end
