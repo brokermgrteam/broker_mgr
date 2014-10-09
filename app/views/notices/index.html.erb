@@ -40,7 +40,7 @@
 		  <button type="button" class="close" data-dismiss="alert">&times;</button>
 		  <p>这里是所有通知的列表。</p>
 		</div>
-		<% if can? :add, Notice %>
+		<% if can? :create, Notice %>
 			<%= link_to '起草新通知', new_notice_path, :class => 'btn btn-primary' %>
 		<% end %>
 	</div>
