@@ -26,5 +26,6 @@ end
 #  valid_date_crop       :string(8)
 #  created_at            :datetime        not null
 #  updated_at            :datetime        not null
+#  birthday              :datetime
 #
 

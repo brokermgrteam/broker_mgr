@@ -16,6 +16,10 @@
     link_to(cust.cust_name, cust_path(cust))
   end
 
+  g.column :name => '生日', :attribute => 'birthday', html: {class: 'hidden-phone'}, filter: false do |cust|
+    cust.birthday.strftime("%F") if cust.birthday
+  end
+
 	g.column :name => '开户日期', :attribute => 'open_date', html: {class: 'hidden-phone'}, :detach_with_id => :open_date_filter do |cust|
     cust.open_date.to_time.strftime("%F") if cust.open_date
   end

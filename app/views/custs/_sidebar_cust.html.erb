@@ -17,9 +17,8 @@
 		<ul class="common-divider"></ul>
 		<address>
 			<strong>资金账号：</strong><%= @cust.capital_account %><br/>
+			<strong>客户生日：</strong><%= @cust.birthday.strftime("%F") if @cust.birthday %><br/>
 			<strong>开户日期：</strong><%= @cust.open_date.to_time.strftime("%F") if @cust.open_date %><br/>
-			<strong>转有效：</strong><%= @cust.valid_date.to_time.strftime("%F") if @cust.valid_date %><br/>
-			<strong>转考核有效：</strong><%= @cust.assessment_date.to_time.strftime("%F") if @cust.assessment_date %><br/>
 			<!-- <ul class="common-divider"></ul> -->
 		</address>		
 	</div>
