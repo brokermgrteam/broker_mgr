@@ -65,6 +65,7 @@ class Ability
       can :read, Notice
       can :create, Notice
       can :delete, Notice
+      can :read, Systemtasklog
       
     elsif user.has_role? :营销人员
       can :access_broker_first_page, :all

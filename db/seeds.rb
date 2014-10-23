@@ -2237,6 +2237,9 @@ Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7905,:name=>'质押回�
 Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7904,:name=>'约定购回计息',:dict_type=>'Empcustrel.Reltype',:code=>87}, :without_protection => true)
 Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7903,:name=>'两融息费',:dict_type=>'Empcustrel.Reltype',:code=>86}, :without_protection => true)
 
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'盘后任务',:dict_type=>'Task.type',:code=>1})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'薪酬任务',:dict_type=>'Task.type',:code=>2})
+
 #institutions
 Institution.find_or_create_by_institution_name({:institution_code => "01", :institution_name => "工商银行"})
 Institution.find_or_create_by_institution_name({:institution_code => "02", :institution_name => "农业银行"})
@@ -2259,4 +2262,31 @@ Institution.find_or_create_by_institution_name({:institution_code => "15", :inst
 Institution.find_or_create_by_institution_name({:institution_code => "41", :institution_name => "91金融"})
 
 Institution.find_or_create_by_institution_name({:institution_code => "99", :institution_name => "其他"})
+
+#update_log
+Systemupgradelog.find_or_create_by_description(:update_date => '2013-11-25', :description => '系统上线')
+Systemupgradelog.find_or_create_by_description(:update_date => '2013-11-28', :description => '界面样式调整')
+Systemupgradelog.find_or_create_by_description(:update_date => '2013-12-16', :description => '用户管理查询功能更新')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-01-06', :description => '管理人员设置系统权限更新')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-02-20', :description => '修正了重复提交密码重置申请无法收到短信的问题')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-02-25', :description => '增加渠道管理功能')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-03-11', :description => '修正登录错误')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-04-06', :description => '营销产品视图升级')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-04-17', :description => '增加营销人员签到情况日历')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-04-30', :description => '增加营销产品客户管理功能')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-05-05', :description => '增加客户关注功能')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-05-28', :description => '修正部分图表错误')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-05-28', :description => '修改初始化密码修改流程')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-06-19', :description => '渠道管理功能上线')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-07-01', :description => '增加下级渠道链接记录和查询功能')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-07-14', :description => '增加经纪人合规考核评价展示')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-07-26', :description => '新增营销人员(部分产品)业绩指标')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-08-20', :description => '更新了经纪人薪酬报表展现内容')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-09-04', :description => '部分显示和提示细节改进')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-09-15', :description => '修正IE无法正确显示文本框提示的问题')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-09-15', :description => '取消部分默认导出csv功能')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-09-26', :description => '改进了出错页面的提示功能')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-10-04', :description => '增加通知公告功能')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-10-15', :description => '加入客户生日显示，后续会进一步加入生日提醒')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-10-23', :description => '系统状态监控功能上线')
 

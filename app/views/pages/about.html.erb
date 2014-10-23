@@ -10,29 +10,6 @@
 	</p>
 	<p>
 		<strong>更新日志</strong><br/>
-		<small>2014-10-15 加入客户生日显示，后续会进一步加入生日提醒</small><br/>
-		<small>2014-10-04 增加通知公告功能</small><br/>
-		<small>2014-09-26 改进了出错页面的提示功能</small><br/>
-		<small>2014-09-15 取消部分默认导出csv功能</small><br/>
-		<small>2014-09-15 修正IE无法正确显示文本框提示的问题</small><br/>
-		<small>2014-09-04 部分显示和提示细节改进</small><br/>
-		<small>2014-08-20 更新了经纪人薪酬报表展现内容</small><br/>
-		<small>2014-07-26 新增营销人员(部分产品)业绩指标</small><br/>
-		<small>2014-07-14 增加经纪人合规考核评价展示</small><br/>
-		<small>2014-07-1  增加下级渠道链接记录和查询功能</small><br/>
-		<small>2014-06-19 渠道管理功能上线</small><br/>
-		<small>2014-05-28 修改初始化密码修改流程</small><br/>
-		<small>2014-05-28 修正部分图表错误</small><br/>
-		<small>2014-05-5  增加客户关注功能</small><br/>
-		<small>2014-04-30 增加营销产品客户管理功能</small><br/>
-		<small>2014-04-17 增加营销人员签到情况日历</small><br/>
-		<small>2014-04-6  营销产品视图升级</small><br/>
-		<small>2014-03-11 修正登录错误</small><br/>
-		<small>2014-02-25 增加渠道管理功能</small><br/>
-		<small>2014-02-20 修正了重复提交密码重置申请无法收到短信的问题</small><br/>
-		<small>2014-01-06 管理人员设置系统权限更新</small><br/>
-		<small>2013-12-16 用户管理查询功能更新</small><br/>
-		<small>2013-11-28 界面样式调整</small><br/>
-		<small>2013-11-25 系统上线</small>
+			<%= render :partial => "pages/update_log", :collection => @systemupgradelogs %>
 	</p>
 </div>

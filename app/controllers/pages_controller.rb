@@ -35,6 +35,7 @@ class PagesController < ApplicationController
   
   def about
     @title = "关于"
+    @systemupgradelogs = Systemupgradelog.all
   end
   
   def help

@@ -34,6 +34,9 @@
 									<% end %>
 								<li class="divider">
 								<li><%= link_to "密码变更", edit_user_path(current_user) %>
+								<% if can? :read, Systemtasklog %>
+									<li><%= link_to "系统状态", systemtasklogs_path %>
+								<% end %>
 							  </ul>
 					 	<% end %>
 							<li><%= link_to "帮助", help_path %>

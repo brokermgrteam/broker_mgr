@@ -1,0 +1,14 @@
+<div class="mini-layout">
+	<ul class="unstyled">
+		<li><strong>任务日期：</strong><%= log.task_date.strftime("%F") if log.task_date %></li>
+		<li><strong>任务类型：</strong><%= get_dict_by_id(log.task_type).name %></li>
+		<li><strong>说明：</strong><%= log.description %></li>
+		<li>完成进度：
+			<div class="progress progress-info progress-striped">
+		  	<div class="bar" style="width: <%= (log.complete_tasks.to_f / log.total_tasks).round(2) * 100 %>%">
+					<%= (log.complete_tasks.to_f / log.total_tasks).round(2) * 100 %>%
+		  	</div>
+			</div>
+		</li>
+	</ul>
+</div>

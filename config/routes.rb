@@ -6,6 +6,7 @@ Cmwp::Application.routes.draw do
   resources :userpositions
   resources :workflows
   resources :workflowhistories
+  resources :systemtasklogs
   resources :notices do
     get 'read', :on => :collection
     get 'unread', :on => :collection
