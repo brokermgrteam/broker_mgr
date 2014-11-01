@@ -1,25 +1,21 @@
 @import "twitter/bootstrap/bootstrap";
-@import "twitter/bootstrap/responsive";
-
-/*body { padding-top: 60px; }*/
-
 
 // Set the correct sprite paths
 @iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
 @iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
 
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
-@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
-@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
-@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
-@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+@fontAwesomeEotPath: font-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: font-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: font-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: font-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: font-url("fontawesome-webfont.svg#fontawesomeregular");
 
 // Font Awesome
 @import "fontawesome/font-awesome";
 
 // Glyphicons
-//@import "twitter/bootstrap/sprites.less";
+//@import "twitter/bootstrap/glyphicons.less";
 
 // Your custom LESS stylesheets goes here
 //
@@ -30,64 +26,4 @@
 // See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
 //
 // Example:
-// @linkColor: #ff0000;
-@navbarBackground: #428bca;
-@navbarBackgroundHighlight: #428bca;
-@navbarText: @white;
-@navbarLinkColor: @white;
-@navbarLinkColorHover: @grayLighter;
-@navbarBrandColor: @white;
-// @navbarLinkColorActive: @navbarLinkColorHover;
-/*
-.breadcrumb {
-  padding: 7px 14px;
-  margin: 0 0 @baseLineHeight;
-  list-style: none;
-  #gradient > .vertical(@white, @white);
-  border: 1px solid @white;
-  .border-radius(3px);
-  .box-shadow(inset 0 1px 0 @white);
-}
-*/
-.sidebar {
-  margin: 0 0 @baseLineHeight;
-  border: 1px solid @grayLighter;
-  .border-radius(3px);
-}
-
-// Mini layout previews
-.mini-layout {
-  border: 1px solid #ddd;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-}
-.mini-layout,
-.mini-layout .mini-layout-body,
-.mini-layout {
-  margin-bottom: 20px;
-  padding: 9px;
-}
-.mini-layout div {
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-}
-.mini-layout .mini-layout-body {
-  background-color: #dceaf4;
-  margin: 0 auto;
-  width: 70%;
-}
-.mini-layout.fluid .mini-layout-sidebar,
-.mini-layout.fluid .mini-layout-header,
-.mini-layout.fluid .mini-layout-body {
-  float: left;
-}
-.mini-layout.fluid .mini-layout-sidebar {
-  background-color: #bbd8e9;
-  width: 20%;
-}
-.mini-layout.fluid .mini-layout-body {
-  width: 77.5%;
-  margin-left: 2.5%;
-}
+// @link-color: #ff0000;

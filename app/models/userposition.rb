@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Userposition < ActiveRecord::Base
-  attr_accessible :name
+  # attr_accessible :name
   
   # has_many :userpositionrels, :dependent => :destroy, 
   #                               :foreign_key => "positionid"

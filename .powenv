@@ -1,6 +1,6 @@
-export PATH="/Users/hielf/.rvm/gems/ruby-2.1.1@rails3/bin:/Users/hielf/.rvm/gems/ruby-2.1.1@global/bin:/Users/hielf/.rvm/rubies/ruby-2.1.1/bin:$PATH"
-export GEM_HOME='/Users/hielf/.rvm/gems/ruby-2.1.1@rails3'
-export GEM_PATH='/Users/hielf/.rvm/gems/ruby-2.1.1@rails3:/Users/hielf/.rvm/gems/ruby-2.1.1@global'
+export PATH="/Users/hielf/.rvm/gems/ruby-2.1.1@rails4/bin:/Users/hielf/.rvm/gems/ruby-2.1.1@global/bin:/Users/hielf/.rvm/rubies/ruby-2.1.1/bin:$PATH"
+export GEM_HOME='/Users/hielf/.rvm/gems/ruby-2.1.1@rails4'
+export GEM_PATH='/Users/hielf/.rvm/gems/ruby-2.1.1@rails4:/Users/hielf/.rvm/gems/ruby-2.1.1@global'
 export MY_RUBY_HOME='/Users/hielf/.rvm/rubies/ruby-2.1.1'
 export IRBRC='/Users/hielf/.rvm/rubies/ruby-2.1.1/.irbrc'
 unset MAGLEV_HOME

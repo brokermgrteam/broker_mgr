@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Systemtasklog < ActiveRecord::Base
-  attr_accessible :complete_tasks, :description, :task_date, :task_type, :total_tasks
+  # attr_accessible :complete_tasks, :description, :task_date, :task_type, :total_tasks
 
   scope :recent, unscoped.order('systemtasklogs.task_date DESC').limit(5)
   scope :unfinished, where('total_tasks > complete_tasks')

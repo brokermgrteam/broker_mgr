@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Workflow < ActiveRecord::Base
-  attr_accessible :code, :name, :steps, :workflowsteps_attributes
+  # attr_accessible :code, :name, :steps, :workflowsteps_attributes
   
   # has_many :flowpositionrels, :dependent => :destroy, 
   #                              :foreign_key => "flowid"

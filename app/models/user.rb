@@ -21,8 +21,8 @@
 
 class User < ActiveRecord::Base
   attr_accessor   :password
-  attr_accessible :name, :email, :password, :usercode, :password_confirmation, :userposition_ids,
-                  :role_ids, :branch_id, :department_id
+  # attr_accessible :name, :email, :password, :usercode, :password_confirmation, :userposition_ids,
+                  # :role_ids, :branch_id, :department_id
   
   belongs_to :branch
   belongs_to :department

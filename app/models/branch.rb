@@ -15,7 +15,7 @@
 #
 
 class Branch < ActiveRecord::Base
-  attr_accessible :code, :name
+  # attr_accessible :code, :name
   belongs_to :department
   
   has_many :users
@@ -23,7 +23,7 @@ class Branch < ActiveRecord::Base
   has_many :branchindices
   has_many :custs
   
-  default_scope   :order => 'branches.code' 
+  # default_scope   :order => 'branches.code' 
   
   def to_label
     "#{code} | #{name}"

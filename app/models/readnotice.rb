@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Readnotice < ActiveRecord::Base
-  attr_accessible :notice_id, :user_id
+  # attr_accessible :notice_id, :user_id
 
   belongs_to :notice
   belongs_to :user

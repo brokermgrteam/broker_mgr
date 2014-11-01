@@ -1,5 +1,5 @@
 class Channel < ActiveRecord::Base
-  attr_accessible :channel_code, :channel_name, :channel_type, :institution_id, :remark, :status
+  # attr_accessible :channel_code, :channel_name, :channel_type, :institution_id, :remark, :status
 
   belongs_to :institution
   has_many   :channelurls

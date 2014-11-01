@@ -1,30 +1,31 @@
 # source 'http://rubygems.org'
 source 'http://ruby.taobao.org/'
 
-gem 'rails', '3.2.11'
+gem 'rails', '4.1.7'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 # gem 'mysql2'
-gem 'activerecord-oracle_enhanced-adapter', '~> 1.4.1'
+gem 'activerecord-oracle_enhanced-adapter', '~> 1.5.5'
 gem 'ruby-oci8', '~> 2.1.4'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.6'
-  gem 'coffee-rails', '~> 3.2.2'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'therubyracer', '>= 0.12.0'
-  gem "less-rails"
-  gem 'twitter-bootstrap-rails'
-  #gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
-  gem 'jquery-ui-rails'
-  gem 'highcharts-rails', '3.0.9'
-end
+# group :assets do
+gem 'sass-rails',   '~> 4.0.4'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'uglifier', '>= 2.5.3'
+gem 'therubyracer', '>= 0.12.1'
+gem "less-rails"
+gem 'twitter-bootstrap-rails'
+#gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
+gem 'jquery-ui-rails'
+gem 'highcharts-rails', '3.0.9'
+# end
 
 # gem 'jquery-placeholder-rails'
+# gem 'rails4-autocomplete'
 gem 'will_paginate', '~> 3.0.3'
 gem 'bootstrap-will_paginate', '~> 0.0.6'
 gem 'jquery-rails'
@@ -35,12 +36,13 @@ gem 'yajl-ruby', :require => "yajl"
 gem 'gon'
 gem 'cancan'
 gem 'wicked'
-gem "wice_grid", '3.3.1'
+gem "wice_grid", '~> 3.4.10'
 gem 'time_difference', '~> 0.3.2'
 # gem "simple_calendar", github: "excid3/simple_calendar", branch: "1.0"
 gem "watu_table_builder", :require => "table_builder"
-gem 'datetimepicker-rails', :require => 'datetimepicker-rails', 
-                            :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
+gem 'bootstrap-datetimepicker-rails'
+# gem 'datetimepicker-rails', :require => 'datetimepicker-rails', 
+                            # :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 # gem 'simple-navigation'
 
 # To use ActiveModel has_secure_password
@@ -68,10 +70,10 @@ gem 'capistrano', '~> 2.15'
 #gem 'autotest-growl'
 
 group :development do
-  gem 'rspec-rails', '2.8.1'
+  gem 'rspec-rails', '2.14.1'
   # gem 'annotate', '2.4.0'
-  gem 'annotate', '~> 2.4.1.beta'
-  gem 'faker', '1.0.1'
+  gem 'annotate', '~> 2.6.5'
+  gem 'faker', '1.4.0'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
@@ -81,5 +83,5 @@ group :test do
   # gem 'rspec-rails', '2.8.1'
   gem 'webrat', '0.7.3'
   gem 'spork', '0.9.0'
-  gem 'factory_girl_rails', '~> 1.7.0'
+  gem 'factory_girl_rails', '~> 4.5.0'
 end

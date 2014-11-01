@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Role < ActiveRecord::Base
-  attr_accessible :memo, :name, :status
+  # attr_accessible :memo, :name, :status
   
   has_many :assignments
   has_many :users, :through => :assignments

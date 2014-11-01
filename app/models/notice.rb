@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Notice < ActiveRecord::Base
-  attr_accessible :content, :title, :user_id
+  # attr_accessible :content, :title, :user_id
 
   belongs_to :user
 

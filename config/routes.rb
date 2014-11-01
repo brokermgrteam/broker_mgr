@@ -63,12 +63,12 @@ Cmwp::Application.routes.draw do
 
   root :to => 'pages#home'
 
-  match '/contact', :to => 'pages#contact'
-  match '/about',   :to => 'pages#about'
-  match '/help',    :to => 'pages#help'
-  match '/signup',  :to => 'users#new' 
-  match '/signin',  :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'  
+  get '/contact', :to => 'pages#contact'
+  get '/about',   :to => 'pages#about'
+  get '/help',    :to => 'pages#help'
+  get '/signup',  :to => 'users#new' 
+  get '/signin',  :to => 'sessions#new'
+  get '/signout', :to => 'sessions#destroy'  
   # match '/pwd',     :to => 'recoverypassword#new' 
 
   # scope :protocol => 'https://', :constraints => { :protocol => 'https://' } do
