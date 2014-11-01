@@ -7,8 +7,8 @@ gem 'rails', '3.2.11'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 # gem 'mysql2'
-gem 'activerecord-oracle_enhanced-adapter', '~> 1.4.1'
-gem 'ruby-oci8', '~> 2.1.4'
+gem 'activerecord-oracle_enhanced-adapter', '~> 1.4.3'
+gem 'ruby-oci8', '~> 2.1.7'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,7 +35,7 @@ gem 'yajl-ruby', :require => "yajl"
 gem 'gon'
 gem 'cancan'
 gem 'wicked'
-gem "wice_grid", '3.3.1'
+gem "wice_grid", '3.4.10'
 gem 'time_difference', '~> 0.3.2'
 # gem "simple_calendar", github: "excid3/simple_calendar", branch: "1.0"
 gem "watu_table_builder", :require => "table_builder"
