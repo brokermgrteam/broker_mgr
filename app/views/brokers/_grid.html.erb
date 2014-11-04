@@ -12,30 +12,30 @@
     broker.broker_name
   end
 
-	g.column :name => '所辖营业部', :attribute => 'id', :model => Branch, 
+	g.column :name => '所辖营业部', html: {class: 'hidden-phone'}, :attribute => 'id', :model => Branch, 
 					 :detach_with_id => :branch_filter, custom_filter: Branch.accessible_by(current_ability).map{|br| [br.name, br.id]}  do |broker|
     broker.branch.name if broker.branch
   end
 
-	g.column :name => '人员类型', :attribute => 'broker_type', 
+	g.column :name => '人员类型', html: {class: 'hidden-phone'}, :attribute => 'broker_type', 
 					 :detach_with_id => :type_filter, custom_filter: Dict.where(:dict_type => 'BrokerBase.brokerType').map{|d| [d.name, d.id]} do |broker|
 		Dict.find(broker.broker_type).name if broker.broker_type
 	end
 
-	g.column :name => '当前状态', :attribute => 'broker_status', 
+	g.column :name => '当前状态', html: {class: 'hidden-phone'}, :attribute => 'broker_status', 
 					 :detach_with_id => :status_filter, custom_filter: Dict.where(:dict_type => 'BrokerBase.status').map{|d| [d.name, d.id]} do |broker|
 		Dict.find(broker.broker_status).name if broker.broker_status
 	end
 	
-	g.column :name => '人员级别', :attribute => 'broker_level', filter: false do |broker|
+	g.column :name => '人员级别', html: {class: 'hidden-phone'}, :attribute => 'broker_level', filter: false do |broker|
 		Dict.find(broker.broker_level).name if broker.broker_level
 	end
 
-	g.column :name => '开户日期', :attribute => 'open_date', filter: false do |broker|
+	g.column :name => '开户日期', html: {class: 'hidden-phone'}, :attribute => 'open_date', filter: false do |broker|
 		broker.open_date
 	end
 	
-	g.column :name => '销户日期', :attribute => 'close_date', filter: false do |broker|
+	g.column :name => '销户日期', html: {class: 'hidden-phone'}, :attribute => 'close_date', filter: false do |broker|
 		broker.close_date
 	end
 	
