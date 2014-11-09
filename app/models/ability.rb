@@ -24,6 +24,7 @@ class Ability
       can :downloadfile, Product
       can :read, Cust, :branch_id => user.branch_id
       can :productcusts_index, Cust, :branch_id => user.branch_id
+      can :cust_detail_index, Cust, :branch_id => user.branch_id
       can :read, Channel
       can :create, Channelurl
       can :read, Notice
@@ -41,6 +42,7 @@ class Ability
       can :downloadfile, Product
       can :read, Cust, :branch_id => user.department.branches.map {|b| b.id}
       can :productcusts_index, Cust, :branch_id => user.department.branches.map {|b| b.id}
+      can :cust_detail_index, Cust, :branch_id => user.department.branches.map {|b| b.id}
       can :read, Channel
       can :create, Channelurl
       can :read, Notice
@@ -60,6 +62,7 @@ class Ability
       can :downloadfile, Product
       can :read, Cust
       can :productcusts_index, Cust
+      can :cust_detail_index, Cust
       can :manage, Channel
       can :create, Channelurl
       can :read, Notice
@@ -80,6 +83,7 @@ class Ability
       can :read, Product
       can :downloadfile, Product
       can :productcusts_index, Cust, :branch_id => user.branch_id
+      can :cust_detail_index, Cust, :branch_id => user.branch_id
       can :read, Notice
     else
       # can :read, :all

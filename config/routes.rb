@@ -13,6 +13,7 @@ Cmwp::Application.routes.draw do
   end
   resources :custs do
     get 'productcusts_index', :on => :collection
+    get 'cust_detail_index', :on => :collection
   end
   resources :products do
     member do

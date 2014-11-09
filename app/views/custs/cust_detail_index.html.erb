@@ -1,4 +1,4 @@
-<%= render :partial => 'grid' %>
+<%= render :partial => 'cust_detail_grid' %>
 
 <div class="row-fluid">
 	<div class="span12 well">
@@ -26,33 +26,10 @@
 			</div>
 			
 			<div class="row-fluid">
-				<div class="span6">
-					<div class="row-fluid">
-						<div class="span4">
-							营业部：
-						</div>
-						<div class="span8">
-							<%= grid_filter @custs_grid, :branch_filter  %>
-						</div>
-					</div>
-				</div>
-				<div class="span6">
-					<div class="row-fluid">
-						<div class="span4">
-							开户日期：
-						</div>
-						<div class="span8">
-							<%= grid_filter @custs_grid, :open_date_filter  %>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row-fluid">
 				<div class="span12">
 					<div class="form-actions">
 						<button class="btn btn-primary wg-external-submit-button" data-grid-name="custs">查询</button>
-						<%= link_to '本月客户业绩', {:controller => 'custs', :action => 'cust_detail_index', :broker_id => @broker}, :class => 'btn btn-warning' %>
+						<%= link_to '返回', custs_path, :class => 'btn' %>
 					</div>	
 				</div>
 			</div>

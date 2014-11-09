@@ -6,7 +6,7 @@
 		<li>完成进度：
 			<div class="progress progress-info progress-striped">
 		  	<div class="bar" style="width: <%= (log.complete_tasks.to_f / log.total_tasks).round(2) * 100 %>%">
-					<%= (log.complete_tasks.to_f / log.total_tasks).round(2) * 100 %>%
+					<%= ((log.complete_tasks.to_f / log.total_tasks).round(2) * 100).to_i %>%
 		  	</div>
 			</div>
 		</li>

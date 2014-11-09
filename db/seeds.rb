@@ -2290,4 +2290,6 @@ Systemupgradelog.find_or_create_by_description(:update_date => '2014-10-04', :de
 Systemupgradelog.find_or_create_by_description(:update_date => '2014-10-15', :description => '加入客户生日显示，后续会进一步加入生日提醒')
 Systemupgradelog.find_or_create_by_description(:update_date => '2014-10-23', :description => '系统状态监控功能上线')
 Systemupgradelog.find_or_create_by_description(:update_date => '2014-11-04', :description => '营销人员管理视图支持手机终端')
+Systemupgradelog.find_or_create_by_description(:update_date => '2014-11-10', :description => '增加了营销人员客户业绩汇总表')
+
 
