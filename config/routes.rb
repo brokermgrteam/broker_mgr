@@ -7,6 +7,7 @@ Cmwp::Application.routes.draw do
   resources :workflows
   resources :workflowhistories
   resources :systemtasklogs
+  # resources :months
   resources :notices do
     get 'read', :on => :collection
     get 'unread', :on => :collection

@@ -9,6 +9,7 @@ class Cust < ActiveRecord::Base
   has_many   :custbrokerproductrels
   has_many   :brokerfavcusts
   has_many   :custindices
+  has_many   :months, :through => :custindices
   
   def is_cust?(cust_sym)
     self.any? { |c| c.capital_account == cust_sym }

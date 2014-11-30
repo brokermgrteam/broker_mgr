@@ -52,7 +52,9 @@ class CustsController < ApplicationController
       @broker = Broker.find_by_user_id(current_user.id)
     end
     @custs_grid = initialize_grid(Cust, 
-              :include => [:branch, :custbrokerrels],
+              :order => 'custindices.month_id',
+              :order_direction => 'desc',
+              :include => [:branch, :custbrokerrels, :months],
               :conditions => [ " CUSTBROKERRELS.BROKER_ID = ? ", @broker ], 
               :name => 'custs',
               # :enable_export_to_csv => true,

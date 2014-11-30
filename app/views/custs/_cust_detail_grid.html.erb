@@ -3,6 +3,10 @@
 	g.blank_slate  do
 	  "没有记录"
 	end
+
+  g.column :name => '月份', :attribute => 'id', :model => Month, html: {class: 'hidden-phone'}, :detach_with_id => :month_filter, custom_filter: Month.past_months.map{|m| [m.month, m.id]} do |cust|
+    cust.months.first.month
+  end
 	
   g.column :name => '资金账号', :attribute => 'capital_account', html: {class: 'hidden-phone'}, :detach_with_id => :capital_account_filter do |cust|
     cust.capital_account
@@ -13,14 +17,14 @@
   end
 
   g.column :name => '本月交易量', :attribute => 'id', :model => Custbrokerrel,filter: false  do |cust|
-    cust.custindices.where(:month_id => Date.today.strftime("%Y%m")).select(:total_match_balance).sum(:total_match_balance)
+    cust.custindices.where(:month_id => cust.months.first.id).select(:total_match_balance).sum(:total_match_balance)
   end
 
   g.column :name => '本月净佣金', :attribute => 'id', :model => Custbrokerrel,filter: false  do |cust|
-    cust.custindices.where(:month_id => Date.today.strftime("%Y%m")).select(:total_commis).sum(:total_commis)
+    cust.custindices.where(:month_id => cust.months.first.id).select(:total_commis).sum(:total_commis)
   end
 
   g.column :name => '当前总资产', :attribute => 'id', :model => Custbrokerrel,filter: false  do |cust|
-    cust.custindices.where(:month_id => Date.today.strftime("%Y%m")).select(:total_asset).sum(:total_asset)
+    cust.custindices.where(:month_id => cust.months.first.id).select(:total_asset).sum(:total_asset)
   end
 end -%>

@@ -4,6 +4,7 @@ class Custindex < ActiveRecord::Base
                   :stock_match_balance, :total_asset, :total_commis, :total_match_balance
        
        belongs_to :cust
+       belongs_to :month
 end
 # == Schema Information
 #
