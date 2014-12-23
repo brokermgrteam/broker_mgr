@@ -67,7 +67,7 @@ class Ability
       can :create, Channelurl
       can :read, Notice
       can :create, Notice
-      can :delete, Notice
+      can :destroy, Notice
       can :read, Systemtasklog
       
     elsif user.has_role? :营销人员

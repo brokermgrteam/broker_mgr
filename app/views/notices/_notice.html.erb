@@ -2,7 +2,7 @@
 	<td><a href="#myModal<%=notice.id%>" data-toggle="modal"><%= notice.title %></a></td>
 	<td class="hidden-phone"><%= notice.content[0..15] unless notice.content.nil? %></td>
 	<td class="hidden-phone"><%= I18n.localize(notice.created_at, :format => :long)  %></td>
-	<% if can? :delete, Notice %>
+	<% if can? :destroy, Notice %>
 	  <td>
 			<%= link_to "删除", notice_path(notice), :method => :delete, :confirm => '确认删除这条公告?', 
 											   :class => 'btn btn-mini btn-danger pull-right' %>
