@@ -2298,6 +2298,7 @@ Systemupgradelog.find_or_create_by_description(:update_date => '2014-11-10', :de
 Systemupgradelog.find_or_create_by_description(:update_date => '2014-12-01', :description => '增加客户业绩汇总分月查询')
 Systemupgradelog.find_or_create_by_description(:update_date => '2014-12-11', :description => '调整薪酬报表显示内容')
 Systemupgradelog.find_or_create_by_description(:update_date => '2014-12-24', :description => '调整公告显示')
+Systemupgradelog.find_or_create_by_description(:update_date => '2015-02-24', :description => '解决公告标题发送问题')
 
 #yearmonth
 # Month.find_or_create_by_month({:id => 201301, :year => 2013, :month => "2013年01月"}, :without_protection => true)
