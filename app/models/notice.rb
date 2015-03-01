@@ -7,7 +7,8 @@ class Notice < ActiveRecord::Base
   has_many :readnotices
   has_many :users, :through => :readnotices
 
-  validates :title,  :length => { :maximum => 100 }
+  validates :title,  :presence => true, 
+                     :length => { :maximum => 100 }
 
   scope :recent, unscoped.order('notices.created_at DESC').limit(10)
   scope :unread, lambda { |user| {:conditions => ['notices.id not in (?)', user.notices.map(&:id)]} unless user.notices.empty?}
