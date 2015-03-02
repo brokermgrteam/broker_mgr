@@ -13,3 +13,4 @@
 //= require bootstrap-datetimepicker
 //= require highcharts
 //= require highcharts/modules/exporting
+//= require jquery.html5-placeholder-shim
