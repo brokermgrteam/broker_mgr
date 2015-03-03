@@ -3,9 +3,9 @@ development:
   channel_url_function: ip
 
 test:
-  channel_url_generator: http://188.188.81.138:8082/CRH-KH8201.action?
+  channel_url_generator: http://188.188.114.15:8082/CRH-KH8201.action?
   channel_url_function: short_url
 
 production:
-  channel_url_generator: http://188.188.81.138:8082/CRH-KH8201.action?
+  channel_url_generator: http://188.188.114.15:8082/CRH-KH8201.action?
   channel_url_function: short_url
