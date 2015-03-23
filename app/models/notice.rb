@@ -1,11 +1,13 @@
 # encoding: utf-8
 class Notice < ActiveRecord::Base
-  attr_accessible :content, :title, :user_id
+  attr_accessible :content, :title, :user_id, :file
 
   belongs_to :user
 
   has_many :readnotices
   has_many :users, :through => :readnotices
+
+  mount_uploader :file, AttachmentUploader
 
   validates :title,  :presence => true, 
                      :length => { :maximum => 100 }
@@ -24,9 +26,10 @@ end
 #
 #  id         :integer(38)     not null, primary key
 #  title      :string(255)
-#  content    :string(255)
+#  content    :text
 #  user_id    :integer(38)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  file       :string(255)
 #
 

@@ -35,6 +35,7 @@ gem 'yajl-ruby', :require => "yajl"
 gem 'gon'
 gem 'cancan'
 gem 'wicked'
+gem 'carrierwave'
 gem "wice_grid", '3.4.10'
 gem 'time_difference', '~> 0.3.2'
 # gem "simple_calendar", github: "excid3/simple_calendar", branch: "1.0"
