@@ -1,5 +1,5 @@
 class Channelurl < ActiveRecord::Base
-  attr_accessible :url, :channel_id, :branch_id, :serv_branch_id, :broker_id
+  attr_accessible :url, :channel_id, :branch_id, :serv_branch_id, :broker_id, :wapurl
 
   belongs_to :channel
 end

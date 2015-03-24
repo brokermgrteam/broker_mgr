@@ -6,7 +6,11 @@
   <div class="modal-body">
     <div class="input-append">
       <span class="input-xlarge uneditable-input"><%= @channelurl.url %></span>
-      <%= link_to '访问', @channelurl.url, :class => 'btn' %>
+      <%= link_to '电脑访问', "#{@channelurl.url}", :class => 'btn' %>
+      <br/>
+      <br/>
+      <span class="input-xlarge uneditable-input"><%= @channelurl.wapurl %></span>
+      <%= link_to '手机访问', "#{@channelurl.wapurl}", :class => 'btn' %> 
     </div>
   </div>
 </div>

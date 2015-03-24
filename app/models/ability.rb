@@ -43,8 +43,8 @@ class Ability
       can :read, Cust, :branch_id => user.department.branches.map {|b| b.id}
       can :productcusts_index, Cust, :branch_id => user.department.branches.map {|b| b.id}
       can :cust_detail_index, Cust, :branch_id => user.department.branches.map {|b| b.id}
-      can :read, Channel
-      can :create, Channelurl
+      # can :read, Channel
+      # can :create, Channelurl
       can :read, Notice
 
     elsif user.has_role? :销售交易部管理
