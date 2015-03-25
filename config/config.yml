@@ -1,11 +1,14 @@
 development:
   channel_url_generator: http://jsonip.com
   channel_url_function: ip
+  wap_url_barcode: http://qr.liantu.com/api.php?text=
 
 test:
   channel_url_generator: http://188.188.114.15:8082/CRH-KH8201.action?
   channel_url_function: short_url
+  wap_url_barcode: http://qr.liantu.com/api.php?text=
 
 production:
   channel_url_generator: http://188.188.114.15:8082/CRH-KH8201.action?
   channel_url_function: short_url
+  wap_url_barcode: http://qr.liantu.com/api.php?text=

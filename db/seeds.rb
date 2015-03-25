@@ -2300,6 +2300,8 @@ Systemupgradelog.find_or_create_by_description(:update_date => '2014-12-11', :de
 Systemupgradelog.find_or_create_by_description(:update_date => '2014-12-24', :description => '调整公告显示')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-02-24', :description => '解决公告标题发送问题')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-03-24', :description => '系统公告加入附件')
+Systemupgradelog.find_or_create_by_description(:update_date => '2015-03-25', :description => '营业部渠道设置功能开通')
+Systemupgradelog.find_or_create_by_description(:update_date => '2015-03-25', :description => '渠道短连接自动生成二维码')
 
 #yearmonth
 # Month.find_or_create_by_month({:id => 201301, :year => 2013, :month => "2013年01月"}, :without_protection => true)

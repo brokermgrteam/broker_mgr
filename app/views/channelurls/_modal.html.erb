@@ -10,7 +10,10 @@
       <br/>
       <br/>
       <span class="input-xlarge uneditable-input"><%= @channelurl.wapurl %></span>
-      <%= link_to '手机访问', "#{@channelurl.wapurl}", :class => 'btn' %> 
+      <%= link_to '手机访问', "#{@channelurl.wapurl}", :class => 'btn' %>
+      <br/>
     </div>
+      <p class="text-center text-info lead" style="margin-bottom: 0px;">专属渠道二维码：</p>
+      <p class="text-center"><%= image_tag(@barcode, :alt => "渠道二维码", :class => "img-rounded") %></p>
   </div>
 </div>

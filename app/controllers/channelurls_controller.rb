@@ -33,6 +33,7 @@ class ChannelurlsController < ApplicationController
     @url = JSON.parse(x.body)[APP_CONFIG['channel_url_function']]
     # @url = "http://www.tom.com/"
     @wapurl = @url.gsub 'kh.htsec.com', 'khmoblie.htsec.com'
+    @barcode = APP_CONFIG['wap_url_barcode']+@url.to_s
     @channelurl = Channelurl.find_or_create_by_url(:channel_id => params[:channelurl][:channel],
                                                    :branch_id =>  params[:channelurl][:cust_branch],
                                                    :serv_branch_id => params[:channelurl][:channel_branch],
