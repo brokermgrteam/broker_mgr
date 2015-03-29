@@ -32,7 +32,7 @@ class ChannelurlsController < ApplicationController
     x = Net::HTTP.post_form(URI.parse(APP_CONFIG['channel_url_generator']), a)
     @url = JSON.parse(x.body)[APP_CONFIG['channel_url_function']]
     # @url = "http://www.tom.com/"
-    @wapurl = @url.gsub 'kh.htsec.com', 'khmoblie.htsec.com'
+    @wapurl = @url.gsub 'kh.htsec.com', 'khmobile.htsec.com'
     @barcode = APP_CONFIG['wap_url_barcode']+@wapurl.to_s
     @channelurl = Channelurl.find_or_create_by_url(:channel_id => params[:channelurl][:channel],
                                                    :branch_id =>  params[:channelurl][:cust_branch],
