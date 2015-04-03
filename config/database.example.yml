@@ -1,5 +1,5 @@
 # MySQL.  Versions 4.1 and 5.0 are recommended.
-# 
+#
 # Install the MYSQL driver
 #   gem install mysql2
 #
@@ -10,13 +10,13 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
   adapter: oracle_enhanced
-  host: hielf.no-ip.biz
-  # host: 10.0.0.17
+  # host: hielf.no-ip.biz
+  host: 10.188.105.218
   # host: 192.168.11.8
   port: 1521
   database: headdb
-  username: kingstar
-  password: kingstar
+  username: bm
+  password: 1234rewq
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -30,7 +30,7 @@ development:
 #     username: tomato
 #     password: wood123
 #     host: hielf.dyndns.ws
-# 
+#
 # production:
 #     adapter: mysql2
 #     encoding: utf8

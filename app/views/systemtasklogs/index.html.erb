@@ -2,8 +2,8 @@
 	<div class="span9">
 		<div class="row-fluid">
 			<p class="alert alert-info text-center">后台任务执行情况(实时)</p>
-				<% if @unfinished.any? %>
-					<%= render :partial => "systemtasklogs/log", :collection => @unfinished %>
+				<% if @tasks.any? %>
+					<%= render :partial => "systemtasklogs/log", :collection => @tasks %>
 				<% else %>
 					<p class="text-center muted">全部任务已执行完毕</p>
 				<% end %>

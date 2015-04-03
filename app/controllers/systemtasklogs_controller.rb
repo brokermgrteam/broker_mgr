@@ -6,7 +6,7 @@ class SystemtasklogsController < ApplicationController
 	def index
     @systemtasklogs = Systemtasklog.all
     @title = "系统状态"
-    @unfinished = Systemtasklog.unfinished.recent
+    @tasks = Systemtasklog.tasks.recent
     @online = Session.online.count
     @total_visit = Session.total_visit.count
     @update_date = Systemupgradelog.maximum("update_date").to_date

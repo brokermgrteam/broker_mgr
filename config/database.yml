@@ -1,5 +1,5 @@
 # MySQL.  Versions 4.1 and 5.0 are recommended.
-# 
+#
 # Install the MYSQL driver
 #   gem install mysql2
 #
@@ -30,7 +30,7 @@ development:
 #     username: tomato
 #     password: wood123
 #     host: hielf.dyndns.ws
-# 
+#
 # production:
 #     adapter: mysql2
 #     encoding: utf8
