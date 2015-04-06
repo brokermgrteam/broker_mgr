@@ -40,7 +40,7 @@ gem "wice_grid", '3.4.10'
 gem 'time_difference', '~> 0.3.2'
 # gem "simple_calendar", github: "excid3/simple_calendar", branch: "1.0"
 gem "watu_table_builder", :require => "table_builder"
-gem 'datetimepicker-rails', :require => 'datetimepicker-rails', 
+gem 'datetimepicker-rails', :require => 'datetimepicker-rails',
                             :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 # gem 'simple-navigation'
 
@@ -73,7 +73,7 @@ group :development do
   # gem 'annotate', '2.4.0'
   gem 'annotate', '~> 2.4.1.beta'
   gem 'faker', '1.0.1'
-  gem 'better_errors'
+  gem 'better_errors', '2.1.1'
   gem 'binding_of_caller'
   gem 'meta_request'
 end
