@@ -2302,6 +2302,7 @@ Systemupgradelog.find_or_create_by_description(:update_date => '2015-02-24', :de
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-03-24', :description => '系统公告加入附件')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-03-25', :description => '营业部渠道设置功能开通')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-03-25', :description => '渠道短连接自动生成二维码')
+Systemupgradelog.find_or_create_by_description(:update_date => '2015-04-15', :description => '经纪人开放渠道链接生成权限')
 
 #yearmonth
 # Month.find_or_create_by_month({:id => 201301, :year => 2013, :month => "2013年01月"}, :without_protection => true)
@@ -2342,4 +2343,3 @@ Systemupgradelog.find_or_create_by_description(:update_date => '2015-03-25', :de
 # Month.find_or_create_by_month({:id => 201510, :year => 2015, :month => "2015年10月"}, :without_protection => true)
 # Month.find_or_create_by_month({:id => 201511, :year => 2015, :month => "2015年11月"}, :without_protection => true)
 # Month.find_or_create_by_month({:id => 201512, :year => 2015, :month => "2015年12月"}, :without_protection => true)
-

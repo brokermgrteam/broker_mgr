@@ -4,28 +4,11 @@
 			<p class="lead text-center"><legend><strong>渠道连接</strong></legend></p>
 			<%= simple_form_for(:channelurl, :url	=> channelurls_path, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
 				<fieldset>
-					<div class="row-fluid">
-						<!-- <div class="span6"> -->
-							<%= f.input :channel, :label => '选择渠道', :collection => Channel.valid_channels, 
-											:include_blank => false, :required => true %>
-						<!-- </div> -->
-					<!-- </div> -->
-					<!-- <div class="row-fluid"> -->
-						<!-- <div class="span6"> -->
-							<%= f.input :cust_branch, :label => '开户营业部', :collection => Branch.accessible_by(current_ability).map{|br| ["#{br.code} | #{br.name}", br.id]}, 
-											:include_blank => true,  input_html: { :class => "branch_selection" } %>
-						<!-- </div> -->
-						<!-- <div class="span6"> -->
-							<%= f.input :channel_branch, :label => '服务营业部', :collection => Branch.accessible_by(current_ability).map{|br| ["#{br.code} | #{br.name}", br.id]}, 
-											:include_blank => true %>
-						<!-- </div> -->
-					<!-- </div> -->
-					<!-- <div class="row-fluid"> -->
-						<!-- <div class="span6"> -->
-							<%= f.input :broker, :label => '营销人员', :collection => [], as: :select,
-											:include_blank => true, :required => false, input_html: { :class => "broker_selection" } %>
-						<!-- </div> -->
-					</div>
+					<% if can? :access_broker_first_page, :all %>
+					<%= render 'fields_new_broker', :f => f %>
+					<% elsif can? :access_user_first_page, :all %>
+					<%= render 'fields_new', :f => f %>
+					<% end %>
 				</fieldset>
 				<div class="form-actions">
 					<%= f.submit "确认", :class => 'btn btn-primary' %>
