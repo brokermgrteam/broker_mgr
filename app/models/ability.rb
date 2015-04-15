@@ -85,7 +85,7 @@ class Ability
       can :productcusts_index, Cust, :branch_id => user.branch_id
       can :cust_detail_index, Cust, :branch_id => user.branch_id
       can :read, Notice
-      can :read, Channel
+      # can :read, Channel
       can :create, Channelurl
     else
       # can :read, :all
