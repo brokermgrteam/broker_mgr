@@ -30,7 +30,7 @@ module BrokersHelper
     }
     x = Net::HTTP.post_form(URI.parse(APP_CONFIG['channel_url_generator']), a)
     @url = JSON.parse(x.body)[APP_CONFIG['channel_url_function']]
-    # @url = "http://www.tom.com/"
+    # @url = "http://kh.htsec.com"
     @wapurl = @url.gsub 'kh.htsec.com', 'khmobile.htsec.com'
     @barcode = APP_CONFIG['wap_url_barcode']+@wapurl.to_s
     @channelurl = Channelurl.find_or_create_by_url(:channel_id => Channel.find_by_channel_code("9999").id,
