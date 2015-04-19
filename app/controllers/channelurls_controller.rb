@@ -1,8 +1,8 @@
 # encoding: utf-8
 class ChannelurlsController < ApplicationController
-	# require "uri"
-  # require "net/http"
-  # require "json"
+	require "uri"
+  require "net/http"
+  require "json"
 
   def new
     @title = "获取渠道连接"

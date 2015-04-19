@@ -1,6 +1,9 @@
 # encoding: utf-8
 module BrokersHelper
-
+  require "uri"
+  require "net/http"
+  require "json"
+  
   def avatar
     # @broker = Broker.find(params[:id])
     if !@broker.avatar.nil?
