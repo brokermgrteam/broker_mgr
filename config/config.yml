@@ -1,6 +1,6 @@
 development:
-  channel_url_generator: http://api.htkh.com/CRH-KH8201.action?
-  channel_url_function: short_url
+  channel_url_generator: http://jsonip.com
+  channel_url_function: ip
   wap_url_barcode: http://qr.liantu.com/api.php?text=
 
 test:

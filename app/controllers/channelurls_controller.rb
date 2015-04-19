@@ -1,13 +1,13 @@
 # encoding: utf-8
 class ChannelurlsController < ApplicationController
-	require "uri"
-  require "net/http"
-  require "json"
-  
+	# require "uri"
+  # require "net/http"
+  # require "json"
+
   def new
     @title = "获取渠道连接"
   end
-    
+
   def create
     @broker = Broker.find(params[:channelurl][:broker]) unless params[:channelurl][:broker].empty?
     @open_branch = Branch.find(params[:channelurl][:cust_branch]) unless params[:channelurl][:cust_branch].empty?
@@ -27,7 +27,7 @@ class ChannelurlsController < ApplicationController
     'serv_branch_name' => (@serv_branch.name unless @serv_branch.nil?),
     'broker_id' => params[:channelurl][:broker],
     'broker_code' => (@broker.broker_code unless @broker.nil?),
-    'broker_name' => (@broker.broker_name unless @broker.nil?) 
+    'broker_name' => (@broker.broker_name unless @broker.nil?)
     }
     x = Net::HTTP.post_form(URI.parse(APP_CONFIG['channel_url_generator']), a)
     @url = JSON.parse(x.body)[APP_CONFIG['channel_url_function']]
@@ -61,5 +61,5 @@ class ChannelurlsController < ApplicationController
   def get_brokers
     @branch = Branch.find params[:branch_id]
     @brokers = @branch.brokers.valid_brokers
-  end 
+  end
 end
