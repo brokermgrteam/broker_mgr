@@ -36,6 +36,8 @@
 	<div class="span3">
 		<%= render 'brokers/sidebar_broker' %>
 		<%= render 'workflowunderways/sidebar_workflowunderways' %>
+		<% if @broker.valid? %>
 		<%= render 'brokers/sidebar_channelurl' %>
+		<% end %>
 	</div>
 </div>

@@ -2303,6 +2303,7 @@ Systemupgradelog.find_or_create_by_description(:update_date => '2015-03-24', :de
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-03-25', :description => '营业部渠道设置功能开通')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-03-25', :description => '渠道短连接自动生成二维码')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-04-15', :description => '经纪人开放渠道链接生成权限')
+Systemupgradelog.find_or_create_by_description(:update_date => '2015-04-21', :description => '修正已销户经纪人页面错误')
 
 #yearmonth
 # Month.find_or_create_by_month({:id => 201301, :year => 2013, :month => "2013年01月"}, :without_protection => true)
