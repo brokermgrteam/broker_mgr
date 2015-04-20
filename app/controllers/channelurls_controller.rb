@@ -15,7 +15,7 @@ class ChannelurlsController < ApplicationController
   	a = {
     'channel_id' => params[:channelurl][:channel],
     'channel_code' => Channel.find(params[:channelurl][:channel]).channel_code,
-    'channel_name' => Channel.find(params[:channelurl][:channel]).channel_code,
+    'channel_name' => Channel.find(params[:channelurl][:channel]).channel_name,
     'institution_id' => Channel.find(params[:channelurl][:channel]).institution_id,
     'institution_code' => Institution.find(Channel.find(params[:channelurl][:channel]).institution_id).institution_code,
     'institution_name' => Institution.find(Channel.find(params[:channelurl][:channel]).institution_id).institution_name,

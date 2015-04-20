@@ -3,7 +3,7 @@ module BrokersHelper
   require "uri"
   require "net/http"
   require "json"
-  
+
   def avatar
     # @broker = Broker.find(params[:id])
     if !@broker.avatar.nil?
@@ -15,21 +15,21 @@ module BrokersHelper
 
   def channelurl
     a = {
-    'channel_id' => Channel.find_by_channel_code("9999"),
+    'channel_id' => Channel.find_by_channel_code("9999").id,
     'channel_code' => Channel.find_by_channel_code("9999").channel_code,
-    'channel_name' => Channel.find_by_channel_code("9999").channel_code,
+    'channel_name' => Channel.find_by_channel_code("9999").channel_name,
     'institution_id' => Channel.find_by_channel_code("9999").institution_id,
     'institution_code' => Institution.find(Channel.find_by_channel_code("9999").institution_id).institution_code,
     'institution_name' => Institution.find(Channel.find_by_channel_code("9999").institution_id).institution_name,
-    'open_branch_id' => @broker.branch,
+    'open_branch_id' => @broker.branch.id,
     'open_branch_code' => (@broker.branch.code unless @broker.branch.nil?),
     'open_branch_name' => (@broker.branch.name unless @broker.branch.nil?),
-    'serv_branch_id' => @broker.branch,
+    'serv_branch_id' => @broker.branch.id,
     'serv_branch_code' => (@broker.branch.code unless @broker.branch.nil?),
     'serv_branch_name' => (@broker.branch.name unless @broker.branch.nil?),
-    'broker_id' => @broker,
-    'broker_code' => (@broker unless @broker.nil?),
-    'broker_name' => (@broker unless @broker.nil?)
+    'broker_id' => @broker.id,
+    'broker_code' => (@broker.broker_code unless @broker.nil?),
+    'broker_name' => (@broker.broker_name unless @broker.nil?)
     }
     x = Net::HTTP.post_form(URI.parse(APP_CONFIG['channel_url_generator']), a)
     @url = JSON.parse(x.body)[APP_CONFIG['channel_url_function']]
