@@ -27,7 +27,7 @@ class Broker < ActiveRecord::Base
   end
 
   def valid?
-    Broker.find_by_id_and_broker_status(@broker,Dict.find_by_dict_type_and_code('BrokerBase.status', 2).id).nil? if @broker.present?
+    Broker.find_by_id_and_broker_status(self.id,Dict.find_by_dict_type_and_code('BrokerBase.status', 2).id).nil? if self.present?
   end
 
   def favor?(product)
