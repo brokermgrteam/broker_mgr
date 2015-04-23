@@ -17,6 +17,6 @@ class CreateCustservvisits < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:custservvisits, :workflowexe_id)
+    add_index(:custservvisits :workflowexe_id)
   end
 end

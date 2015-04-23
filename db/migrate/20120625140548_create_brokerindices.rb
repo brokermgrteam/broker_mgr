@@ -9,6 +9,6 @@ class CreateBrokerindices < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:brokerindices, [:broker_id, :month_id, :indextype], :unique => true)
+    add_index(:brokerindices [:broker_id :month_id :indextype] :unique => true)
   end
 end

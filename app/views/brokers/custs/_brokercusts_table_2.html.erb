@@ -9,43 +9,43 @@
   <tbody>
     <tr>
       <td>新增客户数</td>
-      <td><%= find_brokerindex(70011, @broker).to_i %></td>
+      <td><%= find_brokerindex(70011 @broker).to_i %></td>
     </tr>
 		<tr>
       <td>增量客户期末资产</td>
-      <td><%= find_brokerindex(60019, @broker) %></td>
+      <td><%= find_brokerindex(60019 @broker) %></td>
     </tr>
 		<tr>
       <td>增量客户净佣金</td>
-      <td><%= find_brokerindex(10007, @broker) %></td>
+      <td><%= find_brokerindex(10007 @broker) %></td>
     </tr>
 		<tr>
       <td>增量客户交易量</td>
-      <td><%= find_brokerindex(30009, @broker) %></td>
+      <td><%= find_brokerindex(30009 @broker) %></td>
     </tr>
 		<tr>
       <td>转有效户数</td>
 			<% if get_dict_by_id(@broker.broker_type).code == 4 %>
-      <td><%= find_brokerindex(70002, @broker).to_i %></td>
+      <td><%= find_brokerindex(70002 @broker).to_i %></td>
 			<% else %>
-			<td><%= find_brokerindex(70001, @broker).to_i %></td>
+			<td><%= find_brokerindex(70001 @broker).to_i %></td>
 			<% end %>
     </tr>
 		<tr>
       <td>增量有效户期末资产</td>
-			<td><%= find_brokerindex(60021, @broker) %></td>
+			<td><%= find_brokerindex(60021 @broker) %></td>
     </tr>
 		<tr>
       <td>增量有效户月日均资产</td>
-			<td><%= find_brokerindex(60017, @broker) %></td>
+			<td><%= find_brokerindex(60017 @broker) %></td>
     </tr>
 		<tr>
       <td>增量有效户净佣金</td>
-			<td><%= find_brokerindex(10006, @broker) %></td>
+			<td><%= find_brokerindex(10006 @broker) %></td>
     </tr>
 		<tr>
       <td>增量有效户交易量</td>
-			<td><%= find_brokerindex(30010, @broker) %></td>
+			<td><%= find_brokerindex(30010 @broker) %></td>
     </tr>
   </tbody>
 </table>

@@ -1,6 +1,6 @@
 <script type="text/javascript" charset="utf-8">
 $(function() {
-	showChartResult2(10002,10003,10004,10005,10045,10044,10036,10042,10043, <%= Time.now.strftime("%Y%m") %>);
+	showChartResult2(100021000310004100051004510044100361004210043 <%= Time.now.strftime("%Y%m") %>);
 	
 	$('#btn-group-chart2 button').click( function() {
 		var radio = $(this).attr('value');
@@ -11,9 +11,9 @@ $(function() {
 			var selected = $('#nav-broker-select-month').find("option:selected").text();
 		}
 		switch (radio) {
-		    case "1": showChartResult2(30017,30004,30005,30020,30023,30021,0,0,0, selected);
+		    case "1": showChartResult2(300173000430005300203002330021000 selected);
 				break;
-		    case "2": showChartResult2(10002,10003,10004,10005,10045,10044,10036,10042,10043, selected);
+		    case "2": showChartResult2(100021000310004100051004510044100361004210043 selected);
 				break;
 		}
 	});
@@ -23,9 +23,9 @@ $('#nav-broker-point-year button').click( function(e) {
 	var selected = $(this).attr('value') + $('#nav-broker-point-month').find('.btn.btn-small.active').attr('value');
 	var radio = $('#btn-group-chart2').find('.btn.active').attr('value')
 	switch (radio) {
-	    case "1": showChartResult2(30017,30004,30005,30020,30023,30021,0,0,0, selected);
+	    case "1": showChartResult2(300173000430005300203002330021000 selected);
 			break;
-	    case "2": showChartResult2(10002,10003,10004,10005,10045,10044,10036,10042,10043, selected);
+	    case "2": showChartResult2(100021000310004100051004510044100361004210043 selected);
 			break;
 	}
 	// console.log(selected);
@@ -35,9 +35,9 @@ $('#nav-broker-point-month button').click( function(e) {
 	var selected = $('#nav-broker-point-year').find('.btn.btn-small.active').attr('value') + $(this).attr('value');
 	var radio = $('#btn-group-chart2').find('.btn.active').attr('value')
 	switch (radio) {
-	    case "1": showChartResult2(30017,30004,30005,30020,30023,30021,0,0,0, selected);
+	    case "1": showChartResult2(300173000430005300203002330021000 selected);
 			break;
-	    case "2": showChartResult2(10002,10003,10004,10005,10045,10044,10036,10042,10043, selected);
+	    case "2": showChartResult2(100021000310004100051004510044100361004210043 selected);
 			break;
 	}
 	// console.log(selected);
@@ -47,14 +47,14 @@ $('#nav-broker-select-month').change( function() {
 	var selected = $(this).find("option:selected").text();
 	var radio = $('#btn-group-chart2').find('.btn.active').attr('value')
 	switch (radio) {
-	    case "1": showChartResult2(30017,30004,30005,30020,30023,30021,0,0,0, selected);
+	    case "1": showChartResult2(300173000430005300203002330021000 selected);
 			break;
-	    case "2": showChartResult2(10002,10003,10004,10005,10045,10044,10036,10042,10043, selected);
+	    case "2": showChartResult2(100021000310004100051004510044100361004210043 selected);
 			break;
 	}
 });
 
-function showChartResult2(i1,i2,i3,i4,i5,i6,i7,i8,i9,m) {
+function showChartResult2(i1i2i3i4i5i6i7i8i9m) {
 	_broker = <%= @broker.id %>
 	_url1 = '/brokers/' + _broker + '/brokerindices/' + i1 + '/broker_index.json'
 	_url2 = '/brokers/' + _broker + '/brokerindices/' + i2 + '/broker_index.json'
@@ -70,15 +70,15 @@ function showChartResult2(i1,i2,i3,i4,i5,i6,i7,i8,i9,m) {
 		_width2 = _width2 / 2.15
 	}
 	console.log('_width2' + _width2);
-	$.get(_url1, function (data1) {
-		$.get(_url2, function (data2) {
-			$.get(_url3, function (data3) {
-				$.get(_url4, function (data4) {
-					$.get(_url5, function (data5) {
-						$.get(_url6, function (data6) {
-							$.get(_url7, function (data7) {
-								$.get(_url8, function (data8) {
-									$.get(_url9, function (data9) {
+	$.get(_url1 function (data1) {
+		$.get(_url2 function (data2) {
+			$.get(_url3 function (data3) {
+				$.get(_url4 function (data4) {
+					$.get(_url5 function (data5) {
+						$.get(_url6 function (data6) {
+							$.get(_url7 function (data7) {
+								$.get(_url8 function (data8) {
+									$.get(_url9 function (data9) {
 										_results1 = 0;
 										_results2 = 0;
 										_results3 = 0;
@@ -90,69 +90,69 @@ function showChartResult2(i1,i2,i3,i4,i5,i6,i7,i8,i9,m) {
 										_results9 = 0;
 										data_result = new Array();
 										j = 0;
-										data_result[0]={name:'该月无数据',y:0};
+										data_result[0]={name:'该月无数据'y:0};
 
 											for(var i in data1){
 												if (data1[i].month == m) {
 													name1 = data1[i].subtitle;
 													_results1 = (parseFloat(data1[i].total));
-													data_result[j++] = {name: name1, y: _results1};
+													data_result[j++] = {name: name1 y: _results1};
 												}
 											}
 											for(var i in data2){
 												if (data2[i].month == m) {
 													name2 = data2[i].subtitle;
 													_results2 = (parseFloat(data2[i].total));
-													//data_result[j++] = {name: name2, y: _results2};
+													//data_result[j++] = {name: name2 y: _results2};
 												}
 											}
 											for(var i in data3){
 												if (data3[i].month == m) {
 													name3 = data3[i].subtitle;
 													_results3 = (parseFloat(data3[i].total));
-													data_result[j++] = {name: name3, y: _results3};
+													data_result[j++] = {name: name3 y: _results3};
 												}
 											}
 											for(var i in data4){
 												if (data4[i].month == m) {
 													name4 = data4[i].subtitle;
 													_results4 = (parseFloat(data4[i].total));
-													data_result[j++] = {name: name4, y: _results4};
+													data_result[j++] = {name: name4 y: _results4};
 												}
 											}
 											for(var i in data5){
 												if (data5[i].month == m) {
 													name5 = data5[i].subtitle;
 													_results5 = (parseFloat(data5[i].total));
-													data_result[j++] = {name: name5, y: _results5};
+													data_result[j++] = {name: name5 y: _results5};
 												}
 											}
 											for(var i in data6){
 												if (data6[i].month == m) {
 													name6 = data6[i].subtitle;
 													_results6 = (parseFloat(data6[i].total));
-													data_result[j++] = {name: name6, y: _results6};
+													data_result[j++] = {name: name6 y: _results6};
 												}
 											}
 											for(var i in data7){
 												if (data7[i].month == m) {
 													name7 = data7[i].subtitle;
 													_results7 = (parseFloat(data7[i].total));
-													data_result[j++] = {name: name7, y: _results7};
+													data_result[j++] = {name: name7 y: _results7};
 												}
 											}
 											for(var i in data8){
 												if (data8[i].month == m) {
 													name8 = data8[i].subtitle;
 													_results8 = (parseFloat(data8[i].total));
-													data_result[j++] = {name: name8, y: _results8};
+													data_result[j++] = {name: name8 y: _results8};
 												}
 											}
 											for(var i in data9){
 												if (data9[i].month == m) {
 													name9 = data9[i].subtitle;
 													_results9 = (parseFloat(data9[i].total));
-													data_result[j++] = {name: name9, y: _results9};
+													data_result[j++] = {name: name9 y: _results9};
 												}
 											}
 											// console.log('_results1' + _results1 + '_results2' + _results2 + '_results3' + _results3 + '_results4' + _results4 + '_results5' + _results5 + '_results6' + _results6 + '_results7' + _results7);
@@ -160,29 +160,29 @@ function showChartResult2(i1,i2,i3,i4,i5,i6,i7,i8,i9,m) {
 										$('#chart_2').highcharts({
 											title: {
 								          text: '业绩收入'
-								      },
+								      }
 											chart: {
-												// plotBackgroundColor: null,
-												// plotBorderWidth: null,
-												// plotShadow: false,
+												// plotBackgroundColor: null
+												// plotBorderWidth: null
+												// plotShadow: false
 												width: _width2
-											},
+											}
 											plotOptions: {
 					                pie: {
-					                    allowPointSelect: true,
-					                    cursor: 'pointer',
+					                    allowPointSelect: true
+					                    cursor: 'pointer'
 					                    dataLabels: {
 					                        enabled: false
-					                    },
+					                    }
 					                    showInLegend: true
 					                }
-					             },
+					             }
 											 credits: {
 													 enabled: false
-											 },
+											 }
 								       series: [{
-												type: 'pie',
-												name: '业绩指标(元)',
+												type: 'pie'
+												name: '业绩指标(元)'
 												data: data_result
 								       }]
 						 				});

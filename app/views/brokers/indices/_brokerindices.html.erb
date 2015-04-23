@@ -3,7 +3,7 @@
 		<div class="row-fluid hidden-tablet hidden-desktop">
 			<div>
 				<select class="span12" id="nav-broker-select-month">
-					<% month_range(Date.today<<12, Date.today).each do |i| %>
+					<% month_range(Date.today<<12 Date.today).each do |i| %>
 							<option><%= i %></option>
 						<% end %>
 				</select>
@@ -15,8 +15,8 @@
 				  <div id="nav-broker-point-year" class="btn-group nav-tabs" data-toggle="buttons-radio">
 						<button class="btn btn-small"><i class="icon-search"></i></button>
 						<% Time.now.prev_year.strftime("%Y").upto(Time.now.end_of_year.strftime("%Y")).each do |i| %>
-							<%= content_tag "button", 
-									:class => "btn btn-small#{if i == Time.now.end_of_year.strftime("%Y") then " active" end}",
+							<%= content_tag "button" 
+									:class => "btn btn-small#{if i == Time.now.end_of_year.strftime("%Y") then " active" end}"
 									:value => i do %>
 								<%= i %>
 							<% end %>
@@ -29,8 +29,8 @@
 				  <div id="nav-broker-point-month" class="btn-group nav-tabs" data-toggle="buttons-radio">
 						<button class="btn btn-small">月份</button>
 						<% Time.now.beginning_of_year.strftime("%Y%m").upto(Time.now.end_of_year.strftime("%Y%m")).each do |i| %>
-							<%= content_tag "button", 
-									:class => "btn btn-small#{if i == Time.now.strftime("%Y%m") then " active" end}",
+							<%= content_tag "button" 
+									:class => "btn btn-small#{if i == Time.now.strftime("%Y%m") then " active" end}"
 									:value => i.at(4..5) do %>
 								<%= i.at(4..5) %>
 							<% end %>

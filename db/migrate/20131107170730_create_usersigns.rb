@@ -7,6 +7,6 @@ class CreateUsersigns < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:usersigns, [:user_id, :sign_date])
+    add_index(:usersigns [:user_id :sign_date])
   end
 end

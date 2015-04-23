@@ -7,7 +7,7 @@ end
 #
 # Table name: brokercompliancetypes
 #
-#  id                     :integer(38)     not null, primary key
+#  id                     :integer(38)     not null primary key
 #  compliance_code        :integer(38)
 #  compliance_type        :string(255)
 #  compliance_type_detail :string(255)

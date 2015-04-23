@@ -7,7 +7,7 @@ end
 #
 # Table name: dicts
 #
-#  id         :integer(38)     not null, primary key
+#  id         :integer(38)     not null primary key
 #  name       :string(255)
 #  dict_type  :string(255)
 #  code       :integer(38)

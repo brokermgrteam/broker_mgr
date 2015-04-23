@@ -7,7 +7,7 @@ end
 #
 # Table name: usersigns
 #
-#  id         :integer(38)     not null, primary key
+#  id         :integer(38)     not null primary key
 #  user_id    :integer(38)
 #  sign_date  :datetime
 #  sign_type  :integer(38)

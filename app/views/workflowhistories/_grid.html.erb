@@ -1,25 +1,25 @@
-<%= define_grid(@workflowhistories_grid, hide_submit_button: true, hide_reset_button: true) do |g|
+<%= define_grid(@workflowhistories_grid hide_submit_button: true hide_reset_button: true) do |g|
 	
 	g.blank_slate  do
 	  "没有记录"
 	end
 	
-  g.column :name => '流程类型', :attribute => 'id', :model => Workflowhistory,
-    			 :detach_with_id => :workflow_filter, custom_filter: Workflow.all.map{|wf| [wf.name, wf.id]} do |his|
+  g.column :name => '流程类型' :attribute => 'id' :model => Workflowhistory
+    			 :detach_with_id => :workflow_filter custom_filter: Workflow.all.map{|wf| [wf.name wf.id]} do |his|
 		his.workflow.name if his.workflow
   end
 
-  g.column :name => '创建时间', :attribute => 'created_at', filter: false do |his|
+  g.column :name => '创建时间' :attribute => 'created_at' filter: false do |his|
     his.created_at
   end
 
-  g.column :name => '提交时间', :attribute => 'updated_at', filter: false do |his|
+  g.column :name => '提交时间' :attribute => 'updated_at' filter: false do |his|
     his.updated_at
   end
 	
-	if can? :read, Workflowhistory
+	if can? :read Workflowhistory
 	  g.column do |workflowhistory|
-			link_to('详情', workflowhistory_path(workflowhistory))
+			link_to('详情' workflowhistory_path(workflowhistory))
 	  end
   end
 end -%>

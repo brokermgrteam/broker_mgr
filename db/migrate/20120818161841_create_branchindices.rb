@@ -9,6 +9,6 @@ class CreateBranchindices < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:branchindices, [:branch_id, :month_id, :indextype], :unique => true)
+    add_index(:branchindices [:branch_id :month_id :indextype] :unique => true)
   end
 end

@@ -9,7 +9,7 @@
 							客户姓名：
 						</div>
 						<div class="span8">
-							<%= grid_filter @custs_grid, :name_filter  %>
+							<%= grid_filter @custs_grid :name_filter  %>
 						</div>
 					</div>
 				</div>
@@ -19,7 +19,7 @@
 							资金账号：
 						</div>
 						<div class="span8">
-							<%= grid_filter @custs_grid, :capital_account_filter  %>
+							<%= grid_filter @custs_grid :capital_account_filter  %>
 						</div>
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 							营业部：
 						</div>
 						<div class="span8">
-							<%= grid_filter @custs_grid, :branch_filter  %>
+							<%= grid_filter @custs_grid :branch_filter  %>
 						</div>
 					</div>
 				</div>
@@ -42,7 +42,7 @@
 							开户日期：
 						</div>
 						<div class="span8">
-							<%= grid_filter @custs_grid, :open_date_filter  %>
+							<%= grid_filter @custs_grid :open_date_filter  %>
 						</div>
 					</div>
 				</div>
@@ -52,7 +52,7 @@
 				<div class="span12">
 					<div class="form-actions">
 						<button class="btn btn-primary wg-external-submit-button" data-grid-name="custs">查询</button>
-						<%= link_to '客户业绩', {:controller => 'custs', :action => 'cust_detail_index', :broker_id => @broker}, :class => 'btn btn-warning' %>
+						<%= link_to '客户业绩' {:controller => 'custs' :action => 'cust_detail_index' :broker_id => @broker} :class => 'btn btn-warning' %>
 					</div>	
 				</div>
 			</div>

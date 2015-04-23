@@ -7,7 +7,7 @@ end
 #
 # Table name: brokers
 #
-#  id                   :integer(38)     not null, primary key
+#  id                   :integer(38)     not null primary key
 #  broker_code          :string(255)
 #  broker_name          :string(255)
 #  branch_id            :integer(38)
@@ -51,7 +51,7 @@ end
 #  jobstatus            :integer(38)
 #  user_code            :string(255)
 #  certificate_type     :integer(38)
-#  risk_balance         :decimal(, )
+#  risk_balance         :decimal( )
 #  broker_degree        :integer(38)
 #  zqbz                 :integer(38)
 #

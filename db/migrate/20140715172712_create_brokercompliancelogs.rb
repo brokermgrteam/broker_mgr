@@ -9,6 +9,6 @@ class CreateBrokercompliancelogs < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:brokercompliancelogs, :broker_id)
+    add_index(:brokercompliancelogs :broker_id)
   end
 end

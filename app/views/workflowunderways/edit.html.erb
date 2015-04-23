@@ -1,11 +1,11 @@
 <div class="row-fluid">
 	<div class="span9 well">
 		<legend><p class="lead text-center muted">营销任务发起</p></legend>
-		<%= simple_form_for @workflowunderway, :html => { :class => 'form-horizontal' } do |f| %>
-			<%= render 'fields', :f => f %>
+		<%= simple_form_for @workflowunderway :html => { :class => 'form-horizontal' } do |f| %>
+			<%= render 'fields' :f => f %>
 			<div class="form-actions">
-				<%= f.submit "确认", :class => 'btn btn-primary' %>
-				<%= link_to '取消', root_path, :class => 'btn' %>
+				<%= f.submit "确认" :class => 'btn btn-primary' %>
+				<%= link_to '取消' root_path :class => 'btn' %>
 			</div>
 		  </fieldset>
 		<% end %>

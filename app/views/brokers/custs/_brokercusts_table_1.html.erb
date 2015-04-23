@@ -9,30 +9,30 @@
   <tbody>
     <tr>
       <td>当前客户数</td>
-      <td><%= find_brokerindex(70004, @broker).to_i %></td>
+      <td><%= find_brokerindex(70004 @broker).to_i %></td>
     </tr>
 		<tr>
       <td>存量客户总资产</td>
-      <td><%= find_brokerindex(60004, @broker) %></td>
+      <td><%= find_brokerindex(60004 @broker) %></td>
     </tr>
 		<tr>
       <td>存量客户日均资产</td>
-      <td><%= find_brokerindex(60007, @broker) %></td>
+      <td><%= find_brokerindex(60007 @broker) %></td>
     </tr>
 		<tr>
       <td>存量客户净佣金</td>
-      <td><%= find_brokerindex(10001, @broker) %></td>
+      <td><%= find_brokerindex(10001 @broker) %></td>
     </tr>
 		<tr>
       <td>存量客户交易量</td>
-      <td><%= find_brokerindex(30008, @broker) %></td>
+      <td><%= find_brokerindex(30008 @broker) %></td>
     </tr>
 		<tr>
       <td>当前有效户数</td>
 			<% if get_dict_by_id(@broker.broker_type).code == 4 %>
-      <td><%= find_brokerindex(70006, @broker).to_i %></td>
+      <td><%= find_brokerindex(70006 @broker).to_i %></td>
 			<% else %>
-			<td><%= find_brokerindex(70005, @broker).to_i %></td>
+			<td><%= find_brokerindex(70005 @broker).to_i %></td>
 			<% end %>
     </tr>
   </tbody>

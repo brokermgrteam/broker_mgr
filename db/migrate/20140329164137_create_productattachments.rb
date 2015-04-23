@@ -9,6 +9,6 @@ class CreateProductattachments < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index  :productattachments, :product_id
+    add_index  :productattachments :product_id
   end
 end

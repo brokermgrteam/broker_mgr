@@ -1,7 +1,7 @@
 # encoding: utf-8
 class DepartmentsController < ApplicationController
   load_and_authorize_resource
-  before_filter :authenticate, :only => [:index, :show]
+  before_filter :authenticate :only => [:index :show]
   
   def index
     @departments = Department.accessible_by(current_ability)

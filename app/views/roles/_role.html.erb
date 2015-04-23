@@ -1,8 +1,8 @@
 <tr>
-	<td><%= link_to role.name, edit_role_path(role) %></td>
-	<% if can? :delete, Role %>
+	<td><%= link_to role.name edit_role_path(role) %></td>
+	<% if can? :delete Role %>
 	  <td>
-			<%= link_to "删除", role_path(role), :method => :delete, :confirm => '确认删除该角色?', 
+			<%= link_to "删除" role_path(role) :method => :delete :confirm => '确认删除该角色?' 
 											   :class => 'btn btn-mini btn-danger pull-right' %>
 		</td>
 	<% end %>

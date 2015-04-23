@@ -1,18 +1,18 @@
 <% case @channel.status %>
 <% when false %>
-	<%= f.input :channel_code, :label => '渠道代码', :required => true, disabled: true %>
-	<%= f.input :channel_name, :label => '渠道名称', :required => true, disabled: true %>
-	<%= f.input :channel_type, :label => '渠道类型', :collection => get_dict_by_type("Channel.type"), 
-							:include_blank => false, :required => true, disabled: true %>
-	<%= f.input :institution_id, :label => '所属机构', :collection => Institution.all, 
-							:include_blank => false, :required => true, disabled: true %>
-	<%= f.input :remark, :label => '备注', as: :text, :input_html => { :rows => '4' }, disabled: true %>
+	<%= f.input :channel_code :label => '渠道代码' :required => true disabled: true %>
+	<%= f.input :channel_name :label => '渠道名称' :required => true disabled: true %>
+	<%= f.input :channel_type :label => '渠道类型' :collection => get_dict_by_type("Channel.type") 
+							:include_blank => false :required => true disabled: true %>
+	<%= f.input :institution_id :label => '所属机构' :collection => Institution.all 
+							:include_blank => false :required => true disabled: true %>
+	<%= f.input :remark :label => '备注' as: :text :input_html => { :rows => '4' } disabled: true %>
 <% else %>
-	<%= f.input :channel_code, :label => '渠道代码', :required => true %>
-	<%= f.input :channel_name, :label => '渠道名称', :required => true %>
-	<%= f.input :channel_type, :label => '渠道类型', :collection => get_dict_by_type("Channel.type"), 
-							:include_blank => false, :required => true %>
-	<%= f.input :institution_id, :label => '所属机构', :collection => Institution.all, 
-							:include_blank => false, :required => true %>
-	<%= f.input :remark, :label => '备注', as: :text, :input_html => { :rows => '4' } %>
+	<%= f.input :channel_code :label => '渠道代码' :required => true %>
+	<%= f.input :channel_name :label => '渠道名称' :required => true %>
+	<%= f.input :channel_type :label => '渠道类型' :collection => get_dict_by_type("Channel.type") 
+							:include_blank => false :required => true %>
+	<%= f.input :institution_id :label => '所属机构' :collection => Institution.all 
+							:include_blank => false :required => true %>
+	<%= f.input :remark :label => '备注' as: :text :input_html => { :rows => '4' } %>
 <% end %>

@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready ->
-  $(".branch_selection").on "change", ->
+  $(".branch_selection").on "change" ->
     $.ajax
       url: "/channelurls/get_brokers"
       type: "GET"

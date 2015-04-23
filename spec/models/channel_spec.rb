@@ -7,7 +7,7 @@ end
 #
 # Table name: channels
 #
-#  id             :integer(38)     not null, primary key
+#  id             :integer(38)     not null primary key
 #  channel_code   :string(255)
 #  channel_name   :string(255)
 #  channel_type   :integer(38)

@@ -4,30 +4,30 @@
 	  "没有记录"
 	end
 	
-	g.column :name => '营业部', :attribute => 'id', :model => Branch, html: {class: 'hidden-phone'}, 
-					 :detach_with_id => :branch_filter, custom_filter: Branch.accessible_by(current_ability).map{|br| [br.name, br.id]}  do |cust|
+	g.column :name => '营业部' :attribute => 'id' :model => Branch html: {class: 'hidden-phone'} 
+					 :detach_with_id => :branch_filter custom_filter: Branch.accessible_by(current_ability).map{|br| [br.name br.id]}  do |cust|
 	  cust.branch.name if cust.branch
 	end
 	
-  g.column :name => '资金账号', :attribute => 'capital_account', html: {class: 'hidden-phone'}, :detach_with_id => :capital_account_filter do |cust|
+  g.column :name => '资金账号' :attribute => 'capital_account' html: {class: 'hidden-phone'} :detach_with_id => :capital_account_filter do |cust|
     cust.capital_account
   end
 
-  g.column :name => '客户姓名', :attribute => 'cust_name', :detach_with_id => :name_filter do |cust|
-    link_to(cust.cust_name, cust_path(cust))
+  g.column :name => '客户姓名' :attribute => 'cust_name' :detach_with_id => :name_filter do |cust|
+    link_to(cust.cust_name cust_path(cust))
   end
 
-	g.column :name => '开户日期', :attribute => 'open_date', html: {class: 'hidden-phone'}, :detach_with_id => :open_date_filter do |cust|
+	g.column :name => '开户日期' :attribute => 'open_date' html: {class: 'hidden-phone'} :detach_with_id => :open_date_filter do |cust|
     cust.open_date.to_time.strftime("%F") if cust.open_date
   end
 
-	g.column :name => '挂接日期', :attribute => 'id', html: {class: 'hidden-phone'}, :model => Custbrokerproductrel, 
+	g.column :name => '挂接日期' :attribute => 'id' html: {class: 'hidden-phone'} :model => Custbrokerproductrel 
 					 filter: false  do |cust|
 	  cust.custbrokerproductrels.first.rel_date.to_time.strftime("%F") if cust.custbrokerproductrels.first.rel_date
 	end
 
-	g.column :name => '产品名称', :attribute => 'id', :model => Custbrokerrel, 
+	g.column :name => '产品名称' :attribute => 'id' :model => Custbrokerrel 
 					 filter: false  do |cust|
-	  link_to(cust.custbrokerproductrels.first.product.name, product_path(cust.custbrokerproductrels.first.product))
+	  link_to(cust.custbrokerproductrels.first.product.name product_path(cust.custbrokerproductrels.first.product))
 	end
 end -%>

@@ -20,7 +20,7 @@ class RolesController < ApplicationController
   def create
     @role = Role.new(params[:role])
     if @role.save
-      redirect_to roles_path, :flash => { :success => "角色新建成功"}
+      redirect_to roles_path :flash => { :success => "角色新建成功"}
     else  
       @title = "新建角色"
       render 'new'
@@ -37,7 +37,7 @@ class RolesController < ApplicationController
   def update
     @role  = Role.find(params[:id])
     if @role.update_attributes(params[:role])
-      redirect_to roles_path, :flash => { :success => "角色更新成功" }
+      redirect_to roles_path :flash => { :success => "角色更新成功" }
     else  
       @title = "角色设置"
       render 'edit'
@@ -48,7 +48,7 @@ class RolesController < ApplicationController
     Role.find(params[:id]).destroy
     # @role.destroy
     # flash[:success] = "用户已删除"
-    redirect_to roles_path, :flash => { :success => "角色已删除" }
+    redirect_to roles_path :flash => { :success => "角色已删除" }
   end
 
 end

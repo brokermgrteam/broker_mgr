@@ -2,8 +2,8 @@
 module SessionsHelper
   
   def sign_in(user)
-    cookies.signed[:remember_token] = [user.id, user.salt]
-    cookies[:rember_token] = { :value => user.id,
+    cookies.signed[:remember_token] = [user.id user.salt]
+    cookies[:rember_token] = { :value => user.id
                                :expires => 1.day.from_now }
     self.current_user = user
   end
@@ -35,7 +35,7 @@ module SessionsHelper
   
   def deny_access
     store_location
-    redirect_to signin_path, :notice => "您无权访问此页,请先登录"
+    redirect_to signin_path :notice => "您无权访问此页请先登录"
   end
   
   def store_location
@@ -58,11 +58,11 @@ module SessionsHelper
     end
     
     def remember_token
-      cookies.signed[:remember_token] || [nil, nil]
+      cookies.signed[:remember_token] || [nil nil]
     end
 end
 
 # 
-# cookies[:rember_token] = { :value => user.id,
+# cookies[:rember_token] = { :value => user.id
 #                            :expires => 20.years.from.now.utc }
 # User.find_by_id(cookies[:rember_token])

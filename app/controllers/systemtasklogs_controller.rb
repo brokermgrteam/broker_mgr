@@ -10,6 +10,6 @@ class SystemtasklogsController < ApplicationController
     @online = Session.online.count
     @total_visit = Session.total_visit.count
     @update_date = Systemupgradelog.maximum("update_date").to_date
-    @operation_time = TimeDifference.between(Systemupgradelog.maximum("update_date"), Time.now).in_general
+    @operation_time = TimeDifference.between(Systemupgradelog.maximum("update_date") Time.now).in_general
   end
 end

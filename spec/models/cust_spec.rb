@@ -7,7 +7,7 @@ end
 #
 # Table name: custs
 #
-#  id                    :integer(38)     not null, primary key
+#  id                    :integer(38)     not null primary key
 #  capital_account       :string(10)
 #  cust_name             :string(255)
 #  identification_type   :integer(38)

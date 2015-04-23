@@ -12,7 +12,7 @@ describe SessionsController do
     
     it "should have the right title" do
       get :new
-      response.should have_selector('title', :content => "登录")
+      response.should have_selector('title' :content => "登录")
     end
   end
   
@@ -21,21 +21,21 @@ describe SessionsController do
     describe "failure" do
       
       before(:each) do
-        @attr = { :email => "", :password => ""  }
+        @attr = { :email => "" :password => ""  }
       end
       
       it "should re-render the new page" do
-        post :create, :session => @attr
+        post :create :session => @attr
         response.should render_template('new')
       end
       
       it "should have the right title " do
-        post :create, :session => @attr
-        response.should have_selector('title', :content => "登录")
+        post :create :session => @attr
+        response.should have_selector('title' :content => "登录")
       end
       
       it "should have an error message" do
-        post :create, :session => @attr
+        post :create :session => @attr
         flash.now[:error].should =~ /错误/i
       end
     end
@@ -44,17 +44,17 @@ describe SessionsController do
       
       before(:each) do
         @user = Factory(:user)
-        @attr = { :email => @user.email, :password => @user.password }
+        @attr = { :email => @user.email :password => @user.password }
       end
       
       it "should sign the user in" do
-        post :create, :session => @attr
+        post :create :session => @attr
         controller.current_user.should == @user
         controller.should be_signed_in
       end
       
       it "should redirect to the departments index page" do
-        post :create, :session => @attr
+        post :create :session => @attr
         response.should redirect_to(departments_path)
       end
     end

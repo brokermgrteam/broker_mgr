@@ -1,10 +1,10 @@
 <tr>
 	<td><%= workflow.code %></td>
-	<td><%= link_to workflow.name, edit_workflow_path(workflow) %></td>
+	<td><%= link_to workflow.name edit_workflow_path(workflow) %></td>
 	<td><%= workflow.workflowsteps.count.to_s %></td>
-	<% if can? :delete, Workflow %>
+	<% if can? :delete Workflow %>
 	  <td>
-			<%= link_to "删除", workflow_path(workflow), :method => :delete, :confirm => '确认删除该工作流程?', 
+			<%= link_to "删除" workflow_path(workflow) :method => :delete :confirm => '确认删除该工作流程?' 
 											   :class => 'btn btn-mini btn-danger pull-right' %>
 		</td>
 	<% end %>

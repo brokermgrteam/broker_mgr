@@ -3,8 +3,8 @@
 		<div class="row-fluid">
 			<div class="well">
 				<p class="lead text-center"><legend><strong>渠道查看</strong></legend></p>
-				<%= simple_form_for @channel, :html => { :class => 'form-horizontal' } do |f| %>
-					<%= render 'fields', :f => f %>
+				<%= simple_form_for @channel :html => { :class => 'form-horizontal' } do |f| %>
+					<%= render 'fields' :f => f %>
 				<% end %>
 			</div>
 		</div>

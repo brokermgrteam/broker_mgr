@@ -48,8 +48,8 @@ class CreateBrokers < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:brokers, :broker_code, :unique => true)
-    add_index(:brokers, :branch_id)
-    add_index(:brokers, :broker_name)
+    add_index(:brokers :broker_code :unique => true)
+    add_index(:brokers :branch_id)
+    add_index(:brokers :broker_name)
   end
 end

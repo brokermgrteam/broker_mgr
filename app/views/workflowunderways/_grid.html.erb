@@ -1,25 +1,25 @@
-<%= define_grid(@workflowunderways_grid, hide_submit_button: true, hide_reset_button: true) do |g|
+<%= define_grid(@workflowunderways_grid hide_submit_button: true hide_reset_button: true) do |g|
 	
 	g.blank_slate  do
 	  "没有记录"
 	end
 	
-  g.column :name => '流程类型', :attribute => 'id', :model => Workflow,
-    			 :detach_with_id => :workflow_filter, custom_filter: Workflow.all.map{|wf| [wf.name, wf.id]} do |underway|
+  g.column :name => '流程类型' :attribute => 'id' :model => Workflow
+    			 :detach_with_id => :workflow_filter custom_filter: Workflow.all.map{|wf| [wf.name wf.id]} do |underway|
 		underway.workflow.name if underway.workflow
   end
 
-  g.column :name => '创建时间', :attribute => 'created_at', filter: false do |underway|
+  g.column :name => '创建时间' :attribute => 'created_at' filter: false do |underway|
     underway.created_at
   end
 
-  g.column :name => '提交时间', :attribute => 'updated_at', filter: false do |underway|
+  g.column :name => '提交时间' :attribute => 'updated_at' filter: false do |underway|
     underway.updated_at
   end
 	
-	if can? :read, Workflowunderway
+	if can? :read Workflowunderway
 	  g.column do |workflowunderway|
-	    link_to('执行', workflowunderway_workflow_step_path(workflowunderway, current_step(workflowunderway)))
+	    link_to('执行' workflowunderway_workflow_step_path(workflowunderway current_step(workflowunderway)))
 	  end
   end
 end -%>

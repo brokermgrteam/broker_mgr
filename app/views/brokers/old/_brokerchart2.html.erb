@@ -10,7 +10,7 @@ $('#nav-broker-cust button').click( function(e) {
 });
 
 function showChartResult2 (v) {
-		var _dept,_url,_width,_url2,_url3,_url4
+		var _dept_url_width_url2_url3_url4
 		_broker = <%= @broker.id %>
 		_url = '/brokers/' + _broker + '/brokerindices/1005/broker_index.json'
 		_url2 = '/brokers/' + _broker + '/brokerindices/1006/broker_index.json'
@@ -18,58 +18,58 @@ function showChartResult2 (v) {
 		_url4 = '/brokers/' + _broker + '/brokerindices/1008/broker_index.json'
 		// console.log(_url);
 		_width = document.getElementById("tab_page").offsetWidth;
-	  return $.get(_url, function(data_1) {
-			return $.get(_url2, function(data_2) {
-				return $.get(_url3, function(data_3) {
-					return $.get(_url4, function(data_4) {
-						var chart, _month, data_1_1, data_2_1, data_3_1, data_4_1
+	  return $.get(_url function(data_1) {
+			return $.get(_url2 function(data_2) {
+				return $.get(_url3 function(data_3) {
+					return $.get(_url4 function(data_4) {
+						var chart _month data_1_1 data_2_1 data_3_1 data_4_1
 						for(var i in data_1){   
 						if (data_1[i].month == v)
-							data_1_1 = data_1[i],
-							data_2_1 = data_2[i],
-							data_3_1 = data_3[i],
+							data_1_1 = data_1[i]
+							data_2_1 = data_2[i]
+							data_3_1 = data_3[i]
 							data_4_1 = data_4[i]
 						 }
 						// alert(data_1.total + "&" + data_2.total);  
 						new Highcharts.Chart({
 							chart: {
-								renderTo: "chart_2",
-								plotBackgroundColor: null,
-								plotBorderWidth: null,
-			          plotShadow: false,
+								renderTo: "chart_2"
+								plotBackgroundColor: null
+								plotBorderWidth: null
+			          plotShadow: false
 								width: _width/2.15
-							},
+							}
 							title: {
 								text: "客户资产分布"
-							},
+							}
 							tooltip: {
 			          formatter: function() {
 							  	return '<b>'+ this.point.name +'</b>: '+ this.y + '元';
 								}
-			        },
+			        }
 			        plotOptions: {
 			            pie: {
-			                allowPointSelect: true,
-			                cursor: 'pointer',
+			                allowPointSelect: true
+			                cursor: 'pointer'
 			                dataLabels: {
-			                    enabled: true,
-			                    color: '#000000',
-			                    connectorColor: '#000000',
+			                    enabled: true
+			                    color: '#000000'
+			                    connectorColor: '#000000'
 			                    formatter: function() {
 			                        return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(0) +' %';
 			                    }
 			                }
 			            }
-			        },
+			        }
 							credits: {
 								enabled: false
-							},
+							}
 							series: [{
-								type: 'pie',
+								type: 'pie'
 								data: [
-									{ name: '期末股基资产', y: data_1_1.total },
-			        		{ name: '融资融券资产', y: data_2_1.total },
-									{ name: '报价回购保有量', y: data_3_1.total },
+									{ name: '期末股基资产' y: data_1_1.total }
+			        		{ name: '融资融券资产' y: data_2_1.total }
+									{ name: '报价回购保有量' y: data_3_1.total }
 			          ]
 							}]
 						})

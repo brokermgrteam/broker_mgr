@@ -1,6 +1,6 @@
-<%= f.input :name, as: :hidden, input_html: { value: @user.name } %>
-<%= f.input :usercode, as: :hidden, input_html: { value: @user.usercode } %>
-<%= f.association :roles, :collection => Role.all, :label => '用户角色', disabled: true,
+<%= f.input :name as: :hidden input_html: { value: @user.name } %>
+<%= f.input :usercode as: :hidden input_html: { value: @user.usercode } %>
+<%= f.association :roles :collection => Role.all :label => '用户角色' disabled: true
  									:input_html => { :multiple => true } %>
-<%= f.association :userpositions, :collection => Userposition.all, :label => '审批岗位',  disabled: true,
+<%= f.association :userpositions :collection => Userposition.all :label => '审批岗位'  disabled: true
 									:input_html => { :multiple => true } %>

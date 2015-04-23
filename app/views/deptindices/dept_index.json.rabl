@@ -1,2 +1,2 @@
 object @deptindex 
-attributes :month_id => :month, :occursum => :total
+attributes :month_id => :month :occursum => :total

@@ -6,6 +6,6 @@ class CreateBrokerfavcusts < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:brokerfavcusts, :broker_id)  
+    add_index(:brokerfavcusts :broker_id)  
   end
 end

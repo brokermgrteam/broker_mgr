@@ -2,13 +2,13 @@
 	<div class="span9">
 		<div class="well">
 			<p class="lead text-center"><legend><strong>用户角色设置</strong></legend></p>
-				<%= simple_form_for @role, :html => { :class => 'form-horizontal' } do |f| %>
+				<%= simple_form_for @role :html => { :class => 'form-horizontal' } do |f| %>
 				<fieldset>
-					<%= render 'fields', :f => f %>
+					<%= render 'fields' :f => f %>
 				</fieldset>
 				<div class="form-actions">
-					<%= f.submit "确认", :class => 'btn btn-primary' %>
-					<%= link_to '取消', roles_path, :class => 'btn' %>
+					<%= f.submit "确认" :class => 'btn btn-primary' %>
+					<%= link_to '取消' roles_path :class => 'btn' %>
 				</div>
 				<% end %>
 		</div>

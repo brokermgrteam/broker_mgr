@@ -1,32 +1,32 @@
 <script type="text/javascript" charset="utf-8">
 $(function() {
 	_width = document.getElementById("tab_page").offsetWidth;
-	showChartResult4(500788, <%= Time.now.strftime("%Y%m") %>);
+	showChartResult4(500788 <%= Time.now.strftime("%Y%m") %>);
 });
 
 $('#nav-broker-point-year button').click( function(e) {
 	var selected = $(this).attr('value') + $('#nav-broker-point-month').find('.btn.btn-small.active').attr('value');
-	showChartResult4(500788, selected);
+	showChartResult4(500788 selected);
 	// console.log(selected);
 });
 
 $('#nav-broker-point-month button').click( function(e) {
 	var selected = $('#nav-broker-point-year').find('.btn.btn-small.active').attr('value') + $(this).attr('value');
-	showChartResult4(500788, selected);
+	showChartResult4(500788 selected);
 	// console.log(selected);
 });
 
 $('#nav-broker-select-month').change( function() {
 	var selected = $(this).find("option:selected").text();
-	showChartResult4(500788, selected);
+	showChartResult4(500788 selected);
 });
 
-function showChartResult4(i,m) {
+function showChartResult4(im) {
 	_broker = <%= @broker.id %>
 	_url = '/brokers/' + _broker + '/salaries/' + i + '/broker_salary.json'
 	// _width = document.getElementById("tab_page").offsetWidth;
 	// console.log("_width" + _width);
-	$.get(_url, function (data) {
+	$.get(_url function (data) {
 		// console.log(data);
 		_results = [];
 		_month = [];
@@ -52,50 +52,50 @@ function showChartResult4(i,m) {
 		$('#chart_1').highcharts({
 			title: {
           text: '个人考核情况'
-      },
+      }
 			chart: {
-				// plotBackgroundColor: null,
-				// plotBorderWidth: null,
-        // plotShadow: false,
+				// plotBackgroundColor: null
+				// plotBorderWidth: null
+        // plotShadow: false
 				  width: _width
-				  // marginLeft: 5,
+				  // marginLeft: 5
 				  // marginRight: 5
-			},
+			}
       subtitle: {
           text: '月度考核'
-      },
+      }
 			xAxis: {
-          categories: _month,
-      },
+          categories: _month
+      }
 			yAxis: {
 					title: {
 						text: "考核分值"
-					},
+					}
 					labels: {
-             align: 'left',
-             x: 3,
-             y: 16,
+             align: 'left'
+             x: 3
+             y: 16
              formatter: function() {
-                 return Highcharts.numberFormat(this.value, 0);
+                 return Highcharts.numberFormat(this.value 0);
              }
-          },
-			},
+          }
+			}
 			legend: {
-           align: 'left',
-           verticalAlign: 'top',
-           y: 20,
-           floating: true,
+           align: 'left'
+           verticalAlign: 'top'
+           y: 20
+           floating: true
            borderWidth: 0
-       },
+       }
 			 credits: {
 					 enabled: false
-			 },
+			 }
        tooltip: {
-           shared: true,
+           shared: true
            crosshairs: true
-       },
+       }
        series: [{
-				name: '考核分值',
+				name: '考核分值'
 				data: _results
        }]
 		});

@@ -7,7 +7,7 @@ end
 #
 # Table name: custbrokerproductrels
 #
-#  id         :integer(38)     not null, primary key
+#  id         :integer(38)     not null primary key
 #  broker_id  :integer(38)
 #  cust_id    :integer(38)
 #  product_id :integer(38)

@@ -7,7 +7,7 @@ module DictsHelper
     Dict.find(id)
   end
   
-  def get_dict(dict_type,code)
-    Dict.find_by_dict_type_and_code(dict_type,code)
+  def get_dict(dict_typecode)
+    Dict.find_by_dict_type_and_code(dict_typecode)
   end
 end

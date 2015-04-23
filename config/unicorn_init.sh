@@ -6,7 +6,7 @@
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: Manage unicorn server
-# Description:       Start, stop, restart unicorn server for a specific application.
+# Description:       Start stop restart unicorn server for a specific application.
 ### END INIT INFO
 set -e
 
@@ -51,7 +51,7 @@ force-stop)
   ;;
 restart|reload)
   sig HUP && echo reloaded OK && exit 0
-  echo >&2 "Couldn't reload, starting '$CMD' instead"
+  echo >&2 "Couldn't reload starting '$CMD' instead"
   run "$CMD"
   ;;
 upgrade)
@@ -71,7 +71,7 @@ upgrade)
     fi
     exit 0
   fi
-  echo >&2 "Couldn't upgrade, starting '$CMD' instead"
+  echo >&2 "Couldn't upgrade starting '$CMD' instead"
   run "$CMD"
   ;;
 reopen-logs)

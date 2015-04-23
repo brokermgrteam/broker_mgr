@@ -12,7 +12,7 @@
 				    </tr>
 					</thead>
 				  <tbody>
-						<%= render :partial => "notices/notice", :collection => @unreads %>
+						<%= render :partial => "notices/notice" :collection => @unreads %>
 		  		</tbody>
 				</table>
 			</div>
@@ -36,7 +36,7 @@
 								    </tr>
 									</thead>
 								  <tbody>
-										<%= render :partial => "notices/notice", :collection => @reads %>
+										<%= render :partial => "notices/notice" :collection => @reads %>
 						  		</tbody>
 								</table>
 							</div>
@@ -50,8 +50,8 @@
 		  <button type="button" class="close" data-dismiss="alert">&times;</button>
 		  <p>这里是所有通知的列表。</p>
 		</div>
-		<% if can? :create, Notice %>
-			<%= link_to '起草新通知', new_notice_path, :class => 'btn btn-primary' %>
+		<% if can? :create Notice %>
+			<%= link_to '起草新通知' new_notice_path :class => 'btn btn-primary' %>
 		<% end %>
 	</div>
 </div>

@@ -11,8 +11,8 @@
 		<% if User.find(@broker.user_id) == current_user %>
 		<div>
 			<p class="text-center">
-				<%= link_to '全部待办', workflowunderways_path, :class => 'btn btn-primary' %>
-				<%= link_to '历史工作', workflowhistories_path, :class => 'btn' %>
+				<%= link_to '全部待办' workflowunderways_path :class => 'btn btn-primary' %>
+				<%= link_to '历史工作' workflowhistories_path :class => 'btn' %>
 			</p>
 		</div>
 		<% end %>
@@ -29,7 +29,7 @@
 		<ul class="common-divider"></ul>
 		<div>
 			<p class="text-center">
-				<%= link_to '历史工作', workflowhistories_path(:broker_id => @broker.id), :class => 'btn' %>
+				<%= link_to '历史工作' workflowhistories_path(:broker_id => @broker.id) :class => 'btn' %>
 			</p>
 		</div>
 	</div>

@@ -20,7 +20,7 @@ class UserpositionsController < ApplicationController
   def create
     @userposition = Userposition.new(params[:userposition])
     if @userposition.save
-      redirect_to userpositions_path, :flash => { :success => "角色新建成功"}
+      redirect_to userpositions_path :flash => { :success => "角色新建成功"}
     else  
       @title = "审批岗位"
       render 'new'
@@ -36,7 +36,7 @@ class UserpositionsController < ApplicationController
   def update
     @userposition  = Userposition.find(params[:id])
     if @userposition.update_attributes(params[:userposition])
-      redirect_to userpositions_path, :flash => { :success => "审批岗位更新成功" }
+      redirect_to userpositions_path :flash => { :success => "审批岗位更新成功" }
     else  
       @title = "审批岗位"
       render 'edit'
@@ -47,7 +47,7 @@ class UserpositionsController < ApplicationController
     Userposition.find(params[:id]).destroy
     # @role.destroy
     # flash[:success] = "用户已删除"
-    redirect_to userpositions_path, :flash => { :success => "审批岗位已删除" }
+    redirect_to userpositions_path :flash => { :success => "审批岗位已删除" }
   end
   
 end

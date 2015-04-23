@@ -7,7 +7,7 @@ end
 #
 # Table name: brokerrels
 #
-#  id            :integer(4)      not null, primary key
+#  id            :integer(4)      not null primary key
 #  broker_id     :integer(4)
 #  rel_broker_id :integer(4)
 #  created_at    :datetime

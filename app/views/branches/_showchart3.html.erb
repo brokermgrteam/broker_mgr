@@ -1,19 +1,19 @@
 <div class="well">
 	<script type="text/javascript" charset="utf-8">
 		$(function() {
-			var _branch,_url,_url2
+			var _branch_url_url2
 			_branch = <%= @branch.id %>
 			_url = '/branches/' + _branch + '/branchindices/1005/branch_index.json'
 			_url2 = '/branches/' + _branch + '/branchindices/1006/branch_index.json'
 			_url3 = '/branches/' + _branch + '/branchindices/1007/branch_index.json'
 			_url4 = '/branches/' + _branch + '/branchindices/1008/branch_index.json'
 
-		  return $.get(_url, function(data_1) {
-				return $.get(_url2, function(data_2) {
-					return $.get(_url3, function(data_3) {
-						return $.get(_url4, function(data_4) {
-						var chart, _month
-						var i=-1, j=-1, n=-1, m=-1;
+		  return $.get(_url function(data_1) {
+				return $.get(_url2 function(data_2) {
+					return $.get(_url3 function(data_3) {
+						return $.get(_url4 function(data_4) {
+						var chart _month
+						var i=-1 j=-1 n=-1 m=-1;
 						for (x in data_1) {
 						    if (data_1.hasOwnProperty(x)) ++i;
 						}
@@ -28,45 +28,45 @@
 						}
 						// alert (this.point)
 						new Highcharts.Chart({
-							// colors: ['#AA4643','#4572A7'],
+							// colors: ['#AA4643''#4572A7']
 							chart: {
-								renderTo: "chart_3",
-								plotBackgroundColor: null,
-								plotBorderWidth: null,
+								renderTo: "chart_3"
+								plotBackgroundColor: null
+								plotBorderWidth: null
                 plotShadow: false
-							},
+							}
 							title: {
 								text: "营销团队发展情况"
-							},
+							}
 	            tooltip: {
 	              formatter: function() {
 							  	return '<b>'+ this.point.name +'</b>: '+ this.y + '名';
 								}
-	            },
+	            }
 	            plotOptions: {
 	                pie: {
-	                    allowPointSelect: true,
-	                    cursor: 'pointer',
+	                    allowPointSelect: true
+	                    cursor: 'pointer'
 	                    dataLabels: {
-	                        enabled: true,
-	                        color: '#000000',
-	                        connectorColor: '#000000',
+	                        enabled: true
+	                        color: '#000000'
+	                        connectorColor: '#000000'
 	                        formatter: function() {
 	                            return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(0) +' %';
 	                        }
 	                    }
 	                }
-	            },
+	            }
 							credits: {
 								enabled: false
-							},
+							}
 							series: [{
-								type: 'pie',
+								type: 'pie'
 								data: [
-									{ name: '证券经纪人', y: data_1[i].total },
-		          		{ name: '非全日制营销人员', y: data_2[j].total },
-				          { name: '全日制营销人员', y: data_3[n].total },
-									{ name: '前台人员', y: data_4[m].total },
+									{ name: '证券经纪人' y: data_1[i].total }
+		          		{ name: '非全日制营销人员' y: data_2[j].total }
+				          { name: '全日制营销人员' y: data_3[n].total }
+									{ name: '前台人员' y: data_4[m].total }
 		            ]
 							}]
 						})

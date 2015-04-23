@@ -62,7 +62,7 @@
 			<% if @product.productattachments.any? %>
 				<% @product.productattachments.each	do |file| %>
 					<p class="text-center">
-					<%= link_to file.file_name, {:controller => 'products', :action => 'downloadfile', :productattachment_id => file.id}, :class => 'btn' %>
+					<%= link_to file.file_name {:controller => 'products' :action => 'downloadfile' :productattachment_id => file.id} :class => 'btn' %>
 					</p>
 					<ul class="common-divider"></ul>
 				<% end %>

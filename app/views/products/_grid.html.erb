@@ -4,49 +4,49 @@
 	  "没有记录"
 	end
 	
-  g.column :name => '产品代码', :attribute => 'capital_account', :detach_with_id => :code_filter do |product|
+  g.column :name => '产品代码' :attribute => 'capital_account' :detach_with_id => :code_filter do |product|
     product.product_code
   end
 
-  g.column :name => '产品名称', :attribute => 'name', :detach_with_id => :name_filter do |product|
+  g.column :name => '产品名称' :attribute => 'name' :detach_with_id => :name_filter do |product|
     product.name
   end
 
-	g.column :name => '管理人', :attribute => 'manager', html: {class: 'hidden-phone'}, filter: false do |product|
+	g.column :name => '管理人' :attribute => 'manager' html: {class: 'hidden-phone'} filter: false do |product|
     product.manager
   end
 
-	g.column :name => '风险等级', :attribute => 'risk_level', html: {class: 'hidden-phone'}, filter: false do |product|
+	g.column :name => '风险等级' :attribute => 'risk_level' html: {class: 'hidden-phone'} filter: false do |product|
     get_dict_by_id(product.risk_level).name if product.risk_level
   end
 
-	g.column :name => '产品期限', :attribute => 'sale_limit', html: {class: 'hidden-phone'}, filter: false do |product|
+	g.column :name => '产品期限' :attribute => 'sale_limit' html: {class: 'hidden-phone'} filter: false do |product|
     product.sale_limit
   end
 
-	g.column :name => '预期年化收益率', :attribute => 'returns_ratio', html: {class: 'hidden-phone'}, filter: false do |product|
+	g.column :name => '预期年化收益率' :attribute => 'returns_ratio' html: {class: 'hidden-phone'} filter: false do |product|
     product.returns_ratio[0..15] if product.returns_ratio?
   end
 
-	g.column :name => '产品起息日', :attribute => 'manage_begin_date', html: {class: 'hidden-phone'}, filter: false do |product|
+	g.column :name => '产品起息日' :attribute => 'manage_begin_date' html: {class: 'hidden-phone'} filter: false do |product|
     product.manage_begin_date.to_s.to_date if product.manage_begin_date?
   end
 
-	g.column :name => '产品到期日', :attribute => 'manage_end_date', html: {class: 'hidden-phone'}, filter: false do |product|
+	g.column :name => '产品到期日' :attribute => 'manage_end_date' html: {class: 'hidden-phone'} filter: false do |product|
     product.manage_end_date.to_s.to_date if product.manage_end_date?
   end
 
-	g.column :name => '认购起点', :attribute => 'begin_limit', html: {class: 'hidden-phone'}, filter: false do |product|
+	g.column :name => '认购起点' :attribute => 'begin_limit' html: {class: 'hidden-phone'} filter: false do |product|
     product.begin_limit[0..15] if product.begin_limit?
   end
 
-	g.column :name => '产品状态', :attribute => 'status', html: {class: 'hidden-phone'}, filter: false do |product|
+	g.column :name => '产品状态' :attribute => 'status' html: {class: 'hidden-phone'} filter: false do |product|
     get_dict_by_id(product.status).name if product.status
   end
 
-	if can? :read, Product
+	if can? :read Product
 	  g.column do |product|
-	    link_to('详细', product_path(product))
+	    link_to('详细' product_path(product))
 	  end
 	end
 end -%>

@@ -1,9 +1,9 @@
 # encoding: utf-8
 class Dict < ActiveRecord::Base
-  # attr_accessible :code, :dict_type, :name
+  # attr_accessible :code :dict_type :name
 
   def to_option
-    [name, id]
+    [name id]
   end
   
 end
@@ -11,7 +11,7 @@ end
 #
 # Table name: dicts
 #
-#  id         :integer(38)     not null, primary key
+#  id         :integer(38)     not null primary key
 #  name       :string(255)
 #  dict_type  :string(255)
 #  code       :integer(38)

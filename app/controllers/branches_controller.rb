@@ -1,7 +1,7 @@
 # encoding: utf-8
 class BranchesController < ApplicationController
   load_and_authorize_resource
-  before_filter :authenticate, :only => [:index, :show]
+  before_filter :authenticate :only => [:index :show]
   
   def index
     @branches = Branch.all # .order("code").paginate(:page => params[:page]).per_page(20)
@@ -94,7 +94,7 @@ class BranchesController < ApplicationController
     @branch = Branch.find(params[:id])
     @brokers    = @branch.brokers
     @broker_types = @brokers.select("broker_type").group("broker_type")
-    @typebrokers = Broker.where("branch_id = ? AND broker_type = ? ", params[:id], params[:broker_type]).paginate(:page => params[:page]).per_page(10)
+    @typebrokers = Broker.where("branch_id = ? AND broker_type = ? " params[:id] params[:broker_type]).paginate(:page => params[:page]).per_page(10)
     @title  = "#{params[:broker_type]}"
     @father_department = @branch.department
   end

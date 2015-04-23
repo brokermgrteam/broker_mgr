@@ -7,7 +7,7 @@ end
 #
 # Table name: passwordresetlogs
 #
-#  id           :integer(38)     not null, primary key
+#  id           :integer(38)     not null primary key
 #  user_id      :integer(38)
 #  confirm_code :string(255)
 #  mobile       :string(255)

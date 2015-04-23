@@ -6,14 +6,14 @@
   <div class="modal-body">
     <div class="input-append">
       <span class="input-xlarge uneditable-input"><%= @channelurl.url %></span>
-      <%= link_to '电脑访问', "#{@channelurl.url}", :class => 'btn' %>
+      <%= link_to '电脑访问' "#{@channelurl.url}" :class => 'btn' %>
       <br/>
       <br/>
       <span class="input-xlarge uneditable-input"><%= @channelurl.wapurl %></span>
-      <%= link_to '手机访问', "#{@channelurl.wapurl}", :class => 'btn' %>
+      <%= link_to '手机访问' "#{@channelurl.wapurl}" :class => 'btn' %>
       <br/>
     </div>
       <p class="text-center text-info lead" style="margin-bottom: 0px;">专属渠道二维码：</p>
-      <p class="text-center"><%= image_tag(@barcode, :alt => "渠道二维码", :class => "img-rounded") %></p>
+      <p class="text-center"><%= image_tag(@barcode :alt => "渠道二维码" :class => "img-rounded") %></p>
   </div>
 </div>

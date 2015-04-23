@@ -1,7 +1,7 @@
 
-<%= form_for(user_broker(current_user).brokerproductrels.find_by_product_id(@product), 
-						 :html => { :method => :delete },
+<%= form_for(user_broker(current_user).brokerproductrels.find_by_product_id(@product) 
+						 :html => { :method => :delete }
 						 :remote => true) do |f| %>
-	<%= f.submit "移出收藏夹", :class => 'btn btn-success' %>
-	<%= link_to '返回', products_path, :class => 'btn' %>
+	<%= f.submit "移出收藏夹" :class => 'btn btn-success' %>
+	<%= link_to '返回' products_path :class => 'btn' %>
 <% end %>

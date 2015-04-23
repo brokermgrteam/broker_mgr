@@ -213,13 +213,13 @@ ru:
     # tooltip for the link to switch to show all records
     show_all_records_tooltip: Показать все записи
     # Warning message shown when the user wants to switch to all-records mode
-    all_queries_warning: Вы уверены в том, что хотите отобразить все записи?
+    all_queries_warning: Вы уверены в том что хотите отобразить все записи?
     # link to paginated view
     switch_back_to_paginated_mode_label: Назад к постраничному выводу
     # tooltip for the link to paginated view
     switch_back_to_paginated_mode_tooltip: Назад к постраничному выводу
     # Title of the date string.
-    date_string_tooltip: Кликните, чтобы удалить дату
+    date_string_tooltip: Кликните чтобы удалить дату
     saved_query_panel_title: Сохранённые фильтры
     save_query_button_label: Сохранить фильтр
     saved_query_deletion_confirmation: Вы уверены?

@@ -14,7 +14,7 @@
 							渠道编号：
 						</div>
 						<div class="span8">
-							<%= grid_filter @channels_grid, :channelcode_filter  %>
+							<%= grid_filter @channels_grid :channelcode_filter  %>
 						</div>
 					</div>
 				</div>
@@ -24,7 +24,7 @@
 							渠道名称：
 						</div>
 						<div class="span8">
-							<%= grid_filter @channels_grid, :channelname_filter  %>
+							<%= grid_filter @channels_grid :channelname_filter  %>
 						</div>
 					</div>
 				</div>
@@ -37,7 +37,7 @@
 							渠道类型：
 						</div>
 						<div class="span8">
-							<%= grid_filter @channels_grid, :type_filter  %>
+							<%= grid_filter @channels_grid :type_filter  %>
 						</div>
 					</div>
 				</div>
@@ -47,7 +47,7 @@
 							状态：
 						</div>
 						<div class="span8">
-							<%= grid_filter @channels_grid, :status_filter  %>
+							<%= grid_filter @channels_grid :status_filter  %>
 						</div>
 					</div>
 				</div>
@@ -57,9 +57,9 @@
 				<div class="span12">
 					<div class="form-actions">
 						<button class="btn btn-primary wg-external-submit-button" data-grid-name="channels">查询</button>
-						<%= link_to '获取渠道连接', new_channelurl_path, :class => 'btn btn-warning' %>
-						<% if can? :manage, Channel %>
-							<%= link_to '新增', new_channel_path, :class => 'btn btn-success pull-right' %>
+						<%= link_to '获取渠道连接' new_channelurl_path :class => 'btn btn-warning' %>
+						<% if can? :manage Channel %>
+							<%= link_to '新增' new_channel_path :class => 'btn btn-success pull-right' %>
 						<% end %>
 					</div>	
 				</div>

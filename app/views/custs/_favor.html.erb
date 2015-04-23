@@ -1,6 +1,6 @@
 
-<%= form_for(@cust.brokerfavcusts.build(:broker_id => user_broker(current_user).id), :remote => true) do |f| %>
+<%= form_for(@cust.brokerfavcusts.build(:broker_id => user_broker(current_user).id) :remote => true) do |f| %>
   <%= f.hidden_field :cust_id %>
   <%= f.hidden_field :broker_id %>
-	<%= f.submit "关注", :class => 'btn' %>
+	<%= f.submit "关注" :class => 'btn' %>
 <% end %>

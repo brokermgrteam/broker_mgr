@@ -9,6 +9,6 @@ class CreateSalaries < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:salaries, [:broker_id, :month_id, :indextype])
+    add_index(:salaries [:broker_id :month_id :indextype])
   end
 end

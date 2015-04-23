@@ -10,45 +10,45 @@ $('#nav-broker-point button').click( function(e) {
 });
 
 function showChartResult4 (v) {
-		var _dept,_url,_width
+		var _dept_url_width
 		_broker = <%= @broker.id %>
 		_url = '/brokers/' + _broker + '/brokerindices/' + v + '/broker_index.json'
 		// console.log(_url2);
 		_width = document.getElementById("tab_page").offsetWidth;
 		console.log("_width=" _width);
-	  return $.get(_url, function(data) {
-			var chart, _month
+	  return $.get(_url function(data) {
+			var chart _month
 			    _month = [];
 					data.map(function(y) {
 													_month.push(y.month);
 							          })
 			new Highcharts.Chart({
 				chart: {
-					renderTo: "chart_4",
-					type: 'line',
+					renderTo: "chart_4"
+					type: 'line'
 					width: _width
-				},
+				}
 				title: {
 					text: "个人考核情况"
-				},
+				}
 				xAxis: {
-					categories: _month,
+					categories: _month
 					// tickInterval: 3
-				},
+				}
 				yAxis: {
 					title: {
 						text: "考核分值"
-					},
-					min: 0,
+					}
+					min: 0
 					labels: {
 								formatter: function() {
 								   return this.value;
 								}
 							}
-				},
+				}
 				credits: {
 					enabled: false
-				},
+				}
 				series: [
 				{
 				data: 	
@@ -59,8 +59,8 @@ function showChartResult4 (v) {
 																				_results.push(y.total);
 														          })
 				                return _results;
-				              })(),
-					name: "总绩效考核得分",
+				              })()
+					name: "总绩效考核得分"
 				}
 				]
 			})

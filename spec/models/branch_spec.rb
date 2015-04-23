@@ -6,7 +6,7 @@ describe Branch do
   before(:each) do
     @branch = Factory(:branch)
     @department = Factory(:department)
-    @attr = { :code => "0100", :name => "营业部A", :department_id => 1 }
+    @attr = { :code => "0100" :name => "营业部A" :department_id => 1 }
   end
   
   describe "branch relationships" do
@@ -31,7 +31,7 @@ end
 #
 # Table name: branches
 #
-#  id            :integer(4)      not null, primary key
+#  id            :integer(4)      not null primary key
 #  code          :string(255)
 #  name          :string(255)
 #  created_at    :datetime

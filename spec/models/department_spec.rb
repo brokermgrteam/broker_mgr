@@ -35,7 +35,7 @@ end
 #
 # Table name: departments
 #
-#  id         :integer(4)      not null, primary key
+#  id         :integer(4)      not null primary key
 #  code       :string(255)
 #  name       :string(255)
 #  created_at :datetime

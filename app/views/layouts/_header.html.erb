@@ -8,64 +8,64 @@
 	        <span class="icon-bar"></span>
 	      </a>
 	      <a class="brand"><%= logo %></a>
-		  <!-- Everything you want hidden at 940px or less, place within here -->
+		  <!-- Everything you want hidden at 940px or less place within here -->
 	      <div class="nav-collapse">
 					<ul class="nav pull-right">
-						<li><%= link_to "首页", root_path %>
+						<li><%= link_to "首页" root_path %>
 						<% if signed_in? %>
 							<li class="dropdown">
 							  <a class="dropdown-toggle" data-toggle="dropdown" href="#">设置</a>
 							  <ul class="dropdown-menu">
-							    <li><%= link_to "个人资料", user_path(current_user) %>
-									<% if can? :manage, User %>
-										<li><%= link_to "用户管理", users_path %>
+							    <li><%= link_to "个人资料" user_path(current_user) %>
+									<% if can? :manage User %>
+										<li><%= link_to "用户管理" users_path %>
 									<% end %>
-									<% if can? :manage, Role %>
-										<li><%= link_to "角色设置", roles_path %>
+									<% if can? :manage Role %>
+										<li><%= link_to "角色设置" roles_path %>
 									<% end %>
-									<% if can? :manage, Userposition %>
-										<li><%= link_to "岗位设置", userpositions_path %>
+									<% if can? :manage Userposition %>
+										<li><%= link_to "岗位设置" userpositions_path %>
 									<% end %>
-									<% if can? :read, Channel %>
-										<li><%= link_to "渠道设置",  channels_path %>
+									<% if can? :read Channel %>
+										<li><%= link_to "渠道设置"  channels_path %>
 									<% end %>
-									<% if can? :manage, Workflow %>
-										<li><%= link_to "工作流",  workflows_path %>
+									<% if can? :manage Workflow %>
+										<li><%= link_to "工作流"  workflows_path %>
 									<% end %>
 								<li class="divider">
-								<li><%= link_to "密码变更", edit_user_path(current_user) %>
-								<% if can? :read, Systemtasklog %>
-									<li><%= link_to "系统状态", systemtasklogs_path %>
+								<li><%= link_to "密码变更" edit_user_path(current_user) %>
+								<% if can? :read Systemtasklog %>
+									<li><%= link_to "系统状态" systemtasklogs_path %>
 								<% end %>
 							  </ul>
 					 	<% end %>
-							<li><%= link_to "帮助", help_path %>
+							<li><%= link_to "帮助" help_path %>
 						<% if signed_in? %>
-							<li><%= link_to "退出", signout_path %>
+							<li><%= link_to "退出" signout_path %>
 						<% else %>
-							<li><%= link_to "登录", signin_path %>
+							<li><%= link_to "登录" signin_path %>
 						<% end %>
 					</ul>
-	        <!-- .nav, .navbar-search, .navbar-form, etc -->
+	        <!-- .nav .navbar-search .navbar-form etc -->
 	      </div>
 	      <div class="nav-collapse">
 					<ul class="nav pull-right">
 						<% if signed_in? %>
-							<li><%= link_to '公告 '.html_safe + notice_count(current_user), notices_path %>
+							<li><%= link_to '公告 '.html_safe + notice_count(current_user) notices_path %>
 						<% end %>
 					</ul>
 				</div>
 	      <!-- Be sure to leave the brand out there if you want it shown -->
 		  
 			<% if signed_in? %>
-			<!-- 	<%= form_for :categories, :url => search_categories_path,
-																	:method => 'get', 
+			<!-- 	<%= form_for :categories :url => search_categories_path
+																	:method => 'get' 
 																	:html => { :class => "navbar-search pull-right" } do |f|%>
-					<%= f.search_field :category_name,
-														 :class => "search-query span2", 
-														 :placeholder => "搜索", 
-														 :onsearch => true, data: { autocomplete_source: categories_path } %>
-					<%= f.submit :type => 'hidden', :name => nil, :value => 'search' %>
+					<%= f.search_field :category_name
+														 :class => "search-query span2" 
+														 :placeholder => "搜索" 
+														 :onsearch => true data: { autocomplete_source: categories_path } %>
+					<%= f.submit :type => 'hidden' :name => nil :value => 'search' %>
 				<% end %> -->
 				<!-- <input id="link_broker_id" name="link[broker_id]" type="hidden"/> -->
 			<% end %>

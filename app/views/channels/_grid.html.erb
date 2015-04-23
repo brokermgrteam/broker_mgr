@@ -4,40 +4,40 @@
 	  "没有记录"
 	end
 	
-  g.column :name => '渠道编号', :attribute => 'channel_code', :detach_with_id => :channelcode_filter do |channel|
+  g.column :name => '渠道编号' :attribute => 'channel_code' :detach_with_id => :channelcode_filter do |channel|
     channel.channel_code if channel.channel_code
   end
 
-  g.column :name => '渠道名称', :attribute => 'channel_name', :detach_with_id => :channelname_filter do |channel|
+  g.column :name => '渠道名称' :attribute => 'channel_name' :detach_with_id => :channelname_filter do |channel|
     channel.channel_name if channel.channel_name
   end
 
-	g.column :name => '机构名称', :attribute => 'id', filter: false, :model => Institution do |channel|
+	g.column :name => '机构名称' :attribute => 'id' filter: false :model => Institution do |channel|
     channel.institution.institution_name if channel.institution
   end
 
-	g.column :name => '渠道类型', :attribute => 'channel_type', 
-					 :detach_with_id => :type_filter, custom_filter: Dict.where(:dict_type => 'Channel.type').map{|d| [d.name, d.id]} do |channel|
+	g.column :name => '渠道类型' :attribute => 'channel_type' 
+					 :detach_with_id => :type_filter custom_filter: Dict.where(:dict_type => 'Channel.type').map{|d| [d.name d.id]} do |channel|
 		Dict.find(channel.channel_type).name if channel.channel_type
 	end
 
-	g.column :name => '当前状态', :attribute => 'status', :detach_with_id => :status_filter do |channel|
+	g.column :name => '当前状态' :attribute => 'status' :detach_with_id => :status_filter do |channel|
 		channel.status? ? '有效' : '无效'
 	end
 
-	g.column :name => '备注', :attribute => 'remark', filter: false do |channel|
+	g.column :name => '备注' :attribute => 'remark' filter: false do |channel|
 		channel.remark
 	end
 	
-	if can? :manage, Channel
+	if can? :manage Channel
 	  g.column do |channel|
-	    link_to('修改/删除', edit_channel_path(channel))
+	    link_to('修改/删除' edit_channel_path(channel))
 	  end
   end
 
-	if can? :read, Channel
+	if can? :read Channel
 	  g.column do |channel|
-	    link_to('查看', channel_path(channel))
+	    link_to('查看' channel_path(channel))
 	  end
   end
 end -%>

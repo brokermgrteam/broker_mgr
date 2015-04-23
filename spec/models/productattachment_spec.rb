@@ -7,7 +7,7 @@ end
 #
 # Table name: productattachments
 #
-#  id          :integer(38)     not null, primary key
+#  id          :integer(38)     not null primary key
 #  product_id  :integer(38)
 #  file_name   :string(255)
 #  file_type   :string(255)
