@@ -14,8 +14,8 @@ class ChannelurlsController < ApplicationController
     @serv_branch = Branch.find(params[:channelurl][:cust_branch]) unless params[:channelurl][:cust_branch].empty?
   	a = {
     'channel_id' => params[:channelurl][:channel],
-    'channel_code' => Channel.find(params[:channelurl][:channel]).channel_code,
-    'channel_name' => Channel.find(params[:channelurl][:channel]).channel_name,
+    'channel_code' => Channel.find(params[:channelurl][:channel]).channel_code.to_s + Subchannel.find(params[:channelurl][:sub_channel]).sub_channel_code.to_s,
+    'channel_name' => Channel.find(params[:channelurl][:channel]).channel_name + "-" +  Subchannel.find(params[:channelurl][:sub_channel]).sub_channel_name,
     'institution_id' => Channel.find(params[:channelurl][:channel]).institution_id,
     'institution_code' => Institution.find(Channel.find(params[:channelurl][:channel]).institution_id).institution_code,
     'institution_name' => Institution.find(Channel.find(params[:channelurl][:channel]).institution_id).institution_name,
@@ -35,6 +35,7 @@ class ChannelurlsController < ApplicationController
     @wapurl = @url.gsub 'kh.htsec.com', 'khmobile.htsec.com'
     @barcode = APP_CONFIG['wap_url_barcode']+@wapurl.to_s
     @channelurl = Channelurl.find_or_create_by_url(:channel_id => params[:channelurl][:channel],
+																									 :sub_channel_id => params[:channelurl][:sub_channel],
                                                    :branch_id =>  params[:channelurl][:cust_branch],
                                                    :serv_branch_id => params[:channelurl][:channel_branch],
                                                    :broker_id => params[:channelurl][:broker],

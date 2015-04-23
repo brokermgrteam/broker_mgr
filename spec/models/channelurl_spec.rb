@@ -15,5 +15,7 @@ end
 #  branch_id      :integer(38)
 #  serv_branch_id :integer(38)
 #  broker_id      :integer(38)
+#  wapurl         :string(255)
+#  sub_channel_id :integer(38)
 #
 
