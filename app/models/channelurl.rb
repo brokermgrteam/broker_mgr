@@ -1,5 +1,5 @@
 class Channelurl < ActiveRecord::Base
-  attr_accessible :url :channel_id :branch_id :serv_branch_id :broker_id :wapurl
+  attr_accessible :url, :channel_id, :branch_id, :serv_branch_id, :broker_id, :wapurl
 
   belongs_to :channel
 end
@@ -7,7 +7,7 @@ end
 #
 # Table name: channelurls
 #
-#  id             :integer(38)     not null primary key
+#  id             :integer(38)     not null, primary key
 #  url            :string(255)
 #  created_at     :datetime        not null
 #  updated_at     :datetime        not null
