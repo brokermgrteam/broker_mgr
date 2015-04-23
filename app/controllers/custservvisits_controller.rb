@@ -4,7 +4,7 @@ class CustservvisitsController < ApplicationController
   load_and_authorize_resource
   before_filter :authenticate
   
-  # steps :custserv_one :custserv_two
+  # steps :custserv_one, :custserv_two
   
   def new
     @custservvisit  = Custservvisit.new
@@ -19,14 +19,14 @@ class CustservvisitsController < ApplicationController
   end
   
   def create
-    @workflowexe = Workflowexe.new({:step => 1 :user_id => current_user.id 
+    @workflowexe = Workflowexe.new({:step => 1, :user_id => current_user.id, 
                                     :workflow_id => Workflow.find_by_code("1001").id})
     @workflowexe.save
     @custservvisit = Custservvisit.new(params[:custservvisit])
     @custservvisit.workflowexe_id = @workflowexe.id
-    @custservvisit.status = get_dict("TaskBase.taskStatus"0).id
+    @custservvisit.status = get_dict("TaskBase.taskStatus",0).id
     if @custservvisit.save
-      redirect_to root_path :flash => { :success => "营销工作任务已下达"}
+      redirect_to root_path, :flash => { :success => "营销工作任务已下达"}
     else  
       @title = "营销工作任务"
       render 'new'
@@ -41,7 +41,7 @@ class CustservvisitsController < ApplicationController
   def update
     @custservvisit  = Custservvisit.find(params[:id])
     if @custservvisit.update_attributes(params[:custservvisit])
-      redirect_to @custservvisit :flash => { :success => "营销工作任务提交成功" }
+      redirect_to @custservvisit, :flash => { :success => "营销工作任务提交成功" }
     else  
       @title = "营销工作任务"
       render 'edit'
@@ -50,6 +50,6 @@ class CustservvisitsController < ApplicationController
     
   def destroy
     Custservvisit.find(params[:id]).destroy
-    redirect_to root_path :flash => { :success => "营销工作任务已取消" }
+    redirect_to root_path, :flash => { :success => "营销工作任务已取消" }
   end
 end

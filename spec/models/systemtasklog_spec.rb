@@ -7,7 +7,7 @@ end
 #
 # Table name: systemtasklogs
 #
-#  id             :integer(38)     not null primary key
+#  id             :integer(38)     not null, primary key
 #  task_date      :datetime
 #  total_tasks    :integer(38)
 #  complete_tasks :integer(38)

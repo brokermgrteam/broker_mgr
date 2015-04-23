@@ -2,17 +2,17 @@
 	<div class="span9 well">
 		<!-- <div class=""> -->
 			<p class="lead text-center"><legend><strong>渠道连接</strong></legend></p>
-			<%= simple_form_for(:channelurl :url	=> channelurls_path :html => { :class => 'form-horizontal' } :remote => true) do |f| %>
+			<%= simple_form_for(:channelurl, :url	=> channelurls_path, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
 				<fieldset>
-					<% if can? :access_broker_first_page :all %>
-					<%= render 'fields_new_broker' :f => f %>
-					<% elsif can? :access_user_first_page :all %>
-					<%= render 'fields_new' :f => f %>
+					<% if can? :access_broker_first_page, :all %>
+					<%= render 'fields_new_broker', :f => f %>
+					<% elsif can? :access_user_first_page, :all %>
+					<%= render 'fields_new', :f => f %>
 					<% end %>
 				</fieldset>
 				<div class="form-actions">
-					<%= f.submit "确认" :class => 'btn btn-primary' %>
-					<%= link_to '取消' channels_path :class => 'btn' %>
+					<%= f.submit "确认", :class => 'btn btn-primary' %>
+					<%= link_to '取消', channels_path, :class => 'btn' %>
 				</div>
 			<% end %>
 		<!-- </div> -->

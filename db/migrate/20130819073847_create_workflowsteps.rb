@@ -8,6 +8,6 @@ class CreateWorkflowsteps < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:workflowsteps :workflow_id)
+    add_index(:workflowsteps, :workflow_id)
   end
 end

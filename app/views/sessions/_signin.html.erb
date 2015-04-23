@@ -2,16 +2,16 @@
 	<div class="span4 offset4">
 		<div class="well">
 			<p class="lead text-center">登录系统</p>
-				<%= simple_form_for(:session :url	=> sessions_path) do |f| %>
-					<%= render 'sessions/fields' :f => f %>
+				<%= simple_form_for(:session, :url	=> sessions_path) do |f| %>
+					<%= render 'sessions/fields', :f => f %>
 					<div class="form-actions">
 					  <p class="text-center">
-							<%= f.submit "确认" :class => 'btn btn-info' %>
-							<%= link_to '取消' root_path :class => 'btn' %>
+							<%= f.submit "确认", :class => 'btn btn-info' %>
+							<%= link_to '取消', root_path, :class => 'btn' %>
 						</p>
 				<% end %>
 						<p class="text-right text-info">
-							<%= link_to "忘记密码？" new_recoverypassword_path %>
+							<%= link_to "忘记密码？", new_recoverypassword_path %>
 						</p>
 					</div>
 		</div>

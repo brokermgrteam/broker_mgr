@@ -9,6 +9,6 @@ class CreateDeptindices < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:deptindices [:department_id :month_id :indextype] :unique => true)
+    add_index(:deptindices, [:department_id, :month_id, :indextype], :unique => true)
   end
 end

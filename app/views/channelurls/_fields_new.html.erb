@@ -1,22 +1,22 @@
 <div class="row-fluid">
   <!-- <div class="span6"> -->
-    <%= f.input :channel :label => '选择渠道' :collection => Channel.valid_channels
-            :include_blank => false :required => true %>
+    <%= f.input :channel, :label => '选择渠道', :collection => Channel.valid_channels,
+            :include_blank => false, :required => true %>
   <!-- </div> -->
 <!-- </div> -->
 <!-- <div class="row-fluid"> -->
   <!-- <div class="span6"> -->
-    <%= f.input :cust_branch :label => '开户营业部' :collection => Branch.accessible_by(current_ability).map{|br| ["#{br.code} | #{br.name}" br.id]}
-            :include_blank => true  input_html: { :class => "branch_selection" } %>
+    <%= f.input :cust_branch, :label => '开户营业部', :collection => Branch.accessible_by(current_ability).map{|br| ["#{br.code} | #{br.name}", br.id]},
+            :include_blank => true,  input_html: { :class => "branch_selection" } %>
   <!-- </div> -->
   <!-- <div class="span6"> -->
-    <%= f.input :channel_branch :label => '服务营业部' :collection => Branch.accessible_by(current_ability).map{|br| ["#{br.code} | #{br.name}" br.id]}
+    <%= f.input :channel_branch, :label => '服务营业部', :collection => Branch.accessible_by(current_ability).map{|br| ["#{br.code} | #{br.name}", br.id]},
             :include_blank => true %>
   <!-- </div> -->
 <!-- </div> -->
 <!-- <div class="row-fluid"> -->
   <!-- <div class="span6"> -->
-    <%= f.input :broker :label => '营销人员' :collection => [] as: :select
-            :include_blank => true :required => false input_html: { :class => "broker_selection" } %>
+    <%= f.input :broker, :label => '营销人员', :collection => [], as: :select,
+            :include_blank => true, :required => false, input_html: { :class => "broker_selection" } %>
   <!-- </div> -->
 </div>

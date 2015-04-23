@@ -2,12 +2,12 @@
 	<div class="span9">
 		<div class="well">
 			<p class="lead text-center"><legend><strong>新建审批岗位</strong></legend></p>
-			<%= simple_form_for @userposition :html => { :class => 'form-horizontal' } do |f| %>
+			<%= simple_form_for @userposition, :html => { :class => 'form-horizontal' } do |f| %>
 			  <fieldset>
-				<%= render 'fields' :f => f %>
+				<%= render 'fields', :f => f %>
 				<div class="form-actions">
-					<%= f.submit "确认" :class => 'btn btn-primary' %>
-					<%= link_to '取消' userpositions_path :class => 'btn' %>
+					<%= f.submit "确认", :class => 'btn btn-primary' %>
+					<%= link_to '取消', userpositions_path, :class => 'btn' %>
 				</div>
 			  </fieldset>
 			<% end %>

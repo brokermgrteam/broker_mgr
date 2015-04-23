@@ -7,7 +7,7 @@ end
 #
 # Table name: workflowsteps
 #
-#  id              :integer(38)     not null primary key
+#  id              :integer(38)     not null, primary key
 #  step            :integer(38)
 #  workflow_id     :integer(38)
 #  userposition_id :integer(38)

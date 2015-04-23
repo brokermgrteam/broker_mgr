@@ -3,9 +3,9 @@ require 'spec_helper'
 describe User do
   before(:each) do
     @attr = { 
-     :name => "test" 
-     :email => "test@mail.com"  
-     :password => "validpassword"
+     :name => "test", 
+     :email => "test@mail.com",  
+     :password => "validpassword",
      :password_confirmation => "validpassword"
     }
   end
@@ -39,7 +39,7 @@ describe User do
   end
   
   it "should reject invalid email address" do
-    addresses = %w[user@mailcom a@b d_#_g aaa@b.ccc.]
+    addresses = %w[user@mail,com a@b d_#_g aaa@b.ccc.]
     addresses.each do |address|
       invalid_email_user = User.new(@attr.merge(:email => address))
       invalid_email_user.should_not be_valid    
@@ -75,7 +75,7 @@ describe User do
   
   describe "password validations" do
     it "should requite a password" do
-      User.new(@attr.merge(:password => "" :password_confirmation => ""))
+      User.new(@attr.merge(:password => "", :password_confirmation => ""))
                           .should_not be_valid
     end
     
@@ -85,13 +85,13 @@ describe User do
     
     it "should reject short passwords" do
       short = "a" * 4
-      hash = @attr.merge(:password => short :password_confirmation => short)
+      hash = @attr.merge(:password => short, :password_confirmation => short)
       User.new(hash).should_not be_valid
     end
     
     it "should reject long passwords" do
       long = "a" * 21
-      hash = @attr.merge(:password => long :password_confirmation => long)
+      hash = @attr.merge(:password => long, :password_confirmation => long)
       User.new(hash).should_not be_valid
     end
   end
@@ -135,15 +135,15 @@ describe User do
       end
       
       it "should return nil on email/password mismatch" do
-        User.authenticate(@attr[:email] "wrongpass").should be_nil
+        User.authenticate(@attr[:email], "wrongpass").should be_nil
       end
       
       it "should return nil for an email address with no user" do
-        User.authenticate("v@a.com" @attr[:password]).should be_nil
+        User.authenticate("v@a.com", @attr[:password]).should be_nil
       end
       
       it "should return user on email/password match" do
-        User.authenticate(@attr[:email] @attr[:password]).should == @user
+        User.authenticate(@attr[:email], @attr[:password]).should == @user
       end
     end
   end
@@ -173,7 +173,7 @@ end
 #
 # Table name: users
 #
-#  id                 :integer(38)     not null primary key
+#  id                 :integer(38)     not null, primary key
 #  name               :string(255)
 #  email              :string(255)
 #  created_at         :datetime

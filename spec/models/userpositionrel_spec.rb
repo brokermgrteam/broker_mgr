@@ -7,7 +7,7 @@ end
 #
 # Table name: userpositionrels
 #
-#  id         :integer(38)     not null primary key
+#  id         :integer(38)     not null, primary key
 #  userid     :integer(38)
 #  positionid :integer(38)
 #  expiredate :datetime

@@ -15,12 +15,12 @@
 		<% end %>
 	</ul>
 	<ul class="common-divider"></ul>
-	<% if can? :manage User %>
+	<% if can? :manage, User %>
 	<p class="text text-center">
-		<%= form_for(@user :remote => true) do |f| %>
-			<%= f.hidden_field :password :value => "888888" %>
-			<%= f.hidden_field :password_confirmation :value => "888888" %>
-			<%= f.submit "重置密码" :class => 'btn btn-danger' %>
+		<%= form_for(@user, :remote => true) do |f| %>
+			<%= f.hidden_field :password, :value => "888888" %>
+			<%= f.hidden_field :password_confirmation, :value => "888888" %>
+			<%= f.submit "重置密码", :class => 'btn btn-danger' %>
 		<% end %>
 	</p>
 	<% end %>

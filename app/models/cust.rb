@@ -1,15 +1,15 @@
 # encoding: utf-8
 class Cust < ActiveRecord::Base
-  attr_accessible :address :assessment_date :branch_id :capital_account :capital_account_type :close_date
-                  :cust_name :identification_number :identification_type :mobile :open_date :phone :status
-                  :valid_date :valid_date_crop :zip_code :birthday
+  attr_accessible :address, :assessment_date, :branch_id, :capital_account, :capital_account_type, :close_date,
+                  :cust_name, :identification_number, :identification_type, :mobile, :open_date, :phone, :status,
+                  :valid_date, :valid_date_crop, :zip_code, :birthday
   
   belongs_to :branch
   has_many   :custbrokerrels
   has_many   :custbrokerproductrels
   has_many   :brokerfavcusts
   has_many   :custindices
-  has_many   :months :through => :custindices
+  has_many   :months, :through => :custindices
   
   def is_cust?(cust_sym)
     self.any? { |c| c.capital_account == cust_sym }
@@ -20,7 +20,7 @@ end
 #
 # Table name: custs
 #
-#  id                    :integer(38)     not null primary key
+#  id                    :integer(38)     not null, primary key
 #  capital_account       :string(10)
 #  cust_name             :string(255)
 #  identification_type   :integer(38)

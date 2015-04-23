@@ -7,7 +7,7 @@ end
 #
 # Table name: products
 #
-#  id                :integer(38)     not null primary key
+#  id                :integer(38)     not null, primary key
 #  product_code      :string(255)
 #  name              :string(255)
 #  manager           :string(255)

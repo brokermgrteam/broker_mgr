@@ -9,7 +9,7 @@
 				<div class="alert alert-info">客户业绩（半年内）</div>
 					<% if @cust.custindices.any? %>
 					<div class="accordion" id="accordion1">
-						<% @cust.custindices.select(:month_id).order(:month_id).reverse_order.uniq.each_with_index do |monthindex| %>
+						<% @cust.custindices.select(:month_id).order(:month_id).reverse_order.uniq.each_with_index do |month,index| %>
 							<% if index >= 0 && index <= 5 %>
 								<div class="accordion-group">
 									<div class="accordion-heading">
@@ -19,7 +19,7 @@
 									</div>
 									<div id="collapse<%=month.month_id%>" <% if index == 0 %>class="collapse in"<% else %>class="collapse"<% end %>>
 										<div class="accordion-inner">
-											<%= render :partial => 'custindices/custindex' :locals => { :object => cust_index(@custmonth.month_id) } %>
+											<%= render :partial => 'custindices/custindex', :locals => { :object => cust_index(@cust,month.month_id) } %>
 										</div>
 									</div>
 								</div>

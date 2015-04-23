@@ -7,7 +7,7 @@ end
 #
 # Table name: brokerproductrels
 #
-#  id         :integer(38)     not null primary key
+#  id         :integer(38)     not null, primary key
 #  broker_id  :integer(38)
 #  product_id :integer(38)
 #  created_at :datetime        not null

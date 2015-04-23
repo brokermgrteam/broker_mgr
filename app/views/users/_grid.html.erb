@@ -4,31 +4,31 @@
 	  "没有记录"
 	end
 	
-  g.column :name => '用户代码' :attribute => 'usercode' :detach_with_id => :usercode_filter do |user|
+  g.column :name => '用户代码', :attribute => 'usercode', :detach_with_id => :usercode_filter do |user|
     user.usercode
   end
 
-  g.column :name => '用户姓名' :attribute => 'name' :detach_with_id => :name_filter do |user|
+  g.column :name => '用户姓名', :attribute => 'name', :detach_with_id => :name_filter do |user|
     user.name
   end
 
-	g.column :name => '账户状态' :attribute => 'name' filter: false do |user|
+	g.column :name => '账户状态', :attribute => 'name', filter: false do |user|
 		Dict.find(user.status).name
 	end
 
-	g.column :name => '所辖分公司' :attribute => 'id' :model => Department
-					 :detach_with_id => :department_filter custom_filter: Department.accessible_by(current_ability).map{|dp| [dp.name dp.id]}  do |user|
+	g.column :name => '所辖分公司', :attribute => 'id', :model => Department,
+					 :detach_with_id => :department_filter, custom_filter: Department.accessible_by(current_ability).map{|dp| [dp.name, dp.id]}  do |user|
     user.department.name if user.department
   end
 
-	g.column :name => '所属营业部' :attribute => 'id' :model => Branch 
-					 :detach_with_id => :branch_filter custom_filter: Branch.accessible_by(current_ability).map{|br| [br.name br.id]}  do |user|
+	g.column :name => '所属营业部', :attribute => 'id', :model => Branch, 
+					 :detach_with_id => :branch_filter, custom_filter: Branch.accessible_by(current_ability).map{|br| [br.name, br.id]}  do |user|
     user.branch.name if user.branch
   end
 	
-	if can? :manage User
+	if can? :manage, User
 	  g.column do |user|
-	    link_to('设置' usersettings_user_path(user))
+	    link_to('设置', usersettings_user_path(user))
 	  end
   end
 end -%>

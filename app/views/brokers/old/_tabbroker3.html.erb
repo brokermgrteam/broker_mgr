@@ -2,7 +2,7 @@
   <div id="nav-broker-point" class="btn-group nav-tabs" data-toggle="buttons-radio">
 		<button class="btn"><i class="icon-search"></i></button>
 		<% Time.now.beginning_of_year.strftime("%Y%m").upto(Time.now.end_of_year.strftime("%Y%m")).each do |i| %>
-			<%= content_tag "button" :class => "btn" :value => i do %>
+			<%= content_tag "button", :class => "btn", :value => i do %>
 				<%= i.at(4..5) %>
 			<% end %>
 		<% end %>

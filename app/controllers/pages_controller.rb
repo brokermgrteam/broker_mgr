@@ -7,22 +7,22 @@ class PagesController < ApplicationController
       @broker = Broker.valid_brokers.find_by_user_id(current_user.id) unless Broker.find_by_user_id(current_user.id).nil?
       @workflowunderways = Workflowunderway.where(:user_id => current_user.id).limit(5).order('created_at desc')
       @brokerproducts = @broker.products if @broker
-      @newproducts = Product.find(:all :order => "id desc" :limit => 10)
+      @newproducts = Product.find(:all, :order => "id desc", :limit => 10)
         
-      @brokerfavcusts_grid = initialize_grid(Cust 
-                :conditions => { :id => @broker.brokerfavcusts.map{|c| c.cust_id} }
-                :include => [:custindices]
-                # :name => 'brokerfavcusts'
+      @brokerfavcusts_grid = initialize_grid(Cust, 
+                :conditions => { :id => @broker.brokerfavcusts.map{|c| c.cust_id} },
+                :include => [:custindices],
+                # :name => 'brokerfavcusts',
                 :per_page => 5) if @broker
 
-      @brokercompliance_grid = initialize_grid(Brokercompliancelog 
-              :order => 'brokercompliancelogs.month_id'
-              :order_direction => 'desc'
-              :conditions => {:broker_id => @broker} 
+      @brokercompliance_grid = initialize_grid(Brokercompliancelog, 
+              :order => 'brokercompliancelogs.month_id',
+              :order_direction => 'desc',
+              :conditions => {:broker_id => @broker}, 
               :per_page => 5) if @broker
 
       # @brokers = Broker.accessible_by(current_ability)
-      if (can? :access_user_first_page :all)
+      if (can? :access_user_first_page, :all)
         redirect_to brokers_path
       end
     end

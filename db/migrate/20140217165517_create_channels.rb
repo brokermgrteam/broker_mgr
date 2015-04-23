@@ -10,6 +10,6 @@ class CreateChannels < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :channels :channel_code :unique => true
+    add_index :channels, :channel_code, :unique => true
   end
 end

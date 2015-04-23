@@ -1,13 +1,13 @@
 <script type="text/javascript" charset="utf-8">
 	$(function() {
-		var _dept_url_url2
+		var _dept,_url,_url2
 		_dept = <%= @department.id %>
 		_url = '/departments/' + _dept + '/deptindices/1001/dept_index.json'
 		_url2 = '/departments/' + _dept + '/deptindices/1002/dept_index.json'
 
-	  return $.get(_url function(data_1) {
-			return $.get(_url2 function(data_2) {
-				var chart _month
+	  return $.get(_url, function(data_1) {
+			return $.get(_url2, function(data_2) {
+				var chart, _month
 				    _month = [];
 						data_1.map(function(y) {
 														_month.push(y.month);
@@ -15,33 +15,33 @@
 
 				new Highcharts.Chart({
 					chart: {
-						renderTo: "chart_1"
+						renderTo: "chart_1",
 						type: 'area'
-					}
+					},
 					title: {
 						text: "收入情况"
-					}
+					},
 					xAxis: {
-						categories: _month
+						categories: _month,
 						tickInterval: 3
-					}
+					},
 					yAxis: {
 						title: {
 							text: "单位：亿"
-						}
-						min: 0
+						},
+						min: 0,
 						labels: {
 									formatter: function() {
 									   return this.value / 100000000;
 									}
 								}
-					}
+					},
 					credits: {
 						enabled: false
-					}
+					},
 					series: [
 					{
-					name: '总净佣金'
+					name: '总净佣金',
 					data: 	
 						(function() {
 					                var _results;
@@ -50,11 +50,11 @@
 																					_results.push(y.total);
 															          })
 					                return _results;
-					              })()
+					              })(),
 						
-					}
+					},
 					{
-					name: '营销团队净佣金'
+					name: '营销团队净佣金',
 					data: 	
 						(function() {
 					                var _results;
@@ -63,7 +63,7 @@
 																					_results.push(y.total);
 															          })
 					                return _results;
-					              })()
+					              })(),
 				
 					}
 					]

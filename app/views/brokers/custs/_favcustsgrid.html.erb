@@ -9,7 +9,7 @@
   end
 
   g.column :name => '姓名' do |cust|
-    link_to(cust.cust_name cust_path(cust))
+    link_to(cust.cust_name, cust_path(cust))
   end
 
   g.column :name => '当前资产' do |cust|

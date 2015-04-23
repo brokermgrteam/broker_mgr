@@ -5,16 +5,16 @@
   </div>
   <div class="modal-body">
     <p><%= notice.content %></p>
-    <p><%= link_to notice[:file] notice.file.url unless notice.file.blank? { |i|  } %></p>
+    <p><%= link_to notice[:file], notice.file.url unless notice.file.blank? { |i|  } %></p>
     <p class="muted"><small><%= notice.user.name %></small></p>
-    <p class="muted"><small><%= I18n.localize(notice.created_at :format => :long) %></small></p>
+    <p class="muted"><small><%= I18n.localize(notice.created_at, :format => :long) %></small></p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
     <% if notice.belongs_to_user?(current_user)%>
-      <%= link_to "未读" {:controller => 'notices' :action => 'unread' :notice_id => notice.id} :class => 'btn btn-primary' %>
+      <%= link_to "未读", {:controller => 'notices', :action => 'unread', :notice_id => notice.id}, :class => 'btn btn-primary' %>
     <% else %>
-      <%= link_to "已读" {:controller => 'notices' :action => 'read' :notice_id => notice.id} :class => 'btn btn-primary' %>
+      <%= link_to "已读", {:controller => 'notices', :action => 'read', :notice_id => notice.id}, :class => 'btn btn-primary' %>
     <% end %>
   </div>
 </div>

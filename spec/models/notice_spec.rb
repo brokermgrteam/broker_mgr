@@ -7,7 +7,7 @@ end
 #
 # Table name: notices
 #
-#  id         :integer(38)     not null primary key
+#  id         :integer(38)     not null, primary key
 #  title      :string(255)
 #  content    :text
 #  user_id    :integer(38)

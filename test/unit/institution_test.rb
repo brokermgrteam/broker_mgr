@@ -9,7 +9,7 @@ end
 #
 # Table name: institutions
 #
-#  id               :integer(38)     not null primary key
+#  id               :integer(38)     not null, primary key
 #  institution_code :string(255)
 #  institution_name :string(255)
 #  created_at       :datetime        not null

@@ -6,13 +6,13 @@
 # 	$('#categories_category_name').autocomplete({
 # 		# minLength: 2
 # 		source: $('#categories_category_name').data('autocomplete-source')
-# 		focus: (event ui) ->
+# 		focus: (event, ui) ->
 # 			$("#categories_category_name").val ui.item.broker_code + "-" + ui.item.broker_name
 # 			false
-# 		select: (event ui) ->
+# 		select: (event, ui) ->
 # 			$("#categories_category_name").val ui.item.broker_code + "-" + ui.item.broker_name
 # 			# $("#link_broker_id").val ui.item.id
 # 			false
-# 	 })	.data("autocomplete")._renderItem = (ul item) ->
-# 		    $("<li></li>").data("item.autocomplete" item).append("<a>" + item.broker_code + "-" + item.broker_name + "</a>").appendTo ul
+# 	 })	.data("autocomplete")._renderItem = (ul, item) ->
+# 		    $("<li></li>").data("item.autocomplete", item).append("<a>" + item.broker_code + "-" + item.broker_name + "</a>").appendTo ul
 

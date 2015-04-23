@@ -8,7 +8,7 @@
 			</div>
 			<div id="collapse<%=t.month_id%>" class="collapse in" <% if @salary_months.first.month_id == t.month_id %>style="height: auto;"<% else %>style="height: 0px;"<% end %>>
 				<div class="accordion-inner">
-					<%= render :partial => 'broker_salary' :locals => { :object => broker_salary(t.month_id) } %>
+					<%= render :partial => 'broker_salary', :locals => { :object => broker_salary(t.month_id) } %>
 				</div>
 			</div>
 		</div>

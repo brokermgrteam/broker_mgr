@@ -7,7 +7,7 @@ end
 #
 # Table name: workflowhistories
 #
-#  id          :integer(38)     not null primary key
+#  id          :integer(38)     not null, primary key
 #  workflow_id :integer(38)
 #  user_id     :integer(38)
 #  content     :string(255)

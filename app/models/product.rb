@@ -1,9 +1,9 @@
 # encoding: utf-8
 class Product < ActiveRecord::Base
-  attr_accessible :begin_limit :capital_account :contract :instruction :linkman :manage_begin_date
-                  :manage_end_date :manager :name :phone :product_code :product_income :product_structure
-                  :product_type :returns_ratio :risk_level :sale_begin_date :sale_end_date :sale_limit
-                  :sales_bonus :status
+  attr_accessible :begin_limit, :capital_account, :contract, :instruction, :linkman, :manage_begin_date,
+                  :manage_end_date, :manager, :name, :phone, :product_code, :product_income, :product_structure,
+                  :product_type, :returns_ratio, :risk_level, :sale_begin_date, :sale_end_date, :sale_limit,
+                  :sales_bonus, :status
                   
   has_many        :brokerproductrels
   has_many 				:productattachments
@@ -13,7 +13,7 @@ end
 #
 # Table name: products
 #
-#  id                :integer(38)     not null primary key
+#  id                :integer(38)     not null, primary key
 #  product_code      :string(255)
 #  name              :string(255)
 #  manager           :string(255)

@@ -7,6 +7,6 @@ class CreateDicts < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:dicts [:dict_type :code] :unique => true)
+    add_index(:dicts, [:dict_type, :code], :unique => true)
   end
 end

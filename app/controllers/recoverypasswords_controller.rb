@@ -6,22 +6,22 @@ class RecoverypasswordsController < ApplicationController
   end
  
   def create
-  	broker = Broker.find_by_user_code_and_certificate_num(params[:recoverypassword][:usercode]
+  	broker = Broker.find_by_user_code_and_certificate_num(params[:recoverypassword][:usercode],
                              															params[:recoverypassword][:certificate_num])
     if broker.nil?
       @title = "忘记密码"
       respond_to do |format|
-         format.html { redirect_to root_path :flash => { :error => "输入不正确，请重新输入" } }
+         format.html { redirect_to root_path, :flash => { :error => "输入不正确，请重新输入" } }
          format.js { render :action => "reject" }
       end
     else
       user = broker.user
-      @recoverypassword = Passwordresetlog.create(:user_id => user.id
-                                                  :confirm_code => rand(999999) 
-                                                  :mobile => broker.mobile 
+      @recoverypassword = Passwordresetlog.create(:user_id => user.id,
+                                                  :confirm_code => rand(999999), 
+                                                  :mobile => broker.mobile, 
                                                   :status => 0)
       respond_to do |format|
-         format.html { redirect_to root_path :flash => { :success => "请查收短信确认码" } }
+         format.html { redirect_to root_path, :flash => { :success => "请查收短信确认码" } }
          format.js
       end
     end
@@ -36,19 +36,19 @@ class RecoverypasswordsController < ApplicationController
     @recoverypassword = Passwordresetlog.find(params[:passwordresetlog][:passwordresetlog_id])
     @user = User.find(@recoverypassword.user_id)
     if @recoverypassword.confirm_code == params[:passwordresetlog][:confirm_code]
-       @user.update_attributes(:name => @user.name 
-                               :usercode => @user.usercode 
-                               :password => "888888" 
+       @user.update_attributes(:name => @user.name, 
+                               :usercode => @user.usercode, 
+                               :password => "888888", 
                                :password_confirmation => "888888")
-       @user.update_attribute :first_login false
-      @recoverypassword.update_attribute :status 1
+       @user.update_attribute :first_login, false
+      @recoverypassword.update_attribute :status, 1
       respond_to do |format|
-           format.html { redirect_to root_path :flash => { :success => "密码初始化成功" } }
+           format.html { redirect_to root_path, :flash => { :success => "密码初始化成功" } }
            format.js
       end
     else
       respond_to do |format|
-           format.html { redirect_to root_path :flash => { :error => "验证码输入错误，请稍后再试" } }
+           format.html { redirect_to root_path, :flash => { :error => "验证码输入错误，请稍后再试" } }
            format.js
       end
     end

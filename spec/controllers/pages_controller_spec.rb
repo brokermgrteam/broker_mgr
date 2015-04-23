@@ -12,7 +12,7 @@ describe PagesController do
     
     it "returns the right title" do
         get 'home'
-        response.should have_selector("title" 
+        response.should have_selector("title", 
                                       :content => "#{@base_title} | 首页")
      end
     
@@ -29,7 +29,7 @@ describe PagesController do
     end
     it "returns the right title" do
          get 'contact'
-         response.should have_selector("title" 
+         response.should have_selector("title", 
                                        :content => "#{@base_title} | 联系")
     end
   end
@@ -41,7 +41,7 @@ describe PagesController do
     end
     it "returns the right title" do
           get 'about'
-          response.should have_selector("title" 
+          response.should have_selector("title", 
                                         :content => "#{@base_title} | 关于")
     end
   end
@@ -53,7 +53,7 @@ describe PagesController do
     end
     it "returns the right title" do
           get 'help'
-          response.should have_selector("title" 
+          response.should have_selector("title", 
                                         :content => "#{@base_title} | 帮助")
     end
   end

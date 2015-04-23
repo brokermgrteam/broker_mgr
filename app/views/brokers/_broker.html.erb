@@ -7,7 +7,7 @@
 			    <li><a href="#2" data-toggle="tab">绩效考核</a></li>
 					<li><a href="#4" data-toggle="tab">收入报酬</a></li>
 					<li><a href="#5" data-toggle="tab">营销产品</a></li>
-					<% if can? :manage User %>
+					<% if can? :manage, User %>
 						<li><a href="#6" data-toggle="tab">签到情况</a></li>
 					<% end %>
 			  </ul>
@@ -24,7 +24,7 @@
 					<div class="tab-pane" id="5">
 						<%= render 'brokers/products/brokerproducts' %>
 					</div>
-					<% if can? :manage User %>
+					<% if can? :manage, User %>
 					<div class="tab-pane" id="6">
 						<%= render 'brokers/manage/signin_log' %>
 					</div>

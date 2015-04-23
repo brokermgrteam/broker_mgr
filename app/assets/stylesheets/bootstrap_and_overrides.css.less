@@ -26,7 +26,7 @@
 // Since bootstrap was imported above you have access to its mixins which
 // you may use and inherit here
 //
-// If you'd like to override bootstrap's own variables you can do so here as well
+// If you'd like to override bootstrap's own variables, you can do so here as well
 // See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
 //
 // Example:
@@ -43,7 +43,7 @@
   padding: 7px 14px;
   margin: 0 0 @baseLineHeight;
   list-style: none;
-  #gradient > .vertical(@white @white);
+  #gradient > .vertical(@white, @white);
   border: 1px solid @white;
   .border-radius(3px);
   .box-shadow(inset 0 1px 0 @white);
@@ -62,8 +62,8 @@
      -moz-border-radius: 6px;
           border-radius: 6px;
 }
-.mini-layout
-.mini-layout .mini-layout-body
+.mini-layout,
+.mini-layout .mini-layout-body,
 .mini-layout {
   margin-bottom: 20px;
   padding: 9px;
@@ -78,8 +78,8 @@
   margin: 0 auto;
   width: 70%;
 }
-.mini-layout.fluid .mini-layout-sidebar
-.mini-layout.fluid .mini-layout-header
+.mini-layout.fluid .mini-layout-sidebar,
+.mini-layout.fluid .mini-layout-header,
 .mini-layout.fluid .mini-layout-body {
   float: left;
 }

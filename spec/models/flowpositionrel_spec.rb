@@ -7,7 +7,7 @@ end
 #
 # Table name: flowpositionrels
 #
-#  id         :integer(38)     not null primary key
+#  id         :integer(38)     not null, primary key
 #  step       :integer(38)
 #  position   :integer(38)
 #  created_at :datetime        not null

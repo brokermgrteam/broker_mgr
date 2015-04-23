@@ -62,7 +62,7 @@
 }
 .ui-widget
 {
-    font-family: VerdanaArialsans-serif;
+    font-family: Verdana,Arial,sans-serif;
     font-size: 15px;
 }
 .ui-menu
@@ -252,7 +252,7 @@ td.sidebar {
   margin-bottom: -15px;
 }
 
-div.field div.actions {
+div.field, div.actions {
   margin-bottom: 10px;
 }
 */
@@ -374,9 +374,9 @@ form.new_micropost textarea {
   width: 100%;
 }
 
-#calendar td
+#calendar td,
 #calendar th {
-  font-family: "Lucida Grande"arialhelveticasans-serif;
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
   font-size: 10px;
   padding: 6px;
   border: 1px solid #999;
@@ -408,7 +408,7 @@ form.new_micropost textarea {
   text-align: center;
 }
 
-#calendar #month a #calendar #month a:hover {
+#calendar #month a, #calendar #month a:hover {
   text-decoration: none;
   padding: 0 10px;
   color: #999;

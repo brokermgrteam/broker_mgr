@@ -25,7 +25,7 @@ function showTableResult1 (v) {
 	_broker = <%= @broker.id %>
 	clearRows1();  
 	var _table = document.getElementById("_table1");  
-	var _container_row_cell_url1_url2_url3_url4;
+	var _container,_row,_cell,_url1,_url2,_url3,_url4;
 	//table head
 	_container = document.createElement("thead");
 	document.getElementById("_table1").appendChild(_container);  
@@ -42,16 +42,16 @@ function showTableResult1 (v) {
 	_url3 = '/brokers/' + _broker + '/brokerindices/5003/broker_index.json'
 	_url4 = '/brokers/' + _broker + '/brokerindices/5004/broker_index.json'
 
-	return $.get(_url1 function(data_1) {
-		return $.get(_url2 function(data_2) {
-			return $.get(_url3 function(data_3) {
-				return $.get(_url4 function(data_4) {
-					var data_1_1 data_2_1 data_3_1 data_4_1
+	return $.get(_url1, function(data_1) {
+		return $.get(_url2, function(data_2) {
+			return $.get(_url3, function(data_3) {
+				return $.get(_url4, function(data_4) {
+					var data_1_1, data_2_1, data_3_1, data_4_1
 					for(var i in data_1){   
 					if (data_1[i].month == v)
-						data_1_1 = data_1[i]
-						data_2_1 = data_2[i]
-						data_3_1 = data_3[i]
+						data_1_1 = data_1[i],
+						data_2_1 = data_2[i],
+						data_3_1 = data_3[i],
 						data_4_1 = data_4[i]
 					 }
 					//table body

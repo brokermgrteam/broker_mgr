@@ -1,2 +1,2 @@
 object @brokersalary
-attributes :month_id => :month :occursum => :total :remark => :subtitle
+attributes :month_id => :month, :occursum => :total, :remark => :subtitle

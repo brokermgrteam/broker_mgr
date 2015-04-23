@@ -5,11 +5,11 @@ class ProductsController < ApplicationController
   
   def index
     @products = Product.order("name").paginate(:page => params[:page]).per_page(20)
-    @products_grid = initialize_grid(Product 
-              # :conditions => {:branch_id => Branch.accessible_by(current_ability).map{|br| [br.id]}} 
-              # :include => [:department :branch]
-              :name => 'products'
-              # :enable_export_to_csv => true if can? :manage Product
+    @products_grid = initialize_grid(Product, 
+              # :conditions => {:branch_id => Branch.accessible_by(current_ability).map{|br| [br.id]}}, 
+              # :include => [:department, :branch],
+              :name => 'products',
+              # :enable_export_to_csv => true if can? :manage, Product,
               :per_page => 20)
     @title = "营销产品"
     export_grid_if_requested('products' => 'grid')
@@ -23,17 +23,17 @@ class ProductsController < ApplicationController
   def downloadfile
     @productattachment  = Productattachment.find(params[:productattachment_id])
     if !@productattachment.file_binary.nil?
-      send_data @productattachment.file_binary :filename => @productattachment.file_name
+      send_data @productattachment.file_binary, :filename => @productattachment.file_name
     end
     # @seq      = params[:seq]
     # if @product.f1!=nil && @seq=="1"
-    #   send_data @product.f1 :filename => @product.f1_name
+    #   send_data @product.f1, :filename => @product.f1_name
     # end
     # if @product.f2!=nil && @seq=="2"
-    #   send_data @product.f2 :filename => @product.f2_name
+    #   send_data @product.f2, :filename => @product.f2_name
     # end
     # if @product.f3!=nil && @seq=="3"
-    #   send_data @product.f3 :filename => @product.f3_name
+    #   send_data @product.f3, :filename => @product.f3_name
     # end
   end
 end

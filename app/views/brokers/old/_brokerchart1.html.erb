@@ -1,57 +1,57 @@
 <script type="text/javascript" charset="utf-8">
 $(function() {
-	showChartResult1(10031004);
+	showChartResult1(1003,1004);
 });
 
 $('#nav-broker-cust button').click( function(e) {
 	var selected = $(this).attr('value');
 	// console.log(selected);
-	showChartResult1(10031004);
+	showChartResult1(1003,1004);
 });
 
-function showChartResult1 (vw) {
-		var _dept_url_width_url2
+function showChartResult1 (v,w) {
+		var _dept,_url,_width,_url2
 		_broker = <%= @broker.id %>
 		_url = '/brokers/' + _broker + '/brokerindices/' + v + '/broker_index.json'
 		_url2 = '/brokers/' + _broker + '/brokerindices/' + w + '/broker_index.json'
 		// console.log(_url2);
 		_width = document.getElementById("tab_page").offsetWidth;
-	  return $.get(_url function(data) {
-			return $.get(_url2 function(data_2) {
-			var chart _month
+	  return $.get(_url, function(data) {
+			return $.get(_url2, function(data_2) {
+			var chart, _month
 			    _month = [];
 					data.map(function(y) {
 													_month.push(y.month);
 							          })
 			new Highcharts.Chart({
 				chart: {
-					renderTo: "chart_1"
-					type: 'column'
-					zoomType: 'x'
+					renderTo: "chart_1",
+					type: 'column',
+					zoomType: 'x',
 					width: _width
-				}
+				},
 				title: {
 					text: "客户情况"
-				}
+				},
 				xAxis: {
-					categories: _month
-					maxZoom: 1
+					categories: _month,
+					maxZoom: 1,
 					// tickInterval: 3
-				}
+				},
 				yAxis: {
 					title: {
 						text: "客户数"
-					}
-					min: 0
+					},
+					min: 0,
 					labels: {
 								formatter: function() {
 								   return this.value;
 								}
 							}
-				}
+				},
 				credits: {
 					enabled: false
-				}
+				},
 				series: [
 				{
 				data: 	
@@ -62,9 +62,9 @@ function showChartResult1 (vw) {
 																				_results.push(y.total);
 														          })
 				                return _results;
-				              })()
-					name: "客户总数"
-				}
+				              })(),
+					name: "客户总数",
+				},
 				{
 				data: 	
 					(function() {
@@ -74,8 +74,8 @@ function showChartResult1 (vw) {
 																				_results.push(y.total);
 														          })
 				                return _results;
-				              })()
-					name: '新增客户数'
+				              })(),
+					name: '新增客户数',
 				}
 				]
 			})

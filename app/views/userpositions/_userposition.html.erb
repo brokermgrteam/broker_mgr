@@ -1,8 +1,8 @@
 <tr>
-	<td><%= link_to userposition.name edit_userposition_path(userposition) %></td>
-	<% if can? :delete Userposition %>
+	<td><%= link_to userposition.name, edit_userposition_path(userposition) %></td>
+	<% if can? :delete, Userposition %>
 	  <td>
-			<%= link_to "删除" userposition_path(userposition) :method => :delete :confirm => '确认删除该审批岗位?' 
+			<%= link_to "删除", userposition_path(userposition), :method => :delete, :confirm => '确认删除该审批岗位?', 
 											   :class => 'btn btn-mini btn-danger pull-right' %>
 		</td>
 	<% end %>

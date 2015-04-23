@@ -6,6 +6,6 @@ class CreateMonths < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:months :month :unique => true)
+    add_index(:months, :month, :unique => true)
   end
 end

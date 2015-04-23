@@ -31,7 +31,7 @@
 	<ul class="common-divider"></ul>
 	<!-- <ul class="inline"> -->
 	<% if User.find(@broker.user_id) == current_user %>
-		<p class="text-center"><%= link_to '新建工作' new_workflowunderway_path :class => 'btn btn-success' %></p>
+		<p class="text-center"><%= link_to '新建工作', new_workflowunderway_path, :class => 'btn btn-success' %></p>
 	<% end %>
 	<!-- </ul> -->
 </div>

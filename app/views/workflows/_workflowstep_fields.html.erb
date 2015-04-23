@@ -1,15 +1,15 @@
 <fieldset>
 	<div class="well">
 		<legend>工作流环节</legend>
-		<%= f.input :step :collection => (1..6) :label => '步骤'
+		<%= f.input :step, :collection => (1..6), :label => '步骤',
 		 						:input_html => { :class => "input-small" } %>
-		<%= f.input :name :label => '名称'
+		<%= f.input :name, :label => '名称',
 								:input_html => { :class => "input-small" } %>
-		<%= f.input :userposition_id :collection => Userposition.all :label => '角色'
+		<%= f.input :userposition_id, :collection => Userposition.all, :label => '角色',
 		 						:input_html => { :class => "input-xlarge" } %>
-		<%= f.input :memo as: :text :label => '备注'
-		 						:input_html => { :class => "input-xlarge" :rows => '3' } %>
+		<%= f.input :memo, as: :text, :label => '备注',
+		 						:input_html => { :class => "input-xlarge", :rows => '3' } %>
 	  <%= f.hidden_field :_destroy %>
-	  <%= link_to "删除" '#' class: "btn btn-danger remove_fields" %>
+	  <%= link_to "删除", '#', class: "btn btn-danger remove_fields" %>
 	</div>
 </fieldset>

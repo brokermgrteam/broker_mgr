@@ -12,13 +12,13 @@ class WorkflowhistoriesController < ApplicationController
       @user = current_user
     end
     # @department = params[:department]
-    @workflowhistories_grid = initialize_grid(Workflowhistory 
-              :conditions => {:user_id => @user.id} 
-              :include => [:workflow]
-              :name => 'workflowhistory'
-              # :enable_export_to_csv => true
-              :csv_field_separator => ';'
-              :csv_file_name => '导出'
+    @workflowhistories_grid = initialize_grid(Workflowhistory, 
+              :conditions => {:user_id => @user.id}, 
+              :include => [:workflow],
+              :name => 'workflowhistory',
+              # :enable_export_to_csv => true,
+              :csv_field_separator => ';',
+              :csv_file_name => '导出',
               :per_page => 20)
     # export_grid_if_requested('workflowunderways' => 'grid')
   end

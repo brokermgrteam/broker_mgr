@@ -10,59 +10,59 @@ $('#nav-broker-cust button').click( function(e) {
 });
 
 function showChartResult3 (v) {
-		var _dept_url_width_url2
+		var _dept,_url,_width,_url2
 		_broker = <%= @broker.id %>
 		_url = '/brokers/' + _broker + '/brokerindices/1009/broker_index.json'
 		_url2 = '/brokers/' + _broker + '/brokerindices/1010/broker_index.json'
 		// console.log(_url);
 		_width = document.getElementById("tab_page").offsetWidth;
-	  return $.get(_url function(data_1) {
-			return $.get(_url2 function(data_2) {
-					var chart _month data_1_1 data_2_1
+	  return $.get(_url, function(data_1) {
+			return $.get(_url2, function(data_2) {
+					var chart, _month, data_1_1, data_2_1
 					for(var i in data_1){   
 					if (data_1[i].month == v)
-						data_1_1 = data_1[i]
+						data_1_1 = data_1[i],
 						data_2_1 = data_2[i]
 					 }
 					// alert(data_1.total + "&" + data_2.total);  
 					new Highcharts.Chart({
 						chart: {
-							renderTo: "chart_3"
-							plotBackgroundColor: null
-							plotBorderWidth: null
-		          plotShadow: false
+							renderTo: "chart_3",
+							plotBackgroundColor: null,
+							plotBorderWidth: null,
+		          plotShadow: false,
 							width: _width/2.15
-						}
+						},
 						title: {
 							text: "有效户占比"
-						}
+						},
 						tooltip: {
 		          formatter: function() {
 						  	return '<b>'+ this.point.name +'</b>: '+ this.y + '名';
 							}
-		        }
+		        },
 		        plotOptions: {
 		            pie: {
-		                allowPointSelect: true
-		                cursor: 'pointer'
+		                allowPointSelect: true,
+		                cursor: 'pointer',
 		                dataLabels: {
-		                    enabled: true
-		                    color: '#000000'
-		                    connectorColor: '#000000'
+		                    enabled: true,
+		                    color: '#000000',
+		                    connectorColor: '#000000',
 		                    formatter: function() {
 		                        return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(0) +' %';
 		                    }
 		                }
 		            }
-		        }
+		        },
 						credits: {
 							enabled: false
-						}
+						},
 						series: [{
-							type: 'pie'
+							type: 'pie',
 							data: [
-								{ name: '无效户' y: data_1_1.total }
-		        		{ name: '有效户' y: data_2_1.total }
+								{ name: '无效户', y: data_1_1.total },
+		        		{ name: '有效户', y: data_2_1.total },
 		          ]
 						}]
 					})

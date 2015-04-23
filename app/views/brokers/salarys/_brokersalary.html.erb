@@ -2,7 +2,7 @@
 	<div class="span12">
 		<% if @broker.salaries.any? %>
 		<div class="accordion" id="accordion1">
-			<% @broker.salaries.select(:month_id).order(:month_id).reverse_order.uniq.each_with_index do |monthindex| %>
+			<% @broker.salaries.select(:month_id).order(:month_id).reverse_order.uniq.each_with_index do |month,index| %>
 				<% if index >= 0 && index <= 5 %>
 					<div class="accordion-group">
 						<div class="accordion-heading">
@@ -13,9 +13,9 @@
 						<div id="collapse<%=month.month_id%>" <% if index == 0 %>class="collapse in"<% else %>class="collapse"<% end %>>
 							<div class="accordion-inner">
 								<% if month.month_id < 201407 %>
-									<%= render :partial => 'salaries/salary_old' :locals => { :object => broker_salary(@brokermonth.month_id) } %>
+									<%= render :partial => 'salaries/salary_old', :locals => { :object => broker_salary(@broker,month.month_id) } %>
 								<% else %>
-									<%= render :partial => 'salaries/salary' :locals => { :object => broker_salary(@brokermonth.month_id) } %>
+									<%= render :partial => 'salaries/salary', :locals => { :object => broker_salary(@broker,month.month_id) } %>
 								<% end %>
 							</div>
 						</div>

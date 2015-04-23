@@ -11,8 +11,8 @@ ul.ui-autocomplete {
   -moz-box-shadow: 1px 1px 2px gray;
   -webkit-box-shadow: 1px 1px 2px gray;
   box-shadow: 1px 1px 2px gray;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4 Direction=135 Color='#000000')";
-  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4 Direction=135 Color='#000000');
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
   li {
 	background-color: #FFF;
 //	border-top: solid 1px #DDD;
@@ -24,7 +24,7 @@ ul.ui-autocomplete {
 		padding: 3px;
 		text-decoration: none
 	}
-	a.ui-state-hover a.ui-state-active {
+	a.ui-state-hover, a.ui-state-active {
 		background-color: #FFFCB2;
 	}
   }

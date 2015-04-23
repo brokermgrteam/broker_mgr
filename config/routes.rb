@@ -1,6 +1,6 @@
 Cmwp::Application.routes.draw do
   resources :users do
-    get 'usersettings' :on => :member
+    get 'usersettings', :on => :member
   end
   resources :roles
   resources :userpositions
@@ -9,76 +9,76 @@ Cmwp::Application.routes.draw do
   resources :systemtasklogs
   # resources :months
   resources :notices do
-    get 'read' :on => :collection
-    get 'unread' :on => :collection
+    get 'read', :on => :collection
+    get 'unread', :on => :collection
   end
   resources :custs do
-    get 'productcusts_index' :on => :collection
-    get 'cust_detail_index' :on => :collection
+    get 'productcusts_index', :on => :collection
+    get 'cust_detail_index', :on => :collection
   end
   resources :products do
     member do
       get :downloadfile
     end
   end
-  resources :brokerproductrels :only => [:create :destroy]
-  resources :brokerfavcusts :only => [:create :destroy]
+  resources :brokerproductrels, :only => [:create, :destroy]
+  resources :brokerfavcusts, :only => [:create, :destroy]
   resources :channels
   resources :channelurls do
     collection do
-      get 'get_brokers' to: "channelurls#get_brokers"
+      get 'get_brokers', to: "channelurls#get_brokers"
     end 
   end
   resources :workflowunderways do
-    resources :workflow_steps :custservvisits
+    resources :workflow_steps, :custservvisits
   end
   # resources :workflow_steps
-  resources :sessions :only => [:new :create :destroy]
+  resources :sessions, :only => [:new, :create, :destroy]
   resources :recoverypasswords do
-    get 'confirm' :on => :collection
+    get 'confirm', :on => :collection
   end
-  resources :departments :only => [:index :show] do
+  resources :departments, :only => [:index, :show] do
     resources :deptindices do
-      get 'dept_index' :on => :member
+      get 'dept_index', :on => :member
     end
   end
-  resources :branches :only => [:index :show] do
-    get 'typebrokers' :on => :member
+  resources :branches, :only => [:index, :show] do
+    get 'typebrokers', :on => :member
     resources :branchindices do
-      get 'branch_index' :on => :member
+      get 'branch_index', :on => :member
     end
   end
-  resources :brokers :only => [:index :show] do
+  resources :brokers, :only => [:index, :show] do
     resources :brokerindices do
-      get 'broker_index' :on => :member
+      get 'broker_index', :on => :member
     end
     resources :salaries do
-      get 'broker_salary' :on => :member
+      get 'broker_salary', :on => :member
     end
     member do
       get :relbrokers
     end
   end
   resources :categories do
-    get 'search' :on => :collection
+    get 'search', :on => :collection
   end
 
   root :to => 'pages#home'
 
-  match '/contact' :to => 'pages#contact'
-  match '/about'   :to => 'pages#about'
-  match '/help'    :to => 'pages#help'
-  match '/signup'  :to => 'users#new' 
-  match '/signin'  :to => 'sessions#new'
-  match '/signout' :to => 'sessions#destroy'  
-  # match '/pwd'     :to => 'recoverypassword#new' 
+  match '/contact', :to => 'pages#contact'
+  match '/about',   :to => 'pages#about'
+  match '/help',    :to => 'pages#help'
+  match '/signup',  :to => 'users#new' 
+  match '/signin',  :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'  
+  # match '/pwd',     :to => 'recoverypassword#new' 
 
-  # scope :protocol => 'https://' :constraints => { :protocol => 'https://' } do
+  # scope :protocol => 'https://', :constraints => { :protocol => 'https://' } do
   #   resources :sessions
   # end
   
   
-  # match 'categories' => 'categories#show' :via => :get
+  # match 'categories' => 'categories#show', :via => :get
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -88,7 +88,7 @@ Cmwp::Application.routes.draw do
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase' :as => :purchase
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
@@ -108,7 +108,7 @@ Cmwp::Application.routes.draw do
 
   # Sample resource route with sub-resources:
   #   resources :products do
-  #     resources :comments :sales
+  #     resources :comments, :sales
   #     resource :seller
   #   end
 
@@ -116,7 +116,7 @@ Cmwp::Application.routes.draw do
   #   resources :products do
   #     resources :comments
   #     resources :sales do
-  #       get 'recent' :on => :collection
+  #       get 'recent', :on => :collection
   #     end
   #   end
 

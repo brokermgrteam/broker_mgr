@@ -7,7 +7,7 @@ end
 #
 # Table name: sessions
 #
-#  id         :integer(38)     not null primary key
+#  id         :integer(38)     not null, primary key
 #  user_id    :integer(38)
 #  login_type :integer(38)
 #  created_at :datetime        not null

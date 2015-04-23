@@ -12,7 +12,7 @@
 			<table class="table table-striped table-bordered table-condensed">
 			  <caption><h4><p class="text-info" style="padding-bottom: 10px;">最新产品</p></h4></caption>
 			  <tbody>
-			    <%= render :partial => "products/product" :collection => @newproducts %>
+			    <%= render :partial => "products/product", :collection => @newproducts %>
 			  </tbody>
 			</table>
 		</div>
@@ -23,7 +23,7 @@
 			  <caption><h4><p class="text-info" style="padding-bottom: 10px;">我的收藏</p></h4></caption>
 			  <tbody>
 			  	<% if 1==2 %>
-			    	<%= render :partial => "products/product" :collection => @brokerproducts %>
+			    	<%= render :partial => "products/product", :collection => @brokerproducts %>
 			    <% else %>
 			    	<td><p class="text-center muted">目前没有收藏</p></td>
 			    <% end %>
@@ -35,7 +35,7 @@
 <div class="row-fluid">
 	<div class="well">
 		<p class="text-center">
-			<%= link_to '产品列表' products_path :class => 'btn btn-primary' %>
+			<%= link_to '产品列表', products_path, :class => 'btn btn-primary' %>
 		</p>
 	</div>
 </div>

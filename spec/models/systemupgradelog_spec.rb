@@ -7,7 +7,7 @@ end
 #
 # Table name: systemupgradelogs
 #
-#  id          :integer(38)     not null primary key
+#  id          :integer(38)     not null, primary key
 #  update_date :datetime
 #  description :string(255)
 #  created_at  :datetime        not null

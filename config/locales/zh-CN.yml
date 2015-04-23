@@ -136,7 +136,7 @@ zh-CN:
   number:
     currency:
       format:
-        delimiter: ! ''
+        delimiter: ! ','
         format: ! '%u %n'
         precision: 2
         separator: .
@@ -144,7 +144,7 @@ zh-CN:
         strip_insignificant_zeros: false
         unit: CN¥
     format:
-      delimiter: ! ''
+      delimiter: ! ','
       precision: 3
       separator: .
       significant: false
@@ -182,9 +182,9 @@ zh-CN:
         delimiter: ''
   support:
     array:
-      last_word_connector: ! ' 和 '
+      last_word_connector: ! ', 和 '
       two_words_connector: ! ' 和 '
-      words_connector: ! ' '
+      words_connector: ! ', '
   time:
     am: 上午
     formats:

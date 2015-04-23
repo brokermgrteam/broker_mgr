@@ -1,5 +1,5 @@
 <blockquote>
-  <p><%= link_to Workflow.find(workflowunderway.workflow_id).name workflowunderway_workflow_step_path(workflowunderway current_step(workflowunderway)) %> <%= workflowunderway.custservvisit.cust_name %></p>
+  <p><%= link_to Workflow.find(workflowunderway.workflow_id).name, workflowunderway_workflow_step_path(workflowunderway, current_step(workflowunderway)) %> <%= workflowunderway.custservvisit.cust_name %></p>
   <small><%= workflowunderway.custservvisit.plan_date.to_s(:db) %></small>
-<!-- custloan_loan_step_path(@custloan :id => @next_step) -->
+<!-- custloan_loan_step_path(@custloan, :id => @next_step) -->
 </blockquote>

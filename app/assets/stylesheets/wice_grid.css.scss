@@ -3,7 +3,7 @@
   height: 16px;
 }
 
-.wg-detached-filter .wice-grid{
+.wg-detached-filter, .wice-grid{
 
   .text-filter-container {
     input{
@@ -22,13 +22,13 @@
     margin-right: 2px;
   }
 
-  .ui-datepicker-trigger .wg-detached-filter .ui-datepicker-trigger{
+  .ui-datepicker-trigger, .wg-detached-filter .ui-datepicker-trigger{
     cursor: pointer;
   }
 
   .custom-dropdown-container {
 
-    .expand-multi-select-icon .collapse-multi-select-icon{
+    .expand-multi-select-icon, .collapse-multi-select-icon{
       width: 10px;
       height: 10px;
       display: inline-block;
@@ -50,7 +50,7 @@
 .wice-grid{
 
 
-  .desc  .asc{
+  .desc,  .asc{
     padding-right: 18px;
     text-decoration:none;
   }
@@ -73,7 +73,7 @@
   }
 
 
-  .wg-show-filter.clickable
+  .wg-show-filter.clickable,
   .wg-hide-filter.clickable{
     background: transparent image-url("icons/grid/page_white_find.png") no-repeat;
     @include icon-dimensions;

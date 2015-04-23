@@ -1,5 +1,5 @@
 class Custbrokerproductrel < ActiveRecord::Base
-  attr_accessible :rel_status :broker_id :cust_id :product_id :rel_date
+  attr_accessible :rel_status, :broker_id, :cust_id, :product_id, :rel_date
 
   belongs_to :broker
   belongs_to :cust
@@ -10,7 +10,7 @@ end
 #
 # Table name: custbrokerproductrels
 #
-#  id         :integer(38)     not null primary key
+#  id         :integer(38)     not null, primary key
 #  broker_id  :integer(38)
 #  cust_id    :integer(38)
 #  product_id :integer(38)

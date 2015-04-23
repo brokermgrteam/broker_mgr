@@ -2,13 +2,13 @@
 	<div class="span4 offset4">
 		<div class="well">
 			<p class="lead text-center">密码重置申请</p>
-			<%= simple_form_for(:recoverypassword :url => recoverypasswords_path :remote => true) do |p| %>
-				<%= p.input :usercode :input_html => { :class => "input-block-level" } :label => false placeholder: "用户代码" %>
-      	<%= p.input :certificate_num :input_html => { :class => "input-block-level" } :label => false placeholder: "证件号码" %>
+			<%= simple_form_for(:recoverypassword, :url => recoverypasswords_path, :remote => true) do |p| %>
+				<%= p.input :usercode, :input_html => { :class => "input-block-level" }, :label => false, placeholder: "用户代码" %>
+      	<%= p.input :certificate_num, :input_html => { :class => "input-block-level" }, :label => false, placeholder: "证件号码" %>
 				<div class="form-actions">
 					<p class="text-center">
-						<%= p.submit "提交" :class => 'btn btn-primary' %>
-						<%= link_to '返回' root_path :class => 'btn' %>
+						<%= p.submit "提交", :class => 'btn btn-primary' %>
+						<%= link_to '返回', root_path, :class => 'btn' %>
 					</p>
 				</div>
 			<% end %>

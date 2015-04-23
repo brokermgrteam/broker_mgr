@@ -24,7 +24,7 @@ class NoticesController < ApplicationController
     @notice = Notice.new(params[:notice])
     @notice.user = current_user
     if @notice.save
-      redirect_to notices_path :flash => { :success => "通知已发送"}
+      redirect_to notices_path, :flash => { :success => "通知已发送"}
     else  
       @title = "起草通知"
       render 'new'
@@ -43,7 +43,7 @@ class NoticesController < ApplicationController
   def unread
     @notice = Notice.find(params[:notice_id])
     @title = "通知列表"
-    Readnotice.find_by_notice_id_and_user_id(params[:notice_id] current_user).destroy
+    Readnotice.find_by_notice_id_and_user_id(params[:notice_id], current_user).destroy
     
     redirect_to notices_path
   end
@@ -52,6 +52,6 @@ class NoticesController < ApplicationController
     Notice.find(params[:id]).destroy
     # @role.destroy
     # flash[:success] = "用户已删除"
-    redirect_to notices_path :flash => { :success => "通知已删除" }
+    redirect_to notices_path, :flash => { :success => "通知已删除" }
   end
 end

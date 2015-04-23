@@ -1,9 +1,9 @@
 # encoding: utf-8
 class Custservvisit < ActiveRecord::Base
   attr_accessor   :user_name
-  attr_accessible :assit_user_id :attchment_file :location :memo :plan_date :status
-                  :user_id :visit_content :visit_date :workflowunderway_id :capital_account :cust_name 
-                  :plan_location :visit_location
+  attr_accessible :assit_user_id, :attchment_file, :location, :memo, :plan_date, :status,
+                  :user_id, :visit_content, :visit_date, :workflowunderway_id, :capital_account, :cust_name, 
+                  :plan_location, :visit_location
                   
   belongs_to :workflowunderway
   belongs_to :workflowhistory
@@ -14,8 +14,8 @@ class Custservvisit < ActiveRecord::Base
   
   before_save :save_capital_account
   
-  validates :user_id    :presence => true
-  validates :plan_date  :presence => true
+  validates :user_id,    :presence => true
+  validates :plan_date,  :presence => true
   
   def capital_account
     @capital_account || Cust.find(cust_id).capital_account if cust_id.present?
@@ -27,10 +27,10 @@ class Custservvisit < ActiveRecord::Base
   
   def check_capital_account
     if @capital_account.present? && Cust.find_by_capital_account(@capital_account).nil?
-      errors.add :capital_account "该客户不存在，或不属于团队客户"
+      errors.add :capital_account, "该客户不存在，或不属于团队客户"
     end
   rescue ArgumentError
-    errors.add :capital_account "资金账号有误"
+    errors.add :capital_account, "资金账号有误"
   end
   
 end
@@ -38,7 +38,7 @@ end
 #
 # Table name: custservvisits
 #
-#  id                  :integer(38)     not null primary key
+#  id                  :integer(38)     not null, primary key
 #  cust_id             :integer(38)
 #  cust_name           :string(255)
 #  plan_location       :string(255)

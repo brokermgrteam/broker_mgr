@@ -7,7 +7,7 @@ end
 #
 # Table name: workflows
 #
-#  id         :integer(38)     not null primary key
+#  id         :integer(38)     not null, primary key
 #  code       :string(255)
 #  name       :string(255)
 #  steps      :integer(38)
