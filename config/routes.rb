@@ -27,7 +27,8 @@ Cmwp::Application.routes.draw do
   resources :channelurls do
     collection do
       get 'get_brokers', to: "channelurls#get_brokers"
-    end 
+      get 'get_subchannels', to: "channelurls#get_subchannels"
+    end
   end
   resources :workflowunderways do
     resources :workflow_steps, :custservvisits
@@ -68,18 +69,18 @@ Cmwp::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
-  match '/signup',  :to => 'users#new' 
+  match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'  
-  # match '/pwd',     :to => 'recoverypassword#new' 
+  match '/signout', :to => 'sessions#destroy'
+  # match '/pwd',     :to => 'recoverypassword#new'
 
   # scope :protocol => 'https://', :constraints => { :protocol => 'https://' } do
   #   resources :sessions
   # end
-  
-  
+
+
   # match 'categories' => 'categories#show', :via => :get
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

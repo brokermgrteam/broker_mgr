@@ -1,0 +1,32 @@
+// $(".subchannel_selection").typeahead("destroy");
+var subchannels = <%= raw @subchannels.map {|c| c.sub_channel_name} %>
+var name = <%= @channel.id.to_s %>
+
+// var subchannels = new Bloodhound({
+//   datumTokenizer: Bloodhound.tokenizers.whitespace,
+//   queryTokenizer: Bloodhound.tokenizers.whitespace,
+//   // `states` is an array of state names defined in "The Basics"
+//
+// });
+// console.log(name);
+// console.log(subchannels);
+// $('.subchannel_selection').typeahead({
+//   name: name,
+//   source: subchannels
+// });
+$('.subchannel_selection').data('typeahead').source = subchannels;
+
+
+
+// var subchannels = new Bloodhound({
+//   datumTokenizer: Bloodhound.tokenizers.whitespace,
+//   queryTokenizer: Bloodhound.tokenizers.whitespace,
+//   // `states` is an array of state names defined in "The Basics"
+//   prefetch: '/channelurls/get_subchannels.json?channel_id=10245'
+// });
+//
+// $('.subchannel_selection').typeahead(null,
+// {
+//   name: 'subchannels',
+//   source: subchannels
+// });

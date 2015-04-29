@@ -3,6 +3,8 @@ class Channelurl < ActiveRecord::Base
                   :sub_channel_id
 
   belongs_to :channel
+
+  validates :channel_id,  :presence   => true
 end
 # == Schema Information
 #

@@ -1,6 +1,8 @@
 class Subchannel < ActiveRecord::Base
   attr_accessible :channel_id, :status, :sub_channel_broker, :sub_channel_code, :sub_channel_name
 
+  belongs_to :channel
+
   def to_label
     "#{sub_channel_code} | #{sub_channel_name}"
   end

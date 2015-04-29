@@ -3,6 +3,7 @@ class Channel < ActiveRecord::Base
 
   belongs_to :institution
   has_many   :channelurls
+  has_many   :subchannels
 
   validates :channel_code, :presence   => true,
                        		 :uniqueness => true,
@@ -12,7 +13,7 @@ class Channel < ActiveRecord::Base
   validates :channel_type, :presence   => true
   # validates :status, 			 :presence   => true
 
-  scope :valid_channels, where(:status => true ) 
+  scope :valid_channels, where(:status => true )
 
   def to_label
     "#{channel_code} | #{channel_name}"
@@ -32,4 +33,3 @@ end
 #  created_at     :datetime        not null
 #  updated_at     :datetime        not null
 #
-

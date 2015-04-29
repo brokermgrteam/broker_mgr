@@ -10,3 +10,11 @@ $(document).ready ->
       dataType: "script"
       data:
         branch_id: $('.branch_selection option:selected').val()
+
+  $(".channel_selection").on "change", ->
+    $.ajax
+      url: "/channelurls/get_subchannels"
+      type: "GET"
+      dataType: "script"
+      data:
+        channel_id: $('.channel_selection option:selected').val()
