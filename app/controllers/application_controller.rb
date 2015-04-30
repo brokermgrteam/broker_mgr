@@ -14,13 +14,13 @@ class ApplicationController < ActionController::Base
     deny_access
   }
 
-  rescue_from Exception, with: :render_error
-
-    def render_error(exception)
-        respond_with do |format|
-            format.html { raise exception }
-            format.json { raise exception }
-            format.js { render 'errors/error' }
-        end
-    end
+  # rescue_from Exception, with: :render_error
+  #
+  #   def render_error(exception)
+  #       respond_with do |format|
+  #           format.html { raise exception }
+  #           format.json { raise exception }
+  #           format.js { render 'errors/error' }
+  #       end
+  #   end
 end

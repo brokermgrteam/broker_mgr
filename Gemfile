@@ -29,6 +29,8 @@ gem 'will_paginate', '~> 3.0.3'
 gem 'bootstrap-will_paginate', '~> 0.0.6'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 # gem 'lazy_high_charts', '~> 1.5.0'
 gem 'rabl'
 gem 'yajl-ruby', :require => "yajl"

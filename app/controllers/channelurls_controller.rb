@@ -14,7 +14,7 @@ class ChannelurlsController < ApplicationController
     @serv_branch = Branch.find(params[:channelurl][:cust_branch]) unless params[:channelurl][:cust_branch].empty?
 		@sub_channel = Subchannel.find_by_channel_id_and_sub_channel_name(params[:channelurl][:channel], params[:channelurl][:sub_channel]) if params[:channelurl][:sub_channel]
 
-		if @sub_channel.nil? && !params[:channelurl][:sub_channel].nil?
+		if @sub_channel.nil? && !params[:channelurl][:sub_channel].empty?
 			redirect_to new_channelurl_path, :flash => { :error => "二级渠道输入不正确" } and return
 		end
 
@@ -42,7 +42,7 @@ class ChannelurlsController < ApplicationController
     @wapurl = @url.gsub 'kh.htsec.com', 'khmobile.htsec.com'
     @barcode = APP_CONFIG['wap_url_barcode']+@wapurl.to_s
     @channelurl = Channelurl.find_or_create_by_url(:channel_id => params[:channelurl][:channel],
-																									 :sub_channel_id => @sub_channel.id,
+																									 :sub_channel_id => @sub_channel? @sub_channel.id : nil,
                                                    :branch_id =>  params[:channelurl][:cust_branch],
                                                    :serv_branch_id => params[:channelurl][:channel_branch],
                                                    :broker_id => params[:channelurl][:broker],
