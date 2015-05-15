@@ -27,5 +27,6 @@ end
 #  created_at            :datetime        not null
 #  updated_at            :datetime        not null
 #  birthday              :datetime
+#  services              :string(255)
 #
 

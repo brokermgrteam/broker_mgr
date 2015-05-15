@@ -2305,6 +2305,7 @@ Systemupgradelog.find_or_create_by_description(:update_date => '2015-03-25', :de
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-04-15', :description => '经纪人开放渠道链接生成权限')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-04-21', :description => '修正已销户经纪人页面错误')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-04-29', :description => '获取二维码加入二级渠道')
+Systemupgradelog.find_or_create_by_description(:update_date => '2015-05-06', :description => '客户视图增加已开通服务')
 
 #yearmonth
 # Month.find_or_create_by_month({:id => 201301, :year => 2013, :month => "2013年01月"}, :without_protection => true)
@@ -2384,3 +2385,5 @@ Subchannel.find_or_create_by_sub_channel_name(	:sub_channel_code=>'1032',:sub_ch
 Subchannel.find_or_create_by_sub_channel_name(	:sub_channel_code=>'1033',:sub_channel_name=>'绍兴诸暨',:channel_id=>Channel.find_by_channel_name('招商银行').id)
 Subchannel.find_or_create_by_sub_channel_name(	:sub_channel_code=>'1034',:sub_channel_name=>'绍兴柯桥小微',:channel_id=>Channel.find_by_channel_name('招商银行').id)
 Subchannel.find_or_create_by_sub_channel_name(	:sub_channel_code=>'1035',:sub_channel_name=>'绍兴上虞小微',:channel_id=>Channel.find_by_channel_name('招商银行').id)
+Subchannel.find_or_create_by_sub_channel_name(	:sub_channel_code=>'1036',:sub_channel_name=>'招商银行杭州分行',:channel_id=>Channel.find_by_channel_name('招商银行').id)
+Subchannel.find_or_create_by_sub_channel_name(	:sub_channel_code=>'1037',:sub_channel_name=>'招商银行绍兴分行',:channel_id=>Channel.find_by_channel_name('招商银行').id)

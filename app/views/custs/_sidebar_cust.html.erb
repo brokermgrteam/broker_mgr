@@ -20,6 +20,19 @@
 			<strong>客户生日：</strong><%= @cust.birthday.strftime("%F") if @cust.birthday %><br/>
 			<strong>开户日期：</strong><%= @cust.open_date.to_time.strftime("%F") if @cust.open_date %><br/>
 			<!-- <ul class="common-divider"></ul> -->
-		</address>		
+		</address>
+		<ul class="common-divider"></ul>
+		<ul class="inline">
+			<li><%= service_span(@cust,'1') %></li>
+			<li><%= service_span(@cust,'2') %></li>
+			<li><%= service_span(@cust,'3') %></li>
+			<li><%= service_span(@cust,'4') %></li>
+			<br/>
+			<li><%= service_span(@cust,'H') %></li>
+			<li><%= service_span(@cust,'O') %></li>
+			<br/>
+			<li><%= service_span(@cust,'R') %></li>
+			<li><%= service_span(@cust,'w') %></li>
+		</ul>
 	</div>
 </div>

@@ -2,20 +2,56 @@
 class Cust < ActiveRecord::Base
   attr_accessible :address, :assessment_date, :branch_id, :capital_account, :capital_account_type, :close_date,
                   :cust_name, :identification_number, :identification_type, :mobile, :open_date, :phone, :status,
-                  :valid_date, :valid_date_crop, :zip_code, :birthday
-  
+                  :valid_date, :valid_date_crop, :zip_code, :birthday, :services
+
   belongs_to :branch
   has_many   :custbrokerrels
   has_many   :custbrokerproductrels
   has_many   :brokerfavcusts
   has_many   :custindices
   has_many   :months, :through => :custindices
-  
+
   def is_cust?(cust_sym)
     self.any? { |c| c.capital_account == cust_sym }
   end
-  
+
+  def brokerrel
+    self.custbrokerrels.first
+  end
+
+  def ha
+    self.services.include? "1"
+  end
+
+  def sa
+    self.services.include? "2"
+  end
+
+  def hb
+    self.services.include? "3"
+  end
+
+  def sb
+    self.services.include? "4"
+  end
+
+  def hg
+    self.services.include? "H"
+  end
+
+  def otc
+    self.services.include? "O"
+  end
+
+  def wx
+    self.services.include? "w"
+  end
+
+  def rzrq
+    self.services.include? "R"
+  end
 end
+
 # == Schema Information
 #
 # Table name: custs
@@ -40,5 +76,5 @@ end
 #  created_at            :datetime        not null
 #  updated_at            :datetime        not null
 #  birthday              :datetime
+#  services              :string(255)
 #
-
