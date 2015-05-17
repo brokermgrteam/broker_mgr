@@ -20,35 +20,39 @@ class Cust < ActiveRecord::Base
   end
 
   def ha
-    self.services.include? "1"
+    self.services.include? "1" if self.services
   end
 
   def sa
-    self.services.include? "2"
+    self.services.include? "2" if self.services
   end
 
   def hb
-    self.services.include? "3"
+    self.services.include? "3" if self.services
   end
 
   def sb
-    self.services.include? "4"
+    self.services.include? "4" if self.services
   end
 
   def hg
-    self.services.include? "H"
+    self.services.include? "H" if self.services
   end
 
   def otc
-    self.services.include? "O"
+    self.services.include? "O" if self.services
   end
 
   def wx
-    self.services.include? "w"
+    self.services.include? "w" if self.services
   end
 
   def rzrq
-    self.services.include? "R"
+    self.services.include? "R" if self.services
+  end
+
+  def cyb
+    self.services.include? "J" if self.services
   end
 end
 

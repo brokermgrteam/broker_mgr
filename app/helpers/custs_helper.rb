@@ -50,6 +50,12 @@ module CustsHelper
       else
         content_tag(:span, "融资融券", :class => "label")
       end
+    when "J"
+      if cust.cyb
+        content_tag(:span, "创业板", :class => "label label-success")
+      else
+        content_tag(:span, "创业板", :class => "label")
+      end
     end
 
   end
