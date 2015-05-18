@@ -54,6 +54,14 @@ class Cust < ActiveRecord::Base
   def cyb
     self.services.include? "J" if self.services
   end
+
+  def zy
+    self.services.include? "j" if self.services
+  end
+
+  def gh
+    self.services.include? "L" if self.services
+  end
 end
 
 # == Schema Information

@@ -56,6 +56,18 @@ module CustsHelper
       else
         content_tag(:span, "创业板", :class => "label")
       end
+    when "j"
+      if cust.zy
+        content_tag(:span, "股票质押", :class => "label label-success")
+      else
+        content_tag(:span, "股票质押", :class => "label")
+      end
+    when "L"
+      if cust.gh
+        content_tag(:span, "约定购回", :class => "label label-success")
+      else
+        content_tag(:span, "约定购回", :class => "label")
+      end
     end
 
   end

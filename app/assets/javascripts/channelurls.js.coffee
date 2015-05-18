@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready ->
+
   $(".branch_selection").on "change", ->
     $.ajax
       url: "/channelurls/get_brokers"
@@ -18,3 +19,5 @@ $(document).ready ->
       dataType: "script"
       data:
         channel_id: $('.channel_selection option:selected').val()
+
+  
