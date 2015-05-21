@@ -1,0 +1,16 @@
+<table class="table table-striped table-bordered table-condensed">
+  <tbody>
+    <tr>
+      <td>A类经纪人资格认证：</td>
+      <td>
+        <%= content_tag(:span, find_brokerindex(80002, @broker) == 1 ? "通过" : "未通过" , :class => find_brokerindex(80002, @broker) == 1 ? "badge badge-success" : "badge") %>
+      </td>
+    </tr>
+    <tr>
+      <td>B类经纪人资格认证：</td>
+      <td>
+        <%= content_tag(:span, find_brokerindex(80002, @broker) == 1 ? "通过" : "未通过" , :class => find_brokerindex(80003, @broker) == 1 ? "badge badge-success" : "badge") %>
+      </td>
+    </tr>
+  </tbody>
+</table>

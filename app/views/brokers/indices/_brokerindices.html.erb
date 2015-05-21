@@ -15,7 +15,7 @@
 				  <div id="nav-broker-point-year" class="btn-group nav-tabs" data-toggle="buttons-radio">
 						<button class="btn btn-small"><i class="icon-search"></i></button>
 						<% Time.now.prev_year.strftime("%Y").upto(Time.now.end_of_year.strftime("%Y")).each do |i| %>
-							<%= content_tag "button", 
+							<%= content_tag "button",
 									:class => "btn btn-small#{if i == Time.now.end_of_year.strftime("%Y") then " active" end}",
 									:value => i do %>
 								<%= i %>
@@ -29,7 +29,7 @@
 				  <div id="nav-broker-point-month" class="btn-group nav-tabs" data-toggle="buttons-radio">
 						<button class="btn btn-small">月份</button>
 						<% Time.now.beginning_of_year.strftime("%Y%m").upto(Time.now.end_of_year.strftime("%Y%m")).each do |i| %>
-							<%= content_tag "button", 
+							<%= content_tag "button",
 									:class => "btn btn-small#{if i == Time.now.strftime("%Y%m") then " active" end}",
 									:value => i.at(4..5) do %>
 								<%= i.at(4..5) %>
@@ -58,6 +58,14 @@
 				合规扣分明细
 			</div>
 			<%= render :partial => 'brokers/indices/brokercompliancelogs_grid' %>
+		</p>
+	</div>
+	<div class="row-fluid">
+		<p>
+			<div class="alert alert-success">
+				分类考试情况
+			</div>
+			<%= render 'brokers/indices/table_score' %>
 		</p>
 	</div>
 	<% end %>

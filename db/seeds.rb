@@ -2306,6 +2306,7 @@ Systemupgradelog.find_or_create_by_description(:update_date => '2015-04-15', :de
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-04-21', :description => '修正已销户经纪人页面错误')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-04-29', :description => '获取二维码加入二级渠道')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-05-06', :description => '客户视图增加已开通服务')
+Systemupgradelog.find_or_create_by_description(:update_date => '2015-05-21', :description => '加入经纪人资格考试情况')
 
 #yearmonth
 # Month.find_or_create_by_month({:id => 201301, :year => 2013, :month => "2013年01月"}, :without_protection => true)
