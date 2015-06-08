@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-server "192.168.15.128", :web, :app, :db, primary: true
+server "192.168.11.17", :web, :app, :db, primary: true
 
 set :ssh_options, {
    config: false

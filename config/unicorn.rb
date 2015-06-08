@@ -5,5 +5,5 @@ stderr_path "#{root}/log/unicorn.log"
 stdout_path "#{root}/log/unicorn.log"
 
 listen "/tmp/unicorn.broker_mgr.sock"
-worker_processes 16
-timeout 300
+worker_processes 8
+timeout 120
