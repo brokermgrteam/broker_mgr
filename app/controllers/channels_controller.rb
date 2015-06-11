@@ -4,7 +4,7 @@ class ChannelsController < ApplicationController
 	before_filter :authenticate, :only => [:index, :show, :edit, :update]
 
 	def index
-	  @channels_grid = initialize_grid(Channel, 
+	  @channels_grid = initialize_grid(Channel,
 	            :order => 'channels.channel_code',
 	            :include => [:institution],
 	            :name => 'channels',
@@ -18,7 +18,7 @@ class ChannelsController < ApplicationController
     @channel  = Channel.find(params[:id])
     @title = @channel.channel_name
 
-    @channelurls_grid = initialize_grid(Channelurl, 
+    @channelurls_grid = initialize_grid(Channelurl,
               :conditions => { :id => @channel.channelurls.map{|c| c.id} },
               # :include => [:custindices],
               # :name => 'brokerfavcusts',
@@ -29,13 +29,13 @@ class ChannelsController < ApplicationController
     @channel  = Channel.new
     @title = "新建渠道"
   end
-  
+
   def create
     @channel = Channel.new(params[:channel])
     @channel.status = true
     if @channel.save
       redirect_to channels_path, :flash => { :success => "渠道新建成功"}
-    else  
+    else
       @title = "新建渠道"
       render 'new'
     end
@@ -44,16 +44,23 @@ class ChannelsController < ApplicationController
   def edit
     @channel  = Channel.find(params[:id])
     @title = "渠道设置"
+
+		@subchannels_grid = initialize_grid(Subchannel,
+		            :order => 'subchannels.sub_channel_code',
+								:conditions => { :id => @channel.subchannels.map{|c| c.id} },
+		            :name => 'subchannels',
+		            :enable_export_to_csv => false,
+		            :per_page => 10)
   end
-  
+
   def update
     @channel  = Channel.find(params[:id])
     if @channel.update_attributes(params[:channel])
       redirect_to channels_path, :flash => { :success => "渠道更新成功" }
-    else  
+    else
       @title = "渠道设置"
       render 'edit'
-    end 
+    end
   end
 
 end

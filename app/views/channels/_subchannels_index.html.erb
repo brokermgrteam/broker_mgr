@@ -1,0 +1,36 @@
+<%= render :partial => 'subchannels_grid' %>
+
+<div class="row-fluid">
+	<div class="alert alert-success">
+		所辖二级渠道
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12 well">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="row-fluid">
+          <div class="span4">
+            二级渠道名称：
+          </div>
+          <div class="span8">
+            <%= grid_filter @subchannels_grid, :subchannelname_filter  %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="form-actions">
+          <button class="btn btn-primary wg-external-submit-button" data-grid-name="channels">查询</button>
+          <% if can? :manage, Channel %>
+            <%= link_to '新增', new_subchannel_path(:channel =>@channel), :class => 'btn btn-success' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+	</div>
+</div>
+
+<%= render_grid(@subchannels_grid) %>

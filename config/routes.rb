@@ -24,6 +24,7 @@ Cmwp::Application.routes.draw do
   resources :brokerproductrels, :only => [:create, :destroy]
   resources :brokerfavcusts, :only => [:create, :destroy]
   resources :channels
+  resources :subchannels
   resources :channelurls do
     collection do
       get 'get_brokers', to: "channelurls#get_brokers"

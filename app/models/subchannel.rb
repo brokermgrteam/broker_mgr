@@ -3,6 +3,9 @@ class Subchannel < ActiveRecord::Base
 
   belongs_to :channel
 
+  validates :sub_channel_code, :presence   => true
+  validates :sub_channel_name, :presence   => true
+
   def to_label
     "#{sub_channel_code} | #{sub_channel_name}"
   end
@@ -33,4 +36,3 @@ end
 #  created_at         :datetime        not null
 #  updated_at         :datetime        not null
 #
-

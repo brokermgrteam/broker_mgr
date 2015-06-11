@@ -1,0 +1,4 @@
+<%= f.hidden_field :channel_id, :value => @channel.id %>
+<%= f.hidden_field :sub_channel_code, :value => @sub_channel_code %>
+<%= f.input :sub_channel_code, :label => '二级渠道代码', disabled: true, input_html: { value: @sub_channel_code }, :required => true %>
+<%= f.input :sub_channel_name, :label => '二级渠道名称', :required => true %>

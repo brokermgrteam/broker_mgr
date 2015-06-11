@@ -1,0 +1,21 @@
+<%= define_grid(@subchannels_grid) do |g|
+
+	g.blank_slate  do
+	  "没有记录"
+	end
+
+  g.column :name => '二级渠道代码', :attribute => 'sub_channel_code', filter: false do |subchannel|
+    subchannel.sub_channel_code if subchannel.sub_channel_code
+  end
+
+  g.column :name => '二级渠道名称', :attribute => 'sub_channel_name', :detach_with_id => :subchannelname_filter do |subchannel|
+    subchannel.sub_channel_name if subchannel.sub_channel_name
+  end
+
+	if can? :manage, Channel
+	  g.column do |subchannel|
+	    link_to('删除', '#')
+	  end
+  end
+
+end -%>
