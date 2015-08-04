@@ -2308,6 +2308,8 @@ Systemupgradelog.find_or_create_by_description(:update_date => '2015-04-29', :de
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-05-06', :description => '客户视图增加已开通服务')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-05-21', :description => '加入经纪人资格考试情况')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-06-11', :description => '二级渠道维护功能开放')
+Systemupgradelog.find_or_create_by_description(:update_date => '2015-08-04', :description => '渠道管理增加详细信息查看')
+Systemupgradelog.find_or_create_by_description(:update_date => '2015-08-04', :description => '培训平台账户信息同步接口上线')
 
 #yearmonth
 # Month.find_or_create_by_month({:id => 201301, :year => 2013, :month => "2013年01月"}, :without_protection => true)
