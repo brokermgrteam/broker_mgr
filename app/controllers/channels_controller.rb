@@ -18,13 +18,22 @@ class ChannelsController < ApplicationController
   def show
     @channel  = Channel.find(params[:id])
     @title = @channel.channel_name
+		current_ability.model_adapter(Channelurl, :read).conditions
 
-    @channelurls_grid = initialize_grid(Channelurl,
-              # :include => [:channel],
-							:conditions => { :id => @channel.channelurls.map{|c| c.id} },
-							:conditions => current_ability.model_adapter(Channelurl, :read).conditions,
-              # :name => 'brokerfavcusts',
-              :per_page => 10) if @channel
+		if can? :create, Channelurl
+			@channelurls_grid = initialize_grid(Channelurl,
+								# :include => [:channel],
+								:conditions => { :id => @channel.channelurls.map{|c| c.id} },
+								# :name => 'brokerfavcusts',
+								:per_page => 10) if @channel
+		else
+			@channelurls_grid = initialize_grid(Channelurl,
+								# :include => [:channel],
+								:conditions => { :id => @channel.channelurls.map{|c| c.id}, :branch_id => Branch.accessible_by(current_ability).map{|br| br.id}},
+								# :name => 'brokerfavcusts',
+								:per_page => 10) if @channel
+		end
+
   end
 
   def new

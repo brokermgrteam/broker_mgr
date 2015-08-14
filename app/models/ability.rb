@@ -65,6 +65,7 @@ class Ability
       can :cust_detail_index, Cust
       can :manage, Channel
       can :create, Channelurl
+      can :read, Channelurl
       can :read, Notice
       can :create, Notice
       can :destroy, Notice
