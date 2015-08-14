@@ -7,6 +7,7 @@ class ChannelsController < ApplicationController
 	  @channels_grid = initialize_grid(Channel,
 	            :order => 'channels.channel_code',
 	            :include => [:institution],
+							:conditions => current_ability.model_adapter(Channel, :read).conditions,
 	            :name => 'channels',
 	            :enable_export_to_csv => false,
 	            :per_page => 20)
@@ -19,8 +20,9 @@ class ChannelsController < ApplicationController
     @title = @channel.channel_name
 
     @channelurls_grid = initialize_grid(Channelurl,
-              :conditions => { :id => @channel.channelurls.map{|c| c.id} },
-              # :include => [:custindices],
+              # :include => [:channel],
+							:conditions => { :id => @channel.channelurls.map{|c| c.id} },
+							:conditions => current_ability.model_adapter(Channelurl, :read).conditions,
               # :name => 'brokerfavcusts',
               :per_page => 10) if @channel
   end

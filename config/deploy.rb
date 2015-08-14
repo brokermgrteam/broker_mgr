@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-server "192.168.11.17", :web, :app, :db, primary: true
+server "10.0.0.12", :web, :app, :db, primary: true
 
 set :ssh_options, {
    config: false
@@ -26,6 +26,7 @@ namespace :deploy do
   %w[start stop restart].each do |command|
     desc "#{command} unicorn server"
     task command, roles: :app, except: {no_release: true} do
+      put File.read("config/config.yml"), "#{shared_path}/config/config.yml"
       run "/etc/init.d/unicorn_#{application} #{command}"
     end
   end
