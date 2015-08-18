@@ -2,10 +2,10 @@ development:
   channel_url_generator: http://jsonip.com
   channel_url_function: ip
   wap_url_barcode: http://qr.liantu.com/api.php?text=
-  21tb_api: http://yufa.21tb.com/open
-  21tb_appkey: B67EB33B0A854F4494E1FBD4376C8A94
-  21tb_secrect: 71F2FECD4EE748E3B6B5CF7BE5EF9564
-  21tb_corpcode: htbrokertest
+  21tb_api: http://v4.21tb.com/open
+  21tb_appkey: 6F399068B9B74CBE9FF374AEBCEE8DB2
+  21tb_secrect: 92A13756F1EB47339F199C081B731DC7
+  21tb_corpcode: htbroker
   21tb_uri_loadAllUser: /v1/uc/user/loadAllUsers
   21tb_uri_syncOrganizes: /v1/uc/organize/syncOrganizes
   21tb_uri_removeOrganizes: /v1/uc/organize/removeAllOrganizesWithoutMembers
@@ -13,6 +13,7 @@ development:
   21tb_uri_syncUsers: /v1/uc/user/syncUsers
   21tb_uri_getReportList: /v1/report/report/getOnlineCourseReportList
   21tb_uri_getExamReportList: /v1/report/report/getExamReportList
+  21tb_uri_getExamInvigilates: /v1/ems/exam/getExamInvigilates
 
 test:
   channel_url_generator: http://188.188.114.15:8082/CRH-KH8201.action?
@@ -29,6 +30,7 @@ test:
   21tb_uri_syncUsers: /v1/uc/user/syncUsers
   21tb_uri_getReportList: /v1/report/report/getOnlineCourseReportList
   21tb_uri_getExamReportList: /v1/report/report/getExamReportList
+  21tb_uri_getExamInvigilates: /v1/ems/exam/getExamInvigilates
 
 production:
   channel_url_generator: http://188.188.114.15:8082/CRH-KH8201.action?
@@ -45,3 +47,4 @@ production:
   21tb_uri_syncUsers: /v1/uc/user/syncUsers
   21tb_uri_getReportList: /v1/report/report/getOnlineCourseReportList
   21tb_uri_getExamReportList: /v1/report/report/getExamReportList
+  21tb_uri_getExamInvigilates: /v1/ems/exam/getExamInvigilates
