@@ -6,9 +6,9 @@
   <div class="modal-body">
     <p class="text-center text-info lead" style="margin-bottom: 0px;">专属渠道二维码：</p>
     <p class="text-center"><%= image_tag(APP_CONFIG['wap_url_barcode']+channelurl.wapurl.to_s, :alt => "渠道二维码", :class => "img-rounded") %></p>
-    <p>电脑访问： <%= link_to channelurl.url, "http://#{channelurl.url}", :target => "_blank" %></p>
-    <p>手机访问： <%= link_to channelurl.wapurl, "http://#{channelurl.wapurl}", :target => "_blank" %></p>
-    
+    <p>电脑访问： <%= link_to channelurl.url, "#{channelurl.url}", :target => "_blank" %></p>
+    <p>手机访问： <%= link_to channelurl.wapurl, "#{channelurl.wapurl}", :target => "_blank" %></p>
+
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>

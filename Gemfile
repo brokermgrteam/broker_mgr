@@ -43,6 +43,7 @@ gem 'time_difference', '~> 0.4.2'
 gem 'delayed_job_active_record'
 # gem 'delayed_job_recurring'
 gem 'rufus-scheduler'
+gem 'multi_logger'
 # gem 'crono'
 # gem "simple_calendar", github: "excid3/simple_calendar", branch: "1.0"
 gem "watu_table_builder", :require => "table_builder"

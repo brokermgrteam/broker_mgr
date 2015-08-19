@@ -2243,7 +2243,7 @@ Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7903,:name=>'两融息�
 
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'盘后任务',:dict_type=>'Task.type',:code=>1})
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'薪酬任务',:dict_type=>'Task.type',:code=>2})
-
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'推送到21tb',:dict_type=>'Task.type',:code=>3})
 #institutions
 Institution.find_or_create_by_institution_name({:institution_code => "01", :institution_name => "工商银行"})
 Institution.find_or_create_by_institution_name({:institution_code => "02", :institution_name => "农业银行"})

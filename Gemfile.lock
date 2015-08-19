@@ -126,6 +126,8 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.6.0)
     multi_json (1.10.1)
+    multi_logger (0.1.0)
+      railties
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -259,6 +261,7 @@ DEPENDENCIES
   jquery-ui-rails
   less-rails
   meta_request
+  multi_logger
   rabl
   rails (= 3.2.11)
   rspec-rails (= 2.8.1)

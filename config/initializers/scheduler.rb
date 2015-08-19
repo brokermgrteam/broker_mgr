@@ -1,5 +1,16 @@
 require 'rufus-scheduler'
 
+if Rails.env.development?
+  Rails.configuration.after_initialize do
+    s = Rufus::Scheduler.singleton
+    s.every '1m' do
+      # @task = Systemtasklog.new(:task_date => Time.now, :total_tasks => 1, :complete_tasks => 1, :task_type => Dict.find_by_dict_type_and_code('Task.type',3).id)
+      # @task.save
+      Rails.logger.task.info "#{@task}, ok. #{Time.now}"
+    end
+  end
+end
+
 if Rails.env.production?
   Rails.configuration.after_initialize do
     # Let's use the rufus-scheduler singleton
@@ -45,7 +56,7 @@ if Rails.env.production?
     #       http_client.finish rescue nil
     #   end
     #
-    #   Rails.logger.info "job empty21tbOrganizes, ok. #{Time.now}"
+    #   Rails.logger.task.info "job empty21tbOrganizes, ok. #{Time.now}"
     #   # puts 'ok'
     # end
 
@@ -103,7 +114,7 @@ if Rails.env.production?
         ensure
           http_client.finish rescue nil
       end
-      Rails.logger.info "job sync21tbOrganizes, ok. #{Time.now}"
+      Rails.logger.task.info "job sync21tbOrganizes, ok. #{Time.now}"
     end
 
     s.every '1d' do
@@ -165,7 +176,7 @@ if Rails.env.production?
         ensure
           http_client.finish rescue nil
       end
-      Rails.logger.info "job syncPositions, ok. #{Time.now}"
+      Rails.logger.task.info "job syncPositions, ok. #{Time.now}"
     end
 
     s.every '12h' do
@@ -223,7 +234,7 @@ if Rails.env.production?
           end
         end
       end
-      Rails.logger.info "job syncUsers, ok. #{Time.now}"
+      Rails.logger.task.info "job syncUsers, ok. #{Time.now}"
     end
 
     s.every '1d' do
@@ -285,7 +296,7 @@ if Rails.env.production?
         ensure
           http_client.finish rescue nil
       end
-      Rails.logger.info "job getReports, ok. #{Time.now}"
+      Rails.logger.task.info "job getReports, ok. #{Time.now}"
     end
 
     s.every '1d' do
@@ -339,61 +350,61 @@ if Rails.env.production?
         ensure
           http_client.finish rescue nil
       end
-      Rails.logger.info "job getExams, ok. #{Time.now}"
+      Rails.logger.task.info "job getExams, ok. #{Time.now}"
     end
 
-    s.every '1d' do
-      api = APP_CONFIG['21tb_api']
-      uri = APP_CONFIG['21tb_uri_getExamInvigilates']
-      current_api = api + uri + ".html"
-      appkey = APP_CONFIG['21tb_appkey']
-      secrect = APP_CONFIG['21tb_secrect']
-      corpcode = APP_CONFIG['21tb_corpcode']
-      signText = secrect + "|" + uri + "|" + secrect
-      sign = Digest::MD5.hexdigest(signText).upcase
-      timeStamp = DateTime.now.strftime('%Q')
-      startTime = (Time.now-31.days).to_s
-      endTime = Time.now.to_s
-
-
-      h = Hash.new
-      h[:employeeCodes] = nil
-      h[:examCodes] = nil
-      h[:startTime] = startTime
-      h[:endTime] = endTime
-
-
-      a = { 'appKey_' => appkey,
-            'sign_' => sign,
-            'timestamp_' => timeStamp,
-            'reportQuery' => h.to_json }
-
-      # x = Net::HTTP.post_form(URI.parse(current_api), a)
-      # JSON.parse(x.body)
-      http_client = Net::HTTP.new(URI.parse(current_api).host, URI.parse(current_api).port)
-      # http_client.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      # http_client.use_ssl = true
-
-      timeout = 240
-      http_client.read_timeout = timeout
-
-      begin
-        Timeout::timeout(timeout) do
-          http_client.start do |http|
-            req = Net::HTTP::Post.new(URI.parse(current_api))
-            req.form_data = a
-            resp = http.request(req)
-            j = JSON.parse(resp.body)
-            j.each do |b|
-              @brokerexam = Brokerexam.new(b)
-              @brokerexam.save
-            end
-          end
-        end
-        ensure
-          http_client.finish rescue nil
-      end
-      Rails.logger.info "job getExams, ok. #{Time.now}"
-    end
+    # s.every '1d' do
+    #   api = APP_CONFIG['21tb_api']
+    #   uri = APP_CONFIG['21tb_uri_getExamInvigilates']
+    #   current_api = api + uri + ".html"
+    #   appkey = APP_CONFIG['21tb_appkey']
+    #   secrect = APP_CONFIG['21tb_secrect']
+    #   corpcode = APP_CONFIG['21tb_corpcode']
+    #   signText = secrect + "|" + uri + "|" + secrect
+    #   sign = Digest::MD5.hexdigest(signText).upcase
+    #   timeStamp = DateTime.now.strftime('%Q')
+    #   startTime = (Time.now-31.days).to_s
+    #   endTime = Time.now.to_s
+    #
+    #
+    #   h = Hash.new
+    #   h[:employeeCodes] = nil
+    #   h[:examCodes] = nil
+    #   h[:startTime] = startTime
+    #   h[:endTime] = endTime
+    #
+    #
+    #   a = { 'appKey_' => appkey,
+    #         'sign_' => sign,
+    #         'timestamp_' => timeStamp,
+    #         'reportQuery' => h.to_json }
+    #
+    #   # x = Net::HTTP.post_form(URI.parse(current_api), a)
+    #   # JSON.parse(x.body)
+    #   http_client = Net::HTTP.new(URI.parse(current_api).host, URI.parse(current_api).port)
+    #   # http_client.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    #   # http_client.use_ssl = true
+    #
+    #   timeout = 240
+    #   http_client.read_timeout = timeout
+    #
+    #   begin
+    #     Timeout::timeout(timeout) do
+    #       http_client.start do |http|
+    #         req = Net::HTTP::Post.new(URI.parse(current_api))
+    #         req.form_data = a
+    #         resp = http.request(req)
+    #         j = JSON.parse(resp.body)
+    #         j.each do |b|
+    #           @brokerexam = Brokerexam.new(b)
+    #           @brokerexam.save
+    #         end
+    #       end
+    #     end
+    #     ensure
+    #       http_client.finish rescue nil
+    #   end
+    #   Rails.logger.task.info "job getExams, ok. #{Time.now}"
+    # end
   end
 end
