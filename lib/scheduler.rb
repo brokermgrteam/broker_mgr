@@ -7,9 +7,9 @@ class Scheduler
       if File.exists?(pid_file)
         pid = IO.read(pid_file).to_i
         if pid > 0 && process_running?(pid)
-          puts "not starting scheduler because it already is running with pid #{pid}"
+          Rails.logger.task.info "not starting scheduler because it already is running with pid #{pid}"
         else
-          puts "Process #{$$} removes stale pid file"
+          Rails.logger.task.info "Process #{$$} removes stale pid file"
           File.delete pid_file
         end
       end
@@ -17,13 +17,13 @@ class Scheduler
       if !File.exists?(pid_file)
         # Write the current PID to the file
         (File.new(pid_file,'w') << $$).close
-        puts "scheduler process is: #{$$}"
+        Rails.logger.task.info "scheduler process is: #{$$}"
 
         # Execute the scheduler
         new.setup_jobs
       end
       true
-    end or puts "could not start scheduler - lock not acquired"
+    end or Rails.logger.task.info "could not start scheduler - lock not acquired"
   end
 
   # true if the process with the given PID exists, false otherwise
@@ -51,11 +51,11 @@ class Scheduler
   end
 
   def initialize
-    @rufus_scheduler = Rufus::Scheduler.start_new
+    @rufus_scheduler = Rufus::Scheduler.new
     # install exception handler to report errors via Airbrake
     @rufus_scheduler.class_eval do
       define_method :handle_exception do |job, exception|
-        puts "job #{job.job_id} caught exception '#{exception}'"
+        Rails.logger.task.info "job #{job.job_id} caught exception '#{exception}'"
         Airbrake.notify exception
       end
     end
