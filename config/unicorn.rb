@@ -9,7 +9,7 @@
 # timeout 120
 #
 
-APP_ROOT = "/home/deployer/apps/broker_mgr/current" #File.expand_path(File.dirname(File.dirname(__FILE__)))
+APP_ROOT = File.expand_path(File.dirname(File.dirname(__FILE__)))
 
 ENV['BUNDLE_GEMFILE'] = File.expand_path('../Gemfile', File.dirname(__FILE__))
 require 'bundler/setup'
