@@ -23,3 +23,5 @@ doc/app
 
 /config/database.yml
 .powenv
+
+config/database.yml
