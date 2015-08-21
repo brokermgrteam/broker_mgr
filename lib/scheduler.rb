@@ -3,7 +3,7 @@ class Scheduler
 
   # Starts the scheduler unless it is already running
   def self.start_unless_running(pid_file)
-    with_lockfile(File.join(File.dirname(pid_file), 'scheduler.lock')) do
+    with_lockfile(File.join(File.dirname(pid_file), 'scheduler.pid')) do
       if File.exists?(pid_file)
         pid = IO.read(pid_file).to_i
         if pid > 0 && process_running?(pid)
