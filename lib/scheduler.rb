@@ -75,7 +75,7 @@ class Scheduler
     s.every '1m' do
       Rails.logger.task.info "job start, ok. #{Time.now}"
     end
-    s.every '30s' do
+    s.every '2m' do
       Rails.logger.task.info "job 2 start, ok. #{Time.now}"
     end
     Rails.logger.task.info "job done, ok. #{Time.now}"
