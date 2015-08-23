@@ -52,6 +52,7 @@ class Scheduler
 
   def initialize
     @rufus_scheduler = Rufus::Scheduler.new
+    s = Rufus::Scheduler.singleton
     # install exception handler to report errors via Airbrake
     @rufus_scheduler.class_eval do
       define_method :handle_exception do |job, exception|
@@ -65,10 +66,16 @@ class Scheduler
   # Job-Definitions go here
   #
   def setup_jobs
-    @rufus_scheduler.every('1m') do
+    # @rufus_scheduler.every('1m') do
+    #   Rails.logger.task.info "job start, ok. #{Time.now}"
+    # end
+    # @rufus_scheduler.every('30s') do
+    #   Rails.logger.task.info "job 2 start, ok. #{Time.now}"
+    # end
+    s.every '1m' do
       Rails.logger.task.info "job start, ok. #{Time.now}"
     end
-    @rufus_scheduler.every('30s') do
+    s.every '30s' do
       Rails.logger.task.info "job 2 start, ok. #{Time.now}"
     end
     Rails.logger.task.info "job done, ok. #{Time.now}"
