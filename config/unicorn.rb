@@ -41,12 +41,12 @@ end
 require APP_ROOT+'/lib/scheduler'
 # path to the scheduler pid file
 scheduler_pid_file = File.join(APP_ROOT, "tmp/pids/scheduler.pid").to_s
-Scheduler::start_unless_running scheduler_pid_file
-# after_fork do |server, worker|
-#   defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
-#   child_pid = server.config[:pid].sub('.pid', ".#{worker.nr}.pid")
-#   system("echo #{Process.pid} > #{child_pid}")
-#
-#   # run scheduler initialization
-#   Scheduler::start_unless_running scheduler_pid_file
-# end
+
+after_fork do |server, worker|
+  defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
+  child_pid = server.config[:pid].sub('.pid', ".#{worker.nr}.pid")
+  system("echo #{Process.pid} > #{child_pid}")
+
+  # run scheduler initialization
+  # Scheduler::start_unless_running scheduler_pid_file
+end
