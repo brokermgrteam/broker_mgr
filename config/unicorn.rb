@@ -48,5 +48,5 @@ after_fork do |server, worker|
   system("echo #{Process.pid} > #{child_pid}")
 
   # run scheduler initialization
-  # Scheduler::start_unless_running scheduler_pid_file
+  Scheduler::start_unless_running scheduler_pid_file
 end
