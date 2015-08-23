@@ -68,6 +68,9 @@ class Scheduler
     @rufus_scheduler.every('1m') do
       Rails.logger.task.info "job start, ok. #{Time.now}"
     end
+    @rufus_scheduler.every('30s') do
+      Rails.logger.task.info "job 2 start, ok. #{Time.now}"
+    end
     Rails.logger.task.info "job done, ok. #{Time.now}"
   end
 
