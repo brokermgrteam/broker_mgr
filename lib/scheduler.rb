@@ -66,10 +66,10 @@ class Scheduler
   # Job-Definitions go here
   #
   def setup_jobs
-    @rufus_scheduler.every '1m' :first_at => Time.now + 10 do
+    @rufus_scheduler.every '1m', :first_at => Time.now + 10 do
       Rails.logger.task.info "job start"
     end
-    @rufus_scheduler.every '2m' :first_at => Time.now + 10 do
+    @rufus_scheduler.every '2m', :first_at => Time.now + 10 do
       Rails.logger.task.info "job 2 start"
     end
     @rufus_scheduler.join
