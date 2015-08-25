@@ -52,7 +52,7 @@ class Scheduler
 
   def initialize
     # @rufus_scheduler = Rufus::Scheduler.new
-    @rufus_scheduler = Rufus::Scheduler.new
+    @rufus_scheduler = Rufus::Scheduler.new(:lockfile => ".rufus-scheduler.lock")
     # install exception handler to report errors via Airbrake
     @rufus_scheduler.class_eval do
       define_method :handle_exception do |job, exception|
@@ -66,6 +66,7 @@ class Scheduler
   # Job-Definitions go here
   #
   def setup_jobs
+    unless scheduler.down?
     @rufus_scheduler.every '12h', :first_at => Time.now + 3 * 60 do
       Rails.logger.task.info "job sync21tbOrganizes, start ok. #{Time.now}"
       @branches = Branch.all
