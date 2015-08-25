@@ -66,7 +66,7 @@ class Scheduler
   # Job-Definitions go here
   #
   def setup_jobs
-    unless scheduler.down?
+    # unless scheduler.down?
     @rufus_scheduler.every '12h', :first_at => Time.now + 3 * 60 do
       Rails.logger.task.info "job sync21tbOrganizes, start ok. #{Time.now}"
       @branches = Branch.all
