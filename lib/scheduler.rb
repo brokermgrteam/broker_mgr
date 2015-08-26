@@ -188,7 +188,7 @@ class Scheduler
     # end
 
     @rufus_scheduler.every '12h', :first_at => Time.now + 5 * 60 do
-      Rails.logger.task.info "job syncUsers start"
+      Rails.logger.task.info "job syncUsers start #{Time.now}" 
       @branches = Branch.all
 
       @branches.each do |br|
