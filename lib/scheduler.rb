@@ -52,7 +52,7 @@ class Scheduler
 
   def initialize
     # @rufus_scheduler = Rufus::Scheduler.new
-    @rufus_scheduler = Rufus::Scheduler.new(:lockfile => ".rufus-scheduler.lock")
+    @rufus_scheduler = Rufus::Scheduler.new(:lockfile => "scheduler.lock")
     # install exception handler to report errors via Airbrake
     @rufus_scheduler.class_eval do
       define_method :handle_exception do |job, exception|
@@ -124,71 +124,71 @@ class Scheduler
       end
       Rails.logger.task.info "job sync21tbOrganizes, ok. #{Time.now}"
     end
-    #
-    # @rufus_scheduler.every '12h' do
-    #   api = APP_CONFIG['21tb_api']
-    #   uri = APP_CONFIG['21tb_uri_syncPositions']
-    #   current_api = api + uri + ".html"
-    #   appkey = APP_CONFIG['21tb_appkey']
-    #   secrect = APP_CONFIG['21tb_secrect']
-    #   corpcode = APP_CONFIG['21tb_corpcode']
-    #   signText = secrect + "|" + uri + "|" + secrect
-    #   sign = Digest::MD5.hexdigest(signText).upcase
-    #   timeStamp = DateTime.now.strftime('%Q')
-    #
-    #   l = []
-    #   h = Hash.new
-    #   h[:corpCode] = corpcode
-    #   h[:positionCode] = "1"
-    #   h[:positionName] = "A类经纪人"
-    #   h[:categoryCode] = "01"
-    #   h[:categoryName] = "证券经纪人"
-    #   l << h
-    #
-    #   h = Hash.new
-    #   h[:corpCode] = corpcode
-    #   h[:positionCode] = "2"
-    #   h[:positionName] = "B类经纪人"
-    #   h[:categoryCode] = "01"
-    #   h[:categoryName] = "证券经纪人"
-    #   l << h
-    #
-    #   h = Hash.new
-    #   h[:corpCode] = corpcode
-    #   h[:positionCode] = "3"
-    #   h[:positionName] = "C类经纪人"
-    #   h[:categoryCode] = "01"
-    #   h[:categoryName] = "证券经纪人"
-    #   l << h
-    #
-    #   a = { 'appKey_' => appkey,
-    #         'sign_' => sign,
-    #         'timestamp_' => timeStamp,
-    #         'positions' => l.to_json }
-    #
-    #   http_client = Net::HTTP.new(URI.parse(current_api).host, URI.parse(current_api).port)
-    #   # http_client.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    #   # http_client.use_ssl = true
-    #
-    #   timeout = 240
-    #   http_client.read_timeout = timeout
-    #
-    #   begin
-    #     Timeout::timeout(timeout) do
-    #       http_client.start do |http|
-    #         req = Net::HTTP::Post.new(URI.parse(current_api))
-    #         req.form_data = a
-    #         resp = http.request(req)
-    #       end
-    #     end
-    #     ensure
-    #       http_client.finish rescue nil
-    #   end
-    #   Rails.logger.task.info "job syncPositions, ok. #{Time.now}"
-    # end
+
+    @rufus_scheduler.every '12h', :first_at => Time.now + 30 * 60 do
+      api = APP_CONFIG['21tb_api']
+      uri = APP_CONFIG['21tb_uri_syncPositions']
+      current_api = api + uri + ".html"
+      appkey = APP_CONFIG['21tb_appkey']
+      secrect = APP_CONFIG['21tb_secrect']
+      corpcode = APP_CONFIG['21tb_corpcode']
+      signText = secrect + "|" + uri + "|" + secrect
+      sign = Digest::MD5.hexdigest(signText).upcase
+      timeStamp = DateTime.now.strftime('%Q')
+
+      l = []
+      h = Hash.new
+      h[:corpCode] = corpcode
+      h[:positionCode] = "1"
+      h[:positionName] = "A类经纪人"
+      h[:categoryCode] = "01"
+      h[:categoryName] = "证券经纪人"
+      l << h
+
+      h = Hash.new
+      h[:corpCode] = corpcode
+      h[:positionCode] = "2"
+      h[:positionName] = "B类经纪人"
+      h[:categoryCode] = "01"
+      h[:categoryName] = "证券经纪人"
+      l << h
+
+      h = Hash.new
+      h[:corpCode] = corpcode
+      h[:positionCode] = "3"
+      h[:positionName] = "C类经纪人"
+      h[:categoryCode] = "01"
+      h[:categoryName] = "证券经纪人"
+      l << h
+
+      a = { 'appKey_' => appkey,
+            'sign_' => sign,
+            'timestamp_' => timeStamp,
+            'positions' => l.to_json }
+
+      http_client = Net::HTTP.new(URI.parse(current_api).host, URI.parse(current_api).port)
+      # http_client.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      # http_client.use_ssl = true
+
+      timeout = 240
+      http_client.read_timeout = timeout
+
+      begin
+        Timeout::timeout(timeout) do
+          http_client.start do |http|
+            req = Net::HTTP::Post.new(URI.parse(current_api))
+            req.form_data = a
+            resp = http.request(req)
+          end
+        end
+        ensure
+          http_client.finish rescue nil
+      end
+      Rails.logger.task.info "job syncPositions, ok. #{Time.now}"
+    end
 
     @rufus_scheduler.every '12h', :first_at => Time.now + 5 * 60 do
-      Rails.logger.task.info "job syncUsers start #{Time.now}" 
+      Rails.logger.task.info "job syncUsers start #{Time.now}"
       @branches = Branch.all
 
       @branches.each do |br|
@@ -308,60 +308,60 @@ class Scheduler
     #   Rails.logger.task.info "job getReports, ok. #{Time.now}"
     # end
 
-    # @rufus_scheduler.every '2d', :first_at => Time.now + 2 * 60 do
-    #   Rails.logger.task.info "job getExams start, ok. #{Time.now}"
-    #   api = APP_CONFIG['21tb_api']
-    #   uri = APP_CONFIG['21tb_uri_getExamReportList']
-    #   current_api = api + uri + ".html"
-    #   appkey = APP_CONFIG['21tb_appkey']
-    #   secrect = APP_CONFIG['21tb_secrect']
-    #   corpcode = APP_CONFIG['21tb_corpcode']
-    #   signText = secrect + "|" + uri + "|" + secrect
-    #   sign = Digest::MD5.hexdigest(signText).upcase
-    #   timeStamp = DateTime.now.strftime('%Q')
-    #   startTime = (Time.now-31.days).to_s
-    #   endTime = Time.now.to_s
-    #
-    #
-    #   h = Hash.new
-    #   h[:employeeCodes] = nil
-    #   h[:examCodes] = nil
-    #   h[:startTime] = startTime
-    #   h[:endTime] = endTime
-    #
-    #
-    #   a = { 'appKey_' => appkey,
-    #         'sign_' => sign,
-    #         'timestamp_' => timeStamp,
-    #         'reportQuery' => h.to_json }
-    #
-    #   # x = Net::HTTP.post_form(URI.parse(current_api), a)
-    #   # JSON.parse(x.body)
-    #   http_client = Net::HTTP.new(URI.parse(current_api).host, URI.parse(current_api).port)
-    #   # http_client.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    #   # http_client.use_ssl = true
-    #
-    #   timeout = 240
-    #   http_client.read_timeout = timeout
-    #
-    #   begin
-    #     Timeout::timeout(timeout) do
-    #       http_client.start do |http|
-    #         req = Net::HTTP::Post.new(URI.parse(current_api))
-    #         req.form_data = a
-    #         resp = http.request(req)
-    #         j = JSON.parse(resp.body)
-    #         j.each do |b|
-    #           @brokerexam = Brokerexam.new(b)
-    #           @brokerexam.save
-    #         end
-    #       end
-    #     end
-    #     ensure
-    #       http_client.finish rescue nil
-    #   end
-    #   Rails.logger.task.info "job getExams, ok. #{Time.now}"
-    # end
+    @rufus_scheduler.every '1d', :first_at => Time.now + 2 * 60 do
+      Rails.logger.task.info "job getExams start, ok. #{Time.now}"
+      api = APP_CONFIG['21tb_api']
+      uri = APP_CONFIG['21tb_uri_getExamReportList']
+      current_api = api + uri + ".html"
+      appkey = APP_CONFIG['21tb_appkey']
+      secrect = APP_CONFIG['21tb_secrect']
+      corpcode = APP_CONFIG['21tb_corpcode']
+      signText = secrect + "|" + uri + "|" + secrect
+      sign = Digest::MD5.hexdigest(signText).upcase
+      timeStamp = DateTime.now.strftime('%Q')
+      startTime = (Time.now-31.days).to_s
+      endTime = Time.now.to_s
+
+
+      h = Hash.new
+      h[:employeeCodes] = nil
+      h[:examCodes] = nil
+      h[:startTime] = startTime
+      h[:endTime] = endTime
+
+
+      a = { 'appKey_' => appkey,
+            'sign_' => sign,
+            'timestamp_' => timeStamp,
+            'reportQuery' => h.to_json }
+
+      # x = Net::HTTP.post_form(URI.parse(current_api), a)
+      # JSON.parse(x.body)
+      http_client = Net::HTTP.new(URI.parse(current_api).host, URI.parse(current_api).port)
+      # http_client.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      # http_client.use_ssl = true
+
+      timeout = 240
+      http_client.read_timeout = timeout
+
+      begin
+        Timeout::timeout(timeout) do
+          http_client.start do |http|
+            req = Net::HTTP::Post.new(URI.parse(current_api))
+            req.form_data = a
+            resp = http.request(req)
+            j = JSON.parse(resp.body)
+            j.each do |b|
+              @brokerexam = Brokerexam.new(b)
+              @brokerexam.save
+            end
+          end
+        end
+        ensure
+          http_client.finish rescue nil
+      end
+      Rails.logger.task.info "job getExams, ok. #{Time.now}"
+    end
     @rufus_scheduler.join
     Rails.logger.task.info "job done, ok. #{Time.now}"
   end
