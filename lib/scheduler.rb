@@ -67,7 +67,7 @@ class Scheduler
   #
   def setup_jobs
     # unless scheduler.down?
-    @rufus_scheduler.cron '0 0 6,18 * * ?', :first_at => Time.now + 3 * 60 do
+    @rufus_scheduler.cron '0 */6 * * *', :first_at => Time.now + 3 * 60 do
       Rails.logger.task.info "job sync21tbOrganizes, start ok. #{Time.now}"
       @branches = Branch.all
       @departments = Department.all
@@ -125,7 +125,7 @@ class Scheduler
       Rails.logger.task.info "job sync21tbOrganizes, ok. #{Time.now}"
     end
 
-    @rufus_scheduler.cron '0 0 6,18 * * ?', :first_at => Time.now + 30 * 60 do
+    @rufus_scheduler.cron '0 */6 * * *', :first_at => Time.now + 30 * 60 do
       Rails.logger.task.info "job syncPositions start #{Time.now}"
       api = APP_CONFIG['21tb_api']
       uri = APP_CONFIG['21tb_uri_syncPositions']
@@ -188,7 +188,7 @@ class Scheduler
       Rails.logger.task.info "job syncPositions, ok. #{Time.now}"
     end
 
-    @rufus_scheduler.cron '0 0 6,18 * * ?', :first_at => Time.now + 5 * 60 do
+    @rufus_scheduler.cron '0 */6 * * *', :first_at => Time.now + 5 * 60 do
       Rails.logger.task.info "job syncUsers start #{Time.now}"
       @branches = Branch.all
 
@@ -247,7 +247,7 @@ class Scheduler
       Rails.logger.task.info "job syncUsers, ok. #{Time.now}"
     end
 
-    # @rufus_scheduler.cron '0 0 6,18 * * ?' do
+    # @rufus_scheduler.cron '0 */6 * * *' do
     #   api = APP_CONFIG['21tb_api']
     #   uri = APP_CONFIG['21tb_uri_getReportList']
     #   current_api = api + uri + ".html"
@@ -309,7 +309,7 @@ class Scheduler
     #   Rails.logger.task.info "job getReports, ok. #{Time.now}"
     # end
 
-    @rufus_scheduler.cron '0 0 6,18 * * ?', :first_at => Time.now + 2 * 60 do
+    @rufus_scheduler.cron '0 */6 * * *', :first_at => Time.now + 2 * 60 do
       Rails.logger.task.info "job getExams start, ok. #{Time.now}"
       api = APP_CONFIG['21tb_api']
       uri = APP_CONFIG['21tb_uri_getExamReportList']
