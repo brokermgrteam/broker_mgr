@@ -1,5 +1,4 @@
 require "bundler/capistrano"
-require "whenever/capistrano"
 
 server "192.168.11.23", :web, :app, :db, primary: true
 
@@ -18,7 +17,9 @@ set :scm, "git"
 set :repository, "git@github.com:brokermgrteam/#{application}.git"
 set :branch, "master"
 
-set :whenever_command, "bundle exec whenever"
+# set :whenever_command, "bundle exec whenever"
+# set :whenever_environment, defer { stage }
+# require "whenever/capistrano"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true

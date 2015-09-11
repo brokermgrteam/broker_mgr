@@ -2,7 +2,7 @@
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
-RAILS_ROOT = File.dirname(__FILE__) + '/..'
+# RAILS_ROOT = File.dirname(__FILE__) + '/..'
 # Example:
 #
 set :output, {:standard => nil}
