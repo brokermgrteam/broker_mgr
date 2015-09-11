@@ -7,7 +7,7 @@
 #
 # set :output, {:standard => nil}
 #
-every 1.minute do
+every 3.hours do
   runner "Schedule.task"
 end
 #
