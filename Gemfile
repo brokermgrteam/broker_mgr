@@ -42,7 +42,8 @@ gem "wice_grid", '3.4.10'
 gem 'time_difference', '~> 0.4.2'
 gem 'delayed_job_active_record'
 # gem 'delayed_job_recurring'
-gem 'rufus-scheduler'
+# gem 'rufus-scheduler'
+gem 'whenever', :require => false
 gem 'multi_logger'
 # gem 'crono'
 # gem "simple_calendar", github: "excid3/simple_calendar", branch: "1.0"
