@@ -8,7 +8,7 @@
 set :output, {:standard => nil}
 #
 every :hour do
-
+  runner "Schedule.task"
 end
 #
 # every 4.days do
