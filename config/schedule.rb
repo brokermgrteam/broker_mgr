@@ -5,9 +5,9 @@
 # RAILS_ROOT = File.dirname(__FILE__) + '/..'
 # Example:
 #
-set :output, {:standard => nil}
+# set :output, {:standard => nil}
 #
-every :hour do
+every 1.minute do
   runner "Schedule.task"
 end
 #
