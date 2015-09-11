@@ -5,7 +5,7 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+set :output, {:standard => nil}
 #
 every :hour do
   Rails.logger.task.info "job sync21tbOrganizes, start ok. #{Time.now}"
