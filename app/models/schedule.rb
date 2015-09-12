@@ -56,4 +56,5 @@ class Schedule < ActiveRecord::Base
         http_client.finish rescue nil
     end
     Rails.logger.task.info "job sync21tbOrganizes, ok. #{Time.now}"
+  end
 end
