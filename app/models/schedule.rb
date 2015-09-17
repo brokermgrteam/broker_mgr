@@ -3,7 +3,7 @@ class Schedule < ActiveRecord::Base
   def self.task
     Rails.logger.task.info "job syncUsers, start ok. #{Time.now}"
     @branches = Branch.all
-
+    Rails.logger.task.info "job syncUsers, branches get ok. #{Time.now}"
     @branches.each do |br|
       @brokers = br.brokers.where('broker_type = ? and broker_status <> ? and broker_name not like ?', 4119, 407, "离职%")
       if @brokers.count > 0
@@ -31,7 +31,7 @@ class Schedule < ActiveRecord::Base
           h[:idCard] = b.certificate_num if b.certificate_num
           l << h
         end
-
+        Rails.logger.task.info "job syncUsers, users get ok. #{Time.now}"
         a = { 'appKey_' => appkey,
               'sign_' => sign,
               'timestamp_' => timeStamp,
@@ -55,7 +55,8 @@ class Schedule < ActiveRecord::Base
             http_client.finish rescue nil
         end
       end
+      Rails.logger.task.info "job syncUsers, users push ok. #{Time.now}"
     end
-    Rails.logger.task.info "job syncUsers, ok. #{Time.now}"
+    Rails.logger.task.info "job syncUsers, finished. #{Time.now}"
   end
 end
