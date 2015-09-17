@@ -49,6 +49,7 @@ class Schedule < ActiveRecord::Base
               req = Net::HTTP::Post.new(URI.parse(current_api))
               req.form_data = a
               resp = http.request(req)
+              Rails.logger.task.info "job syncUsers, users push respond #{resp.code}. #{Time.now}"
             end
           end
           ensure
@@ -56,6 +57,7 @@ class Schedule < ActiveRecord::Base
         end
       end
       Rails.logger.task.info "job syncUsers, users push ok. #{Time.now}"
+      sleep 3
     end
     Rails.logger.task.info "job syncUsers, finished. #{Time.now}"
   end
