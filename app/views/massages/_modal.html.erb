@@ -1,0 +1,20 @@
+<div id="myModal<%=massage.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><%= massage.title %></h3>
+  </div>
+  <div class="modal-body">
+    <p><%= massage.content %></p>
+    <p><%= link_to massage[:file], massage.file.url unless massage.file.blank? { |i|  } %></p>
+    <p class="muted"><small><%= massage.user.name %></small></p>
+    <p class="muted"><small><%= I18n.localize(massage.created_at, :format => :long) %></small></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    <% if massage.unread?%>
+      <%= link_to "未读", {:controller => 'massages', :action => 'unread', :massage_id => massage.id}, :class => 'btn btn-primary' %>
+    <% else %>
+      <%= link_to "已读", {:controller => 'massages', :action => 'read', :massage_id => massage.id}, :class => 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

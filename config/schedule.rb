@@ -7,8 +7,12 @@
 #
 # set :output, {:standard => nil}
 #
-every 3.hours do
-  runner "Schedule.task"
+every 2.hours do
+  runner "Schedule.task_user"
+end
+
+every 1.day do
+  runner "Schedule.task_branches"
 end
 #
 # every 4.days do

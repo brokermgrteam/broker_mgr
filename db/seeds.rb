@@ -2244,6 +2244,14 @@ Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7903,:name=>'两融息�
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'盘后任务',:dict_type=>'Task.type',:code=>1})
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'薪酬任务',:dict_type=>'Task.type',:code=>2})
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'推送到21tb',:dict_type=>'Task.type',:code=>3})
+
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'团队建立',:dict_type=>'BrokerTeam.modify',:code=>1})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'团队变更',:dict_type=>'BrokerTeam.modify',:code=>2})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'团队解散',:dict_type=>'BrokerTeam.modify',:code=>3})
+
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'未处理',:dict_type=>'BrokerTeam.opinion',:code=>0})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'同意',:dict_type=>'BrokerTeam.opinion',:code=>1})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'否决',:dict_type=>'BrokerTeam.opinion',:code=>2})
 #institutions
 Institution.find_or_create_by_institution_name({:institution_code => "01", :institution_name => "工商银行"})
 Institution.find_or_create_by_institution_name({:institution_code => "02", :institution_name => "农业银行"})

@@ -1,0 +1,14 @@
+<%= f.input :title, :label => '标题' %>
+<%= f.hidden_field :messenger_id, :value => current_user.id %>
+<%= f.hidden_field :user_id, :value => 66336 %>
+<%= f.input :content, as: :text, :input_html => { :rows => '10' }, :label => '内容' %>
+<%= f.input :file, as: :file, :label => '附件'%>
+<%= f.hidden_field :status, :value => false %>
+<%= f.simple_fields_for :brokerteammodify do |p| %>
+	<fieldset>
+	<%= p.input :status, as: :hidden, input_html: { value: get_dict("BrokerTeam.opinion",0).id } %>
+	<%= p.input :broker_id, as: :hidden, input_html: { value: 114056 } %>
+	<%= p.input :modify_type, as: :hidden, input_html: { value: 10160 } %>
+	<%= p.input :user_id, as: :hidden, input_html: { value: 66336 } %>
+	</fieldset>
+<% end %>

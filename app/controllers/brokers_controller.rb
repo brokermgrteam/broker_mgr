@@ -1,11 +1,11 @@
 # encoding: utf-8
 class BrokersController < ApplicationController
   # include SimpleCalendar
-  
+
 
   load_and_authorize_resource
   before_filter :authenticate, :only => [:index, :show]
-  
+
   def show
     @broker = Broker.find(params[:id])
     @title  = @broker.broker_code + " - " + @broker.broker_name
@@ -17,17 +17,17 @@ class BrokersController < ApplicationController
     @newproducts = Product.find(:all, :order => "id desc", :limit => 10)
 
     @usersigns = @broker.user.usersigns
-    
-    @brokerfavcusts_grid = initialize_grid(Cust, 
+
+    @brokerfavcusts_grid = initialize_grid(Cust,
               :conditions => { :id => @broker.brokerfavcusts.map{|c| c.cust_id} },
               :include => [:custindices],
               # :name => 'brokerfavcusts',
               :per_page => 5)
 
-    @brokercompliance_grid = initialize_grid(Brokercompliancelog, 
+    @brokercompliance_grid = initialize_grid(Brokercompliancelog,
               :order => 'brokercompliancelogs.month_id',
               :order_direction => 'desc',
-              :conditions => {:broker_id => @broker}, 
+              :conditions => {:broker_id => @broker},
               :per_page => 5)
 
     respond_to do |format|
@@ -35,13 +35,13 @@ class BrokersController < ApplicationController
       format.json { render json: @broker }
     end
   end
-  
+
   def index
     # @brokers = Broker.all
-    @brokers_grid = initialize_grid(Broker, 
+    @brokers_grid = initialize_grid(Broker,
               :order => 'brokers.broker_code',
               # :order_direction => 'desc',
-              :conditions => {:branch_id => Branch.accessible_by(current_ability).map{|br| [br.id]}}, 
+              :conditions => {:branch_id => Branch.accessible_by(current_ability).map{|br| [br.id]}},
               :include => [:branch],
               :name => 'brokers',
               :enable_export_to_csv => true,
@@ -51,7 +51,7 @@ class BrokersController < ApplicationController
     @title = "营销人员"
     export_grid_if_requested('brokers' => 'grid')
   end
-  
+
   def relbrokers
     @title = "关联帐户"
     @broker = Broker.find(params[:id])

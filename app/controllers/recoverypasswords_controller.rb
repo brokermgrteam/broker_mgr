@@ -4,7 +4,7 @@ class RecoverypasswordsController < ApplicationController
     @title = "忘记密码"
     flash.now[:error] = "注意！提交申请后，您注册的手机会收到一条验证码。"
   end
- 
+
   def create
   	broker = Broker.find_by_user_code_and_certificate_num(params[:recoverypassword][:usercode],
                              															params[:recoverypassword][:certificate_num])
@@ -17,8 +17,8 @@ class RecoverypasswordsController < ApplicationController
     else
       user = broker.user
       @recoverypassword = Passwordresetlog.create(:user_id => user.id,
-                                                  :confirm_code => rand(999999), 
-                                                  :mobile => broker.mobile, 
+                                                  :confirm_code => rand(999999),
+                                                  :mobile => broker.mobile,
                                                   :status => 0)
       respond_to do |format|
          format.html { redirect_to root_path, :flash => { :success => "请查收短信确认码" } }
@@ -36,10 +36,10 @@ class RecoverypasswordsController < ApplicationController
     @recoverypassword = Passwordresetlog.find(params[:passwordresetlog][:passwordresetlog_id])
     @user = User.find(@recoverypassword.user_id)
     if @recoverypassword.confirm_code == params[:passwordresetlog][:confirm_code]
-       @user.update_attributes(:name => @user.name, 
-                               :usercode => @user.usercode, 
-                               :password => "888888", 
-                               :password_confirmation => "888888")
+      #  @user.update_attributes(:name => @user.name,
+      #                          :usercode => @user.usercode,
+      #                          :password => "888888",
+      #                          :password_confirmation => "888888")
        @user.update_attribute :first_login, false
       @recoverypassword.update_attribute :status, 1
       respond_to do |format|

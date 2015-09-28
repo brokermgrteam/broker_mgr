@@ -12,6 +12,10 @@ Cmwp::Application.routes.draw do
     get 'read', :on => :collection
     get 'unread', :on => :collection
   end
+  resources :massages do
+    get 'read', :on => :collection
+    get 'unread', :on => :collection
+  end
   resources :custs do
     get 'productcusts_index', :on => :collection
     get 'cust_detail_index', :on => :collection

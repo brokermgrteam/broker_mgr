@@ -36,7 +36,7 @@ gem 'rabl'
 gem 'yajl-ruby', :require => "yajl"
 gem 'gon'
 gem 'cancan'
-gem 'wicked'
+gem 'wicked', '~> 1.2.1'
 gem 'carrierwave'
 gem "wice_grid", '3.4.10'
 gem 'time_difference', '~> 0.4.2'

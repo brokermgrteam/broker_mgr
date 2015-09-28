@@ -25,3 +25,4 @@ doc/app
 .powenv
 
 config/database.yml
+config/config.yml

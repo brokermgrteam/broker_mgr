@@ -1,10 +1,11 @@
 class Schedule < ActiveRecord::Base
   # attr_accessible :title, :body
-  def self.task
+  def self.task_user
     Rails.logger.task.info "job syncUsers, start ok. #{Time.now}"
     @branches = Branch.all
     Rails.logger.task.info "job syncUsers, branches get ok. #{Time.now}"
     @branches.each do |br|
+      Rails.logger.task.info "job syncUsers, branch #{br.code} begin. #{Time.now}"
       @brokers = br.brokers.where('broker_type = ? and broker_status <> ? and broker_name not like ?', 4119, 407, "离职%")
       if @brokers.count > 0
         api = APP_CONFIG['21tb_api']
@@ -31,7 +32,7 @@ class Schedule < ActiveRecord::Base
           h[:idCard] = b.certificate_num if b.certificate_num
           l << h
         end
-        Rails.logger.task.info "job syncUsers, users get ok. #{Time.now}"
+        Rails.logger.task.info "job syncUsers, #{br.code} users get ok. #{Time.now}"
         a = { 'appKey_' => appkey,
               'sign_' => sign,
               'timestamp_' => timeStamp,
@@ -61,4 +62,70 @@ class Schedule < ActiveRecord::Base
     end
     Rails.logger.task.info "job syncUsers, finished. #{Time.now}"
   end
+
+  def self.task_branches
+    Rails.logger.task.info "job syncOrganizes, start ok. #{Time.now}"
+    @branches = Branch.all
+    @departments = Department.all
+    api = APP_CONFIG['21tb_api']
+    uri = APP_CONFIG['21tb_uri_syncOrganizes']
+    current_api = api + uri + ".html"
+    appkey = APP_CONFIG['21tb_appkey']
+    secrect = APP_CONFIG['21tb_secrect']
+    corpcode = APP_CONFIG['21tb_corpcode']
+    signText = secrect + "|" + uri + "|" + secrect
+    sign = Digest::MD5.hexdigest(signText).upcase
+    timeStamp = DateTime.now.strftime('%Q')
+
+    l = []
+    @departments.each do |d|
+      h = Hash.new
+      h[:corpCode] = corpcode
+      h[:organizeCode] = d.code
+      h[:organizeName] = d.name.strip
+      h[:parentCode] = "*"
+      l << h
+    end
+    @branches.each do |b|
+      h = Hash.new
+      h[:corpCode] = corpcode
+      h[:organizeCode] = b.code
+      h[:organizeName] = b.name.strip
+      h[:parentCode] = b.department.code
+      l << h
+    end
+
+    a = { 'appKey_' => appkey,
+          'sign_' => sign,
+          'timestamp_' => timeStamp,
+          'organizes' => l.to_json }
+
+    http_client = Net::HTTP.new(URI.parse(current_api).host, URI.parse(current_api).port)
+    # http_client.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    # http_client.use_ssl = true
+
+    timeout = 240
+    http_client.read_timeout = timeout
+
+    begin
+      Timeout::timeout(timeout) do
+        http_client.start do |http|
+          req = Net::HTTP::Post.new(URI.parse(current_api))
+          req.form_data = a
+          resp = http.request(req)
+        end
+      end
+      ensure
+        http_client.finish rescue nil
+    end
+    Rails.logger.task.info "job sync21tbOrganizes, ok. #{Time.now}"
+  end
 end
+# == Schema Information
+#
+# Table name: schedules
+#
+#  id         :integer(38)     not null, primary key
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#

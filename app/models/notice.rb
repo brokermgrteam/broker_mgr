@@ -9,7 +9,7 @@ class Notice < ActiveRecord::Base
 
   mount_uploader :file, AttachmentUploader
 
-  validates :title,  :presence => true, 
+  validates :title,  :presence => true,
                      :length => { :maximum => 100 }
 
   scope :recent, unscoped.order('notices.created_at DESC').limit(10)
@@ -32,4 +32,3 @@ end
 #  updated_at :datetime        not null
 #  file       :string(255)
 #
-
