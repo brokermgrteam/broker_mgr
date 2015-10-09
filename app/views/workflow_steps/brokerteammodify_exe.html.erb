@@ -1,17 +1,33 @@
 <div class="row-fluid">
-	<div class="span3">
-		<div class="alert alert-block">
-		  <button type="button" class="close" data-dismiss="alert">&times;</button>
-
-		</div>
-	</div>
-	<div class="span6">
-		<div class="well">
-
-		</div>
-	</div>
-	<div class="span3">
+	<div class="span9">
 		<div class="mini-layout">
-
+			<table class="table table-striped table-bordered table-condensed">
+			  <caption><h4><p class="text-info" style="padding-bottom: 10px;">营销团队变更流程</p></h4></caption>
+			  <thead>
+			    <tr>
+			      <th>变更类型</th>
+			      <th><%= get_dict_by_id(@workflowunderway.brokerteammodify.modify_type).name %></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+					<tr>
+			      <td>状态</td>
+			      <td><%= get_dict_by_id(@workflowunderway.brokerteammodify.status).name %></td>
+			    </tr>
+			    <tr>
+			      <td>说明</td>
+			      <td><%= @workflowunderway.brokerteammodify.memo %></td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+	<div class="span3">
+		<div class="well">
+			<h4>操作</h4>
+			<p class="text-center">
+			<%= link_to "同意", {:controller => 'brokerteammodifies', :action => 'accept', :brokerteammodify_id => @workflowunderway.brokerteammodify.id}, :class => 'btn' %>
+			</p>
+		</div>
 	</div>
 </div>

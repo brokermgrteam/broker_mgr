@@ -1,10 +1,12 @@
 # encoding: utf-8
 class Workflowunderway < ActiveRecord::Base
-  attr_accessible :content, :workflow_id, :remark, :step, :user_id, :custservvisit_attributes
-  
+  attr_accessible :content, :workflow_id, :remark, :step, :user_id, :custservvisit_attributes,
+                  :brokerteammodify_attributes
+
   belongs_to :workflow
   has_one :custservvisit
-  
+  has_one :brokerteammodify
+
   accepts_nested_attributes_for :custservvisit
 end
 # == Schema Information
@@ -20,4 +22,3 @@ end
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #
-

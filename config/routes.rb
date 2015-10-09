@@ -25,6 +25,11 @@ Cmwp::Application.routes.draw do
       get :downloadfile
     end
   end
+  resources :brokerteammodifies do
+    member do
+      get :accept
+    end
+  end
   resources :brokerproductrels, :only => [:create, :destroy]
   resources :brokerfavcusts, :only => [:create, :destroy]
   resources :channels

@@ -16,6 +16,7 @@ class MassagesController < ApplicationController
                                                 :workflow_id => Workflow.find_by_code("1002").id,
                                                 :step => 1,
                                                 :user_id => 66336)
+    @massage.brokerteammodify.update_attribute :workflowunderway_id, @workflowunderway.id
     if @massage.save
       redirect_to notices_path, :flash => { :success => "消息已发送"}
     else

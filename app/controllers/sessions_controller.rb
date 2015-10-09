@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def new
     @title = "登录"
   end
- 
+
   def create
     user = User.authenticate(params[:session][:usercode],
                              params[:session][:password])
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       #   redirect_to root_path
       else
         if user.first_login?
-          redirect_to edit_user_path(user), :flash => { :error => "请及时修改您的初始密码" } 
+          redirect_to edit_user_path(user), :flash => { :error => "请及时修改您的初始密码" }
         else
           if Usersign.find_by_user_id_and_sign_date(user.id, Date.today).nil?
             Usersign.create(:user_id => user.id, :sign_date => Date.today)
@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     sign_out
     redirect_to root_path, :flash => { :alert => "您已退出" }

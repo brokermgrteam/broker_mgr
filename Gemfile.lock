@@ -185,7 +185,7 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.8.0)
-    ruby-oci8 (2.1.7)
+    ruby-oci8 (2.2.0)
     sass (3.3.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -267,7 +267,7 @@ DEPENDENCIES
   rabl
   rails (= 3.2.11)
   rspec-rails (= 2.8.1)
-  ruby-oci8 (~> 2.1.7)
+  ruby-oci8 (~> 2.2.0)
   sass-rails (~> 3.2.6)
   simple_form
   spork (= 0.9.0)
