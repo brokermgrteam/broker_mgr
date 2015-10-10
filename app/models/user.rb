@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
   has_many :notices, :through => :readnotices
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  password_regex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/
 
   validates :name,  :presence   => true,
                     :length     => { :maximum => 20 }
@@ -48,7 +49,8 @@ class User < ActiveRecord::Base
                        :uniqueness => true
   validates :password, :presence     => true,
                        :confirmation => true,
-                       :length       => { :within => 5..20 }
+                       :length       => { :within => 8..20 },
+                       :format => {:with => password_regex, message: "至少8位数字与字母组合"}
 
   before_save :encrypt_password
 
@@ -80,14 +82,18 @@ class User < ActiveRecord::Base
     userpositions.any? { |p| p.name.underscore.to_sym == posposition_symition }
   end
 
+  def unlock
+    self.update_attribute :status, Dict.find_by_dict_type_and_code("UserBase.status", 1).id
+  end
+
   class << self
     def authenticate(usercode, submmited_password)
       user = User.find_by_usercode_and_status(usercode, Dict.find_by_dict_type_and_code("UserBase.status", 1))
-      if user && user.first_login?
-        (user && user.has_default_password?(submmited_password)) ? user : nil
-      else
+      # if user && user.first_login?
+      #   (user && user.has_default_password?(submmited_password)) ? user : nil
+      # else
         (user && user.has_password?(submmited_password)) ? user : nil
-      end
+      # end
       # 与上面相同
       # return nil  if user.nil?
       # return user if user.has_password?(submmited_password)

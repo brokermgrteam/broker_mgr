@@ -26,9 +26,8 @@ Cmwp::Application.routes.draw do
     end
   end
   resources :brokerteammodifies do
-    member do
-      get :accept
-    end
+    get 'accept', :on => :member
+    get 'deny', :on => :member
   end
   resources :brokerproductrels, :only => [:create, :destroy]
   resources :brokerfavcusts, :only => [:create, :destroy]

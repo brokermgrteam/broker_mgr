@@ -18,9 +18,10 @@
 	<% if can? :manage, User %>
 	<p class="text text-center">
 		<%= form_for(@user, :remote => true) do |f| %>
-			<%= f.hidden_field :password, :value => "888888" %>
-			<%= f.hidden_field :password_confirmation, :value => "888888" %>
-			<%= f.submit "重置密码", :class => 'btn btn-danger' %>
+			<%= f.hidden_field :status, :value => get_dict("UserBase.status", 1).id %>
+			<%= f.hidden_field :password, :value => "idsa0wW934Ga" %>
+			<%= f.hidden_field :password_confirmation, :value => "idsa0wW934Ga" %>
+			<%= f.submit "账户解冻", :class => 'btn btn-danger' %>
 		<% end %>
 	</p>
 	<% end %>

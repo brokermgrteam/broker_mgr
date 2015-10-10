@@ -88,6 +88,9 @@ class Ability
       can :read, Notice
       # can :read, Channel
       can :create, Channelurl
+      can :crud, Brokerteammodify
+      can :accept, Brokerteammodify
+      can :deny, Brokerteammodify
     else
       # can :read, :all
     end

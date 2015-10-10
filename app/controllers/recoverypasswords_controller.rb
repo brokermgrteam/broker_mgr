@@ -36,14 +36,11 @@ class RecoverypasswordsController < ApplicationController
     @recoverypassword = Passwordresetlog.find(params[:passwordresetlog][:passwordresetlog_id])
     @user = User.find(@recoverypassword.user_id)
     if @recoverypassword.confirm_code == params[:passwordresetlog][:confirm_code]
-      #  @user.update_attributes(:name => @user.name,
-      #                          :usercode => @user.usercode,
-      #                          :password => "888888",
-      #                          :password_confirmation => "888888")
-       @user.update_attribute :first_login, false
+      @user.update_attribute :first_login, false
       @recoverypassword.update_attribute :status, 1
+			sign_in @user
       respond_to do |format|
-           format.html { redirect_to root_path, :flash => { :success => "密码初始化成功" } }
+           format.html { redirect_to edit_user_path(@user), :flash => { :error => "请及时修改您的初始密码" } }
            format.js
       end
     else

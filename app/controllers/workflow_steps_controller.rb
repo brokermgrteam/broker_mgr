@@ -11,7 +11,7 @@ class WorkflowStepsController < ApplicationController
   def show
     # case @workflow.code
     # when
-    @title = "营销工作任务"
+    @title = "营销工作流程"
     @workflowunderway = Workflowunderway.find(params[:workflowunderway_id])
     @workflow = @workflowunderway.workflow
 

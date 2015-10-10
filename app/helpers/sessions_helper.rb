@@ -16,7 +16,7 @@ module SessionsHelper
     @current_user ||= user_from_remember_token
   end
 
-  def current_brker
+  def current_broker
     Broker.valid_brokers.find_by_user_id(current_user.id) unless Broker.find_by_user_id(current_user.id).nil?
   end
 

@@ -5,10 +5,24 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.authenticate(params[:session][:usercode],
-                             params[:session][:password])
+    @user = User.find_by_usercode(params[:session][:usercode])
+
+    @broker = Broker.valid_brokers.find(:last, :conditions => ["mobile = ? or certificate_num = ?", params[:session][:usercode], params[:session][:usercode]])
+    @usercode = ((@broker.user.usercode if @broker) || (params[:session][:usercode] if Broker.valid_brokers.find_by_user_id(@user.id) == nil)) unless (@user == nil && @broker == nil)
+
+    user = User.authenticate(@usercode, params[:session][:password])
+
     if user.nil?
-      flash.now[:error] = "用户名/密码错误"
+      if @broker
+        try_lock_user(@broker.user)
+        if @broker.user.failed_times >= APP_CONFIG['login_failed_times']
+          flash.now[:error] = "用户已冻结,请24小时后重试"
+        else
+          flash.now[:error] = "用户名/密码错误,请输入邮箱或手机号码尝试"
+        end
+      else
+        flash.now[:error] = "用户名/密码错误,请输入邮箱或手机号码尝试"
+      end
       @title = "登录"
       render 'new'
     else
@@ -20,15 +34,11 @@ class SessionsController < ApplicationController
       # elsif (signed_in?) && (can? :access_broker_first_page, :all)
       #   redirect_to root_path
       else
-        if user.first_login?
-          redirect_to edit_user_path(user), :flash => { :error => "请及时修改您的初始密码" }
+        if Usersign.find_by_user_id_and_sign_date(user.id, Date.today).nil?
+          Usersign.create(:user_id => user.id, :sign_date => Date.today)
+            redirect_to root_path, :flash => { :success => "您今日已成功签到" }
         else
-          if Usersign.find_by_user_id_and_sign_date(user.id, Date.today).nil?
-            Usersign.create(:user_id => user.id, :sign_date => Date.today)
-              redirect_to root_path, :flash => { :success => "您今日已成功签到" }
-          else
-            redirect_back_or root_path #user #friendly redirect
-          end
+          redirect_back_or root_path #user #friendly redirect
         end
       end
     end
@@ -38,4 +48,16 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_path, :flash => { :alert => "您已退出" }
   end
+
+  private
+
+    def try_lock_user(user)
+      @user = User.find(user)
+      user.update_attribute :failed_times, (user.failed_times + 1 if user.failed_times) || 1
+      if (user.failed_times >= APP_CONFIG['login_failed_times'] && @user.status != Dict.find_by_dict_type_and_code("UserBase.status", 3).id)
+        user.update_attribute :status, Dict.find_by_dict_type_and_code("UserBase.status", 3).id
+
+        user.delay(run_at: 5.minutes.from_now).update_attribute :status, Dict.find_by_dict_type_and_code("UserBase.status", 1).id
+      end
+    end
 end
