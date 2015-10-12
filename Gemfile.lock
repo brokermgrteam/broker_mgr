@@ -5,7 +5,7 @@ GIT
     datetimepicker-rails (0.0.8)
 
 GEM
-  remote: http://ruby.taobao.org/
+  remote: https://ruby.taobao.org/
   specs:
     actionmailer (3.2.11)
       actionpack (= 3.2.11)
@@ -73,6 +73,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     commonjs (0.2.7)
+    daemons (1.2.3)
     debug_inspector (0.0.2)
     delayed_job (4.0.6)
       activesupport (>= 3.0, < 5.0)
@@ -253,6 +254,7 @@ DEPENDENCIES
   client_side_validations
   client_side_validations-simple_form
   coffee-rails (~> 3.2.2)
+  daemons
   datetimepicker-rails!
   delayed_job_active_record
   factory_girl_rails (~> 1.7.0)

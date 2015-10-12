@@ -27,6 +27,9 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
 
 namespace :deploy do
   %w[start stop restart].each do |command|
@@ -36,10 +39,6 @@ namespace :deploy do
       run "/etc/init.d/unicorn_#{application} #{command}"
     end
   end
-
-  after "deploy:stop",    "delayed_job:stop"
-  after "deploy:start",   "delayed_job:start"
-  after "deploy:restart", "delayed_job:restart"
 
   task :setup_config, roles: :app do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"

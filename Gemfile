@@ -1,5 +1,5 @@
 # source 'http://rubygems.org'
-source 'http://ruby.taobao.org/'
+source 'https://ruby.taobao.org/'
 
 gem 'rails', '3.2.11'
 
@@ -41,6 +41,7 @@ gem 'carrierwave'
 gem "wice_grid", '3.4.10'
 gem 'time_difference', '~> 0.4.2'
 gem 'delayed_job_active_record'
+gem "daemons"
 # gem 'delayed_job_recurring'
 # gem 'rufus-scheduler'
 gem 'whenever', :require => false
