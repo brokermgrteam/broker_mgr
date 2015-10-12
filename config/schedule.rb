@@ -7,7 +7,7 @@
 #
 # set :output, {:standard => nil}
 #
-every 2.hours do
+every 6.hours do
   runner "Schedule.task_user"
 end
 

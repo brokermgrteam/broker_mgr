@@ -57,7 +57,8 @@ class SessionsController < ApplicationController
       if (user.failed_times >= APP_CONFIG['login_failed_times'] && @user.status != Dict.find_by_dict_type_and_code("UserBase.status", 3).id)
         user.update_attribute :status, Dict.find_by_dict_type_and_code("UserBase.status", 3).id
 
-        user.delay(run_at: 5.minutes.from_now).update_attribute :status, Dict.find_by_dict_type_and_code("UserBase.status", 1).id
+        user.delay(run_at: 1.day.from_now).update_attribute :status, Dict.find_by_dict_type_and_code("UserBase.status", 1).id
+        user.delay(run_at: 1.day.from_now).update_attribute :failed_times, 0
       end
     end
 end

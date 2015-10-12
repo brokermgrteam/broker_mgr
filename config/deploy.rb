@@ -26,6 +26,7 @@ require "whenever/capistrano"
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
+before "deploy:restart", "delayed_job:stop"
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 after "deploy:stop",    "delayed_job:stop"
 after "deploy:start",   "delayed_job:start"
