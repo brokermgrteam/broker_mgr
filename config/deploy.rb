@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+require "delayed/recipes"
 
 server "192.168.15.130", :web, :app, :db, primary: true
 
@@ -17,6 +18,7 @@ set :scm, "git"
 set :repository, "git@github.com:brokermgrteam/#{application}.git"
 set :branch, "master"
 
+set :rails_env, "production" #added for delayed job
 set :whenever_command, "bundle exec whenever"
 set :whenever_environment, "production"
 require "whenever/capistrano"
@@ -34,6 +36,10 @@ namespace :deploy do
       run "/etc/init.d/unicorn_#{application} #{command}"
     end
   end
+
+  after "deploy:stop",    "delayed_job:stop"
+  after "deploy:start",   "delayed_job:start"
+  after "deploy:restart", "delayed_job:restart"
 
   task :setup_config, roles: :app do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
@@ -61,3 +67,10 @@ namespace :deploy do
   end
   before "deploy", "deploy:check_revision"
 end
+
+# namespace :delayed_job do
+#     desc "Restart the delayed_job process"
+#     task :restart, :roles => :app do
+#         run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job restart"
+#     end
+# end
