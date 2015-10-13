@@ -1,11 +1,11 @@
 <%= grid(@brokerfavcusts_grid) do |g|
-	
+
 	g.blank_slate  do
-	  '<p class="text-center muted">没有记录 (可以在客户明细中添加关注)</p>'.html_safe 
+	  '<p class="text-center muted">没有记录 (可以在客户明细中添加关注)</p>'.html_safe
 	end
-	
+
   g.column :name => '资金账号' do |cust|
-    cust.capital_account
+		cust.capital_account[0..6]+cust.capital_account[7..8].gsub(/\d+/  ,"**")+cust.capital_account[9]
   end
 
   g.column :name => '姓名' do |cust|

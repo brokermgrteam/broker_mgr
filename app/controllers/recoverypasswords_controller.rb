@@ -6,8 +6,8 @@ class RecoverypasswordsController < ApplicationController
   end
 
   def create
-  	broker = Broker.find_by_user_code_and_certificate_num(params[:recoverypassword][:usercode],
-                             															params[:recoverypassword][:certificate_num])
+  	broker = Broker.find_by_broker_code_and_certificate_num(params[:recoverypassword][:usercode],
+                             																params[:recoverypassword][:certificate_num])
     if broker.nil?
       @title = "忘记密码"
       respond_to do |format|
@@ -17,7 +17,7 @@ class RecoverypasswordsController < ApplicationController
     else
       user = broker.user
       @recoverypassword = Passwordresetlog.create(:user_id => user.id,
-                                                  :confirm_code => rand(999999),
+                                                  :confirm_code => rand(1_000_00..10_000_00-1),
                                                   :mobile => broker.mobile,
                                                   :status => 0)
       respond_to do |format|

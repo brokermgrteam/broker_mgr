@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_usercode(params[:session][:usercode])
 
-    @broker = Broker.valid_brokers.find(:last, :conditions => ["mobile = ? or certificate_num = ?", params[:session][:usercode], params[:session][:usercode]])
+    @broker = Broker.valid_brokers.find(:last, :conditions => ["mobile = ? or email = ?", params[:session][:usercode], params[:session][:usercode]])
     @usercode = ((@broker.user.usercode if @broker) || (params[:session][:usercode] if Broker.valid_brokers.find_by_user_id(@user.id) == nil)) unless (@user == nil && @broker == nil)
 
     user = User.authenticate(@usercode, params[:session][:password])

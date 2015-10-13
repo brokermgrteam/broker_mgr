@@ -1,5 +1,5 @@
 <%= define_grid(@custs_grid) do |g|
-	
+
 	g.blank_slate  do
 	  "没有记录"
 	end
@@ -7,9 +7,9 @@
   g.column :name => '月份', :attribute => 'id', :model => Month, html: {class: 'hidden-phone'}, :detach_with_id => :month_filter, custom_filter: Month.past_months.map{|m| [m.month, m.id]} do |cust|
     cust.months.first.month
   end
-	
+
   g.column :name => '资金账号', :attribute => 'capital_account', html: {class: 'hidden-phone'}, :detach_with_id => :capital_account_filter do |cust|
-    cust.capital_account
+    cust.capital_account[0..6]+cust.capital_account[7..8].gsub(/\d+/  ,"**")+cust.capital_account[9]
   end
 
   g.column :name => '客户姓名', :attribute => 'cust_name', :detach_with_id => :name_filter do |cust|

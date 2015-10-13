@@ -16,7 +16,7 @@
 		</ul>
 		<ul class="common-divider"></ul>
 		<address>
-			<strong>资金账号：</strong><%= @cust.capital_account %><br/>
+			<strong>资金账号：</strong><%= @cust.capital_account[0..6]+@cust.capital_account[7..8].gsub(/\d+/  ,"**")+@cust.capital_account[9] %><br/>
 			<strong>客户生日：</strong><%= @cust.birthday.strftime("%F") if @cust.birthday %><br/>
 			<strong>开户日期：</strong><%= @cust.open_date.to_time.strftime("%F") if @cust.open_date %><br/>
 			<!-- <ul class="common-divider"></ul> -->
