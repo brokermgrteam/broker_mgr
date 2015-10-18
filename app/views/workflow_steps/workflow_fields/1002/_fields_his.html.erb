@@ -1,0 +1,15 @@
+<div class="well">
+	<legend><p class="lead text-center muted">营销任务计划</p></legend>
+	<%= simple_form_for @workflowhistory, :html => { :class => 'form-horizontal' } do |f| %>
+	<%= f.simple_fields_for :brokerteammodify do |p| %>
+		<fieldset>
+		<%= p.input :status, :label => "处理状态", disabled: true, :collection => get_dict_by_type("BrokerTeam.opinion") %>
+		<%= p.input :modify_type, :label => '类型', disabled: true, :collection => get_dict_by_type("BrokerTeam.modify") %>
+		<%= p.input :memo, as: :text, :input_html => { :rows => '4' }, :label => '内容', disabled: true %>
+		</fieldset>
+	<% end %>
+	<% end %>
+  <div class="form-actions">
+    <%= link_to '返回', workflowhistories_path, :class => 'btn' %>
+  </div>
+</div>

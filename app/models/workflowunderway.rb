@@ -8,6 +8,7 @@ class Workflowunderway < ActiveRecord::Base
   has_one :brokerteammodify
 
   accepts_nested_attributes_for :custservvisit
+  accepts_nested_attributes_for :brokerteammodify
 end
 # == Schema Information
 #

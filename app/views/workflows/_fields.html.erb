@@ -1,10 +1,8 @@
 <fieldset>
 <%= f.input :code, label: "流程代码"
-						# as: :hidden, input_html: { value: (SecureRandom.hex(3) if @workflow.code.nil?) || @workflow.code } 
+						# as: :hidden, input_html: { value: (SecureRandom.hex(3) if @workflow.code.nil?) || @workflow.code }
 						 %>
 <%= f.input :name, :label => '工作流名称' %>
-<%= f.input :steps, as: :hidden, input_html: { value: @workflow.workflowsteps.count },
- 						:label => '步骤' %>
 </fieldset>
 <fieldset>
 <%= f.simple_fields_for :workflowsteps do |builder| %>

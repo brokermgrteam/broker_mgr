@@ -28,6 +28,8 @@ class Ability
       can :read, Channel, :channel_code => "9900"
       can :read, Channelurl, :branch_id => user.branch_id
       can :read, Notice
+      can :unread, Notice
+      can :read, Massage
 
     elsif user.has_role? :分公司管理
       can :access_user_first_page, :all
@@ -46,6 +48,8 @@ class Ability
       can :read, Channel, :channel_code => "9900"
       can :read, Channelurl, :branch_id => user.department.branches.map {|b| b.id}
       can :read, Notice
+      can :unread, Notice
+      can :read, Massage
 
     elsif user.has_role? :销售交易部管理
       can :access_user_first_page, :all
@@ -67,8 +71,10 @@ class Ability
       can :create, Channelurl
       can :read, Channelurl
       can :read, Notice
+      can :read, Massage
       can :create, Notice
       can :destroy, Notice
+      can :unread, Notice
       can :read, Systemtasklog
 
     elsif user.has_role? :营销人员
@@ -86,6 +92,8 @@ class Ability
       can :productcusts_index, Cust, :branch_id => user.branch_id
       can :cust_detail_index, Cust, :branch_id => user.branch_id
       can :read, Notice
+      can :unread, Notice
+      can :read, Massage
       # can :read, Channel
       can :create, Channelurl
       can :crud, Brokerteammodify

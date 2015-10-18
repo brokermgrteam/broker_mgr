@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Schedule < ActiveRecord::Base
   # attr_accessible :title, :body
   def self.task_user
@@ -28,7 +29,7 @@ class Schedule < ActiveRecord::Base
           h[:idCard] = b.certificate_num if b.certificate_num
           l << h
         end
-        Rails.logger.task.info "job syncUsers, users get ok. #{Time.now}"
+
         a = { 'appKey_' => appkey,
               'sign_' => sign,
               'timestamp_' => timeStamp,
@@ -36,6 +37,7 @@ class Schedule < ActiveRecord::Base
               'updatePswFirstLogin' => true}
 
         http_client = Net::HTTP.new(URI.parse(current_api).host, URI.parse(current_api).port)
+        Rails.logger.task.info "job syncUsers, #{@brokers.count} users get ok. #{Time.now}"
 
         timeout = 600
         http_client.read_timeout = timeout
@@ -50,7 +52,7 @@ class Schedule < ActiveRecord::Base
             end
           end
           ensure
-            http_client.finish rescue nil
+            http_client.finish
         end
       end
     Rails.logger.task.info "job syncUsers, finished. #{Time.now}"

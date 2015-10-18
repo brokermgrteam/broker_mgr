@@ -1,5 +1,5 @@
 <tr>
-	<td><a href="#myModal<%=massage.id%>" data-toggle="modal"><%= massage.title %></a></td>
+	<td><a href="#myMassageModal<%=massage.id%>" data-toggle="modal"><%= massage.title %></a></td>
 	<td class="hidden-phone"><%= massage.content[0..15] unless massage.content.nil? %></td>
 	<td class="hidden-phone"><%= I18n.localize(massage.created_at, :format => :long)  %></td>
 	<% if can? :destroy, Massage %>

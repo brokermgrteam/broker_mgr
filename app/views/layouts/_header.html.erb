@@ -51,19 +51,19 @@
 	      <div class="nav-collapse">
 					<ul class="nav pull-right">
 						<% if signed_in? %>
-							<li><%= link_to '公告 '.html_safe + notice_count(current_user), notices_path %>
+							<li><%= link_to '通知 '.html_safe + notice_count(current_user), notices_path %>
 						<% end %>
 					</ul>
 				</div>
 	      <!-- Be sure to leave the brand out there if you want it shown -->
-		  
+
 			<% if signed_in? %>
 			<!-- 	<%= form_for :categories, :url => search_categories_path,
-																	:method => 'get', 
+																	:method => 'get',
 																	:html => { :class => "navbar-search pull-right" } do |f|%>
 					<%= f.search_field :category_name,
-														 :class => "search-query span2", 
-														 :placeholder => "搜索", 
+														 :class => "search-query span2",
+														 :placeholder => "搜索",
 														 :onsearch => true, data: { autocomplete_source: categories_path } %>
 					<%= f.submit :type => 'hidden', :name => nil, :value => 'search' %>
 				<% end %> -->

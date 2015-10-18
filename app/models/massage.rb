@@ -12,10 +12,10 @@ class Massage < ActiveRecord::Base
                      :length => { :maximum => 100 }
 
   scope :recent, unscoped.order('massages.created_at DESC').limit(10)
-  scope :unread, lambda { |user| {:conditions => ['status = ?', false]} }
-  scope :read, lambda { |user| {:conditions => ['status = ?', true]} }
+  scope :unread, lambda { |user| {:conditions => ['status = ? AND user_id = ?', false, user.id]} }
+  scope :read, lambda { |user| {:conditions => ['status = ? AND user_id = ?', true, user.id]} }
 
-  def unread?
+  def read?
   	self.status
   end
 end

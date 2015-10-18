@@ -1,0 +1,17 @@
+<%= simple_form_for @workflowunderway, :html => { :class => 'form-horizontal' } do |f| %>
+<%= f.input :workflow_id, as: :hidden, :input_html => { value: Workflow.find_by_code("1001").id } %>
+<%= f.input :step, as: :hidden, input_html: { value: 2 } %>
+<%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+
+<%= f.simple_fields_for :brokerteammodify do |p| %>
+	<fieldset>
+	<%= p.input :status, as: :hidden, input_html: { value: get_dict('BrokerTeam.opinion', 1).id } %>
+	</fieldset>
+<% end %>
+	<div class="form-actions">
+		<%= link_to '上一步', edit_workflowunderway_path(@workflowunderway), :class => 'btn' %>
+		<%= f.submit '提交', :class => 'btn btn-primary' %>
+		<%= link_to '取消', root_path, :class => 'btn' %>
+	</div>
+  </fieldset>
+<% end %>
