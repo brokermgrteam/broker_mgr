@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   has_many :notices, :through => :readnotices
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  password_regex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/
+  password_regex = /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
 
   validates :name,  :presence   => true,
                     :length     => { :maximum => 20 }
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   validates :password, :presence     => true,
                        :confirmation => true,
                        :length       => { :within => 8..20 },
-                       :format => {:with => password_regex, message: "至少8位数字与字母组合"}
+                       :format => {:with => password_regex, message: "至少8位数字、符号与大小写字母组合"}
 
   before_save :encrypt_password
 
