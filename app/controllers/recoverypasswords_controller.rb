@@ -6,19 +6,18 @@ class RecoverypasswordsController < ApplicationController
   end
 
   def create
-  	broker = Broker.find_by_broker_code_and_certificate_num(params[:recoverypassword][:usercode],
-                             																params[:recoverypassword][:certificate_num])
-    if broker.nil?
+  	user = User.find_by_usercode_and_certificate_num(params[:recoverypassword][:usercode],
+                             												 params[:recoverypassword][:certificate_num])
+    if user.nil?
       @title = "忘记密码"
       respond_to do |format|
          format.html { redirect_to root_path, :flash => { :error => "输入不正确，请重新输入" } }
          format.js { render :action => "reject" }
       end
     else
-      user = broker.user
       @recoverypassword = Passwordresetlog.create(:user_id => user.id,
                                                   :confirm_code => rand(1_000_00..10_000_00-1),
-                                                  :mobile => broker.mobile,
+                                                  :mobile => user.mobile,
                                                   :status => 0)
       respond_to do |format|
          format.html { redirect_to root_path, :flash => { :success => "请查收短信确认码" } }

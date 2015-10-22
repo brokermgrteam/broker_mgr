@@ -25,11 +25,13 @@ class Ability
       can :read, Cust, :branch_id => user.branch_id
       can :productcusts_index, Cust, :branch_id => user.branch_id
       can :cust_detail_index, Cust, :branch_id => user.branch_id
-      can :read, Channel, :channel_code => "9900"
+      can :read, Channel, :channel_type => Dict.find_by_code_and_dict_type(1, 'Channel.type').id
       can :read, Channelurl, :branch_id => user.branch_id
+      can :create, Channelurl
       can :read, Notice
       can :unread, Notice
       can :read, Massage
+      can :read, Bank
 
     elsif user.has_role? :分公司管理
       can :access_user_first_page, :all
@@ -47,9 +49,11 @@ class Ability
       can :cust_detail_index, Cust, :branch_id => user.department.branches.map {|b| b.id}
       can :read, Channel, :channel_code => "9900"
       can :read, Channelurl, :branch_id => user.department.branches.map {|b| b.id}
+      can :create, Channelurl
       can :read, Notice
       can :unread, Notice
       can :read, Massage
+      can :read, Bank
 
     elsif user.has_role? :销售交易部管理
       can :access_user_first_page, :all
@@ -76,6 +80,7 @@ class Ability
       can :destroy, Notice
       can :unread, Notice
       can :read, Systemtasklog
+      can :read, Bank
 
     elsif user.has_role? :营销人员
       can :access_broker_first_page, :all
@@ -99,6 +104,7 @@ class Ability
       can :crud, Brokerteammodify
       can :accept, Brokerteammodify
       can :deny, Brokerteammodify
+      can :read, Bank
     else
       # can :read, :all
     end

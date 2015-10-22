@@ -17,12 +17,16 @@
 #  status             :integer(38)
 #  user_type          :integer(38)
 #  first_login        :boolean(1)      default(TRUE)
+#  failed_times       :integer(38)
+#  certificate_num    :string(255)
+#  mobile             :string(255)
 #
 
 class User < ActiveRecord::Base
   attr_accessor   :password
   attr_accessible :name, :email, :password, :usercode, :password_confirmation, :userposition_ids,
-                  :role_ids, :branch_id, :department_id, :status, :failed_times
+                  :role_ids, :branch_id, :department_id, :status, :failed_times, :certificate_num,
+                  :mobile
 
   belongs_to :branch
   belongs_to :department

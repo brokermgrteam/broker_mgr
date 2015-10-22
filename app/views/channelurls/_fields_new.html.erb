@@ -1,6 +1,6 @@
 <div class="row-fluid">
   <!-- <div class="span6"> -->
-    <%= f.input :channel, :label => '选择渠道', :collection => Channel.valid_channels,
+    <%= f.input :channel, :label => '选择渠道', :collection => Channel.valid_channels.accessible_by(current_ability).order('channel_code'),
             :include_blank => true, :required => true,  input_html: { :class => "channel_selection" } %>
   <!-- </div> -->
 <!-- </div> -->
@@ -20,4 +20,6 @@
     <%= f.input :broker, :label => '营销人员', :collection => [], as: :select,
             :include_blank => true, :required => false, input_html: { :class => "broker_selection" } %>
   <!-- </div> -->
+    <%= f.input :bank_no, :label => '存管银行', :collection => Bank.accessible_by(current_ability).order('bank_code'),
+            :include_blank => true, :required => false %>
 </div>

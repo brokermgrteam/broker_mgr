@@ -16,5 +16,6 @@ end
 #  workflowunderway_id :integer(38)
 #  created_at          :datetime        not null
 #  updated_at          :datetime        not null
+#  massage_id          :integer(38)
 #
 

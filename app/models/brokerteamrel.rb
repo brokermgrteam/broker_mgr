@@ -5,6 +5,7 @@ class Brokerteamrel < ActiveRecord::Base
   belongs_to :broker,     :class_name => "Broker"
   belongs_to :teambroker, :class_name => "Broker"
 end
+
 # == Schema Information
 #
 # Table name: brokerteamrels
@@ -14,4 +15,5 @@ end
 #  lower_broker_id :integer(38)
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
+#  status          :integer(38)
 #

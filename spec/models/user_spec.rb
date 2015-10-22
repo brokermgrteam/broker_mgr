@@ -187,5 +187,8 @@ end
 #  status             :integer(38)
 #  user_type          :integer(38)
 #  first_login        :boolean(1)      default(TRUE)
+#  failed_times       :integer(38)
+#  certificate_num    :string(255)
+#  mobile             :string(255)
 #
 

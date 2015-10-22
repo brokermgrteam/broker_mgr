@@ -13,6 +13,7 @@ class ChannelurlsController < ApplicationController
     @open_branch = Branch.find(params[:channelurl][:cust_branch]) unless params[:channelurl][:cust_branch].empty?
     @serv_branch = Branch.find(params[:channelurl][:cust_branch]) unless params[:channelurl][:cust_branch].empty?
 		@sub_channel = Subchannel.find_by_channel_id_and_sub_channel_name(params[:channelurl][:channel], params[:channelurl][:sub_channel]) if params[:channelurl][:sub_channel]
+		@bank = Bank.find(params[:channelurl][:bank_no]) unless params[:channelurl][:bank_no].empty?
 
 		if @sub_channel.nil? && !params[:channelurl][:sub_channel].empty?
 			redirect_to new_channelurl_path, :flash => { :error => "二级渠道输入不正确" } and return
@@ -33,7 +34,8 @@ class ChannelurlsController < ApplicationController
     'serv_branch_name' => (@serv_branch.name unless @serv_branch.nil?),
     'broker_id' => params[:channelurl][:broker],
     'broker_code' => (@broker.broker_code unless @broker.nil?),
-    'broker_name' => (@broker.broker_name unless @broker.nil?)
+    'broker_name' => (@broker.broker_name unless @broker.nil?),
+		'bank_no' => (@bank.bank_code unless @bank.nil?)
     }
 		# raise request.inspect
     x = Net::HTTP.post_form(URI.parse(APP_CONFIG['channel_url_generator']), a)
@@ -47,7 +49,8 @@ class ChannelurlsController < ApplicationController
                                                    :serv_branch_id => params[:channelurl][:channel_branch],
                                                    :broker_id => params[:channelurl][:broker],
                                                    :url => @url,
-                                                   :wapurl => @wapurl)
+                                                   :wapurl => @wapurl,
+																									 :bank_id => params[:channelurl][:bank_no])
 		respond_to do |format|
 			if @channelurl.save
         format.html { redirect_to @channelurl, :flash => { :success => "URL获取成功" } }

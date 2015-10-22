@@ -1,6 +1,6 @@
 <div class="row-fluid">
   <!-- <div class="span6"> -->
-    <%= f.input :channel, :label => '选择渠道', :collection => Channel.valid_channels,
+    <%= f.input :channel, :label => '选择渠道', :collection => Channel.valid_channels.order('channel_code'),
             :include_blank => false, :required => true %>
   <!-- </div> -->
 <!-- </div> -->

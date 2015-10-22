@@ -17,5 +17,6 @@ end
 #  broker_id      :integer(38)
 #  wapurl         :string(255)
 #  sub_channel_id :integer(38)
+#  bank_id        :integer(38)
 #
 

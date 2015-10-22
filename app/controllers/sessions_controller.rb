@@ -5,17 +5,17 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by_usercode(params[:session][:usercode])
+    @user = User.find(:last, :conditions => ["mobile = ? or email = ?", params[:session][:usercode], params[:session][:usercode]])
 
-    @broker = Broker.valid_brokers.find(:last, :conditions => ["mobile = ? or email = ?", params[:session][:usercode], params[:session][:usercode]])
-    @usercode = ((@broker.user.usercode if @broker) || (params[:session][:usercode] if Broker.valid_brokers.find_by_user_id(@user.id) == nil)) unless (@user == nil && @broker == nil)
+    @broker = Broker.valid_brokers.find_by_user_id(@user) if @user
+    @usercode = @user.usercode if @user #((@broker.user.usercode if @broker) || (@user.usercode if Broker.valid_brokers.find_by_user_id(@user.id) == nil)) unless (@user == nil && @broker == nil)
 
     user = User.authenticate(@usercode, params[:session][:password])
 
     if user.nil?
-      if @broker
-        try_lock_user(@broker.user)
-        if @broker.user.failed_times >= APP_CONFIG['login_failed_times']
+      if @user
+        try_lock_user(@user)
+        if @user.failed_times >= APP_CONFIG['login_failed_times']
           flash.now[:error] = "用户已冻结,请24小时后重试"
         else
           flash.now[:error] = "用户名/密码错误,请输入邮箱或手机号码尝试"
@@ -29,16 +29,18 @@ class SessionsController < ApplicationController
       sign_in user
       @session = Session.new({:user_id => user.id, :login_type => 1})
       @session.save
-      if (signed_in?) && (can? :access_user_first_page, :all)
-        redirect_to brokers_path
-      # elsif (signed_in?) && (can? :access_broker_first_page, :all)
-      #   redirect_to root_path
-      else
-        if Usersign.find_by_user_id_and_sign_date(user.id, Date.today).nil?
-          Usersign.create(:user_id => user.id, :sign_date => Date.today)
-            redirect_to root_path, :flash => { :success => "您今日已成功签到" }
+      if signed_in?
+        if can? :access_user_first_page, :all
+          redirect_to brokers_path
+        # elsif (signed_in?) && (can? :access_broker_first_page, :all)
+        #   redirect_to root_path
         else
-          redirect_back_or root_path #user #friendly redirect
+          if Usersign.find_by_user_id_and_sign_date(user.id, Date.today).nil?
+            Usersign.create(:user_id => user.id, :sign_date => Date.today)
+              redirect_to root_path, :flash => { :success => "您今日已成功签到" }
+          else
+            redirect_back_or root_path #user #friendly redirect
+          end
         end
       end
     end

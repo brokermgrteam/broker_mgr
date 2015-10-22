@@ -57,7 +57,7 @@
 				<div class="span12">
 					<div class="form-actions">
 						<button class="btn btn-primary wg-external-submit-button" data-grid-name="channels">查询</button>
-						<% if can? :create, Channel %>
+						<% if can? :create, Channelurl %>
 							<%= link_to '获取渠道连接', new_channelurl_path, :class => 'btn btn-warning' %>
 						<% end %>
 						<% if can? :manage, Channel %>

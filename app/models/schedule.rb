@@ -37,7 +37,7 @@ class Schedule < ActiveRecord::Base
               'updatePswFirstLogin' => true}
 
         http_client = Net::HTTP.new(URI.parse(current_api).host, URI.parse(current_api).port)
-        Rails.logger.task.info "job syncUsers, #{@brokers.count} users get ok. #{Time.now}"
+        Rails.logger.task.info "job syncUsers, #{@brokers.count.to_s} users get ok. #{Time.now}"
 
         timeout = 600
         http_client.read_timeout = timeout
@@ -124,3 +124,12 @@ end
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
+# == Schema Information
+#
+# Table name: schedules
+#
+#  id         :integer(38)     not null, primary key
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
