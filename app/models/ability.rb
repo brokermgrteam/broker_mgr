@@ -32,6 +32,9 @@ class Ability
       can :unread, Notice
       can :read, Massage
       can :read, Bank
+      can :read, Brokerteamrel
+      can :teambrokers, Broker
+      can :brokerteam, Broker
 
     elsif user.has_role? :分公司管理
       can :access_user_first_page, :all
@@ -54,6 +57,9 @@ class Ability
       can :unread, Notice
       can :read, Massage
       can :read, Bank
+      can :read, Brokerteamrel
+      can :teambrokers, Broker
+      can :brokerteam, Broker
 
     elsif user.has_role? :销售交易部管理
       can :access_user_first_page, :all
@@ -81,6 +87,9 @@ class Ability
       can :unread, Notice
       can :read, Systemtasklog
       can :read, Bank
+      can :read, Brokerteamrel
+      can :teambrokers, Broker
+      can :brokerteam, Broker
 
     elsif user.has_role? :营销人员
       can :access_broker_first_page, :all
@@ -88,6 +97,7 @@ class Ability
       can :read, User,   :id => user.id
       can :update, User,   :id => user.id
       can :read, Broker, :id => Broker.find_by_user_id(user.id).id
+      can :read, Broker, :id => Broker.find_by_user_id(user.id).teambrokers.map {|b| b.id}
       can :crud, Custservvisit
       can :crud, Workflowunderway
       can :read, Workflowhistory
@@ -105,6 +115,11 @@ class Ability
       can :accept, Brokerteammodify
       can :deny, Brokerteammodify
       can :read, Bank
+      can :crud, Brokerteamrel
+      can :teambrokers, Broker
+      can :removeteambroker, Broker
+      can :brokerteam, Broker
+      can :leaveteam, Broker
     else
       # can :read, :all
     end

@@ -1,5 +1,6 @@
 # encoding: utf-8
 class WorkflowsController < ApplicationController
+  load_and_authorize_resource
   before_filter :authenticate
 
   def index
@@ -19,6 +20,7 @@ class WorkflowsController < ApplicationController
 
   def create
     @workflow = Workflow.new(params[:workflow])
+    @workflow.update_attribute :steps, @workflow.workflowsteps.count
     if @workflow.save
       redirect_to workflows_path, :flash => { :success => "工作流程新建成功"}
     else

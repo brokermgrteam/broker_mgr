@@ -1,7 +1,7 @@
 <tr>
 	<td><a href="#myMassageModal<%=massage.id%>" data-toggle="modal"><%= massage.title %></a></td>
 	<td class="hidden-phone"><%= massage.content[0..15] unless massage.content.nil? %></td>
-	<td class="hidden-phone"><%= I18n.localize(massage.created_at, :format => :long)  %></td>
+	<td class="hidden-phone"><%= I18n.localize(massage.updated_at, :format => :long)  %></td>
 	<% if can? :destroy, Massage %>
 	  <td>
 			<%= link_to "删除", massage_path(massage), :method => :delete, :confirm => '确认删除这条消息?',

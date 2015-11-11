@@ -6,8 +6,9 @@ class Broker < ActiveRecord::Base
   has_many :brokerindices
   has_many :salaries
   has_many :brokerteamrels, :dependent => :destroy,
-                            :foreign_key => "lower_broker_id"
-  has_many :teambrokers, :through => :brokerteamrels, :source => :broker
+                            :foreign_key => "broker_id"
+  has_many :teambrokers, :through => :brokerteamrels,
+                         :source => :lower_broker
   has_many :brokerrels, :dependent => :destroy,
                         :foreign_key => "rel_broker_id"
   has_many :relbrokers, :through => :brokerrels, :source => :broker
@@ -55,6 +56,14 @@ class Broker < ActiveRecord::Base
 
   def unfavor_cust!(cust)
     brokerfavcusts.find_by_cust_id(cust).destroy
+  end
+
+  def is_manager?
+    self.brokerteamrels.any?
+  end
+
+  def is_partner?
+    [Brokerteamrel.find_by_lower_broker_id(self)].any?
   end
 
   def self.search(search)
@@ -122,4 +131,3 @@ end
 #  broker_degree        :integer(38)
 #  zqbz                 :integer(38)
 #
-

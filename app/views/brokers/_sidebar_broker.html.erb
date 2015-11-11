@@ -1,37 +1,44 @@
-<div class="well">
-	<ul class="thumbnails inline">
-		<li class="span4">
-	    <div class="thumbnail">
-				<%= avatar %>
-	    </div>
-	  </li>
-		<li>
-			<h4><%= @broker.broker_name %></h4>
-			<p class="muted"><%= get_dict_by_id(@broker.broker_level).name if @broker.broker_level %></p>
-		</li>
-	</ul>
-	<ul class="inline">
-		<li><strong>所属：</strong></li>
-		<li><%= Branch.find(@broker.branch_id).name %></li><br/>
-		<li><strong>代码：</strong></li>
-		<li><%= @broker.broker_code %></li><br/>
-		<li><strong>职务：</strong></li>
-		<li><%= (@broker.region_manager) ? "区域经理" : "营销经理" %></li><br/>
-		<li><strong>状态：</strong></li>
-		<li><%= get_dict_by_id(@broker.broker_status).name if @broker.broker_status %></li><br/>
-		<li><strong>年龄：</strong></li>
-		<li><%= @broker.age.to_s %></li><br/>
-		<li><strong>性别：</strong></li>
-		<li><%= get_dict_by_id(@broker.gender).name if @broker.gender %></li><br/>
-		<li><strong>手机：</strong></li>
-		<li><%= @broker.mobile %></li><br/>
-		<li><strong>邮箱：</strong></li>
-		<li><%= mail_to @broker.email %></li><br/>
-	</ul>
-	<ul class="common-divider"></ul>
-	<!-- <ul class="inline"> -->
-	<% if User.find(@broker.user_id) == current_user %>
-		<p class="text-center"><%= link_to '新建工作', new_workflowunderway_path, :class => 'btn btn-success' %></p>
-	<% end %>
-	<!-- </ul> -->
+<div class="row-fluid">
+	<div class="well">
+		<ul class="thumbnails inline">
+			<li class="span4">
+		    <div class="thumbnail">
+					<%= avatar %>
+		    </div>
+		  </li>
+			<li>
+				<h4><%= @broker.broker_name %></h4>
+				<p class="muted"><%= get_dict_by_id(@broker.broker_level).name if @broker.broker_level %></p>
+			</li>
+		</ul>
+		<ul class="inline">
+			<li><strong>所属：</strong></li>
+			<li><%= Branch.find(@broker.branch_id).name %></li><br/>
+			<li><strong>代码：</strong></li>
+			<li><%= @broker.broker_code %></li><br/>
+			<li><strong>职务：</strong></li>
+			<li><%= (@broker.region_manager) ? "区域经理" : "营销经理" %></li><br/>
+			<li><strong>状态：</strong></li>
+			<li><%= get_dict_by_id(@broker.broker_status).name if @broker.broker_status %></li><br/>
+			<li><strong>年龄：</strong></li>
+			<li><%= @broker.age.to_s %></li><br/>
+			<li><strong>性别：</strong></li>
+			<li><%= get_dict_by_id(@broker.gender).name if @broker.gender %></li><br/>
+			<li><strong>手机：</strong></li>
+			<li><%= @broker.mobile %></li><br/>
+			<li><strong>邮箱：</strong></li>
+			<li><%= mail_to @broker.email %></li><br/>
+		</ul>
+		<ul class="common-divider"></ul>
+		<!-- <ul class="inline"> -->
+		<% if @broker.is_manager? %>
+		<p class="text-center"><%= link_to "我的团队", teambrokers_broker_path(@broker), :remote => true,  :class => 'btn' %></p>
+		<div id="teambrokers_url"></div>
+		<% end %>
+		<% if @broker.is_partner? %>
+		<p class="text-center"><%= link_to "我的团队", brokerteam_broker_path(@broker), :remote => true,  :class => 'btn' %></p>
+		<div id="brokerteam_url"></div>
+		<% end %>
+		<!-- </ul> -->
+	</div>
 </div>

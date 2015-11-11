@@ -12,7 +12,7 @@ every :reboot do
   command "cd /home/deployer/apps/broker_mgr/current && RAILS_ENV=production script/delayed_job start"
 end
 
-every 10.hours do
+every 3.hours do
   command "cd /home/deployer/apps/broker_mgr/current && RAILS_ENV=production script/delayed_job restart"
 end
 

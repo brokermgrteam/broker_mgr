@@ -4,7 +4,7 @@ class BrokersController < ApplicationController
 
 
   load_and_authorize_resource
-  before_filter :authenticate, :only => [:index, :show]
+  before_filter :authenticate#, :only => [:index, :show]
 
   def show
     @broker = Broker.find(params[:id])
@@ -57,5 +57,84 @@ class BrokersController < ApplicationController
     @broker = Broker.find(params[:id])
     @brokers = @broker.relbrokers
     render 'categories/search'
+  end
+
+  def teambrokers
+    @broker = Broker.find(params[:id])
+    @teambrokers = @broker.teambrokers
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def brokerteam
+    @broker = Broker.find(params[:id])
+    @manager = [Broker.find(Brokerteamrel.find_by_lower_broker_id(@broker).broker_id)]
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def leaveteam
+    @membership = Brokerteamrel.find_by_lower_broker_id(params[:id])
+    @teambroker = current_broker
+    @leader = Broker.find(@membership.broker_id)
+
+    @membership.update_attribute :status, get_dict("BrokerTeamrel.status", 1).id
+    @brokerteammodify = Brokerteammodify.create(:broker_id => @membership.broker_id,
+                                                :memo => "申请解除" + @teambroker.broker_code + "-" + @teambroker.broker_name + "团队成员身份",
+                                                :modify_type => get_dict('BrokerTeam.modify', 2).id,
+                                                :status => get_dict('BrokerTeam.opinion', 0).id,
+                                                :user_id => current_user.id)
+    @massage = Massage.create(:content => "团队成员" + @teambroker.broker_code + "-" + @teambroker.broker_name + "申请离开团队",
+                              :messenger_id => current_user.id,
+                              :title => "团队人员申请退出",
+                              :user_id => @leader.user.id,
+                              :status => false)
+    if (@massage.save && @brokerteammodify.save)
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    else
+      redirect_to root_path, :flash => { :error => "团队关系解除失败"}
+    end
+  end
+
+  def removeteambroker
+    # @broker = Broker.find(params[:lower_broker_id])
+    @membership = Brokerteamrel.find_by_lower_broker_id(params[:id])
+    @teambroker = Broker.find(params[:id])
+    @teammodifyhis = Brokerteammodify.find(:first, :conditions => ["user_id = ? AND modify_type = ? AND status <> ? AND to_char(created_at,'YYYYMM') = ?", current_user.id, get_dict('BrokerTeam.modify', 2).id, get_dict('BrokerTeam.opinion', 2).id, Time.now.strftime("%Y%m")])
+
+    if @teammodifyhis.nil?
+      @membership.update_attribute :status, get_dict("BrokerTeamrel.status", 1).id
+      @brokerteammodify = Brokerteammodify.create(:broker_id => @membership.broker_id,
+                                                  :memo => "申请解除" + @teambroker.broker_code + "-" + @teambroker.broker_name + "团队成员身份",
+                                                  :modify_type => get_dict('BrokerTeam.modify', 2).id,
+                                                  :status => get_dict('BrokerTeam.opinion', 0).id,
+                                                  :user_id => current_user.id)
+      @massage = Massage.create(:content => "团队长已申请解除" + @teambroker.broker_code + "-" + @teambroker.broker_name + "团队成员身份",
+                                :messenger_id => current_user.id,
+                                :title => "团队人员关系解除通知",
+                                :user_id => @teambroker.user.id,
+                                :status => false)
+      if (@massage.save && @brokerteammodify.save)
+        respond_to do |format|
+          format.html
+          format.js
+        end
+      else
+        redirect_to root_path, :flash => { :error => "团队关系解除失败"}
+      end
+    else
+      respond_to do |format|
+        format.js { render :action => 'refuse.js.erb'}
+      end
+    end
   end
 end

@@ -20,13 +20,15 @@
 		  <h4>帮助</h4>
 		  *为必填项
 		</div>
-		<%= simple_form_for @channel do |d| %>
-		  <fieldset>
-				<%= render 'delete_fields', :d => d %>
-			</fieldset>
-			<div class="form-actions">
-				<%= d.submit "删除渠道", :class => 'btn btn-danger' %>
-			</div>
+		<% if can? :delete, Channel %>
+			<%= simple_form_for @channel do |d| %>
+			  <fieldset>
+					<%= render 'delete_fields', :d => d %>
+				</fieldset>
+				<div class="form-actions">
+					<%= d.submit "删除渠道", :class => 'btn btn-danger' %>
+				</div>
+			<% end %>
 		<% end %>
 	</div>
 </div>

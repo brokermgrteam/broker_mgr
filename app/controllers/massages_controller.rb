@@ -26,7 +26,7 @@ class MassagesController < ApplicationController
   end
 
   def read
-  	@massage = Massage.find(params[:massage_id])
+  	@massage = Massage.find(params[:id])
   	@title = "消息列表"
     @massage.update_attribute :status, true
   	if @massage.save

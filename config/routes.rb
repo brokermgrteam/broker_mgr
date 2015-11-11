@@ -58,7 +58,7 @@ Cmwp::Application.routes.draw do
       get 'branch_index', :on => :member
     end
   end
-  resources :brokers, :only => [:index, :show] do
+  resources :brokers do
     resources :brokerindices do
       get 'broker_index', :on => :member
     end
@@ -68,9 +68,16 @@ Cmwp::Application.routes.draw do
     member do
       get :relbrokers
     end
+    get 'teambrokers', :on => :member
+    get 'removeteambroker', :on => :member
+    get 'brokerteam', :on => :member
+    get 'leaveteam', :on => :member
   end
   resources :categories do
     get 'search', :on => :collection
+  end
+  resources :jsonapi do
+    get 'brokerteamrels', :on => :collection
   end
 
   root :to => 'pages#home'

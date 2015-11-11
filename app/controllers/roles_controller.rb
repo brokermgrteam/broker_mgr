@@ -1,7 +1,8 @@
 # encoding: utf-8
 class RolesController < ApplicationController
+  load_and_authorize_resource
   before_filter :authenticate
-  
+
   def index
     @roles = Role.all
     @title = "用户角色"
@@ -16,12 +17,12 @@ class RolesController < ApplicationController
     @role  = Role.new
     @title = "新建角色"
   end
-  
+
   def create
     @role = Role.new(params[:role])
     if @role.save
       redirect_to roles_path, :flash => { :success => "角色新建成功"}
-    else  
+    else
       @title = "新建角色"
       render 'new'
     end
@@ -33,17 +34,17 @@ class RolesController < ApplicationController
     @title = "角色设置"
     @roles = Role.all
   end
-  
+
   def update
     @role  = Role.find(params[:id])
     if @role.update_attributes(params[:role])
       redirect_to roles_path, :flash => { :success => "角色更新成功" }
-    else  
+    else
       @title = "角色设置"
       render 'edit'
-    end 
+    end
   end
-    
+
   def destroy
     Role.find(params[:id]).destroy
     # @role.destroy
@@ -52,4 +53,3 @@ class RolesController < ApplicationController
   end
 
 end
-

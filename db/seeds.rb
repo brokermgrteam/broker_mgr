@@ -2252,6 +2252,9 @@ Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'团队解散',:dict_
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'未处理',:dict_type=>'BrokerTeam.opinion',:code=>0})
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'同意',:dict_type=>'BrokerTeam.opinion',:code=>1})
 Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'否决',:dict_type=>'BrokerTeam.opinion',:code=>2})
+
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'正常',:dict_type=>'BrokerTeamrel.status',:code=>0})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'待审批',:dict_type=>'BrokerTeamrel.status',:code=>1})
 #institutions
 Institution.find_or_create_by_institution_name({:institution_code => "01", :institution_name => "工商银行"})
 Institution.find_or_create_by_institution_name({:institution_code => "02", :institution_name => "农业银行"})
@@ -2321,6 +2324,7 @@ Systemupgradelog.find_or_create_by_description(:update_date => '2015-08-04', :de
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-08-11', :description => '增加营业部渠道查询功能')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-10-16', :description => '改进登录验证机制')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-10-19', :description => '增加团队管理功能')
+Systemupgradelog.find_or_create_by_description(:update_date => '2015-11-11', :description => '经纪人团队管理功能上线')
 
 #yearmonth
 # Month.find_or_create_by_month({:id => 201301, :year => 2013, :month => "2013年01月"}, :without_protection => true)

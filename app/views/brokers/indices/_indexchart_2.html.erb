@@ -1,7 +1,7 @@
 <script type="text/javascript" charset="utf-8">
 $(function() {
 	showChartResult2(10002,10003,10004,10005,10045,10044,10036,10042,10043, <%= Time.now.strftime("%Y%m") %>);
-	
+
 	$('#btn-group-chart2 button').click( function() {
 		var radio = $(this).attr('value');
 		if ($('#nav-broker-select-month').is(":hidden")) {
@@ -69,7 +69,7 @@ function showChartResult2(i1,i2,i3,i4,i5,i6,i7,i8,i9,m) {
 	if (_width > 640) {
 		_width2 = _width2 / 2.15
 	}
-	console.log('_width2' + _width2);
+	// console.log('_width2' + _width2);
 	$.get(_url1, function (data1) {
 		$.get(_url2, function (data2) {
 			$.get(_url3, function (data3) {

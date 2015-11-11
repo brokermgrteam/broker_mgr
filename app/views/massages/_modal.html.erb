@@ -7,14 +7,18 @@
     <p><%= massage.content %></p>
     <p><%= link_to massage[:file], massage.file.url unless massage.file.blank? { |i|  } %></p>
     <p class="muted"><small><%= massage.user.name %></small></p>
-    <p class="muted"><small><%= I18n.localize(massage.created_at, :format => :long) %></small></p>
+    <p class="muted"><small><%= I18n.localize(massage.updated_at, :format => :long) %></small></p>
   </div>
   <div class="modal-footer">
     <% if massage.read? %>
       <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
     <% else %>
-      <%= link_to "同意", {:controller => 'brokerteammodifies', :action => 'accept', :id => massage.brokerteammodify.id}, :class => 'btn btn-success' %>
-      <%= link_to "不同意", {:controller => 'brokerteammodifies', :action => 'deny', :id => massage.brokerteammodify.id}, :class => 'btn' %>
+      <% if massage.brokerteammodify.nil? %>
+      <%= link_to "已读", {:controller => 'massages', :action => 'read', :id => massage.id}, :class => 'btn btn-success' %>
+      <% else %>
+        <%= link_to "同意", {:controller => 'brokerteammodifies', :action => 'accept', :id => massage.brokerteammodify.id}, :class => 'btn btn-success' %>
+        <%= link_to "不同意", {:controller => 'brokerteammodifies', :action => 'deny', :id => massage.brokerteammodify.id}, :class => 'btn' %>
+      <% end %>
     <% end %>
   </div>
 </div>

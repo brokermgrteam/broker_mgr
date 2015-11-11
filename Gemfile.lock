@@ -107,7 +107,7 @@ GEM
     jquery-ui-rails (4.1.2)
       railties (>= 3.1.0)
     json (1.8.1)
-    kaminari (0.16.1)
+    kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
@@ -206,8 +206,6 @@ GEM
       ref
     thor (0.19.1)
     tilt (1.4.1)
-    time_difference (0.4.2)
-      activesupport
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -231,7 +229,7 @@ GEM
       rack-test (>= 0.5.3)
     whenever (0.9.4)
       chronic (>= 0.6.3)
-    wice_grid (3.4.10)
+    wice_grid (3.4.14)
       coffee-rails
       kaminari (>= 0.13.0)
     wicked (1.2.1)
@@ -274,14 +272,13 @@ DEPENDENCIES
   simple_form
   spork (= 0.9.0)
   therubyracer (>= 0.12.0)
-  time_difference (~> 0.4.2)
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   unicorn
   watu_table_builder
   webrat (= 0.7.3)
   whenever
-  wice_grid (= 3.4.10)
+  wice_grid (= 3.4.14)
   wicked (~> 1.2.1)
   will_paginate (~> 3.0.3)
   yajl-ruby

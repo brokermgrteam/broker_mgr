@@ -1,0 +1,32 @@
+<div id="teamModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4><p class="text-center">团队成员</p></h4>
+  </div>
+  <div class="modal-body">
+    <table class="table table-striped table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th class="hidden-phone">代码</th>
+          <th>姓名</th>
+          <th>状态</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @teambrokers.each do |br| %>
+        <tr>
+          <td class="hidden-phone"><%= br.broker_code %></td>
+          <td><%= link_to br.broker_name, broker_path(br), :target => "_blank" %></td>
+          <td id="brokerteamrelstatus<%= br.id %>"><%= get_dict_by_id(Brokerteamrel.find_by_lower_broker_id(br.id).status).name %></td>
+          <td id="click<%= br.id %>">
+          <% if Brokerteamrel.find_by_lower_broker_id(br.id).status == get_dict("BrokerTeamrel.status", 0).id %>
+          <%= link_to "解除", removeteambroker_broker_path(br), :remote => true, :confirm => "请确认是否解除团队关系" %>
+          <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

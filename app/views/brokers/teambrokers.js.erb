@@ -1,0 +1,10 @@
+$("#teambrokers_url").html("<%= escape_javascript(render('team_modal')) %>")
+$('#teamModal').modal('show')
+$("td[id^='brokerteamrelstatus']").each(function() {
+  var id = parseInt(this.id.replace("brokerteamrelstatus", ""), 10);
+  var tdid = "#brokerteamrelstatus" + id;
+  var tdidclick = "#click" + id + " a";
+  $(tdidclick).click( function() {
+    $(tdid).html('<%= "#{get_dict("BrokerTeamrel.status", 1).name}" %>')
+  });
+});

@@ -1,36 +1,49 @@
-<% if User.find(@broker.user_id) == current_user %>
-	<div class="well">
-		<ul class="unstyled">
-			<% if !Workflowunderway.find_by_user_id(current_user.id).nil? %>
-				<%= render @workflowunderways %>
-			<% else %>
-				<li><p class="text-center muted">目前没有待办事项</p></li>
+<div class="row-fluid">
+	<% if User.find(@broker.user_id) == current_user %>
+		<div class="span12 well">
+			<div class="row-fluid">
+				<div class="span2 offset8">
+					<% if User.find(@broker.user_id) == current_user %>
+					<p class="text-right"><%= link_to '<i class="icon-edit"></i>'.html_safe, new_workflowunderway_path, :class => 'btn btn-success' %></p>
+					<% end %>
+				</div>
+				<div class="span12">
+					<ul class="common-divider"></ul>
+					<ul class="unstyled">
+						<% if !Workflowunderway.find_by_user_id(current_user.id).nil? %>
+							<%= render @workflowunderways %>
+						<% else %>
+							<li><p class="text-center muted">目前没有待办事项</p></li>
+						<% end %>
+					</ul>
+					<ul class="common-divider"></ul>
+				</div>
+
+				<% if User.find(@broker.user_id) == current_user %>
+				<div class="span8 offset2">
+					<p class="text-center">
+						<%= link_to '全部待办', workflowunderways_path, :class => 'btn btn-primary' %>
+						<%= link_to '历史工作', workflowhistories_path, :class => 'btn' %>
+					</p>
+				</div>
 			<% end %>
-		</ul>
-		<ul class="common-divider"></ul>
-		<% if User.find(@broker.user_id) == current_user %>
-		<div>
-			<p class="text-center">
-				<%= link_to '全部待办', workflowunderways_path, :class => 'btn btn-primary' %>
-				<%= link_to '历史工作', workflowhistories_path, :class => 'btn' %>
-			</p>
+			</div>
 		</div>
-		<% end %>
-	</div>
-<% else%>
-	<div class="well">
-		<ul class="unstyled">
-			<% if !Workflowunderway.find_by_user_id(@broker.user.id).nil? %>
-				<%= render @workflowunderways %>
-			<% else %>
-				<li><p class="text-center muted">目前没有待办事项</p></li>
-			<% end %>
-		</ul>
-		<ul class="common-divider"></ul>
-		<div>
-			<p class="text-center">
-				<%= link_to '历史工作', workflowhistories_path(:broker_id => @broker.id), :class => 'btn' %>
-			</p>
+	<% else%>
+		<div class="well">
+			<ul class="unstyled">
+				<% if !Workflowunderway.find_by_user_id(@broker.user.id).nil? %>
+					<%= render @workflowunderways %>
+				<% else %>
+					<li><p class="text-center muted">目前没有待办事项</p></li>
+				<% end %>
+			</ul>
+			<ul class="common-divider"></ul>
+			<div>
+				<p class="text-center">
+					<%= link_to '历史工作', workflowhistories_path(:broker_id => @broker.id), :class => 'btn' %>
+				</p>
+			</div>
 		</div>
-	</div>
-<% end %>
+	<% end %>
+</div>
