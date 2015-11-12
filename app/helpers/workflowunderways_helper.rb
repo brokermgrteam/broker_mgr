@@ -15,4 +15,8 @@ module WorkflowunderwaysHelper
       end
     end
   end
+
+  def current_workflow(workflowunderway)
+    Workflow.find(workflowunderway.workflow_id).code if workflowunderway
+  end
 end

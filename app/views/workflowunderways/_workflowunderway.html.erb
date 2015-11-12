@@ -1,10 +1,10 @@
 <blockquote>
   <% if workflowunderway.workflow.code == "1001" %>
-    <p><%= link_to Workflow.find(workflowunderway.workflow_id).name, workflowunderway_workflow_step_path(workflowunderway, current_step(workflowunderway), :flow => "1001") %> <%= workflowunderway.custservvisit.cust_name %></p>
+    <p><%= link_to Workflow.find(workflowunderway.workflow_id).name, workflowunderway_workflow_step_path(workflowunderway, current_step(workflowunderway), :flow => current_workflow(workflowunderway)) %> <%= workflowunderway.custservvisit.cust_name %></p>
     <small><%= workflowunderway.custservvisit.plan_date.to_s(:db) %></small>
   <% else %>
     <p>
-      <%= link_to Workflow.find(workflowunderway.workflow_id).name, workflowunderway_workflow_step_path(workflowunderway, current_step(workflowunderway), :flow => "1002") %>
+      <%= link_to Workflow.find(workflowunderway.workflow_id).name, workflowunderway_workflow_step_path(workflowunderway, current_step(workflowunderway), :flow => current_workflow(workflowunderway)) %>
     </p>
     <small><%= workflowunderway.updated_at.to_s(:db) %></small>
   <% end %>
