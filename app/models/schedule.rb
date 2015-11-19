@@ -115,13 +115,55 @@ class Schedule < ActiveRecord::Base
     end
     Rails.logger.task.info "job sync21tbOrganizes, ok. #{Time.now}"
   end
-end
-# == Schema Information
-#
-# Table name: schedules
-#
-#  id         :integer(38)     not null, primary key
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#
 
+  def self.task_exam
+    Rails.logger.task.info "job listBTMExamResults, begin. #{Time.now}"
+    api = APP_CONFIG['21tb_api']
+    uri = APP_CONFIG['21tb_uri_listBTMExamResults']
+    current_api = api + uri + ".html"
+    appkey = APP_CONFIG['21tb_appkey']
+    secrect = APP_CONFIG['21tb_secrect']
+    corpcode = APP_CONFIG['21tb_corpcode']
+    signText = secrect + "|" + uri + "|" + secrect
+    sign = Digest::MD5.hexdigest(signText).upcase
+    timeStamp = DateTime.now.strftime('%Q')
+    startTime = APP_CONFIG['21tb_examResults_days'].days.ago.to_date.strftime('%Q')
+    endTime = DateTime.now.strftime('%Q')
+    today = DateTime.now.strftime('%Y%m%d')
+    pageNo = 1
+
+    begin
+      Rails.logger.task.info "job listBTMExamResults, loop start. #{Time.now}"
+      Brokertraininglog.where(:collectdate => today).destroy_all
+      loop do
+        h = Hash.new
+        h[:pageNo] = pageNo
+        h[:pageSize] = 100
+        a = { 'startTime' => startTime,
+              'endTime' => endTime,
+              'corpCode' => corpcode,
+              'page' => h.to_json,
+              'appKey_' => appkey,
+              'sign_' => sign,
+              'timestamp_' => timeStamp }
+        x = Net::HTTP.post_form(URI.parse(current_api), a)
+
+        break if !JSON.parse(x.body)["rows"].any?
+        if JSON.parse(x.body)["rows"].any?
+          JSON.parse(x.body)["rows"].each do |r|
+            Brokertraininglog.create({:collectdate => today,
+                                      :exammark => r['examMark'],
+                                      :examname => r['examName'],
+                                      :idcard => r['idCard'],
+                                      :ispass => r['isPass'],
+                                      :passtime => r['passTime'],
+                                      :usercode => r['userCode']})
+          end
+        end
+        pageNo = pageNo + 1
+        sleep 5
+      end
+    end
+    Rails.logger.task.info "job listBTMExamResults, end. #{Time.now}"
+  end
+end

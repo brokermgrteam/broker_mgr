@@ -20,6 +20,10 @@ every 6.hours do
   runner "Schedule.task_user", :output => {:error => 'error.log', :standard => 'cron.log'}
 end
 
+every 12.hours do
+  runner "Schedule.task_exam", :output => {:error => 'error.log', :standard => 'cron.log'}
+end
+
 every 1.day do
   runner "Schedule.task_branches"
 end
