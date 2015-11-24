@@ -156,7 +156,7 @@ class Schedule < ActiveRecord::Base
                                       :examname => r['examName'],
                                       :idcard => r['idCard'],
                                       :ispass => r['isPass'],
-                                      :passtime => r['passTime'],
+                                      :passtime => Time.at(r['passTime']/1000).strftime('%Y%m%d'),
                                       :usercode => r['userCode']})
           end
         end
