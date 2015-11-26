@@ -2327,6 +2327,7 @@ Systemupgradelog.find_or_create_by_description(:update_date => '2015-10-19', :de
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-11-11', :description => '经纪人团队管理功能上线')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-11-18', :description => '修正系统状态在线人数显示问题')
 Systemupgradelog.find_or_create_by_description(:update_date => '2015-11-19', :description => '营销人员岗前培训同步接口上线')
+Systemupgradelog.find_or_create_by_description(:update_date => '2015-11-26', :description => '加强安全性设置')
 
 #yearmonth
 # Month.find_or_create_by_month({:id => 201301, :year => 2013, :month => "2013年01月"}, :without_protection => true)
