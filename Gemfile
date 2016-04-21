@@ -8,7 +8,7 @@ gem 'rails', '3.2.11'
 
 # gem 'mysql2'
 gem 'activerecord-oracle_enhanced-adapter', '~> 1.4.3'
-gem 'ruby-oci8', '~> 2.2.0'
+gem 'ruby-oci8', '~> 2.2.1'
 
 # Gems used only for assets and not required
 # in production environments by default.

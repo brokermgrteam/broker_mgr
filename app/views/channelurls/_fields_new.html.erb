@@ -17,7 +17,7 @@
 <!-- </div> -->
 <!-- <div class="row-fluid"> -->
   <!-- <div class="span6"> -->
-    <%= f.input :broker, :label => '营销人员', :collection => [], as: :select,
+    <%= f.input :broker, :label => '员工姓名', :collection => [], as: :select,
             :include_blank => true, :required => false, input_html: { :class => "broker_selection" } %>
   <!-- </div> -->
     <%= f.input :bank_no, :label => '存管银行', :collection => Bank.accessible_by(current_ability).order('bank_code'),

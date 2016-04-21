@@ -16,7 +16,7 @@
 <!-- </div> -->
 <!-- <div class="row-fluid"> -->
   <!-- <div class="span6"> -->
-    <%= f.input :broker, :label => '营销人员', :collection => Broker.accessible_by(current_ability).map{|br| ["#{br.broker_code} | #{br.broker_name}", br.id]},
+    <%= f.input :broker, :label => '员工姓名', :collection => Broker.accessible_by(current_ability).map{|br| ["#{br.broker_code} | #{br.broker_name}", br.id]},
             :include_blank => false, :required => true %>
   <!-- </div> -->
 </div>

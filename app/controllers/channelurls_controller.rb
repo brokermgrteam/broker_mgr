@@ -73,7 +73,11 @@ class ChannelurlsController < ApplicationController
 
   def get_brokers
     @branch = Branch.find params[:branch_id]
-    @brokers = @branch.brokers.valid_brokers
+    # @brokers = @branch.brokers.valid_brokers
+		@brokers = @branch.brokers.where("broker_status <> ? AND broker_type in (?,?)",
+																Dict.find_by_dict_type_and_code('BrokerBase.status', 2).id,
+																Dict.find_by_dict_type_and_code('BrokerBase.brokerType', 4) ,
+																Dict.find_by_dict_type_and_code('BrokerBase.brokerType', 5))
   end
 
 	def get_subchannels
