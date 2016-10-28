@@ -50,6 +50,7 @@ gem 'multi_logger'
 # gem "simple_calendar", github: "excid3/simple_calendar", branch: "1.0"
 gem "watu_table_builder", :require => "table_builder"
 gem 'datetimepicker-rails', git: 'git://github.com/zpaulovics/datetimepicker-rails', tag: 'v1.0.0'
+gem "daemons"
 # gem 'simple-navigation'
 
 group :development do
