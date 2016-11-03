@@ -94,7 +94,7 @@ set :delayed_job_roles, [:app, :background]
 # Set the location of the delayed_job executable
 # Can be relative to the release_path or absolute
 # default value: 'bin'
-# set :delayed_job_bin_path, 'script' # for rails 3.x
+set :delayed_job_bin_path, 'script' # for rails 3.x
 
 # To pass the `-m` option to the delayed_job executable which will cause each
 # worker to be monitored when daemonized.
