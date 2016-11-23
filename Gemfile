@@ -1,5 +1,5 @@
 # source 'http://rubygems.org'
-source 'https://gems.ruby-china.org/'
+source 'https://ruby.taobao.org/'
 
 gem 'rails', '3.2.11'
 
@@ -18,7 +18,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'therubyracer', '>= 0.12.0'
   gem "less-rails"
-  gem 'twitter-bootstrap-rails', '2.2.8'
+  gem 'twitter-bootstrap-rails'
   #gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
   gem 'jquery-ui-rails'
   gem 'highcharts-rails', '3.0.9'
@@ -49,8 +49,33 @@ gem 'multi_logger'
 # gem 'crono'
 # gem "simple_calendar", github: "excid3/simple_calendar", branch: "1.0"
 gem "watu_table_builder", :require => "table_builder"
-gem 'datetimepicker-rails', git: 'git://github.com/zpaulovics/datetimepicker-rails', tag: 'v1.0.0'
+gem 'datetimepicker-rails', :require => 'datetimepicker-rails',
+                            :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 # gem 'simple-navigation'
+
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
+
+# Use unicorn as the web server
+gem 'unicorn'
+
+# Deploy with Capistrano
+gem 'capistrano', '~> 2.15'
+# gem 'net-ssh', '2.7.0'
+# gem 'capistrano-rbenv'
+# To use debugger
+# gem 'ruby-debug19', :require => 'ruby-debug'
+
+# group :test do
+#   # Pretty printed test output
+#   gem 'turn', '~> 0.8.3', :require => false
+# end
+
+#gem 'spork'
+
+#gem 'autotest'
+
+#gem 'autotest-growl'
 
 group :development do
   gem 'rspec-rails', '2.8.1'
@@ -60,9 +85,6 @@ group :development do
   gem 'better_errors', '2.1.1'
   gem 'binding_of_caller'
   gem 'meta_request'
-  gem 'capistrano-rails'
-  gem 'capistrano-rvm'
-  gem 'capistrano-passenger'
 end
 
 group :test do
