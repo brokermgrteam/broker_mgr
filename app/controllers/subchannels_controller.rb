@@ -27,14 +27,4 @@ class SubchannelsController < ApplicationController
       render 'new'
     end
   end
-
-  def destroy
-    @subchannel = Subchannel.find(params[:id])
-    @channel = @subchannel.channel
-    @subchannel.destroy
-    respond_to do |format|
-      format.html { redirect_to edit_channel_path(@channel) }
-      format.js
-    end
-  end
 end
