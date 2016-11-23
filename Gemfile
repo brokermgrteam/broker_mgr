@@ -1,7 +1,7 @@
 # source 'http://rubygems.org'
 source 'https://gems.ruby-china.org/'
 
-gem 'rails', '3.2.22'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -9,7 +9,6 @@ gem 'rails', '3.2.22'
 # gem 'mysql2'
 gem 'activerecord-oracle_enhanced-adapter', '~> 1.4.3'
 gem 'ruby-oci8', '~> 2.2.1'
-gem 'test-unit', '~> 3.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
