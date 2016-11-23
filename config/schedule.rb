@@ -9,11 +9,11 @@
 #
 every :reboot do
   command "source ~/.bashrc"
-  command "cd /var/www/broker_mgr/current && RAILS_ENV=production script/delayed_job start"
+  command "cd /home/deployer/apps/broker_mgr/current && RAILS_ENV=production script/delayed_job start"
 end
 
 every 3.hours do
-  command "cd /var/www/broker_mgr/current && RAILS_ENV=production script/delayed_job restart"
+  command "cd /home/deployer/apps/broker_mgr/current && RAILS_ENV=production script/delayed_job restart"
 end
 
 every 6.hours do
