@@ -16,14 +16,8 @@
 #   command "cd /var/www/broker_mgr/current && RAILS_ENV=production script/delayed_job restart"
 # end
 
-every :reboot do
-  # rake "get_data:bitcoin"
-  command "cd /var/www/broker_mgr/current && RAILS_ENV=production script/delayed_job -n 2 start"
-end
-
 every 6.hours do
   runner "Schedule.task_user", :output => {:error => 'error.log', :standard => 'cron.log'}
-  command "cd /var/www/broker_mgr/current && RAILS_ENV=production script/delayed_job -n 2 restart"
 end
 
 every 12.hours do
