@@ -5,7 +5,7 @@ GIT
     datetimepicker-rails (0.0.8)
 
 GEM
-  remote: https://ruby.taobao.org/
+  remote: https://gems.ruby-china.org/
   specs:
     actionmailer (3.2.11)
       actionpack (= 3.2.11)

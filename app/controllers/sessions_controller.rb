@@ -27,8 +27,8 @@ class SessionsController < ApplicationController
       render 'new'
     else
       sign_in user
-      @session = Session.new({:user_id => user.id, :login_type => 1})
-      @session.save
+      # @session = Session.new({:user_id => user.id, :login_type => 1})
+      # @session.save
       if signed_in?
         if can? :access_user_first_page, :all
           redirect_to brokers_path
