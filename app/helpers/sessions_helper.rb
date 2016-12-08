@@ -4,7 +4,10 @@ module SessionsHelper
   def sign_in(user)
     # cookies.signed[:remember_token] = [user.id, user.salt]
     # cookies.signed[:secure_user_id] = {secure: true, value: "secure#{user.id}"}
-    cookies.signed[:remember_token] = { :value => [user.id, user.salt],
+    remember_token = User.new_remember_token
+    cookies.permanent[:remember_token] = remember_token
+    user.update_attribute(:remember_token, User.encrypt_token(remember_token))
+    cookies[:remember_token] = { :value => remember_token,
                                         :httponly =>      true,
                                         :cookie_only =>   true }
     self.current_user = user
@@ -15,7 +18,9 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= user_from_remember_token
+    # @current_user ||= user_from_remember_token
+    remember_token = User.encrypt_token(cookies[:remember_token])
+    @current_user ||= User.find_by_remember_token(remember_token)
   end
 
   def current_broker
@@ -27,6 +32,7 @@ module SessionsHelper
   end
 
   def sign_out
+    current_user.update_attribute(:remember_token, nil)
     cookies.delete(:remember_token)
     reset_session
     self.current_user = nil
