@@ -2,11 +2,10 @@
 module SessionsHelper
 
   def sign_in(user)
-    # cookies.signed[:remember_token] = [user.id, user.salt]
-    # cookies.signed[:secure_user_id] = {secure: true, value: "secure#{user.id}"}
-    cookies.signed[:remember_token] = { :value => [user.id, user.salt],
-                                        :httponly =>      true,
-                                        :cookie_only =>   true }
+    cookies.signed[:remember_token] = [user.id, user.salt]
+    cookies.signed[:secure_user_id] = {secure: true, value: "secure#{user.id}"}
+    # cookies[:remember_token] = { :value => user.id,
+    #                              :expires => 1.day.from_now }
     self.current_user = user
   end
 
@@ -28,7 +27,6 @@ module SessionsHelper
 
   def sign_out
     cookies.delete(:remember_token)
-    reset_session
     self.current_user = nil
   end
 
