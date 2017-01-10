@@ -2,18 +2,18 @@
 class CustsController < ApplicationController
   load_and_authorize_resource
   before_filter :authenticate, :only => [:index, :show, :edit, :update, :productcusts_index, :cust_detail_index]
-  
+
   def index
-    @custs = Cust.order("name").paginate(:page => params[:page]).per_page(20)
+    # @custs = Cust.order("name").paginate(:page => params[:page]).per_page(20)
     @department = params[:department]
     if params[:broker_id]
       @broker = Broker.find(params[:broker_id])
     else
       @broker = Broker.find_by_user_id(current_user.id)
     end
-    @custs_grid = initialize_grid(Cust, 
+    @custs_grid = initialize_grid(Cust,
               :include => [:branch, :custbrokerrels],
-              :conditions => [ " CUSTBROKERRELS.BROKER_ID = ? ", @broker ], 
+              :conditions => [ " CUSTBROKERRELS.BROKER_ID = ? ", @broker ],
               :name => 'custs',
               # :enable_export_to_csv => true,
               # :csv_field_separator => ';',
@@ -31,9 +31,9 @@ class CustsController < ApplicationController
     else
       @broker = Broker.find_by_user_id(current_user.id)
     end
-    @productcusts_grid = initialize_grid(Cust, 
+    @productcusts_grid = initialize_grid(Cust,
               :include => [:branch, :custbrokerproductrels],
-              :conditions => [ " CUSTBROKERPRODUCTRELS.BROKER_ID = ? ", @broker ], 
+              :conditions => [ " CUSTBROKERPRODUCTRELS.BROKER_ID = ? ", @broker ],
               :name => 'productcusts',
               # :enable_export_to_csv => true,
               # :csv_field_separator => ';',
@@ -51,11 +51,11 @@ class CustsController < ApplicationController
     else
       @broker = Broker.find_by_user_id(current_user.id)
     end
-    @custs_grid = initialize_grid(Cust, 
+    @custs_grid = initialize_grid(Cust,
               :order => 'custindices.month_id',
               :order_direction => 'desc',
               :include => [:branch, :custbrokerrels, :months],
-              :conditions => [ " CUSTBROKERRELS.BROKER_ID = ? ", @broker ], 
+              :conditions => [ " CUSTBROKERRELS.BROKER_ID = ? ", @broker ],
               :name => 'custs',
               # :enable_export_to_csv => true,
               # :csv_field_separator => ';',
