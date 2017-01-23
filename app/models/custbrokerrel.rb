@@ -1,6 +1,7 @@
 class Custbrokerrel < ActiveRecord::Base
+  set_primary_key 'id'
   attr_accessible :dis_ratio
-  
+
   belongs_to :broker
   belongs_to :cust
 end
@@ -17,4 +18,3 @@ end
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
-
