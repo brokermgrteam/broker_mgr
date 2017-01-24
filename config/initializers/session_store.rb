@@ -6,3 +6,17 @@ Cmwp::Application.config.session_store :cookie_store, key: '_cmwp_session'
 # which shouldn't be used to store highly confidential information
 # (create the session table with "rails generate session_migration")
 # Cmwp::Application.config.session_store :active_record_store
+<<<<<<< HEAD
+=======
+Cmwp::Application.config.session_store :cookie_store, key: '_cmwp_session'
+
+# Cmwp::Application.config.session_store :cookie_store, {
+#   :key =>           '_session_id',
+#   :path =>          '/',
+#   :domain =>        nil,
+#   :expire_after =>  nil,
+#   :secure =>        false,
+#   :httponly =>      true,
+#   :cookie_only =>   true
+# }
+>>>>>>> new-remember-token

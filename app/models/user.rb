@@ -107,6 +107,20 @@ class User < ActiveRecord::Base
       user = find_by_id(id)
       (user && user.salt == cookie_salt) ? user : nil
     end
+<<<<<<< HEAD
+=======
+
+    def new_remember_token
+      remember_token = loop do
+        remember_token = SecureRandom.urlsafe_base64
+        break remember_token if !User.find_by_remember_token(remember_token)
+      end
+    end
+
+    def encrypt_token(token)
+      Digest::SHA1.hexdigest(token.to_s)
+    end
+>>>>>>> new-remember-token
   end
 
 

@@ -5,6 +5,10 @@ class SessionsController < ApplicationController
   end
 
   def create
+    if Licence.last.verify?(APP_CONFIG['key']) == false
+      redirect_to root_path, :flash => { :error => "系统已过期" }
+      return
+    end
     @user = User.find(:last, :conditions => ["mobile = ? or email = ?", params[:session][:usercode], params[:session][:usercode]])
 
     @broker = Broker.valid_brokers.find_by_user_id(@user) if @user

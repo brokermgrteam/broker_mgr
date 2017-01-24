@@ -1,6 +1,10 @@
 class Custbrokerrel < ActiveRecord::Base
   set_primary_key 'id'
+<<<<<<< HEAD
   attr_accessible :dis_ratio
+=======
+  attr_accessible :rel_status, :broker_id, :cust_id, :dis_ratio, :rel_date
+>>>>>>> new-remember-token
 
   belongs_to :broker
   belongs_to :cust

@@ -2,10 +2,21 @@
 module SessionsHelper
 
   def sign_in(user)
+<<<<<<< HEAD
     cookies.signed[:remember_token] = [user.id, user.salt]
     cookies.signed[:secure_user_id] = {secure: true, value: "secure#{user.id}"}
     # cookies[:remember_token] = { :value => user.id,
     #                              :expires => 1.day.from_now }
+=======
+    # cookies.signed[:remember_token] = [user.id, user.salt]
+    # cookies.signed[:secure_user_id] = {secure: true, value: "secure#{user.id}"}
+    remember_token = User.new_remember_token
+    cookies.permanent[:remember_token] = remember_token
+    user.update_attribute(:remember_token, User.encrypt_token(remember_token))
+    cookies[:remember_token] = { :value => remember_token,
+                                 :httponly =>      true,
+                                 :cookie_only =>   true }
+>>>>>>> new-remember-token
     self.current_user = user
   end
 
