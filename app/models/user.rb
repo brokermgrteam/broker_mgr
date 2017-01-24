@@ -107,8 +107,6 @@ class User < ActiveRecord::Base
       user = find_by_id(id)
       (user && user.salt == cookie_salt) ? user : nil
     end
-<<<<<<< HEAD
-=======
 
     def new_remember_token
       remember_token = loop do
@@ -120,7 +118,6 @@ class User < ActiveRecord::Base
     def encrypt_token(token)
       Digest::SHA1.hexdigest(token.to_s)
     end
->>>>>>> new-remember-token
   end
 
 

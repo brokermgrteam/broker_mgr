@@ -23,11 +23,8 @@
 						</div>
 			    </div>
 			    <div class="tab-pane" id="2">
-<<<<<<< HEAD
 			      <% @user.sessions.find(:all, :order => "created_at desc", :limit => 10).each do |s| %>
-=======
 						<% @user.sessions.find(:all, :order => "created_at desc", :limit => 10).each do |s| %>
->>>>>>> new-remember-token
 			      	<div class="well well-small">
 			      		前台登录： <%= s.created_at %>
 			      	</div>
@@ -38,7 +35,7 @@
 	</div>
 	<div class="span3">
 		<%= render 'sidebar_user'%>
-		
+
 		<div class="alert alert-block">
 		  <button type="button" class="close" data-dismiss="alert">&times;</button>
 		  <h4>帮助</h4>
