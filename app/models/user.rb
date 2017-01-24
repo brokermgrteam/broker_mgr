@@ -109,9 +109,9 @@ class User < ActiveRecord::Base
     end
 
     def new_remember_token
-      loop do
+      remember_token = loop do
         remember_token = SecureRandom.urlsafe_base64
-        break if !User.find_by_remember_token(remember_token)
+        break remember_token if !User.find_by_remember_token(remember_token)
       end
     end
 

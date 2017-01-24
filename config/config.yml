@@ -3,6 +3,7 @@ development:
   channel_url_generator: http://jsonip.com
   channel_url_function: ip
   wap_url_barcode: http://qr.liantu.com/api.php?text=
+  key: hielf
   21tb_api: http://123.103.18.6/open
   21tb_appkey: 6F399068B9B74CBE9FF374AEBCEE8DB2
   21tb_secrect: 92A13756F1EB47339F199C081B731DC7
@@ -23,6 +24,7 @@ test:
   channel_url_generator: http://188.188.114.15:8082/CRH-KH8201.action?
   channel_url_function: short_url
   wap_url_barcode: http://qr.liantu.com/api.php?text=
+  key: hielf
   21tb_api: http://123.103.18.6/open
   21tb_appkey: 6F399068B9B74CBE9FF374AEBCEE8DB2
   21tb_secrect: 92A13756F1EB47339F199C081B731DC7
@@ -43,6 +45,7 @@ production:
   channel_url_generator: http://188.188.114.15:8082/CRH-KH8201.action?
   channel_url_function: short_url
   wap_url_barcode: http://qr.liantu.com/api.php?text=
+  key: hielf
   21tb_api: http://yufa.21tb.com/open
   21tb_appkey: B67EB33B0A854F4494E1FBD4376C8A94
   21tb_secrect: 71F2FECD4EE748E3B6B5CF7BE5EF9564

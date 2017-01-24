@@ -8,8 +8,8 @@ module SessionsHelper
     cookies.permanent[:remember_token] = remember_token
     user.update_attribute(:remember_token, User.encrypt_token(remember_token))
     cookies[:remember_token] = { :value => remember_token,
-                                        :httponly =>      true,
-                                        :cookie_only =>   true }
+                                 :httponly =>      true,
+                                 :cookie_only =>   true }
     self.current_user = user
   end
 

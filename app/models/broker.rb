@@ -1,5 +1,6 @@
 # encoding: utf-8
 class Broker < ActiveRecord::Base
+  set_primary_key 'id'
   belongs_to :branch
   belongs_to :user
 
