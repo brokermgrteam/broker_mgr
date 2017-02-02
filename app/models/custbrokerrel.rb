@@ -1,6 +1,5 @@
 class Custbrokerrel < ActiveRecord::Base
   set_primary_key 'id'
-  attr_accessible :dis_ratio
   attr_accessible :rel_status, :broker_id, :cust_id, :dis_ratio, :rel_date
 
   belongs_to :broker

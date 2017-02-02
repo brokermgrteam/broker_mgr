@@ -23,7 +23,6 @@
 						</div>
 			    </div>
 			    <div class="tab-pane" id="2">
-			      <% @user.sessions.find(:all, :order => "created_at desc", :limit => 10).each do |s| %>
 						<% @user.sessions.find(:all, :order => "created_at desc", :limit => 10).each do |s| %>
 			      	<div class="well well-small">
 			      		前台登录： <%= s.created_at %>

@@ -141,4 +141,8 @@ class User < ActiveRecord::Base
     def secure_hash(string)
       Digest::SHA2.hexdigest(string)
     end
+
+    # def create_remember_token
+    #   self.remember_token = User.encrypt_token(User.new_remember_token)
+    # end
 end
