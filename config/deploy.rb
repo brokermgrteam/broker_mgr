@@ -1,7 +1,7 @@
 require "bundler/capistrano"
 require "delayed/recipes"
 
-server "10.0.0.38", :web, :app, :db, primary: true
+server "192.168.15.136", :web, :app, :db, primary: true
 
 set :ssh_options, {
    config: false

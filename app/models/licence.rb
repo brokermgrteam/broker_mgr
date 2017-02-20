@@ -3,7 +3,7 @@ class Licence < ActiveRecord::Base
   attr_accessible :secure_hash, :expires_on
 
   def verify?(string)
-    secure_hash == check_hash("#{expires_on}-#{string}")
+    secure_hash == check_hash("#{expires_on}-#{string}") && expires_on >= Date.today.strftime('%Y%m%d')
   end
 
   private
