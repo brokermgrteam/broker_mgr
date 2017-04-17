@@ -2432,3 +2432,4 @@ Bank.find_or_create_by_bank_code(:bank_code=>'021804',:bank_name=>'存管交行'
 Bank.find_or_create_by_bank_code(:bank_code=>'021821',:bank_name=>'存管广发')
 
 Licence.find_or_create_by_expires_on(:secure_hash=>'921694df1899d1245b73d4fd7fdde8f10ea6fddd',:expires_on=>'20170220')
+Licence.find_or_create_by_expires_on(:secure_hash=>'c593e494a6d44ad02d07e188aea8109482ff1ad3',:expires_on=>'20170504')
